@@ -14,3 +14,8 @@ Open [https://localhost:3000](https://localhost:3000) with your browser to see t
 ## Live preview
 
 [Current Vercel Deployment](https://website-git-new-landing-page-schick.vercel.app)
+
+
+## Credits
+
+This project is a fork from the [contentlayerdev/website](https://github.com/contentlayerdev/website) - Copyright (c) 2022 Stackbit Inc., Johannes Schickling
