@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        handwritten: 'Virgil',
+        handwritten: 'Neue Haas Grotesk Display Pro',
       },
       colors: {
         gray: {

@@ -12,12 +12,21 @@
     src: local(''), url('/fonts/virgil.woff2') format('woff2');
   }
 
+  @font-face {
+    font-family: 'Neue Haas Grotesk Display Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local(''), url('/fonts/NeueHaasDisplayRoman.ttf') format('truetype');
+  }
+
   .scroll-padding {
     scroll-padding-top: 150px;
   }
 
   body {
     @apply h-full bg-white text-slate-500 antialiased dark:bg-gray-950 dark:text-slate-400;
+    font-family: 'Neue Haas Grotesk Display Pro', 'Open Sans', sans-serif;
   }
 
   svg {
@@ -149,5 +158,11 @@
   .KREChecklistCheckbox {
     margin-right: 0.5rem;
     margin-bottom: 1rem;
+  }
+
+  header h1 {
+    margin-top: 20px !important;
+    font-size: 5em !important;
+    line-height: 1em !important;
   }
 }

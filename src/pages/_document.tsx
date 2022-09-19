@@ -45,6 +45,13 @@ class MyDocument extends Document {
           <meta name="msapplication-wide310x150logo" content="/favicon/mstile-310x150.png" />
           <meta name="msapplication-square310x310logo" content="/favicon/mstile-310x310.png" />
           <link rel="preload" href="/fonts/virgil.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+          <link
+            rel="preload"
+            href="/fonts/NeueHaasDisplayRoman.ttf"
+            as="font"
+            type="font/truetype"
+            crossOrigin="anonymous"
+          />
           <script
             dangerouslySetInnerHTML={{
               __html: /* js */ `
