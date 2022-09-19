@@ -60,7 +60,7 @@ export const Testimonials: FC<{ usedByCount: number }> = ({ usedByCount }) => {
         </div>
       </Card>
       <Card className="h-64 border-violet-100 md:h-auto">
-        <Link href={content.projects.cta.url}>
+        <Link href={content.projects.cta.url} passHref>
           <a className="relative block w-full h-full" target="_blank" rel="noreferrer">
             <div className="absolute grid grid-cols-4 inset-x-3 -top-8 gap-x-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-4">
               {content.projects.avatars
@@ -83,7 +83,7 @@ export const Testimonials: FC<{ usedByCount: number }> = ({ usedByCount }) => {
               <p className="mb-2 text-xl font-semibold text-center text-violet-600 dark:text-violet-500">
                 {content.projects.heading.replace('_', usedByCount.toString())}
               </p>
-              <Link href={content.projects.cta.url}>
+              <Link href={content.projects.cta.url} passHref>
                 <p className="text-center">{content.projects.cta.label}</p>
               </Link>
             </div>
