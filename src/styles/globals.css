@@ -125,13 +125,14 @@
 
   .svgFile.svgFile-kin {
     transform: scale(2.2);
+    filter: invert(45%) sepia(100%) hue-rotate(-155deg) saturate(10) contrast(1);
   }
 
   .pngFile.pngFile-giftery {
     transform: scale(1.55);
-    filter: invert(45%) sepia(100%) hue-rotate(-155deg) saturate(10) contrast(1);
   }
 
+  .pngFile.pngFile-giftery,
   .svgFile.svgFile-circle-info-solid,
   .svgFile.svgFile-circle-question-regular,
   .svgFile.svgFile-rainbow-solid,
