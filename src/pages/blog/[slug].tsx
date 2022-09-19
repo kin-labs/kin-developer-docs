@@ -9,6 +9,7 @@ import { defineStaticProps } from '../../utils/next'
 import { Callout } from '../../components/common/Callout'
 import { DocsCard as Card } from '../../components/docs/DocsCard'
 import { DocsNavCard as NavCard } from '../../components/docs/DocsNavCard'
+import { DocsHelp as Help } from '../../components/docs/DocsHelp'
 import { Link } from 'src/components/common/Link'
 import NextImage from 'next/image'
 import { ChevronLink } from '../../components/common/ChevronLink'
@@ -131,6 +132,7 @@ const mdxComponents = {
   Support,
   BenchmarkResults,
   Dashed,
+  Help,
 }
 
 const Post: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ post, betaSnippets }) => {

@@ -10,6 +10,7 @@ import { DocsNavigation } from 'src/components/docs/DocsNavigation'
 import { Callout } from '../../components/common/Callout'
 import { DocsCard as Card } from 'src/components/docs/DocsCard'
 import { DocsNavCard as NavCard } from '../../components/docs/DocsNavCard'
+import { DocsHelp as Help } from '../../components/docs/DocsHelp'
 import { Card as ChildCard } from '../../components/common/Card'
 import { Link } from 'src/components/common/Link'
 import Image from 'next/image'
@@ -68,6 +69,7 @@ const mdxComponents = {
   OptionsTable,
   OptionTitle,
   OptionDescription,
+  Help,
 }
 
 const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ doc, tree, breadcrumbs, childrenTree }) => {
