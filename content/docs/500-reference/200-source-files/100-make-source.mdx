@@ -12,7 +12,7 @@ The code calling `makeSource` should be placed in `contentlayer.config.js`.
 ```ts
 // contentlayer.config.js
 
-import { makeSource } from 'contentlayer/source-files'
+import { makeSource } from '@contentlayer/source-files'
 
 export default makeSource({
   /* options */
@@ -23,9 +23,9 @@ export default makeSource({
 
 <OptionsTable>
   <OptionTitle>
-    ### `contentDirPath` 
+    ### `contentDirPath`
     (required)
-    
+
   </OptionTitle>
   <OptionDescription>
     Path to where the content lives, relative to the root of your project.
@@ -101,7 +101,7 @@ export default makeSource({
 
   </OptionDescription>
   <OptionTitle>
-    ### `documentTypes` 
+    ### `documentTypes`
     (required)
 
   </OptionTitle>
@@ -126,7 +126,7 @@ export default makeSource({
     Here's an example that adds syntax highlighting.
 
     ```js
-    import { makeSource } from 'contentlayer/source-files'
+    import { makeSource } from '@contentlayer/source-files'
     import highlight from 'rehype-highlight'
 
     export default makeSource({
@@ -151,7 +151,7 @@ export default makeSource({
     **Example:**
 
     ```js
-    import { makeSource } from 'contentlayer/source-files'
+    import { makeSource } from '@contentlayer/source-files'
     import highlight from 'rehype-highlight'
 
     export default makeSource({

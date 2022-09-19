@@ -1,4 +1,4 @@
-import { defineDocumentType } from "contentlayer/source-files";
+import { defineDocumentType } from "@contentlayer/source-files";
 
 export const GlobalConfig = defineDocumentType(() => ({
   name: "GlobalConfig",
