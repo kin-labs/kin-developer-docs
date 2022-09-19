@@ -9,10 +9,16 @@ import { ColorSchemeSwitcher } from './ColorSchemeSwitcher'
 import { isExternalUrl } from '../../utils/helpers'
 
 const navLinks: Array<{ label: string; url: string }> = [
-  { label: 'Documentation', url: '/docs' },
-  { label: 'Blog', url: '/blog' },
+  { label: 'Essentials', url: '/docs/essentials' },
+  { label: 'Use Cases', url: '/docs/use-cases' },
+  { label: 'Developers', url: '/docs/developers' },
+  { label: 'Non-Developers', url: '/docs/non-developers' },
+  { label: 'Integrations', url: '/docs/integrations' },
+  // { label: 'Documentation', url: '/docs' },
+  // { label: 'Documentation', url: '/docs' },
+  // { label: 'Blog', url: '/blog' },
   // NOTE until we have a proper example overview page and multiple examples, link directly to Next.js example
-  { label: 'Examples', url: '/examples/nextjs' },
+  // { label: 'Examples', url: '/examples/nextjs' },
 ]
 
 const iconLinks: Array<{ label: string; icon: IconName; url: string }> = [

@@ -8,6 +8,7 @@ import { Container } from '../../components/common/Container'
 import { defineStaticProps } from '../../utils/next'
 import { Callout } from '../../components/common/Callout'
 import { DocsCard as Card } from '../../components/docs/DocsCard'
+import { DocsNavCard as NavCard } from '../../components/docs/DocsNavCard'
 import { Link } from 'src/components/common/Link'
 import NextImage from 'next/image'
 import { ChevronLink } from '../../components/common/ChevronLink'
@@ -109,6 +110,7 @@ const Transform: React.FC<{ className?: string }> = ({ className }) => (
 const mdxComponents = {
   Callout,
   Card,
+  NavCard,
   Image,
   Link,
   ChevronLink,

@@ -19,7 +19,7 @@ const NotFound = () => {
           <Paragraph className="pb-16 text-center">
             The URL you are looking for does not exist.
             <br />
-            Hit <Label text="⌘K" /> to explore Contentlayer.
+            Hit <Label text="⌘K" /> to explore the Kin Developer Docs.
           </Paragraph>
         </div>
       </div>

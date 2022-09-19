@@ -9,6 +9,7 @@ import { defineStaticProps, toParams } from '../../utils/next'
 import { DocsNavigation } from 'src/components/docs/DocsNavigation'
 import { Callout } from '../../components/common/Callout'
 import { DocsCard as Card } from 'src/components/docs/DocsCard'
+import { DocsNavCard as NavCard } from '../../components/docs/DocsNavCard'
 import { Card as ChildCard } from '../../components/common/Card'
 import { Link } from 'src/components/common/Link'
 import Image from 'next/image'
@@ -55,6 +56,7 @@ export const getStaticProps = defineStaticProps(async (context) => {
 const mdxComponents = {
   Callout,
   Card,
+  NavCard,
   Image,
   Link,
   ChevronLink,

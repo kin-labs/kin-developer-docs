@@ -7,6 +7,7 @@ export const Card: FC<{ children: ReactNode; className?: string; shadow?: boolea
   shadow = false,
   dark = false,
 }) => {
+  console.log('🚀 ~ children', children)
   return (
     <div
       className={classNames(

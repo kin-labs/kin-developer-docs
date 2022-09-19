@@ -114,8 +114,34 @@
     hyphens: auto;
     -webkit-hyphens: auto;
   }
-  
+
   html.dark {
     color-scheme: dark;
+  }
+
+  .NavCard-AllowOverflow div span {
+    overflow: visible !important;
+  }
+
+  .svgFile.svgFile-kin {
+    transform: scale(2.2);
+  }
+
+  .pngFile.pngFile-giftery {
+    transform: scale(1.55);
+    filter: invert(45%) sepia(100%) hue-rotate(-155deg) saturate(10) contrast(1);
+  }
+
+  .svgFile.svgFile-circle-info-solid,
+  .svgFile.svgFile-circle-question-regular,
+  .svgFile.svgFile-rainbow-solid,
+  .svgFile.svgFile-nft-token,
+  .svgFile.svgFile-computer-mouse-solid,
+  .svgFile.svgFile-code-solid,
+  .svgFile.svgFile-diagram-project-solid,
+  .svgFile.svgFile-money-bill-trend-up-solid,
+  .svgFile.svgFile-sack-dollar-solid,
+  .svgFile.svgFile-cubes-solid {
+    filter: invert(55%) sepia(100%) hue-rotate(-155deg) saturate(10) contrast(1);
   }
 }

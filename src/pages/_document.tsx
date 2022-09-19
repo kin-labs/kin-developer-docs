@@ -48,7 +48,7 @@ class MyDocument extends Document {
           <script
             dangerouslySetInnerHTML={{
               __html: /* js */ `
-                const savedTheme = localStorage.getItem('theme') ?? 'system'
+                const savedTheme = localStorage.getItem('theme') ?? 'dark'
 
                 if (savedTheme === 'dark' || (savedTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                   document.documentElement.classList.add('dark')
