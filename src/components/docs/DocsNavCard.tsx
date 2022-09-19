@@ -14,10 +14,6 @@ export const DocsNavCard: React.FC<
     link?: { url: string; label: string }
   }>
 > = ({ title, icon, svgFile, pngFile, label, subtitle, children, link }) => {
-  console.log('🚀 ~ DocsNavCard', DocsNavCard)
-  console.log('🚀 ~ svgFile', svgFile)
-  console.log('🚀 ~ pngFile', pngFile)
-
   const nextStyle = (
     <div className="flex flex-col">
       <div
