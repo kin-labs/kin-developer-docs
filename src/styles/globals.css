@@ -145,8 +145,18 @@
     transform: scale(1.55);
   }
 
+  .pngFile.pngFile-heroku {
+    transform: scale(1.6);
+  }
+
   .pngFile.pngFile-giftery,
+  .pngFile.pngFile-heroku,
+  .svgFile.svgFile-screwdriver-wrench-solid,
+  .svgFile.svgFile-server-solid,
+  .svgFile.svgFile-docker-brands,
+  .svgFile.svgFile-globe-solid,
   .svgFile.svgFile-coins-solid,
+  .svgFile.svgFile-address-card-solid,
   .svgFile.svgFile-person-through-window-solid,
   .svgFile.svgFile-hand-holding-dollar-solid,
   .svgFile.svgFile-gem-solid,

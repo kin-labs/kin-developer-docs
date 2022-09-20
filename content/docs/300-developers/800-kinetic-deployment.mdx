@@ -1,0 +1,156 @@
+---
+title: Deployment
+excerpt: Run Kinetic Locally or Deploy it to the Web
+nav_title: Kinetic Deployment
+---
+
+# Kinetic Deployment
+
+## Deploying Kinetic to Heroku
+
+Here we will show how you can deploy your own Kinetic Instance to Heroku.
+
+### Fork Kinetic
+
+Fork you own version of Kinetic that we'll use to deploy on Heroku
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Fork Kinetic"
+    icon="github"
+    link={{ url: 'https://github.com/kin-labs/kinetic/fork/', label: 'See the Repo' }}
+  />
+</div>
+
+### Sign Up To Heroku
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Heroku Account"
+    pngFile="heroku"
+    link={{ url: 'https://dashboard.heroku.com/apps/', label: 'Sign Up / Log In' }}
+  />
+</div>
+
+### Create a new App
+
+![Heroku New App](/images/deployment/Heroku01.png)
+
+### Choose the GitHub Deployment Method
+
+Select your forked Repo and Connect<br/>
+![Heroku Connect to GitHub](/images/deployment/Heroku02.png)
+
+### Install Postgres Addon
+
+Go to Overview / Configure Add-ons, search and choose the Heroku Postrgres addon.<br/>
+
+![Heroku Postrgres Addon](/images/deployment/Heroku04.png)
+
+### Set your Environment Variables
+
+Go to Settings / Config Vars and add your environment variables as you would have in your `.env` file when [running Kinetic locally](/developers/deployment/#prepare-your-environment-variables).<br/>
+Make sure not to include quote marks around your strings as Heroku won't filter them out.<br/>
+
+![Heroku Config Vars](/images/deployment/Heroku03.png)
+
+### Deploy Kinetic
+
+Go to Deploy / Manual Deploy and deploy Kinetic. You can also choose to set up automatic deployment.
+
+![Heroku New App](/images/deployment/Heroku05.png)
+
+### Open your App
+
+That's it! You should be good to go. Click 'Open app' to open the Kinetic Manager. Heroku has great options for viewing logs etc through the online console and also has a brilliant CLI if you want to go down that route.
+
+### Configure Your Kinetic Instance
+
+<KineticManager />
+
+## Running Kinetic Locally
+
+#### Requirements:
+
+```shell
+Node.js 14+
+Docker 20+
+Yarn v1.22+
+```
+
+#### Get Started
+
+To get started with Kinetic, pull down the [Kinetic](https://github.com/kin-labs/kinetic) repo and install dependencies.
+
+```shell
+git clone git@github.com:kin-labs/kinetic.git
+cd kinetic
+yarn install
+```
+
+#### Prepare your Environment Variables
+
+Kinetic is highly configurable, but don't worry, we've provided an example file you can use to get started quickly.<br/>
+Just copy the contents of the `.env.example` file into your own `.env` file.<br/>
+See the full list of environment variables <a href='https://github.com/kin-labs/kinetic/blob/dev/.env.example' target='_blank'>here</a>.
+
+#### Make sure Docker is running
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard title="Docker" svgFile="docker-brands" link={{ url: 'https://www.docker.com/', label: 'Get it here' }} />
+</div>
+
+#### Run Kinetic Services
+
+Then, in separate terminals, do each of the following:
+
+- run the database
+
+```shell
+yarn dev:services:postgres
+```
+
+- prepare the database
+
+```shell
+yarn prisma migrate reset && yarn prisma db push
+```
+
+- run Solana locally (`localhost:8899`) or set `SOLANA_DEVNET_RPC_ENDPOINT=devnet` and skip this step
+
+```shell
+yarn dev:services:solana
+```
+
+- run the Kinetic API (`localhost:3000`)
+
+```shell
+yarn dev:api
+```
+
+- run the Kinetic Manager (`localhost:4400`)
+
+```shell
+yarn dev:admin
+```
+
+- run the Kinetic Demo App (`localhost:4200`)
+
+```shell
+yarn dev:demo
+```
+
+#### Open The Kinetic Manager
+
+- Kinetic Manager is a full-featured GUI for Kinetic
+- You can log in using the details set in your `.env` file.
+- [Click here](http://localhost:4400) to open localhost:4400
+
+#### Open The Kinetic Demo
+
+- Use the built-in Kinetic Demo to test Kin transactions on your Kinetic instance
+- [Click here](http://localhost:4200) to open localhost:4200
+
+## What If I Get Stuck?
+
+<Help />

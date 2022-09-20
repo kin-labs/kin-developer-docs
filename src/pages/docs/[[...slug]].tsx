@@ -11,6 +11,11 @@ import { Callout } from '../../components/common/Callout'
 import { DocsCard as Card } from 'src/components/docs/DocsCard'
 import { DocsNavCard as NavCard } from '../../components/docs/DocsNavCard'
 import { DocsHelp as Help } from '../../components/docs/DocsHelp'
+import { DocsBestPractices as BestPractices } from '../../components/docs/DocsBestPractices'
+import { DocsKRE as KRE } from '../../components/docs/DocsKRE'
+import { DocsProduction as Production } from '../../components/docs/DocsProduction'
+import { DocsRegisterApp as RegisterApp } from '../../components/docs/DocsRegisterApp'
+import { DocsKineticManager as KineticManager } from '../../components/docs/DocsKineticManager'
 import { Card as ChildCard } from '../../components/common/Card'
 import { Link } from 'src/components/common/Link'
 import Image from 'next/image'
@@ -70,6 +75,11 @@ const mdxComponents = {
   OptionTitle,
   OptionDescription,
   Help,
+  BestPractices,
+  KRE,
+  Production,
+  RegisterApp,
+  KineticManager,
 }
 
 const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ doc, tree, breadcrumbs, childrenTree }) => {

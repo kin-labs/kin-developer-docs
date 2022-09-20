@@ -1,0 +1,101 @@
+---
+title: SDK-less
+excerpt: Build your Kin App directly on Solana
+nav_title: SDK-less
+---
+
+# SDK-less
+
+So, as a Web3 developer who loves Kin as much as we do, you'd like to create a DApp that allows users to sign transactions with their own Solana wallet (E.g. Phantom, Solflare, etc) while still taking advantage of the lovely Kin KRE?
+
+Well, here we can show you how to do just that!
+
+![Use Solana Wallet for Kin](/images/sdk-less/SDKless-01-intro.gif)
+
+## Solana Transactions
+
+However you are interacting with the Solana blockchain (in the above example, we used the [@solana/web3.js](https://www.npmjs.com/package/@solana/web3.js/v/0.30.8) npm package), you need to construct and sign a transaction. In order to be picked up by our ingestor so you can get your KRE rewards, the transaction needs to have the right instructions, and have those instructions come in the right order.
+
+[Here's](https://explorer.solana.com/tx/5hFUXXZeHsUhsd1B5B4r5WSp3gbNRn9nnjG54S1CawHj3XT9rzWCxiD2GoCMrkC1pPFMJ3ezjujF9FAZZnY2Fq2j) an example of a successful transaction (the one above in the gif).
+
+![Solana Transaction](/images/sdk-less/SDKless-02-transactionInstructions.png)
+This transaction contains 3 instructions.
+
+## Memo Containing App Index
+
+**REQUIRED - First Instruction**
+
+We can see above that the first instruction uses the `Memo Program` and contains the data `ZaAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=`.
+
+Using our [Kin Laboratory](https://laboratory.kin.org/memo), we can parse that string to see the details of the memo.
+
+![Parsed Memo](/images/sdk-less/SDKless-03-parse_memo.png)
+
+We can also use the Laboratory to create correctly formatted memos in the first place.
+
+![Generated Memo](/images/sdk-less/SDKless-04-create_memo.png)
+
+## Token Transfer
+
+**REQUIRED - Second Instruction**
+
+This is the step containing the the amount of Kin and where it is going.
+
+## Other Instructions
+
+**OPTIONAL**
+
+In the example above, we've used `Memo Program v2` to add some SKU info about the transaction.
+
+## How About the Code?
+
+To try it yourself, check out our [Kin DApp Demo](https://github.com/kin-labs/kin-dapp-demo).
+
+Look [here](https://github.com/kin-labs/kin-dapp-demo/blob/master/src/helpers/SDKless/handleSendKin.ts) if you want to skip straight to creating transactions.
+
+TLDR?
+
+```js
+const transaction = new Transaction()
+  .add(appIndexMemoInstruction) // Must be the first instruction
+  .add(transferInstruction)
+
+await sendTransaction(transaction, connection)
+```
+
+## Did It Work?
+
+To check if your transaction was correctly formatted, again head over to our [Kin Laboratory](https://laboratory.kin.org/transaction) and check the status of your transaction.
+
+![KIN Transaction](/images/sdk-less/SDKless-05-transaction.png)
+
+You should also be able to see the transaction when you log in to the [Kin Developer Portal](https://portal.kin.org/dashboard).
+
+![KIN Transaction](/images/sdk-less/SDKless-06-transaction_dev_portal.png)
+
+And that's it! The specific implementation will be different depending on how you are interacting with Solana, but the basic principle applies, and as long as you've created your transaction correctly, you should be good to go!
+
+## Demos And Starter Kits
+
+Created to help get you up and running as quickly as possible, these projects can be a great reference point when you get stuck or even a starter for your own project. Happy coding!
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Kin SDK-less DApp Demo"
+    subtitle="A lightweight web-based implementation of Kin SDK-less with a fully functional Next.js based interface."
+    icon="github"
+    link={{ url: 'https://github.com/kin-starters/kin-dapp-sdk-less', label: 'Have a look' }}
+  />
+  <NavCard
+    title="Kin DApp Playground"
+    subtitle="A multi-functional Kin Front-End that allows you to connect to a Kin Server or carry out Web-based transactions via our Web-SDK or SDK-less."
+    icon="github"
+    link={{ url: 'https://github.com/kin-starters/kin-dapp-playground', label: 'Have a look' }}
+  />
+</div>
+
+## What If I Get Stuck?
+
+Fortunately, we have an amazing developer community on our Developer Discord server. Join today and jump into our `sdk-less` [channel](https://discord.com/channels/808859554997469244/946095829205266533)!
+
+<Help />
