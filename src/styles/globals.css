@@ -138,7 +138,12 @@
   }
 
   .svgFile.svgFile-kin_name {
+    filter: invert(45%) sepia(100%) hue-rotate(-155deg) saturate(10) contrast(1);
     margin-left: -10px !important;
+  }
+
+  html.dark .svgFile.svgFile-kin_name {
+    filter: invert(50%) sepia(100%) hue-rotate(-150deg) saturate(1) contrast(1);
   }
 
   .svgFile.svgFile-unity {
