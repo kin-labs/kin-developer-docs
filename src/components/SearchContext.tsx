@@ -28,72 +28,27 @@ export const SearchProvider: FC<{ children: ReactNode }> = ({ children }) => {
       {
         id: '0-homepage',
         name: 'Homepage',
-        keywords: 'Contentlayer Home Start Index Overview Features Intro',
+        keywords: 'Kin Developer Docs Home',
         section: 'Home',
         perform: () => router.push('/'),
       },
       {
-        id: '3-github',
-        name: 'GitHub Repository',
-        keywords: 'Contentlayer Github Git Repository Repo Code Examples',
-        section: 'External',
-        perform: () => window.open('https://github.com/contentlayerdev/contentlayer', '_ blank'),
-      },
-      {
         id: '3-discord',
         name: 'Discord Community',
-        keywords: 'Discord Community Channel Contact',
+        keywords: 'Kin Developer Community',
         section: 'External',
-        perform: () => window.open('https://discord.com/invite/rytFErsARm', '_ blank'),
+        perform: () => window.open('https://discord.gg/kdRyUNmHDn', '_ blank'),
       },
       {
         id: '3-twitter',
         name: 'Twitter',
         keywords: 'Twitter Account Tweets Tweet News',
         section: 'External',
-        perform: () => window.open('https://twitter.com/contentlayerdev', '_ blank'),
+        perform: () => window.open('https://twitter.com/Kin_Ecosystem', '_ blank'),
       },
     ]
     let id = 1
-    const mapExamples = (tree: TreeNode[], parent: string) => {
-      for (const element of tree) {
-        actions.push({
-          id: ('1-examples-' + id).toString(),
-          name: element.label
-            ? `${element.title == 'Examples' ? 'Overview' : element.title} (${element.label})`
-            : element.title == 'Examples'
-            ? 'Overview'
-            : element.title,
-          keywords: element?.excerpt || '',
-          section: 'Examples',
-          subtitle: parent,
-          perform: () => router.push(element.urlPath),
-        })
-        id++
-        if (element.children.length) mapExamples(element.children, parent + parent ? ' / ' : '' + element.title)
-      }
-    }
-    const mapPosts = (posts: Post[]) => {
-      actions.push({
-        id: ('2-blog-' + id).toString(),
-        name: 'Overview',
-        keywords: 'Contentlayer Blog Post List Overview',
-        section: 'Blog',
-        perform: () => router.push('/blog'),
-      })
-      id++
-      for (const post of posts) {
-        actions.push({
-          id: ('2-blog-' + id).toString(),
-          name: post.title,
-          keywords: post?.excerpt || '',
-          section: 'Blog',
-          subtitle: format(new Date(post.date), 'MMMM dd, yyyy'),
-          perform: () => router.push('/' + post.url_path),
-        })
-        id++
-      }
-    }
+
     const mapDocs = (tree: TreeNode[], parent: string) => {
       for (const element of tree) {
         actions.push({
@@ -108,8 +63,6 @@ export const SearchProvider: FC<{ children: ReactNode }> = ({ children }) => {
         if (element.children.length) mapDocs(element.children, parent + ' / ' + element.title)
       }
     }
-    mapExamples(examplesTree, '')
-    mapPosts(allPosts)
     mapDocs(docsTree, 'Docs')
     return actions
   }, [docsTree, examplesTree, router])
