@@ -29,7 +29,7 @@ export const Hero: FC = () => {
           <img className="hidden md:block md:scale-125 lg:scale-150 " src={content.heroImage} />
         </div>
       </div>
-      <div className="mx-auto my-0 mb-0 mt-0 grid w-full max-w-5xl px-3 md:p-0">
+      <div className="HeroCards mx-auto mb-0 -mt-8 grid w-full max-w-5xl px-3 md:p-0">
         <NavCard
           hero
           title="Kin Essentials"
@@ -55,7 +55,7 @@ export const Hero: FC = () => {
           <NavCard
             hero
             title="Not a Dev? No Problem."
-            subtitle="Build powerful Kin Apps with no coding experience necessary"
+            subtitle="Build powerful Apps with no coding experience."
             svgFile="kin"
             link={{ url: '/docs/non-developers', label: 'See more' }}
           />
