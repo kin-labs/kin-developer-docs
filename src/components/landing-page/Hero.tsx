@@ -29,7 +29,7 @@ export const Hero: FC = () => {
           <img className="hidden md:block md:scale-125 lg:scale-150 " src={content.heroImage} />
         </div>
       </div>
-      <div className="mx-auto mb-0 grid w-full max-w-5xl lg:mt-0 xs:mt-0">
+      <div className="mx-auto my-0 mb-0 mt-0 grid w-full max-w-5xl px-3 md:p-0">
         <NavCard
           hero
           title="Kin Essentials"
