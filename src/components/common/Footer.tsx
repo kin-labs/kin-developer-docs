@@ -27,30 +27,46 @@ const content = {
   ),
   menus: [
     {
-      title: 'Docs',
+      title: 'Quick Links',
       elements: [
-        { label: 'Getting Started', url: '/docs/getting-started' },
-        { label: 'Concepts', url: '/docs/concepts' },
-        { label: 'Sources', url: '/docs/sources' },
-        { label: 'Environments', url: '/docs/environments' },
-        { label: 'API Reference', url: '/docs/reference' },
+        { label: 'Kin Foundation', url: 'https://kin.org/developer' },
+        { label: 'Kin Blog', url: 'https://kin.org/blog' },
+        { label: 'Privacy Policy', url: 'https://kin.org/privacy-policy/' },
+        { label: 'Cookie Policy', url: 'https://kin.org/cookie-policy/' },
+        { label: 'Terms & Conditions', url: 'https://kin.org/terms-and-conditions/' },
+        { label: 'Developer Terms', url: 'https://kin.org/kin-developer-terms/' },
       ],
     },
     {
-      title: 'Examples',
+      title: 'Social',
       elements: [
         {
-          label: 'Next.js (TypeScript)',
-          url: '/examples/nextjs',
+          label: 'Twitter',
+          url: 'https://twitter.com/Kin_Ecosystem',
+        },
+        {
+          label: 'Reddit',
+          url: 'https://www.reddit.com/r/KinFoundation/',
+        },
+        {
+          label: 'LinkedIn',
+          url: 'https://www.linkedin.com/company/kin-ecosystem/',
+        },
+        {
+          label: 'Instagram',
+          url: 'https://www.instagram.com/kin_ecosystem/?hl=en',
+        },
+        {
+          label: 'Facebook',
+          url: 'https://www.facebook.com/KinEcosystem/',
         },
       ],
     },
     {
-      title: 'Community',
+      title: 'Connect',
       elements: [
-        { label: 'Twitter', url: 'https://twitter.com/contentlayerdev' },
-        { label: 'Discord', url: 'https://discord.gg/rytFErsARm' },
-        { label: 'GitHub', url: 'https://github.com/contentlayerdev/contentlayer' },
+        { label: 'Kin Developer Portal', url: 'https://portal.kin.org/' },
+        { label: 'Discord', url: 'https://discord.gg/kdRyUNmHDn' },
       ],
     },
   ],
