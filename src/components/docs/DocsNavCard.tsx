@@ -14,7 +14,7 @@ export const DocsNavCard: React.FC<
     link?: { url: string; label: string }
   }>
 > = ({ title, icon, svgFile, pngFile, label, subtitle, children, link }) => {
-  const nextStyle = (
+  return (
     <div className="flex flex-col">
       <div
         className={`grow border border-gray-100 bg-gray-50 p-6 py-4 dark:border-gray-800 dark:bg-gray-900 
@@ -61,6 +61,4 @@ export const DocsNavCard: React.FC<
       )}
     </div>
   )
-
-  return nextStyle
 }
