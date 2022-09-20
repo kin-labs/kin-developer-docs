@@ -137,11 +137,24 @@
     filter: invert(45%) sepia(100%) hue-rotate(-155deg) saturate(10) contrast(1);
   }
 
+  .svgFile.svgFile-unity {
+    transform: scale(2);
+  }
+
   .pngFile.pngFile-giftery {
     transform: scale(1.55);
   }
 
   .pngFile.pngFile-giftery,
+  .svgFile.svgFile-coins-solid,
+  .svgFile.svgFile-person-through-window-solid,
+  .svgFile.svgFile-hand-holding-dollar-solid,
+  .svgFile.svgFile-gem-solid,
+  .svgFile.svgFile-gratipay-brands,
+  .svgFile.svgFile-ghost-solid,
+  .svgFile.svgFile-money-bill-transfer-solid,
+  .svgFile.svgFile-icons-solid,
+  .svgFile.svgFile-cart-shopping-solid,
   .svgFile.svgFile-circle-info-solid,
   .svgFile.svgFile-circle-question-regular,
   .svgFile.svgFile-rainbow-solid,

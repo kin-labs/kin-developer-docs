@@ -14,6 +14,7 @@ export const DocsNavCard: React.FC<
     link?: { url: string; label: string }
   }>
 > = ({ title, icon, svgFile, pngFile, label, subtitle, children, link }) => {
+  console.log('🚀 ~ children', children)
   return (
     <div className="flex flex-col">
       <div
@@ -52,7 +53,7 @@ export const DocsNavCard: React.FC<
             <p>{subtitle}</p>
           </div>
         )}
-        {children && <div className="text-sm">{children}</div>}
+        {children ? <div className="text-sm">{children}</div> : null}
       </div>
       {link && (
         <div className="rounded-b-2xl border border-violet-100 bg-violet-50 p-6 py-4 dark:border-violet-900/50 dark:bg-violet-900/20">
