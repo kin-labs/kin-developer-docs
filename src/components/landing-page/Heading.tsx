@@ -8,6 +8,11 @@ export const Heading: FC<{ level: number; children: ReactNode; className?: strin
 }) => {
   return (
     <>
+      {level == 0 && (
+        <h1 className={classNames('text-8xl font-semibold text-slate-800 dark:text-slate-200 lg:text-9xl', className)}>
+          {children}
+        </h1>
+      )}
       {level == 1 && (
         <h1 className={classNames('text-4xl font-semibold text-slate-800 dark:text-slate-200 lg:text-5xl', className)}>
           {children}

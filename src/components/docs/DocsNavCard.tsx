@@ -2,9 +2,12 @@ import Image from 'next/image'
 import { Icon, IconName } from '../common/Icon'
 import { Label } from '../common/Label'
 import { ChevronLink } from '../common/ChevronLink'
+import { children } from 'cheerio/lib/api/traversing'
+import link from 'next/link'
 
 export const DocsNavCard: React.FC<
   React.PropsWithChildren<{
+    hero?: boolean
     title: string
     icon?: IconName | null
     svgFile?: string | null
@@ -13,9 +16,9 @@ export const DocsNavCard: React.FC<
     subtitle?: string | null
     link?: { url: string; label: string }
   }>
-> = ({ title, icon, svgFile, pngFile, label, subtitle, children, link }) => {
+> = ({ hero, title, icon, svgFile, pngFile, label, subtitle, children, link }) => {
   return (
-    <div className="flex flex-col">
+    <div className={`flex flex-col ${hero ? 'mb-4' : ''}`}>
       <div
         className={`grow border border-gray-100 bg-gray-50 p-6 py-4 dark:border-gray-800 dark:bg-gray-900 
         ${link ? 'rounded-t-2xl border-b-0' : 'rounded-2xl'} ${icon || svgFile || pngFile ? 'mt-6' : 'mt-0'}`}
@@ -45,10 +48,10 @@ export const DocsNavCard: React.FC<
             </div>
           </div>
         )}
-        <h3 className="mt-0">{title}</h3>
+        <h3 className={`mt-0 ${hero ? 'text-3xl' : ''}`}>{title}</h3>
         {label && <Label text={label} />}
         {subtitle && (
-          <div className="text-sm text-slate-500 dark:text-slate-400">
+          <div className={`text-sm text-slate-500 dark:text-slate-400 ${hero ? 'text-lg' : ''}`}>
             <p>{subtitle}</p>
           </div>
         )}

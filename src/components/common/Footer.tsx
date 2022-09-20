@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { FC } from 'react'
 import { Logo } from './Logo'
 import { Icon } from './Icon'
@@ -12,24 +13,15 @@ const content = {
   note: (
     <>
       <p>
-        MIT Licenced - A project by{' '}
+        A project by{' '}
         <a
-          href="https://www.stackbit.com/"
+          href="https://www.kin.org/"
           target="_blank"
           className="text-violet-600 underline dark:text-violet-400"
           rel="noreferrer"
         >
-          Stackbit
+          The Kin Foundation
         </a>
-      </p>
-      <p className="mt-2">
-        Made with 💜 by{' '}
-        <Link href="https://twitter.com/schickling">
-          <a className="hover:text-slate-700 dark:hover:text-slate-300" target="_blank" rel="noreferrer">
-            @schickling
-          </a>
-        </Link>{' '}
-        & community
       </p>
     </>
   ),
@@ -71,8 +63,14 @@ export const Footer: FC = () => {
         <div>
           <Link href="/">
             <a className="flex items-center space-x-2.5 font-bold text-slate-800 no-underline dark:text-white">
-              <Logo />
-              <span>Contentlayer</span>
+              {/* <Logo /> */}
+              <Image
+                height="40px"
+                width="80px"
+                alt={`Kin Foundation`}
+                className={`svgFile svgFile-kin_name`}
+                src={`/images/logos/kin_name.svg`}
+              />
             </a>
           </Link>
           <div className="mt-4 text-sm text-slate-500 dark:text-slate-400">{content.note}</div>

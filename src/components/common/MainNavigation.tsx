@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { FC, useState } from 'react'
 import { useKBar } from 'kbar'
 import { Icon, IconName } from './Icon'
@@ -14,16 +15,10 @@ const navLinks: Array<{ label: string; url: string }> = [
   { label: 'Developers', url: '/docs/developers' },
   { label: 'Non-Developers', url: '/docs/non-developers' },
   { label: 'Integrations', url: '/docs/integrations' },
-  // { label: 'Documentation', url: '/docs' },
-  // { label: 'Documentation', url: '/docs' },
-  // { label: 'Blog', url: '/blog' },
-  // NOTE until we have a proper example overview page and multiple examples, link directly to Next.js example
-  // { label: 'Examples', url: '/examples/nextjs' },
 ]
 
 const iconLinks: Array<{ label: string; icon: IconName; url: string }> = [
-  { label: 'Github', icon: 'github', url: 'https://github.com/contentlayerdev/contentlayer' },
-  { label: 'Discord', icon: 'discord', url: 'https://discord.gg/rytFErsARm' },
+  { label: 'Discord', icon: 'discord', url: 'https://discord.com/invite/kdRyUNmHDn' },
 ]
 
 const NavLink: FC<{ label?: string; hideLabel?: boolean; icon?: IconName; url: string }> = ({
@@ -84,11 +79,18 @@ export const MainNavigation = () => {
         <div className="flex items-center space-x-2.5">
           <Link href="/">
             <a className="flex items-center space-x-2.5 font-bold text-slate-800 no-underline dark:text-white">
-              <Logo />
-              <span className="-mt-0.5">Contentlayer</span>
+              <Image
+                height="40px"
+                width="80px"
+                alt={`Kin Foundation`}
+                className={`svgFile svgFile-kin_name`}
+                src={`/images/logos/kin_name.svg`}
+              />
+              <span className="headerLogoLabel">
+                <Label text="Developer Docs" />
+              </span>
             </a>
           </Link>
-          <Label text="Beta" />
         </div>
         <div className="lg:hidden">
           <button
