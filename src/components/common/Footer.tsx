@@ -9,19 +9,43 @@ const isExternalUrl = (link: string): boolean => {
   return !link.startsWith('/')
 }
 
+const kinWebsiteLink = 'https://www.kin.org/'
+const contentlayerLink = 'https://github.com/contentlayerdev/contentlayer'
 const content = {
   note: (
     <>
       <p>
         A project by{' '}
-        <a
-          href="https://www.kin.org/"
-          target="_blank"
-          className="text-violet-600 underline dark:text-violet-400"
-          rel="noreferrer"
-        >
-          The Kin Foundation
-        </a>
+        <Link href={kinWebsiteLink}>
+          <a
+            className="inline-flex items-center space-x-1 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"
+            target={isExternalUrl(kinWebsiteLink) ? '_blank' : undefined}
+          >
+            <span>{`The Kin Foundation`}</span>
+            {isExternalUrl(kinWebsiteLink) && (
+              <span className="inline-block w-4">
+                <Icon name="external-link" />
+              </span>
+            )}
+          </a>
+        </Link>
+      </p>
+      <br />
+      <p>
+        Built with{' '}
+        <Link href={contentlayerLink}>
+          <a
+            className="inline-flex items-center space-x-1 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"
+            target={isExternalUrl(contentlayerLink) ? '_blank' : undefined}
+          >
+            <span>{`Contentlayer`}</span>
+            {isExternalUrl(contentlayerLink) && (
+              <span className="inline-block w-4">
+                <Icon name="external-link" />
+              </span>
+            )}
+          </a>
+        </Link>
       </p>
     </>
   ),

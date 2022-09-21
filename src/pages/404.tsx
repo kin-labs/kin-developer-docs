@@ -4,6 +4,7 @@ import { Icon } from 'src/components/common/Icon'
 import { Heading } from 'src/components/landing-page/Heading'
 import { Paragraph } from 'src/components/landing-page/Paragraph'
 import { Label } from 'src/components/common/Label'
+import Link from 'next/link'
 
 const NotFound = () => {
   return (
@@ -19,7 +20,17 @@ const NotFound = () => {
           <Paragraph className="pb-16 text-center">
             The URL you are looking for does not exist.
             <br />
-            Hit <Label text="⌘K" /> to explore the Kin Developer Docs.
+            {`We've recently revamped our docs.`}
+            <br />
+            <span>
+              You might want to look at{' '}
+              <Link href="/docs/essentials">
+                <a>Essentials</a>
+              </Link>{' '}
+              first.
+            </span>
+            <br />
+            Or, hit <Label text="⌘K" /> to explore the Kin Developer Docs.
           </Paragraph>
         </div>
       </div>
