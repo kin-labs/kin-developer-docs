@@ -16,6 +16,7 @@ import { DocsKRE as KRE } from '../../components/docs/DocsKRE'
 import { DocsProduction as Production } from '../../components/docs/DocsProduction'
 import { DocsRegisterApp as RegisterApp } from '../../components/docs/DocsRegisterApp'
 import { DocsKineticManager as KineticManager } from '../../components/docs/DocsKineticManager'
+import { DocsAgora as Agora } from '../../components/docs/DocsAgora'
 import { Card as ChildCard } from '../../components/common/Card'
 import { Link } from 'src/components/common/Link'
 import Image from 'next/image'
@@ -80,6 +81,7 @@ const mdxComponents = {
   Production,
   RegisterApp,
   KineticManager,
+  Agora,
 }
 
 const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ doc, tree, breadcrumbs, childrenTree }) => {

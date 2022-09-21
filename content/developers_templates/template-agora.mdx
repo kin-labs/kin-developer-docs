@@ -11,7 +11,7 @@ Getting started with Kin is incredibly straightforward. Just follow the steps be
 ### Installation
 
 ```shell
-npm i @kin-kinetic/sdk
+
 ```
 
 ### Instantiate the Kinetic Client
@@ -20,15 +20,8 @@ The Kinetic Client will give you access to all the methods you need to work with
 
 We recommend starting with Devnet before moving on to Mainnet.
 
-```js
-import { KineticSdk } from '@kin-kinetic/sdk'
+```
 
-const clientOptions = {
-  environment: 'devnet', // mainnet or devnet
-  index: 999, // your App Index
-}
-
-const kineticClient = await KineticSdk.setup(clientOptions)
 ```
 
 Don't have an App Index? Register your App on our Developer Portal so you can get your App Index that allows you to transact with our SDKs and earn via the KRE.
@@ -39,84 +32,44 @@ Don't have an App Index? Register your App on our Developer Portal so you can ge
 
 You can create accounts from existing mnemonics or secret keys. In this case we'll generate a mnemonic and use that to creat the keypair we use for creating the account on the blockchain.
 
-```js
-const mnemonic = Keypair.generateMnemonic()
-const keypair = Keypair.fromMnemonic(mnemonic)
-const accountOptions = {
-  owner: keypair,
-}
-await kineticClient.createAccount(accountOptions)
+```
+
 ```
 
 ### Check Balance
 
-```js
-const balanceOptions = { account: keypair.publicKey }
-const { balance } = await kineticClient.getBalance(balanceOptions)
+```
+
 ```
 
 ### Airdrop Funds (devnet)
 
-```js
-const airdropOptions = {
-  account: keypair.publicKey,
-  amount: '1000',
-}
-await kineticClient.requestAirdrop(airdropOptions)
+```
+
 ```
 
 ### Transfer Kin
 
-```js
-import { TransactionType } from '@kin-tools/kin-memo'
+```
 
-const transferOptions = {
-  amount: '5000',
-  destination: `BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo`,
-  owner: keypair,
-  type: TransactionType.P2P, // Can be Unknown, None, Earn, Spend or P2P
-}
-
-await kineticClient.makeTransfer(transferOptions)
 ```
 
 ### Transfer Kin Batch
 
-```js
-const destinations = [
-  {
-    amount: '500',
-    destination: destination: `BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo`,
-  },
-  {
-    amount: '600',
-    destination: destination: `BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo`,
-  },
-  {
-    amount: '800',
-    destination: destination: `BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo`,
-  },
-]
+```
 
-const transferBatchOptions = {
-    owner: keypair,
-    destinations,
-};
-
-await kineticClient.makeTransferBatch(transferBatchOptions);
 ```
 
 ### Get Transaction Details
 
-```js
-// Coming Soon
+```
+
 ```
 
 ### Get Account History
 
-```js
-const historyOptions = { account: keypair.publicKey }
-await kineticClient.getHistory(historyOptions)
+```
+
 ```
 
 ### Webhooks
@@ -159,22 +112,17 @@ app.use('/verify', async (req, res) => {
 
 Created to help get you up and running as quickly as possible, these projects can be a great reference point when you get stuck or even a starter for your own project. Happy coding!
 
+```
+<!-- Please add your demo apps below in the NavCard with title / subtitle / link. Thanks! -->
+```
+
 <div className="mt-8 grid gap-6 md:grid-cols-2">
   <NavCard
-    title="Kinetic DApp Demo"
-    subtitle="A lightweight web-based implementation of Kinetic with a fully functional Next.js based interface."
+    title=""
+    subtitle=""
     icon="github"
-    link={{ url: 'https://github.com/kin-starters/kin-dapp-kinetic', label: 'Have a look' }}
+    link={{ url: '', label: 'Have a look' }}
   />
-  <NavCard
-    title="TypeScript Node SDK Demo"
-    subtitle="A full-fat server based implementation of Kin Kinetic."
-    icon="github"
-    link={{ url: 'https://github.com/kin-starters/kin-demo-node-sdk', label: 'Have a look' }}
-  >
-    This server is compatible with the [Kin DApp Playground](https://github.com/kin-starters/kin-dapp-playground) Front
-    End.
-  </NavCard>
 </div>
 
 ## Ready for Production?
