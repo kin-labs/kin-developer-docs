@@ -7,9 +7,9 @@ export const DocsBrandImage: React.FC<
   let src = `/branding/${fileName}`
 
   return (
-    <div className={`flex flex-col`}>
+    <div className={`BrandImage flex flex-col`}>
       <div
-        className={`flex grow flex-col rounded-md border border-gray-100 bg-gray-50 ${
+        className={`flex grow flex-col justify-between rounded-md border border-gray-100 bg-gray-50 ${
           light ? 'bg-gray-600' : ''
         } p-2 dark:border-gray-800 dark:bg-gray-900 ${dark ? 'dark:bg-gray-200' : ''}`}
         title={name}
@@ -17,7 +17,7 @@ export const DocsBrandImage: React.FC<
         {children ? children : <Image height="169" width="169" alt={`${fileName}`} src={src} />}
 
         <span
-          className={`mx-auto mb-1 text-slate-600 dark:text-slate-900 ${light ? 'text-slate-50' : ''} ${
+          className={`mx-auto mb-1 pt-3 text-slate-600 dark:text-slate-900 ${light ? 'text-slate-50' : ''} ${
             dark ? 'dark:text-slate-100' : ''
           }`}
         >

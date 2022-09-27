@@ -205,4 +205,15 @@
     font-size: 5em !important;
     line-height: 1em !important;
   }
+
+  .BrandImage p {
+    margin: 0;
+  }
+
+  .BrandImage p img {
+    margin: auto;
+    padding: 0;
+    height: 100px;
+    width: 100px;
+  }
 }
