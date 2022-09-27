@@ -1,12 +1,8 @@
 import Image from 'next/image'
 
-export const DocsBrandImage: React.FC<{ name: string; svg: boolean; png: boolean; light: boolean; dark: boolean }> = ({
-  name,
-  svg = false,
-  png = false,
-  light = false,
-  dark = false,
-}) => {
+export const DocsBrandImage: React.FC<
+  React.PropsWithChildren<{ name: string; svg: boolean; png: boolean; light: boolean; dark: boolean }>
+> = ({ name, svg = false, png = false, light = false, dark = false, children }) => {
   let fileName = `${name}.${svg ? 'svg' : 'png'}`
   let src = `/branding/${fileName}`
 
@@ -18,9 +14,10 @@ export const DocsBrandImage: React.FC<{ name: string; svg: boolean; png: boolean
         } p-2 dark:border-gray-800 dark:bg-gray-900 ${dark ? 'dark:bg-gray-200' : ''}`}
         title={name}
       >
-        <Image height="150px" width="150px" alt={`${fileName}`} src={src} />
+        {children ? children : <Image height="169" width="169" alt={`${fileName}`} src={src} />}
+
         <span
-          className={`m-auto text-slate-600 dark:text-slate-900 ${light ? 'text-slate-50' : ''} ${
+          className={`mx-auto mb-1 text-slate-600 dark:text-slate-900 ${light ? 'text-slate-50' : ''} ${
             dark ? 'dark:text-slate-100' : ''
           }`}
         >
