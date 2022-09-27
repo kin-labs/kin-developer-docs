@@ -17,6 +17,7 @@ import { DocsProduction as Production } from '../../components/docs/DocsProducti
 import { DocsRegisterApp as RegisterApp } from '../../components/docs/DocsRegisterApp'
 import { DocsKineticManager as KineticManager } from '../../components/docs/DocsKineticManager'
 import { DocsAgora as Agora } from '../../components/docs/DocsAgora'
+import { DocsBrandImage as BrandImage } from '../../components/docs/DocsBrandImage'
 import { Card as ChildCard } from '../../components/common/Card'
 import { Link } from 'src/components/common/Link'
 import Image from 'next/image'
@@ -82,6 +83,7 @@ const mdxComponents = {
   RegisterApp,
   KineticManager,
   Agora,
+  BrandImage,
 }
 
 const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ doc, tree, breadcrumbs, childrenTree }) => {
