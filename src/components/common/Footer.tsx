@@ -21,7 +21,7 @@ const content = {
             className="inline-flex items-center space-x-1 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"
             target={isExternalUrl(kinWebsiteLink) ? '_blank' : undefined}
           >
-            <span>{`The Kin Foundation`}</span>
+            <span>{`The Kin Ecosystem`}</span>
             {isExternalUrl(kinWebsiteLink) && (
               <span className="inline-block w-4">
                 <Icon name="external-link" />
@@ -53,8 +53,8 @@ const content = {
     {
       title: 'Quick Links',
       elements: [
-        { label: 'Kin Foundation', url: 'https://kin.org/developer' },
-        { label: 'Kin Blog', url: 'https://kin.org/blog' },
+        { label: 'Kin Website', url: 'https://kin.org' },
+        { label: 'Kin News', url: 'https://kin.org/news' },
         { label: 'Privacy Policy', url: 'https://kin.org/privacy-policy/' },
         { label: 'Cookie Policy', url: 'https://kin.org/cookie-policy/' },
         { label: 'Terms & Conditions', url: 'https://kin.org/terms-and-conditions/' },
@@ -70,7 +70,7 @@ const content = {
         },
         {
           label: 'Reddit',
-          url: 'https://www.reddit.com/r/KinFoundation/',
+          url: 'https://www.reddit.com/r/kin/',
         },
         {
           label: 'LinkedIn',
@@ -83,6 +83,10 @@ const content = {
         {
           label: 'Facebook',
           url: 'https://www.facebook.com/KinEcosystem/',
+        },
+        {
+          label: 'Youtube',
+          url: 'https://www.youtube.com/c/KinEcosystem',
         },
       ],
     },
