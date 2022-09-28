@@ -17,6 +17,7 @@ import { DocsProduction as Production } from '../../components/docs/DocsProducti
 import { DocsRegisterApp as RegisterApp } from '../../components/docs/DocsRegisterApp'
 import { DocsKineticManager as KineticManager } from '../../components/docs/DocsKineticManager'
 import { DocsAgora as Agora } from '../../components/docs/DocsAgora'
+import { DocsBubble as Bubble } from '../../components/docs/DocsBubble'
 import { DocsBrandImage as BrandImage } from '../../components/docs/DocsBrandImage'
 import { Card as ChildCard } from '../../components/common/Card'
 import { Link } from 'src/components/common/Link'
@@ -83,6 +84,7 @@ const mdxComponents = {
   RegisterApp,
   KineticManager,
   Agora,
+  Bubble,
   BrandImage,
 }
 
