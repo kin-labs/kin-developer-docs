@@ -3,11 +3,11 @@ title: KRE Checklist
 excerpt: Ensure your App qualifies for KRE Rewards
 ---
 
-The Kin Rewards Engine [KRE](/essentials/kin-rewards-engine/) rewards developers for creating awesome experiences that utilize Kin. In order to maintain a fair playing field amongst Kin developers and a safe experience for users, applications must satisfy these requirements to be eligible for rewards from the [KRE](/essentials/kin-rewards-engine/).
+The Kin Rewards Engine rewards developers for creating awesome experiences that utilize Kin. In order to maintain a fair playing field amongst Kin developers and a safe experience for users, applications must satisfy these requirements to be eligible for rewards from the KRE, as well as our [Developer Terms](https://kin.org/kin-developer-terms/) and [Terms of Use](https://kin.org/terms-and-conditions/).
 
-## Spend Checklist
+## User Payments
 
-A `Spend` Transaction is a User-to-Developer or a User-to-User transaction. For every `Spend` Transaction in the app:
+Transactions that involve a user spending Kin in an App must meet the following requirements:
 
 <div>
   <input className='KREChecklistCheckbox' type="checkbox" id="accessible" name="accessible" value="accessible"/>
@@ -24,9 +24,20 @@ A `Spend` Transaction is a User-to-Developer or a User-to-User transaction. For 
   <label for="terms">The Kin icon is displayed in the UI to the extent practicable.</label><br/>
 </div>
 
-## Subscription Checklist
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Kin Branding Guidelines"
+    subtitle="See how to correctly use Kin icons"
+    svgFile="kin"
+    link={{
+      url: '/docs/essentials/branding',
+      label: 'See the guide',
+    }}
+  />
+</div>
 
-The initial payment of a `Subscription` is a `Spend` Transaction, however subsequent payments for the `Subscription` may occur automatically so therefore we have special rules about `Subscriptions`.
+## Subscriptions
+The initial payment of a Subscription is treated the same as a Spend Transaction, however subsequent payments for the Subscription may occur automatically so therefore we have some special rules.
 
 <div>
   <input className='KREChecklistCheckbox' type="checkbox" id="accessible" name="accessible" value="accessible"/>
@@ -48,6 +59,7 @@ The initial payment of a `Subscription` is a `Spend` Transaction, however subseq
 </div>
 
 ## App Checklist
+Some general rules for all Kin Apps to follow to ensure KRE eligibility.
 
 <div>
   <input className='KREChecklistCheckbox' type="checkbox" id="accessible" name="accessible" value="accessible"/>

@@ -10,7 +10,7 @@ Getting started with the Kin No-Code Plugin is incredibly straightforward. Just 
 
 ### Create an App on Bubble.io
 
-Create an account on bubble.io
+First, register / log in on [bubble.io](https://bubble.io)
 
 <Bubble />
 
@@ -23,23 +23,34 @@ If you get stuck at this point, you'll probably want to check out [Bubble Academ
 Once you've created your App, you'll see a menu on the left hand side. Choose 'Plugins'. Then, 'Add plugins'.
 ![Bubble Plugins](/images/no-code/Bubble_001.png)
 
-```shell
+Search for 'kinetic', then 'Install' and 'Done'.
+![Kinetic Plugin Install](/images/no-code/Bubble_002.png)
 
-```
+### Configure the Kinetic Client
 
-### Instantiate the Kinetic Client
+Go to 'Plugins' and you'll see some details about the Kinetic plugin that you've just installed, as well as some options we can fill in.
 
-The Kinetic Client will give you access to all the methods you need to work with Kin on the blockchain.
+These 'Actions' are the things that the Kinetic plugin can do.
 
-We recommend starting with Devnet before moving on to Mainnet.
+![Kinetic Plugin Actions](/images/no-code/Bubble_003.png)
 
-```
+'Local Storage' means that some information is being saved in the browser.
+The main actions we care about are the ones listed below.
 
-```
+In terms of settings, lets keep it simple for now so we can get up and running as quickly as possible.
+![Kinetic Plugin Settings](/images/no-code/Bubble_004.png)
 
-Don't have an App Index? Register your App on our Developer Portal so you can get your App Index that allows you to transact with our SDKs and earn via the KRE.
+Set your environment to 'devnet' as we want to make sure stuff works on the Solana test environment before moving to the 'mainnet'.
+
+Set your 'index' to your App Index
+
+Don't have an App Index? Register your App on our Developer Portal so you can get your App Index that allows you get credit for your tansactions and earn via the KRE.
 
 <RegisterApp />
+
+### Initialise the Kinetic Client
+
+Turn on the Kinetic Client by...
 
 ### Create Account
 

@@ -6,115 +6,89 @@ nav_title: Kin Rewards Engine (KRE)
 
 The Kin Rewards Engine incentivises developers to create amazing user experiences that utilize Kin.
 
-Approved developers are incentivized via a shared `Daily Payout` that can be as high as 250,000,000 Kin. [Refer here for the most up to date `Daily Payout` value.](https://github.com/kinecosystem/rewards-engine/blob/master/current-KRE.md#the-daily-payout)
+This is done via a shared 'Daily Payout' that can be as high as 250,000,000 Kin.
+
+## Daily Payout
 
 Developers can increase their possible portion of the `Daily Payout` by simply encouraging their users to obtain and spend Kin
 
 Those developers who create the biggest consumer demand and use for Kin receive the biggest daily rewards. There are controls put in place to promote fairness for newer/smaller apps that reduce the possibility of a monopoly.
 
-The `Daily Payout`s are sent to approved developers weekly.
+'Daily Payouts' are sent to approved developers on a weekly basis.
 
-## What Is The Daily Payout
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="The Current KRE"
+    subtitle="See how KRE Daily Payouts are calculated and more"
+    icon="github"
+    link={{
+      url: 'https://github.com/kinecosystem/rewards-engine/blob/master/current-KRE.md',
+      label: 'For more details...',
+    }}
+  />
+</div>
 
-The `Daily Payout` is the total amount of Kin paid to developers per day as summarized below.
+## How We Handle Gaming of the KRE and Prevent Monopolies
 
-The `Daily Payout` is set according to a budgeted amount called the `Daily Budget` along with an adjustment for volatility of the price of Kin.
+To be eligible to participate in the KRE, apps must first build a functioning integration on the devnet and then [apply for an AppIndex](/essentials/kre-app-registration/#register-your-app) in our Kin developer portal. By having a valid App Index, we are able to verify ecosystem apps’ Kin based transactions and user balances.
 
-The `Daily Budget` is currently set at 250,000,000 Kin (as of 10/12/2021). As the `Daily Budget` will be adjusted over time, [refer here for the most up to date value](https://github.com/kinecosystem/rewards-engine/blob/master/current-KRE.md#the-daily-payout).
+Apps are regularly audited, manually and programmatically (via transaction data), to ensure they are creating positive user experiences, are improving the overall Kin ecosystem, and are meeting our [Spend Checklist](/essentials/kre-checklist), [Developer Terms](https://kin.org/kin-developer-terms/), and [Terms of Use](https://kin.org/terms-and-conditions/) to remain eligible to receive rewards from the KRE.
 
-The exact amount of the `Daily Payout` is calculated by multiplying the `Daily Budget` by the difference of 1 minus the `Volatility Adjustment` (VA).
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Registering Your App"
+    subtitle="Register and manage your Kin App on the Kin Developer Portal"
+    svgFile="kin"
+    link={{ url: '/essentials/kre-app-registration', label: 'See how here' }}
+  />
+  <NavCard
+    title="KRE Checklist"
+    subtitle="Make sure your App qualifies for the KRE"
+    svgFile="kin"
+    link={{ url: '/essentials/kre-checklist', label: 'Check it out' }}
+  />
+</div>
 
-```shell
-Daily Payout = Daily Budget * (1 - Volatility Adjustment)
-```
+In order to prevent monopolies, we implement a 'Monopoly Clause' that prevents an App or specific combination of Apps from taking too much fo the KRE.
 
-The `Volatility Adjustment` is a number ranging from 0 to 1 which represents the average amount of price volatility over the previous 30 days. The `VA` rises during times of high volatility to reduce excessive selling when Kin’s price rises rapidly or during a drop. The `VA` is designed to help Kin’s price appreciate.
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="The KRE Monopoly Clause"
+    subtitle="See how the Monopoly Clause works"
+    icon="github"
+    link={{
+      url: 'https://github.com/kinecosystem/rewards-engine/blob/master/current-KRE.md#monopoly-clause',
+      label: 'Learn more',
+    }}
+  />
+</div>
 
-For those who appreciate equations, here’s how the `VA` is calculated:
+## Report an App or Have an Issue with the KRE?
 
-{/* <img style="width: 15rem; margin-top: 2rem; margin-bottom: 2rem;" class="kin-va-equation" src="./images/va-equation.jpeg" alt="Equation for calculating Volatility Adjustment"/> */}
+If you have information about an App behaving in a way that contravenes our community standards, or have a question about your KRE payments, please get in touch via our fantastic Developer Discord.
 
-Where, `P` is the set of closing prices in the last 30 days and `Pavg` is the average price in the last 30 days.
+<Help discord />
 
-## How Apps Earn Part of the Daily Payout
+## The Future of the KRE
 
-Apps earn Kin by encouraging their users to obtain and spend Kin which is proven by two important metrics:
+The KRE is not fixed in stone, it continues to evolve over time to make sure it serves the Kin community as effectively as possible.
 
-1. **Active User Balance (`AUB`)** — the total amount of Kin held by an `Active User`
-2. **Active User (`AU`)** — a user who spent Kin, in your app, 3 or more times in the previous 30 days
+We are open for suggestions and are happy to receive proposals from members of our community that can become part of the discussion for how Kin and the KRE proceeds into the future.
 
-### How to Calculate One's Portion of the Daily Payout
-
-The calculation is mathematically simple:
-
-```shell
-portion_of_daily_payout = (your_eligible_aub / ecosystem_aub) * daily_payout
-```
-
-Where `your_eligible_aub` is the smallest of either:
-
-1. Sum of all active user balances divided by the number of active users
-2. 100,000 \* number of active users (Effectively caps the amount of eligible `AUB`)
-
-And where `ecosystem_aub` is the sum total of eligible `AUB` for all apps participating in the [KRE](/essentials/kin-rewards-engine/).
-
-## How We Reduce Gaming and Prevent Monopolies
-
-To be eligible to participate in the [KRE](/essentials/kin-rewards-engine/), apps must first build a functioning integration on the Testnet and then [apply for an AppIndex](/essentials/kre-app-registration/#register-your-app) in our Kin developer portal. By having a valid App Index, we are able to verify ecosystem apps’ Kin based transactions and user balances.
-
-Apps are regularly audited, manually and programmatically (via transaction data), to ensure they are creating positive user experiences, are improving the overall Kin ecosystem, and are meeting our [Spend Checklist](/essentials/kre-checklist/#spend-checklist), [Developer Terms](https://kin.org/kin-developer-terms/), and [Terms of Use](https://kin.org/terms-and-conditions/) to remain eligible to receive rewards from the [KRE](/essentials/kin-rewards-engine/).
-
-In order to prevent monopolies, no App will receive more than 66.67% of the `Daily Payout`. Furthermore, any developer that would have received more than 50% of the `Daily Payout` will have their portion of the `Daily Payout` adjusted.
-
-No two apps ([AppIndexes](/essentials/terms-and-concepts/#app-index)) will receive more than 90% of the `Daily Payout` and residual payouts will be redistributed proportionally to remaining developers.
-
-See below for a detailed example of how the “[Monopoly Clause](https://github.com/kinecosystem/rewards-engine/blob/master/current-KRE.md#monopoly-clause)” is calculated.
-
-Let `s_1, s_2, …, s_n` be the [KRE](/essentials/kin-rewards-engine/) payout shares ordered by payout proportion in descending order before invoking the [monopoly clause](https://github.com/kinecosystem/rewards-engine/blob/master/current-KRE.md#monopoly-clause).
-
-```shell
-If (s_1 + s_2  > 0.90) or (s_1 > 0.5):
-    If s_1 > 0.5:
-        s_1' = 0.5 + ((s_1 - 0.5) / 0.5) * (2/3 - 1/2)
-    Else:
-        s_1' = s_1
-    If s_1' + s_2  > 0.90 then:
-        s_2' = s_2 / (s_1+s_2) * 0.9
-    Else:
-    	s_2' = s_2
-    s_1’ = minimum(s_1' / (s_1'+s_2) * 0.9, s_1')
-    If s_2’ != s_2:
-        For i = 3 to n:
-            s_i' = s_i / (sum from i = 3 to n of s_i) * 0.1
-    Else:
-        For i = 2 to n:
-            s_i' = s_i / (sum from i = 2 to n of s_i) * (1 - s_1')
-	Developers are paid out based on s_i'
-Else:
-	Developers are paid out based on s_i
-```
-
-**Example 1:**  
-Payout shares before clause: `{0.35, 0.3, 0.2, 0.15}`  
-Payout shares after clause: `{0.35, 0.3, 0.2, 0.15}`
-
-**Example 2:**  
-Payout shares before clause: `{0.90, 0.05, 0.03, 0.02}`  
-Payout shares after clause: `{0.633, 0.183, 0.11, 0.073}`
-
-**Example 3:**  
-Payout shares before clause: `{0.50, 0.45, 0.03, 0.02}`  
-Payout shares after clause: `{0.474, 0.426, 0.06, 0.04}`
-
-**Example 4:**  
-Payout shares before clause: `{0.55, 0.44, 0.01}`  
-Payout shares after clause: `{0.486, 0.414, 0.06, 0.10}`
-
-| Payout shares before clause | Payout shares after clause |
-| --------------------------- | -------------------------- |
-| `50%`                       | `50%`                      |
-| `60%`                       | `53.33%`                   |
-| `70%`                       | `56.67%`                   |
-| `80%`                       | `60%`                      |
-| `90%`                       | `63.33%`                   |
-| `95%`                       | `65%`                      |
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="KRE 4.0"
+    subtitle="See the details of the latest KRE Proposal"
+    icon="github"
+    link={{
+      url: 'https://github.com/kinecosystem/rewards-engine/blob/master/improvement-proposals/kf_kre_4.0.md',
+      label: 'See it here',
+    }}
+  />
+  <NavCard
+    title="Join the Discussion"
+    subtitle="Take part in the discussion around upcoming KRE changes, suggest your own improvements, etc"
+    icon="github"
+    link={{ url: 'https://github.com/kinecosystem/rewards-engine/discussions', label: 'Have your say' }}
+  />
+</div>

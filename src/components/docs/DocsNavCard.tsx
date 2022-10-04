@@ -8,6 +8,7 @@ import link from 'next/link'
 export const DocsNavCard: React.FC<
   React.PropsWithChildren<{
     hero?: boolean
+    useCase?: boolean
     title: string
     icon?: IconName | null
     svgFile?: string | null
@@ -16,7 +17,7 @@ export const DocsNavCard: React.FC<
     subtitle?: string | null
     link?: { url: string; label: string }
   }>
-> = ({ hero, title, icon, svgFile, pngFile, label, subtitle, children, link }) => {
+> = ({ hero, useCase, title, icon, svgFile, pngFile, label, subtitle, children, link }) => {
   return (
     <div className={`flex flex-col ${hero ? 'mb-4' : ''}`}>
       <div
@@ -25,11 +26,14 @@ export const DocsNavCard: React.FC<
       >
         {(svgFile || pngFile) && (
           <div
-            className={`-mt-10 mb-4 block w-12 rounded-full bg-white dark:bg-gray-950 ${
-              svgFile || pngFile ? 'NavCard-AllowOverflow' : ''
-            }`}
+            className={`${
+              useCase ? 'relative w-full' : '-mt-10 mb-4 block w-12'
+            } rounded-full bg-white dark:bg-gray-950 ${svgFile || pngFile ? 'NavCard-AllowOverflow' : ''}`}
           >
-            <div className="h-12 w-12 rounded-full border border-violet-200 bg-violet-100 p-2.5 text-violet-600 dark:border-violet-900 dark:bg-violet-900/50 dark:text-violet-500">
+            <div
+              className={`${useCase ? 'absolute -top-8 right-2 scale-150' : ''} mb-4
+            h-12 w-12 rounded-full border border-violet-200 bg-violet-100 p-2.5 text-violet-600 dark:border-violet-900 dark:bg-violet-900/50 dark:text-violet-500`}
+            >
               <Image
                 height="300px"
                 width="300px"
