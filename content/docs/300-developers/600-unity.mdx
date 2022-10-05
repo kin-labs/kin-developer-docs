@@ -10,18 +10,13 @@ Getting started with Kin is incredibly straightforward. Just follow the steps be
 
 #### Installation
 
-- Open [Unity Package Manager](https://docs.unity3d.com/Manual/upm-ui.html) window.
-- Click the add **+** button in the status bar.
-- The options for adding packages appear.
-- Select Add package from git URL from the add menu. A text box and an Add button appear.
-- Enter the `https://github.com/kin-labs/kinetic-unity-sdk.git` Git URL in the text box and click Add.
-- Once the package is installed, in the Package Manager inspector you will have Samples. Click on Import
-- You may also install a specific package version by using the URL with the specified version.
-  - `https://github.com/kin-labs/kinetic-unity-sdk#X.Y.X`
-  - Please note that the version `X.Y.Z` stated here is to be replaced with the version you would like to get.
-  - You can find all the available releases [here](https://github.com/kin-labs/kinetic-unity-sdk/releases).
-  - The latest available release version is
-    - [![Last Release](https://img.shields.io/github/v/release/kin-labs/kinetic-unity-sdk)](https://github.com/kin-labs/kinetic-unity-sdk/releases/latest)
+Open [Unity Package Manager](https://docs.unity3d.com/Manual/upm-ui.html) window.
+
+Click the `+` button in the status bar. Select `Add package from git URL` from the add menu. A text box and an Add button appear.
+
+Enter the `https://github.com/kin-labs/kinetic-unity-sdk.git` Git URL in the text box and click `Add`.
+
+Once the package is installed, in the Package Manager inspector you will have Samples. Click on `Import`
 
 #### Instantiate the Kinetic Client
 
@@ -32,7 +27,7 @@ We recommend starting with Devnet before moving on to Mainnet.
 ```c#
 sdk = await KineticSdk.Setup(
     new KineticSdkConfig(
-    index:1,
+    index: 1, // Add your own App Index here
     endpoint: "https://sandbox.kinetic.host/",
     environment: KineticSdkEndpoint.Devnet,
     )
@@ -128,14 +123,13 @@ app.use('/verify', async (req, res) => {
 
 Created to help get you up and running as quickly as possible, these projects can be a great reference point when you get stuck or even a starter for your own project. Happy coding!
 
-- You will find a sample App in `Samples/Kinetic SDK/0.1.0/Kinetic SDK example/ExampleKinSDK/scenes/KinSampleScene.unity`
-
-```
-<!-- Please add your demo apps below in the NavCard with title / subtitle / link. Thanks! -->
-```
-
 <div className="mt-8 grid gap-6 md:grid-cols-2">
-  <NavCard title="" subtitle="" icon="github" link={{ url: '', label: 'Have a look' }} />
+  <NavCard
+    title="Kinetic Unity Starter"
+    subtitle=""
+    icon="github"
+    link={{ url: 'https://github.com/kin-starters/kinetic-unity-starter', label: 'Have a look' }}
+  />
 </div>
 
 ## Ready for Production?
@@ -152,7 +146,7 @@ If your App is ready for production, this is the place for you!
 
 <div className="mt-8 grid gap-6 md:grid-cols-2">
   <NavCard
-    title="Kinetic TypeScript SDK"
+    title="Kinetic Unity SDK"
     subtitle="Want to contribute to the Kinetic Unity SDK?"
     icon="github"
     link={{ url: 'https://github.com/kin-labs/kinetic-unity-sdk', label: 'Contribute' }}
