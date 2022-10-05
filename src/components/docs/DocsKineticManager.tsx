@@ -7,7 +7,7 @@ export const DocsKineticManager: React.FC = () => {
         title="Configure Kinetic"
         subtitle="Use Kinetic Manager to configure your self-hosted Kinetic instance"
         svgFile="screwdriver-wrench-solid"
-        link={{ url: '/docs/developers/kinetic-manager', label: 'Go!' }}
+        link={{ url: '/docs/developers/kinetic-manager', label: 'Time to tinker...' }}
       />
     </div>
   )
