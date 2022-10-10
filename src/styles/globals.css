@@ -158,6 +158,8 @@
     transform: scale(1.6);
   }
 
+  /* Turn Black Icon Purple */
+  .pngFile.pngFile-bubble,
   .pngFile.pngFile-giftery,
   .pngFile.pngFile-heroku,
   .svgFile.svgFile-screwdriver-wrench-solid,
@@ -222,5 +224,11 @@
     background-color: pink;
     display: flex;
     flex-wrap: wrap;
+  }
+
+  /* Avoid Bullet Points having weird spacing with links */
+  ul li a.inline-flex.items-center.space-x-1 {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
