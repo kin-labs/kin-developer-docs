@@ -5,7 +5,6 @@ nav_title: No-Code Tutorial
 ---
 
 The Kinetic Plugin is a powerful tool that lets you work directly with Kin on the Solana blockchain.
-![Kin Kinetic Plugin Demo on Bubble](/images/no-code/Bubble_Kinetic_Demo.gif)
 
 <div className="mt-8 grid gap-6 md:grid-cols-2">
   <NavCard
@@ -50,7 +49,6 @@ These 'Actions' are the things that the Kinetic plugin can do.
 
 ![Kinetic Plugin Actions](/images/no-code/Bubble_plugin_actions.png)
 
-'Local Storage' means that some information is being saved in the browser.
 The main actions we care about are the ones explained in-depth below.
 
 In terms of settings, lets keep it simple for now so we can get up and running as quickly as possible.
@@ -76,26 +74,21 @@ When your App loads we want to 'Intialize the Kinetic Client'. Basically, this m
 To do this:
 
 - Go to 'Workflow' on the left-hand menu and add an event for when the page is loaded.
-
-![Page is Loaded](/images/no-code/Bubble_when_page_is_loaded_init.png)
-
+  ![Page is Loaded](/images/no-code/Bubble_when_page_is_loaded_init.png)
 - Then, add an action via `Plugins / Kinetic Init SDK`
-
-![Page is Loaded](/images/no-code/Bubble_when_page_is_loaded_init_sdk_action.png)
-
+  ![Page is Loaded](/images/no-code/Bubble_when_page_is_loaded_init_sdk_action.png)
 - Now, click 'Preview' in the top menu
   ![Preview](/images/no-code/Bubble_preview.png)
-
 - You'll see a blank page. Open the developer tools (`ctrl/shift/i` or `cmd/shift/i`) and select 'Application' this will show you your 'Local Storage'. Select the option for your bubble preview and you should see some values there.
   ![Page is Loaded](/images/no-code/Bubble_when_page_is_loaded_init_sdk_action_preview.png)
 
-  You should see `kineticInitialized = true` and `keypairSet = false`.
+You should see `kineticInitialized = true` and `keypairSet = false`.
 
-  This is because the Kinetic Plugin uses Local Storage for keeping key bits of data that come back from our Kietic network.
+This is because the Kinetic Plugin uses Local Storage for keeping key bits of data that come back from our Kinetic network.
 
-  Anything in Local Storage will only last in that specific browser and until the browser is cleared. But, you can close the browser and reopen it and keep the info that's stored there.
+Anything in Local Storage will only last in that specific browser and until the browser is cleared. But, you can close the browser and reopen it and keep the info that's stored there.
 
-  `kineticInitialized = true` means that you are ready to create an account!
+`kineticInitialized = true` means that you are ready to create an account!
 
 ## Create Account
 
@@ -154,7 +147,7 @@ Now we want to make it so that a user of the App can view their own mnemonic so 
   ![View Mnemonic](/images/no-code/Bubble_mnemonic_button_set_state_new_state.png)
 - Set your value to "yes".
   ![View Mnemonic](/images/no-code/Bubble_mnemonic_button_set_state_action.png)
-- Go to your 'When View Mnemonic' worflow and add an action via `Element Actions / Set state`. Set the element to `Button Show Mnemonic`, the custom state to `Show Mnemonic` and the value to `no`.
+- Go to your 'When Page is loaded' workflow and add an action via `Element Actions / Set state`. Set the element to `Button Show Mnemonic`, the custom state to `Show Mnemonic` and the value to `no`.
   ![View Mnemonic](/images/no-code/Bubble_mnemonic_button_set_state_new_state_init.png)
 - Go back to your 'When Button Show Mnemonic is clicked' workflow and add an action via `Element Actions / Push a Kinetic Local Storage`. Set your element to `KineticLocalStorage Mnemonic` and keys to a Dynamic Value of `KineticLocalStorage Public Key's Values:last item`.
   ![View Mnemonic](/images/no-code/Bubble_mnemonic_button_push_local_storage.png)
@@ -176,7 +169,7 @@ So, what if you've stored your Mnemonic and want to be able to make your Keypair
 
 - In 'Design', Drag an 'Input' from the below your 'Set Up Keypair' Button. Rename it to `Input Mnemonic` and set the 'Placeholder' to `From Mnemonic...`
   ![Setup Keypair From Mnemonic](/images/no-code/Bubble_from_mnemonic_input.png)
-- In 'Workflows', select 'When Button Set Up Keypair is clicked' and click on 'Step 1'. Add the value of 'mnemonic' as a dynamic value set to `Input Mnemonic's value`.
+- In 'Workflows', select 'When Button Set Up Keypair is clicked' and click on 'Step 1 - Kinetic Setup Keypair'. Add the value of 'mnemonic' as a dynamic value set to `Input Mnemonic's value`.
   ![Setup Keypair From Mnemonic](/images/no-code/Bubble_from_mnemonic_action.png)
 
 Let's see if that worked.
@@ -250,7 +243,7 @@ We're done!
 
 ## Transfer Kin
 
-Now for the real stuff! We're going to send some of our User's Kin to another Public Key.
+Now for the real stuff! We're going to send some of our Kin to another Account.
 
 - In 'Design', add a new Button and rename it to `Button Send Kin` with the text `Send Kin`.
 - Add two inputs. `Input Send Kin Amount` with 'Placeholder' `Amount` and 'Content format' to `text (numbers only). And `Input Send Kin Destination`with 'Placeholder'`Destination`.
