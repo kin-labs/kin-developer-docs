@@ -113,7 +113,7 @@ export const Footer: FC = () => {
                 width="80px"
                 alt={`Kin Foundation`}
                 className={`svgFile svgFile-kin_name`}
-                src={`/images/logos/kin_name.svg`}
+                src={`/images/logos/kin-name.svg`}
               />
             </a>
           </Link>
