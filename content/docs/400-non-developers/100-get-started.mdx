@@ -1,0 +1,367 @@
+---
+title: Get Started with Kin No-Code
+excerpt: Build with the Kin Kinetic Plugin
+nav_title: No-Code Tutorial
+---
+
+The Kinetic Plugin is a powerful tool that lets you work directly with Kin on the Solana blockchain.
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Play With Kin"
+    subtitle="Check out a simple demo App built on Bubble that can interact with Kin on the Solana blockchain."
+    pngFile="bubble"
+    link={{ url: 'https://kinetic-demo.bubbleapps.io/version-test?debug_mode=true', label: 'Have a look' }}
+  />
+</div>
+
+<br />
+
+Building your own App on Bubble with the Kin Kinetic Plugin is incredibly straightforward. Just follow the steps below to start transacting with Kin in your App.
+
+## Create an App on Bubble.io
+
+First, register / log in on [bubble.io](https://bubble.io)
+
+<Bubble />
+
+Then create an App. Give it a name, description, etc. Bubble has a nice App creation wizard you can follow if you'd like.
+
+If you get stuck at this point, you'll probably want to check out [Bubble Academy](https://bubble.io/academy) to get some pointers. There are some great tutorials for beginners that will help get you up to speed with what Bubble is and how you can build an App with it.
+
+## Add the Kinetic Plugin
+
+Once you've created your App, you'll see a menu on the left hand side. Choose 'Plugins'. Then, 'Add plugins'.
+![Bubble Plugins](/images/no-code/Bubble_plugins.png)
+
+Search for 'kinetic', then 'Install' and 'Done'.
+![Kinetic Plugin Install](/images/no-code/Bubble_plugin_install.png)
+
+## Configure the Kinetic Client
+
+The Kinetic Client is what will allow you to interact with Kin on the Solana Blockchain.
+
+Let's get it set up correctly.
+
+Go to 'Plugins' and you'll see some details about the Kinetic plugin that you've just installed, as well as some options we can fill in.
+
+These 'Actions' are the things that the Kinetic plugin can do.
+
+![Kinetic Plugin Actions](/images/no-code/Bubble_plugin_actions.png)
+
+The main actions we care about are the ones explained in-depth below.
+
+In terms of settings, lets keep it simple for now so we can get up and running as quickly as possible.
+
+### Devnet Settings
+
+We want to make sure stuff works on the Solana test environment before moving to the 'mainnet'.
+
+![Kinetic Plugin Settings](/images/no-code/Bubble_plugin_settings.png)
+
+- set your 'endpoint' to `https://sandbox.kinetic.host`
+- set your 'environment' to `devnet`
+- set your 'index' to your App Index
+
+Don't have an App Index? Register your App on our Developer Portal so you can get your App Index that allows you get credit for your transactions and earn via the KRE.
+
+<RegisterApp />
+
+## Initialize the Kinetic Client
+
+When your App loads we want to 'Intialize the Kinetic Client'. Basically, this means we want to turn on the plugin and make sure it's connected to our Kinetic network correctly.
+
+To do this:
+
+- Go to 'Workflow' on the left-hand menu and add an event for when the page is loaded.
+  ![Page is Loaded](/images/no-code/Bubble_when_page_is_loaded_init.png)
+- Then, add an action via `Plugins / Kinetic Init SDK`
+  ![Page is Loaded](/images/no-code/Bubble_when_page_is_loaded_init_sdk_action.png)
+- Now, click 'Preview' in the top menu
+  ![Preview](/images/no-code/Bubble_preview.png)
+- You'll see a blank page. Open the developer tools (`ctrl/shift/i` or `cmd/shift/i`) and select 'Application' this will show you your 'Local Storage'. Select the option for your bubble preview and you should see some values there.
+  ![Page is Loaded](/images/no-code/Bubble_when_page_is_loaded_init_sdk_action_preview.png)
+
+You should see `kineticInitialized = true` and `keypairSet = false`.
+
+This is because the Kinetic Plugin uses Local Storage for keeping key bits of data that come back from our Kinetic network.
+
+Anything in Local Storage will only last in that specific browser and until the browser is cleared. But, you can close the browser and reopen it and keep the info that's stored there.
+
+`kineticInitialized = true` means that you are ready to create an account!
+
+## Create Account
+
+Creating an Account is a two step process.
+
+1. Create a Keypair which is consists of:
+   - a public key that is an address that people can send Kin to. It's safe to share this.
+   - a private key that is used to sign transactions in the browser. This signing is handled by the plugin. It is not safe to share this. Someone with your private key can get access to your funds.
+
+This keypair can be generated fresh or from an existing mnemonic phrase. We'll show you how to do this in a moment.
+
+2. Create an Account on the blockchain with your Keypair.
+
+Let's get started...
+
+### Set Up Keypair
+
+- Go to 'Design' and drag a 'Button' onto the blank page. Rename it 'Set Up Keypair'
+  ![Set Up Keypair](/images/no-code/Bubble_set_up_keypair_button.png)
+- Click 'Start/Edit workflow' and add an action via `Plugins / Kinetic Setup Keypair`
+  ![Set Up Keypair](/images/no-code/Bubble_set_up_keypair_workflow.png)
+- Reload your 'Preview' and you'll see your new button on the screen. Click 'Set up keypair' and you should see your new Keypair appear in your Local Storage.
+  ![Set Up Keypair](/images/no-code/Bubble_set_up_keypair_preview.png)
+
+### Show Your Public Key
+
+Lets display the Public Key on the screen for the user.
+
+- Go to 'Design'. Grab a 'Kinetic Local Storage' from the side menu and drag it next to the 'Set Up Keypair' button. Rename it to `KineticLocalStorage Public Key`
+  ![Show Public Key](/images/no-code/Bubble_public_key_local_storage.png)
+- Grab a 'Text' element and place it next to the 'Kinetc Local Storage'. Rename it to `Text Public Key`. Click on '...edit me...' then insert dynamic data.
+  ![Show Public Key](/images/no-code/Bubble_public_key_text.png)
+- Set your Dynamic value to `KineticLocalStorage Public Key's Values:last item`.
+  ![Show Public Key](/images/no-code/Bubble_mnemonic_text_value.png)
+- Finally, go to your 'Set Up Keypair' workflow, and add an action via `Element Actions / Push a Kinetic Local Storage`. We are going to push the value of the publicKey in Local Storage into our Kinetic Local Storage element which will allow us to display the value. We'll be doing this with any information the Plugin returns from the Kinetic server that we want to display on the screen.
+  ![Show Public Key](/images/no-code/Bubble_set_up_keypair_workflow_push_local.png)
+- Set the element to `KineticLocalStorage Public Key` and in keys put `publicKey`
+  ![Show Public Key](/images/no-code/Bubble_set_up_keypair_workflow_push_local_values.png)
+- Reload your 'Preview', click 'Set up Keypair' and you should now see your public key next to your button!
+  ![Show Public Key](/images/no-code/Bubble_set_up_keypair_public_key_preview.png)
+
+### View Mnemonic
+
+Now we want to make it so that a user of the App can view their own mnemonic so they can keep it somewhere safe. That way, we can re-use the mnemonic to make their Keypair instead of having to make a new one.
+
+- Go to 'Design'. Add a new 'Button' called 'Show Mnemonic'.
+- Grab a 'Kinetic Local Storage' from the side menu and drag it next to the button. Rename it to `KineticLocalStorage Mnemonic`.
+- Grab a 'Text' element and place it next to the 'Kinetc Local Storage'. Rename it to `Text Mnemonic`. Click on '...edit me...' then insert dynamic data.
+- Set your Dynamic value to `KineticLocalStorage Mnemonic's Values:last item`.
+  ![View Mnemonic](/images/no-code/Bubble_mnemonic_text_value.png)
+- Click your 'Show Mnemonic' Button and then 'Start/Edit workflow'.
+  ![View Mnemonic](/images/no-code/Bubble_mnemonic_text_action.png)
+- Add an action via `Element Actions / Set state`.  
+  ![View Mnemonic](/images/no-code/Bubble_mnemonic_button_set_state.png)
+- Set your element to `Button Show Mnemonic`. Create a new custom state called `Show Mnemonic` and a type of `yes / no`.
+  ![View Mnemonic](/images/no-code/Bubble_mnemonic_button_set_state_new_state.png)
+- Set your value to "yes".
+  ![View Mnemonic](/images/no-code/Bubble_mnemonic_button_set_state_action.png)
+- Go to your 'When Page is loaded' workflow and add an action via `Element Actions / Set state`. Set the element to `Button Show Mnemonic`, the custom state to `Show Mnemonic` and the value to `no`.
+  ![View Mnemonic](/images/no-code/Bubble_mnemonic_button_set_state_new_state_init.png)
+- Go back to your 'When Button Show Mnemonic is clicked' workflow and add an action via `Element Actions / Push a Kinetic Local Storage`. Set your element to `KineticLocalStorage Mnemonic` and keys to a Dynamic Value of `KineticLocalStorage Public Key's Values:last item`.
+  ![View Mnemonic](/images/no-code/Bubble_mnemonic_button_push_local_storage.png)
+- Finally, go to 'Design' and click your Text Mnemonic, then select 'Conditional' and 'Define another condition'.
+  ![View Mnemonic](/images/no-code/Bubble_mnemonic_text_conditional.png)
+- We will use the state on the button we just created. Set 'When' to `Button Show Mnemonic's Show Mnemonic is "yes"`, and 'Property to change when true' to `This element is visible` and set the checkbox to true.
+  ![View Mnemonic](/images/no-code/Bubble_mnemonic_text_conditional_value.png)
+  ![View Mnemonic](/images/no-code/Bubble_mnemonic_text_conditional_value_full.png)
+
+  Phew!
+
+- Reload your 'Preview'. Now you'll be able to view your mnemonic when you click on the 'Show Mnemonic' button.
+  ![View Mnemonic](/images/no-code/Bubble_mnemonic_preview_before.png)
+  ![View Mnemonic](/images/no-code/Bubble_mnemonic_preview.png)
+
+### Set Up Keypair From Mnemonic
+
+So, what if you've stored your Mnemonic and want to be able to make your Keypair from it? Let's set that up now!
+
+- In 'Design', Drag an 'Input' from the below your 'Set Up Keypair' Button. Rename it to `Input Mnemonic` and set the 'Placeholder' to `From Mnemonic...`
+  ![Setup Keypair From Mnemonic](/images/no-code/Bubble_from_mnemonic_input.png)
+- In 'Workflows', select 'When Button Set Up Keypair is clicked' and click on 'Step 1 - Kinetic Setup Keypair'. Add the value of 'mnemonic' as a dynamic value set to `Input Mnemonic's value`.
+  ![Setup Keypair From Mnemonic](/images/no-code/Bubble_from_mnemonic_action.png)
+
+Let's see if that worked.
+
+- In 'Preview', show your mnemonic and save it somewhere. Then, in the developer tools, right-click on your Local Storage for the Preview and select 'clear'. You'll notice all of the values disappear. Then reload the page.
+  ![Setup Keypair From Mnemonic](/images/no-code/Bubble_from_mnemonic_preview_clear_storage.png)
+- Type your saved mnemonic into the input and click 'Set Up Keypair'.
+  ![Setup Keypair From Mnemonic](/images/no-code/Bubble_from_mnemonic_preview_before.png)
+  ![Setup Keypair From Mnemonic](/images/no-code/Bubble_from_mnemonic_preview_after.png)
+- You'll see that the same Public Key you had before has been generated, meaning you'll be able to use the same account on the blockchain, even if you change browser or delete your history! Speaking of accounts on the blockchain...
+
+### Creating your Account
+
+- In 'Design' add a new Button called 'Create Account' with the text Create Account.
+- Click 'Start/Edit workflow' and add an action via `Plugins / Kinetic Create Account`
+  ![Create Account](/images/no-code/Bubble_create_account_action.png)
+
+That's it!
+
+- Go to your 'Preview', reload, 'Set Up Keypair', then 'Create Account'. You'll see the loader at the top of the screen start to go and then once it completes you'll have some new data in your Local Storage.
+  ![Create Account](/images/no-code/Bubble_create_account_preview.png)
+- The new data in Local Storage is `hasAccount = true` and `signature = 31CB6e5ufkFJG6T32wXS5TpKhiTCPWE95seproArPhjmdBGJKJBfiyoxHohGeEFPerVmi7yXxEA9ygEYrgWExK8i`
+- The `signature` is the transaction signature for the Create Account action on the blockchain. Go to [Solana Explorer](https://explorer.solana.com/?cluster=devnet) and paste in the signature to see your transaction on the blockchain!
+- We can use the `hasAccount = true` value to indicate to users when an account has been found on the blockchain.
+- E.g. In these status indicators from the Demo App linked above:
+  ![Create Account](/images/no-code/Bubble_status_indicators.png)
+- We can use Kinetic Local Storage elements and push the values from the browser's Local Storage to display them on the screen, just like we did with the Public Key and the Mnemonic.
+- To see how it was done in the Demo App, have a look [here](https://bubble.io/page?name=index&id=kinetic-demo&tab=tabs-1)
+- Can you implement something similar in your own App?
+
+## Check Balance
+
+Now we have an Account, lets check our Balance!
+
+- In 'Design', add a new Button and rename it to `Button Get Balance` with the text `Get Balance`.
+- Add a Kinetic Local Storage element next to it and rename it to `KineticLocalStorage Balance`.
+- Add a Text element and rename it to `Text Balance`. Set the value to `KineticLocalStorage Balance's Values:last item`
+- Go to Button Create Account and select 'Start/Edit workflow'
+  ![Get Balance](/images/no-code/Bubble_balance_design.png)
+- Add an action via `Plugins / Kinetic Get Balance`.
+- Add another action via `Element Actions / Push a Kinetic Local Storage`.
+- Set your element to `KineticLocalStorage Balance` and keys to `lastBalance`.
+  ![Get Balance](/images/no-code/Bubble_balance_workflow.png)
+
+That's it!
+
+- Go to your 'Preview', reload, 'Set Up Keypair', 'Create Account', then 'Get Balance'.
+  ![Get Balance](/images/no-code/Bubble_balance_preview.png)
+
+Woo! You have `0` Kin!!! Congratulations!!!!!!!!!
+
+## Airdrop Funds (devnet)
+
+Now we can add some funds to your account so you can start transacting. On `devnet` we can do this via an Airdrop.
+
+- In 'Design', add a new Button and rename it to `Button Airdrop` with the text `Airdrop`.
+- Go to 'Start/Edit workflow' and add an action via `Plugins / Kinetic Request Airdrop`. Set the 'amount' to `1000`.
+  ![Airdrop](/images/no-code/Bubble_airdrop_workflow.png)
+
+After completing the Airdrop, we'd like to update the balance. So...
+
+- Add another action via `Plugins / Kinetic Get Balance`.
+- Add another action via `Element Actions / Push a Kinetic Local Storage`.
+- Set your element to `KineticLocalStorage Balance` and keys to `lastBalance`.
+  ![Airdrop](/images/no-code/Bubble_airdrop_workflow_storage.png)
+
+We're done!
+
+- Go to your 'Preview', reload, go through the Keypair / Account steps, then Airdrop yourself some lovely Kin! See that balance soar...
+  ![Airdrop](/images/no-code/Bubble_airdrop_preview.png)
+
+## Transfer Kin
+
+Now for the real stuff! We're going to send some of our Kin to another Account.
+
+- In 'Design', add a new Button and rename it to `Button Send Kin` with the text `Send Kin`.
+- Add two inputs. `Input Send Kin Amount` with 'Placeholder' `Amount` and 'Content format' to `text (numbers only). And `Input Send Kin Destination`with 'Placeholder'`Destination`.
+- Add a Dropdown. Set the 'Placeholder' to `Transaction Type` and the 'Choices' to `None, Spend, Earn, P2P`. These must be exact. You can use these transaction types to mark your transaction depending on whether they are payments from an App to a User (Earn), a User to an App (Spend), or User to User (P2P).
+  ![Send Kin](/images/no-code/Bubble_send_kin_design.png)
+- Click the 'Send Kin Button' and go to 'Start/Edit workflow'.
+- Add an action via `Plugins / Kinetic Make Transfer`.
+- Set 'destination' to a dynamic value of `Input Send Kin Destination's value`
+- Set 'amount' to a dynamic value of `Input Send Kin Amount's value`
+- Set 'type' to a dynamic value of `Dropdown Send Kin Transaction Type's value`
+  ![Send Kin](/images/no-code/Bubble_send_kin_action.png)
+
+Again, after completing the Transfer, we'd like to update the balance.
+
+- Add another action via `Plugins / Kinetic Get Balance`.
+- Add another action via `Element Actions / Push a Kinetic Local Storage`.
+- Set your element to `KineticLocalStorage Balance` and keys to `lastBalance`.
+  ![Send Kin](/images/no-code/Bubble_send_kin_workflow.png)
+
+We're done!
+
+- Go to your 'Preview', reload, go through the Keypair / Account steps, then Airdrop. Once you've got some Kin, try sending some of it to another address.
+- E.g. `7ssR45gXV2qnxP2nQy9sUVngLCoyDP4r22yugbGghyjy`
+  ![Send Kin](/images/no-code/Bubble_send_kin_preview.png)
+
+## Get Transaction Details
+
+Now, we're going to use the e.g. `signature = 31CB6e5ufkFJG6T32wXS5TpKhiTCPWE95seproArPhjmdBGJKJBfiyoxHohGeEFPerVmi7yXxEA9ygEYrgWExK8i` that we can see in the browser Local Storage to get more detailed information about a transaction.
+
+- In 'Design', add a new Button and rename it to `Button Get Transaction` with the text `Get Transaction`.
+- Add a Kinetic Local Storage element next to it and rename it to `KineticLocalStorage Transaction`.
+- Add another Kinetic Local Storage element next to it and rename it to `KineticLocalStorage Signature`.
+- Add a Text element and rename it to `Text Transaction`. Set the value to `KineticLocalStorage Transaction's Values:last item`
+  ![Send Kin](/images/no-code/Bubble_transaction_details_design.png)
+- Go to 'Button Get Transaction' and select 'Start/Edit workflow'
+- Add an action via `Plugins / Kinetic Get Transaction`. Set the 'signature' to a dynamic value of `KineticLocalstorage Signature's Values:last item`
+  ![Send Kin](/images/no-code/Bubble_transaction_details_action.png)
+- Add another action via `Element Actions / Push a Kinetic Local Storage`.
+- Set your element to `KineticLocalStorage Transaction` and keys to `transactionDetails`.
+  ![Send Kin](/images/no-code/Bubble_transaction_details_workflow.png)
+
+Nearly done!
+
+- To the Create Account, Aidrop and Send Kin Workflows, add an action via `Element Actions / Push a Kinetic Local Storage`. Set the element to `KineticLocalStorage Signature` and keys to `signature`. You can copy and paste actions in Bubble so you don't have to do the same thing three times.
+  ![Send Kin](/images/no-code/Bubble_transaction_details_action_storage.png)
+
+That's it!
+
+- As you carry out transactions on the blockchain, you can click 'Get Transaction' to see more details of the latest one you've made.
+  ![Send Kin](/images/no-code/Bubble_transaction_details_preview.png)
+- Can you extend this section so you can get transaction details for any signature? (Hint: you're going to need an input...)
+
+## Get Account History
+
+Lastly, we're going to use Kinetic to get the history of an account.
+
+- In 'Design', add a new Button and rename it to `Button Get History` with the text `Get History`.
+- Add a Kinetic Local Storage element next to it and rename it to `KineticLocalStorage History`.
+- Add a Text element and rename it to `Text History`. Set the value to `KineticLocalStorage History's Values:last item`
+  ![Send Kin](/images/no-code/Bubble_history_design.png)
+- Go to 'Button Get History' and select 'Start/Edit workflow'
+- Add an action via `Plugins / Kinetic Get History`.
+- Add another action via `Element Actions / Push a Kinetic Local Storage`.
+- Set your element to `KineticLocalStorage History` and keys to `accountHistory`.
+  ![Send Kin](/images/no-code/Bubble_history_workflow.png)
+
+Finished!
+
+- Go to your 'Preview' and try clicking 'Get History'.
+  ![Send Kin](/images/no-code/Bubble_history_preview.png)
+
+Congratulations on making it this far! You can now carry out all of the actions of the Kinetic Plugin and display that data in the browser. Awesome!
+
+Now, we don't claim to be experts in how Bubble works, so I'm sure there are many more elegant ways to implement the UX for a bubble App than we've shown here. But this should be a solid starting point for anyone wanting to work with Kin via Bubble. Happy building!
+
+## Demos and Starter Kits
+
+Created to help get you up and running as quickly as possible, these projects can be a great reference point when you get stuck or even a starter for your own project. Happy coding!
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Kinetic Bubble Demo"
+    subtitle="Check out a simple demo App built on Bubble that can interact with Kin on the Solana blockchain."
+    pngFile="bubble"
+    link={{ url: 'https://kinetic-demo.bubbleapps.io/version-test?debug_mode=true', label: 'Play here' }}
+  />
+  <NavCard
+    title="Behind The Scenes"
+    subtitle="Check out the workflows, conditional logic etc used to build the Kinetic Bubble Demo App."
+    pngFile="bubble"
+    link={{ url: 'https://bubble.io/page?name=index&id=kinetic-demo&tab=tabs-1', label: 'Take a peek' }}
+  />
+</div>
+
+![Kin Kinetic Plugin Demo on Bubble](/images/no-code/Bubble_Kinetic_Demo.gif)
+
+## Ready for Production?
+
+You'll need to tweak your app settings once you are ready to run on the 'mainnet' and make real transactions.
+
+### Mainnet Settings
+
+Again, please make sure stuff works on the Solana test environment before moving to the 'mainnet'.
+
+- set your 'endpoint' to `https://sandbox.kinetic.host`
+- set your 'environment' to `mainnet`
+- set your 'index' to your App Index
+
+## Earn Kin via the KRE
+
+<KRE />
+
+## What If I Get Stuck?
+
+<Help />
+
+## Developer Best Practices
+
+Once you're ready to code, have a quick look at our [Developer Best Practices](/essentials/best-practices/) where we cover some useful topics that you'll want to keep in mind as you build out your Kin application.
+
+<BestPractices />

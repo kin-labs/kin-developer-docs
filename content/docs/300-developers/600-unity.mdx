@@ -1,0 +1,164 @@
+---
+title: Unity
+excerpt: Build your Kin App with Unity
+nav_title: Unity
+---
+
+## Get Started or Add to an Existing Project
+
+Getting started with Kin is incredibly straightforward. Just follow the steps below to start transacting with Kin in your App.
+
+#### Installation
+
+Open [Unity Package Manager](https://docs.unity3d.com/Manual/upm-ui.html) window.
+
+Click the `+` button in the status bar. Select `Add package from git URL` from the add menu. A text box and an Add button appear.
+
+Enter the `https://github.com/kin-labs/kinetic-unity-sdk.git` Git URL in the text box and click `Add`.
+
+Once the package is installed, in the Package Manager inspector you will have Samples. Click on `Import`
+
+#### Instantiate the Kinetic Client
+
+The Kinetic Client will give you access to all the methods you need to work with Kin on the blockchain.
+
+We recommend starting with Devnet before moving on to Mainnet.
+
+```c#
+sdk = await KineticSdk.Setup(
+    new KineticSdkConfig(
+    index: 1, // Add your own App Index here
+    endpoint: "https://sandbox.kinetic.host/",
+    environment: KineticSdkEndpoint.Devnet,
+    )
+);
+```
+
+Don't have an App Index? Register your App on our Developer Portal so you can get your App Index that allows you to transact with our SDKs and earn via the KRE.
+
+<RegisterApp />
+
+#### Create Account
+
+You can create accounts from existing mnemonics or secret keys. In this case we'll generate a mnemonic and use that to create the keypair we use for creating the account on the blockchain.
+
+```c#
+var mnemonic = Keypair.GenerateMnemonic();
+var keypair = Keypair.FromMnemonic(mnemonic);
+await sdk.CreateAccount(keypair);
+```
+
+#### Check Balance
+
+```c#
+var balance = await sdk.GetBalance(keypair.PublicKey);
+```
+
+#### Airdrop Funds (devnet)
+
+```c#
+await sdk.RequestAirdrop( account: keypair.PublicKey, amount: "1000" );
+```
+
+#### Transfer Kin
+
+```c#
+await sdk.MakeTransfer(
+    amount: "5000",
+    destination: "BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo",
+    owner: keypair,
+    type: TransactionType.P2P // Can be Unknown, None, Earn, Spend or P2P
+);
+```
+
+#### Get Transaction Details
+
+```c#
+await sdk.GetTransaction(signature: transactionSignature);
+```
+
+#### Get Account History
+
+```c#
+await sdk.GetHistory(account: keypair.PublicKey);
+```
+
+### Webhooks
+
+In [Kinetic Manager](/developers/kinetic-manager/), you can configure your App to use the following webhooks:
+
+### Events Webhook
+
+This webhook can be used to receive information about completed transactions.
+
+E.g. In a node express server:
+
+```js
+app.use('/events', async (req, res) => {
+  const event = req.body
+  // DO STUFF WITH THE EVENT DATA
+  res.sendStatus(200)
+})
+```
+
+### Verify Webhook
+
+This webhook can be used to verify transactions.
+
+E.g. In a node express server return a `200` status code to approve the transaction:
+
+```js
+app.use('/verify', async (req, res) => {
+  const transaction = req.body
+  // CHECK THAT YOU WANT THIS TRANSACTION TO PROCEED
+  // e.g.
+  if (transaction.amount < 1000000) {
+    res.sendStatus(200)
+  }
+  res.sendStatus(400)
+})
+```
+
+## Demos and Starter Kits
+
+Created to help get you up and running as quickly as possible, these projects can be a great reference point when you get stuck or even a starter for your own project. Happy coding!
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Kinetic Unity Starter"
+    subtitle=""
+    icon="github"
+    link={{ url: 'https://github.com/kin-starters/kinetic-unity-starter', label: 'Have a look' }}
+  />
+</div>
+
+## Ready for Production?
+
+If your App is ready for production, this is the place for you!
+
+<Production />
+
+## Earn Kin via the KRE
+
+<KRE />
+
+## Contribute
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Kinetic Unity SDK"
+    subtitle="Want to contribute to the Kinetic Unity SDK?"
+    icon="github"
+    link={{ url: 'https://github.com/kin-labs/kinetic-unity-sdk', label: 'Contribute' }}
+  />
+</div>
+
+## What If I Get Stuck?
+
+<Help />
+
+## Developer Best Practices
+
+Once you're ready to code, have a quick look at our [Developer Best Practices](/essentials/best-practices/) where we cover some useful topics that you'll want to keep in mind as you build out your Kin application.
+
+<BestPractices />

@@ -1,0 +1,128 @@
+---
+title: Kinetic in Production
+excerpt: Run your Kin App on the Solana Mainnet
+nav_title: Kinetic in Production
+---
+
+## Are You Ready?
+
+Before moving your application onto the Mainnet, it's good practice to make sure you're able to transact on the Devnet. If it's all working how you want, then let's get going!
+
+## Connecting to Mainnet
+
+When you set up your Kinetic Client using one of our SDKs, you need to set your environment. This can be either `devnet` or `mainnet`. For Production, you should choose `mainnet`.
+
+For example, here's how it works with the TypeScript SDK:
+
+```js
+const clientOptions = {
+  environment: 'mainnet', // mainnet or devnet
+  index: 999, // your App Index
+  endpoint: 'https://your_kinetic_instance', // optional kinetic endpoint
+}
+
+const kineticClient = await KineticSdk.setup(clientOptions)
+```
+
+You'll notice in the example above, you can pass in an optional `endpoint` when you set up the Kinetic Client. <br/> This setting gives us some options in the ways we can connect to Kinetic on mainnet:
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Kin Hosted"
+    subtitle="Get started by connecting to our own Kin hosted Kinetic instance"
+    svgFile="kin"
+    link={{ url: '/docs/developers/kinetic-in-production/#kin-hosted', label: 'See how' }}
+  />
+  <NavCard
+    title="Self Hosted"
+    subtitle="Host and manage your own Kinetic instance for maximum power"
+    svgFile="server-solid"
+    link={{ url: '/docs/developers/kinetic-in-production/#self-hosted', label: 'Learn more' }}
+  />
+  <NavCard
+    title="3rd Party Hosted"
+    svgFile="globe-solid"
+    link={{ url: '/docs/developers/kinetic-in-production/#3rd-party-hosted', label: 'Coming Soon!' }}
+  />
+</div>
+
+## Kin Hosted
+
+This is the easiest option and what we recommend for small-scale Apps that are just getting started with Kin.
+
+- Get insights into your transactions
+- Get insights into your hot-wallet usage
+- Restrictions apply
+- Only Kin is available, no other mints
+- Kinetic version can be updated by the Kin team <br/>(meaning you might have to handle API updates to stay connected)
+- Limited logs availability (1 week)
+
+### How To Connect
+
+Just point to `mainnet` as your environment when you instantiate your Kinetic Client via your SDK of choice.
+E.g. TypeScript SDK:
+
+```js
+const clientOptions = {
+  environment: 'mainnet', // mainnet or devnet
+  index: 999, // your App Index
+}
+
+const kineticClient = await KineticSdk.setup(clientOptions)
+```
+
+That's it!
+
+## Self Hosted
+
+For larger scale Apps or those looking for more control.
+
+- Get insights into your transactions
+- Get insights into your hot-wallet usage
+- Configure multiple mints (e.g. other tokens, nfts, etc)
+- Stay on a specific Kinetic version
+- Unlimited log retention
+- Configure multiple hot-wallets
+- Customisable (Open Source)
+
+### Connecting To Your Own Kinetic Instance
+
+Point to `mainnet` as your `environment` and set your `endpoint` to where you've deployed your own Kinetic Instance.
+E.g. TypeScript SDK:
+
+```js
+const clientOptions = {
+  environment: 'devnet', // mainnet or devnet
+  index: 999, // your App Index
+  endpoint: 'https://your_kinetic_instance', // your kinetic server address
+}
+
+const kineticClient = await KineticSdk.setup(clientOptions)
+```
+
+Your `endpoint` can be your own deployed Kinetic instance or a locally running instance.
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Deploy Kinetic"
+    pngFile="heroku"
+    link={{ url: '/docs/developers/kinetic-deployment/#kin-hosted', label: 'Time to Deploy!' }}
+  />
+  <NavCard
+    title="Run Kinetic Locally"
+    svgFile="docker-brands"
+    link={{ url: '/docs/developers/kinetic-deployment/#self-hosted', label: 'Go Local' }}
+  />
+</div>
+
+### Configuration
+
+<KineticManager />
+
+## 3rd Party Hosted
+
+Coming Soon!
+
+We'll let you know here as and when 3rd Party Hosting solutions become available.
+
+Stay tuned!

@@ -8,13 +8,7 @@ import { getUsedByCountWithFallback } from '../utils/used-by-count'
 import { promiseAllProperties, mapObjectValues } from '../utils/object'
 import { useColorScheme } from '../components/ColorSchemeContext'
 import { Hero } from '../components/landing-page/Hero'
-import { Support } from '../components/landing-page/Support'
-import { Testimonials } from '../components/landing-page/Testimonials'
-import { Features } from '../components/landing-page/Features'
-import { type CodeSnippets, HowItWorks, codeSnippets } from '../components/landing-page/HowItWorks'
-import { FAQ } from '../components/landing-page/FAQ'
-import { Tweets } from '../components/landing-page/Tweets'
-import { Playground } from '../components/landing-page/Playground'
+import { type CodeSnippets, codeSnippets } from '../components/landing-page/HowItWorks'
 import { Container } from '../components/common/Container'
 import { buildExamplesTree } from '../utils/build-examples-tree'
 
@@ -52,13 +46,6 @@ const Page: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ prepro
   return (
     <Container>
       <Hero />
-      <Support />
-      <Testimonials usedByCount={usedByCount} />
-      <Features />
-      <HowItWorks codeSnippets={preprocessedCodeSnippets[colorScheme]} />
-      <Playground />
-      <FAQ />
-      <Tweets />
     </Container>
   )
 }

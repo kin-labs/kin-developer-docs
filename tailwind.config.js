@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        handwritten: 'Virgil',
+        handwritten: 'Neue Haas Grotesk Display Pro',
       },
       colors: {
         gray: {
@@ -13,6 +13,8 @@ module.exports = {
         },
       },
       screens: {
+        xxs: '240px',
+        xs: '576px',
         '1.5xl': '1440px',
       },
     },

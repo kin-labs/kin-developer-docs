@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { FC } from 'react'
 import { Logo } from './Logo'
 import { Icon } from './Icon'
@@ -8,57 +9,92 @@ const isExternalUrl = (link: string): boolean => {
   return !link.startsWith('/')
 }
 
+const kinWebsiteLink = 'https://www.kin.org/'
+const contentlayerLink = 'https://github.com/contentlayerdev/contentlayer'
 const content = {
   note: (
     <>
       <p>
-        MIT Licenced - A project by{' '}
-        <a
-          href="https://www.stackbit.com/"
-          target="_blank"
-          className="text-violet-600 underline dark:text-violet-400"
-          rel="noreferrer"
-        >
-          Stackbit
-        </a>
-      </p>
-      <p className="mt-2">
-        Made with 💜 by{' '}
-        <Link href="https://twitter.com/schickling">
-          <a className="hover:text-slate-700 dark:hover:text-slate-300" target="_blank" rel="noreferrer">
-            @schickling
+        A project by{' '}
+        <Link href={kinWebsiteLink}>
+          <a
+            className="inline-flex items-center space-x-1 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"
+            target={isExternalUrl(kinWebsiteLink) ? '_blank' : undefined}
+          >
+            <span>{`The Kin Ecosystem`}</span>
+            {isExternalUrl(kinWebsiteLink) && (
+              <span className="inline-block w-4">
+                <Icon name="external-link" />
+              </span>
+            )}
           </a>
-        </Link>{' '}
-        & community
+        </Link>
+      </p>
+      <br />
+      <p>
+        Built with{' '}
+        <Link href={contentlayerLink}>
+          <a
+            className="inline-flex items-center space-x-1 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"
+            target={isExternalUrl(contentlayerLink) ? '_blank' : undefined}
+          >
+            <span>{`Contentlayer`}</span>
+            {isExternalUrl(contentlayerLink) && (
+              <span className="inline-block w-4">
+                <Icon name="external-link" />
+              </span>
+            )}
+          </a>
+        </Link>
       </p>
     </>
   ),
   menus: [
     {
-      title: 'Docs',
+      title: 'Quick Links',
       elements: [
-        { label: 'Getting Started', url: '/docs/getting-started' },
-        { label: 'Concepts', url: '/docs/concepts' },
-        { label: 'Sources', url: '/docs/sources' },
-        { label: 'Environments', url: '/docs/environments' },
-        { label: 'API Reference', url: '/docs/reference' },
+        { label: 'Kin Website', url: 'https://kin.org' },
+        { label: 'Kin News', url: 'https://kin.org/news' },
+        { label: 'Privacy Policy', url: 'https://kin.org/privacy-policy/' },
+        { label: 'Cookie Policy', url: 'https://kin.org/cookie-policy/' },
+        { label: 'Terms & Conditions', url: 'https://kin.org/terms-and-conditions/' },
+        { label: 'Developer Terms', url: 'https://kin.org/kin-developer-terms/' },
       ],
     },
     {
-      title: 'Examples',
+      title: 'Social',
       elements: [
         {
-          label: 'Next.js (TypeScript)',
-          url: '/examples/nextjs',
+          label: 'Twitter',
+          url: 'https://twitter.com/Kin_Ecosystem',
+        },
+        {
+          label: 'Reddit',
+          url: 'https://www.reddit.com/r/kin/',
+        },
+        {
+          label: 'LinkedIn',
+          url: 'https://www.linkedin.com/company/kin-ecosystem/',
+        },
+        {
+          label: 'Instagram',
+          url: 'https://www.instagram.com/kin_ecosystem/?hl=en',
+        },
+        {
+          label: 'Facebook',
+          url: 'https://www.facebook.com/KinEcosystem/',
+        },
+        {
+          label: 'Youtube',
+          url: 'https://www.youtube.com/c/KinEcosystem',
         },
       ],
     },
     {
-      title: 'Community',
+      title: 'Connect',
       elements: [
-        { label: 'Twitter', url: 'https://twitter.com/contentlayerdev' },
-        { label: 'Discord', url: 'https://discord.gg/rytFErsARm' },
-        { label: 'GitHub', url: 'https://github.com/contentlayerdev/contentlayer' },
+        { label: 'Kin Developer Portal', url: 'https://portal.kin.org/' },
+        { label: 'Discord', url: 'https://discord.gg/kdRyUNmHDn' },
       ],
     },
   ],
@@ -71,8 +107,14 @@ export const Footer: FC = () => {
         <div>
           <Link href="/">
             <a className="flex items-center space-x-2.5 font-bold text-slate-800 no-underline dark:text-white">
-              <Logo />
-              <span>Contentlayer</span>
+              {/* <Logo /> */}
+              <Image
+                height="40px"
+                width="80px"
+                alt={`Kin Foundation`}
+                className={`svgFile svgFile-kin_name`}
+                src={`/images/logos/kin_name.svg`}
+              />
             </a>
           </Link>
           <div className="mt-4 text-sm text-slate-500 dark:text-slate-400">{content.note}</div>

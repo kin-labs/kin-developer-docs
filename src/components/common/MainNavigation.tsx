@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { FC, useState } from 'react'
 import { useKBar } from 'kbar'
 import { Icon, IconName } from './Icon'
@@ -8,21 +9,22 @@ import { useRouter } from 'next/router'
 import { ColorSchemeSwitcher } from './ColorSchemeSwitcher'
 import { isExternalUrl } from '../../utils/helpers'
 
-const navLinks: Array<{ label: string; url: string }> = [
-  { label: 'Documentation', url: '/docs' },
-  { label: 'Blog', url: '/blog' },
-  // NOTE until we have a proper example overview page and multiple examples, link directly to Next.js example
-  { label: 'Examples', url: '/examples/nextjs' },
+const navLinks: Array<{ label: string; url: string; hideLg?: boolean }> = [
+  { label: 'Essentials', url: '/docs/essentials' },
+  { label: 'Use Cases', url: '/docs/use-cases', hideLg: true },
+  { label: 'Developers', url: '/docs/developers' },
+  { label: 'Non-Developers', url: '/docs/non-developers' },
+  { label: 'Integrations', url: '/docs/integrations', hideLg: true },
 ]
 
 const iconLinks: Array<{ label: string; icon: IconName; url: string }> = [
-  { label: 'Github', icon: 'github', url: 'https://github.com/contentlayerdev/contentlayer' },
-  { label: 'Discord', icon: 'discord', url: 'https://discord.gg/rytFErsARm' },
+  { label: 'Discord', icon: 'discord', url: 'https://discord.com/invite/kdRyUNmHDn' },
 ]
 
-const NavLink: FC<{ label?: string; hideLabel?: boolean; icon?: IconName; url: string }> = ({
+const NavLink: FC<{ label?: string; hideLabel?: boolean; hideLg?: boolean; icon?: IconName; url: string }> = ({
   label,
   hideLabel = false,
+  hideLg = false,
   icon,
   url,
 }) => {
@@ -36,7 +38,7 @@ const NavLink: FC<{ label?: string; hideLabel?: boolean; icon?: IconName; url: s
           active
             ? 'bg-violet-50 text-violet-900 dark:bg-violet-500/20 dark:text-violet-50'
             : 'text-slate-600 hover:bg-gray-50 hover:text-slate-700 dark:text-slate-300 dark:hover:bg-gray-900 dark:hover:text-slate-200'
-        }`}
+        } ${hideLg ? 'hidden xl:flex' : ''}`}
         target={isExternalUrl(url) ? '_blank' : undefined}
         rel={isExternalUrl(url) ? 'noreferrer' : undefined}
       >
@@ -78,11 +80,18 @@ export const MainNavigation = () => {
         <div className="flex items-center space-x-2.5">
           <Link href="/">
             <a className="flex items-center space-x-2.5 font-bold text-slate-800 no-underline dark:text-white">
-              <Logo />
-              <span className="-mt-0.5">Contentlayer</span>
+              <Image
+                height="40px"
+                width="80px"
+                alt={`Kin Foundation`}
+                className={`svgFile svgFile-kin_name`}
+                src={`/images/logos/kin_name.svg`}
+              />
+              <span className="headerLogoLabel">
+                <Label text="Developer Docs" />
+              </span>
             </a>
           </Link>
-          <Label text="Beta" />
         </div>
         <div className="lg:hidden">
           <button
@@ -102,14 +111,16 @@ export const MainNavigation = () => {
                   <div className="mb-2">
                     <SearchButton showShortcut={false} />
                   </div>
-                  {navLinks.map(({ label, url }, index) => (
-                    <NavLink
-                      key={index}
-                      label={label}
-                      url={url}
-                      icon={isExternalUrl(url) ? 'external-link' : undefined}
-                    />
-                  ))}
+                  {navLinks.map(({ label, url }, index) => {
+                    return (
+                      <NavLink
+                        key={index}
+                        label={label}
+                        url={url}
+                        icon={isExternalUrl(url) ? 'external-link' : undefined}
+                      />
+                    )
+                  })}
                 </div>
                 <div className="flex items-center justify-end space-x-4 pt-8">
                   {iconLinks.map(({ label, icon, url }, index) => (
@@ -122,8 +133,14 @@ export const MainNavigation = () => {
         </div>
         <nav className="hidden items-center divide-x divide-gray-200 dark:divide-gray-800 lg:flex">
           <div className="flex items-center pr-2 lg:space-x-4 lg:pr-8">
-            {navLinks.map(({ label, url }, index) => (
-              <NavLink key={index} label={label} url={url} icon={isExternalUrl(url) ? 'external-link' : undefined} />
+            {navLinks.map(({ label, url, hideLg }, index) => (
+              <NavLink
+                key={index}
+                label={label}
+                hideLg={hideLg}
+                url={url}
+                icon={isExternalUrl(url) ? 'external-link' : undefined}
+              />
             ))}
             <div className="px-3">
               <SearchButton />

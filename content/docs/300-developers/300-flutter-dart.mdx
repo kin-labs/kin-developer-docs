@@ -1,0 +1,198 @@
+---
+title: Flutter / Dart
+excerpt: Build your Kin App with Flutter / Dart
+nav_title: Flutter / Dart
+---
+
+## Get Started or Add to an Existing Project
+
+Getting started with Kin is incredibly straightforward. Just follow the steps below to start transacting with Kin in your App.
+
+### Installation
+
+Add the package to your pubspec.yaml file below dependencies.
+
+```js
+kinetic: ^1.0.0-rc.1
+```
+
+Visit [pub.dev/packages/kinetic](https://pub.dev/packages/kinetic) for other versions.
+
+### Instantiate the Kinetic Client
+
+The Kinetic Client will give you access to all the methods you need to work with Kin on the blockchain.
+
+We recommend starting with Devnet before moving on to Mainnet.
+
+```js
+KineticSdkConfig sdkConfig = KineticSdkConfig(
+  index: 1,
+  endpoint: 'https://sandbox.kinetic.host',
+  environment: 'devnet',
+  logger: Logger(),
+);
+KineticSdk sdk = await KineticSdk.setup(sdkConfig);
+```
+
+Don't have an App Index? Register your App on our Developer Portal so you can get your App Index that allows you to transact with our SDKs and earn via the KRE.
+
+<RegisterApp />
+
+### Create Account
+
+You can create accounts from existing mnemonics or secret keys. In this case we'll generate a mnemonic and use that to creat the keypair we use for creating the account on the blockchain.
+
+```js
+Keypair owner = await Keypair.random();
+
+CreateAccountOptions options = CreateAccountOptions(
+  owner: owner,
+  mint: mint,
+  commitment: CreateAccountRequestCommitmentEnum.finalized,
+  referenceId: 'dart',
+  referenceType: 'test',
+);
+
+Transaction? transaction = await sdk.createAccount(options);
+```
+
+### Check Balance
+
+```js
+GetBalanceOptions options = GetBalanceOptions(account: owner.publicKey);
+BalanceResponse? res = await sdk.getBalance(options: options);
+dynamic res = await kinetic.getBalance(kinetic.keypair.solanaPublicKey.toBase58());
+```
+
+### Airdrop Funds (devnet)
+
+```js
+RequestAirdropOptions options = RequestAirdropOptions(
+  account: owner.publicKey,
+  mint: mint,
+  amount: "10",
+  commitment: RequestAirdropRequestCommitmentEnum.finalized,
+);
+RequestAirdropResponse? res = await sdk.requestAirdrop(options);
+```
+
+### Transfer Kin
+
+```js
+Keypair alice = await Keypair.random();
+
+MakeTransferOptions options = MakeTransferOptions(
+  amount: "1.0",
+  destination: alice.publicKey,
+  commitment: MakeTransferRequestCommitmentEnum.finalized,
+  mint: mint,
+  owner: owner,
+  referenceId: "our-ref-id",
+  referenceType: "some-tx",
+  type: TransactionType.p2p,
+  senderCreate: false,
+);
+
+Transaction? transaction = await sdk.makeTransfer(options);
+```
+
+### Get Transaction Details
+
+```js
+<!-- Coming Soon -->
+```
+
+### Get Solana Explorer URL
+
+[Solana Explorer](https://explorer.solana.com/)
+
+```js
+String? res = await sdk.getExplorerUrl("address/${alice.publicKey}");
+```
+
+#### Get Account History
+
+```js
+GetHistoryOptions options = GetHistoryOptions(account: alice.publicKey, mint: mint);
+List<HistoryResponse>? res = await sdk.getHistory(options);
+```
+
+### Webhooks
+
+In [Kinetic Manager](/developers/kinetic-manager/), you can configure your App to use the following webhooks:
+
+### Events Webhook
+
+This webhook can be used to receive information about completed transactions.
+
+E.g. In a node express server:
+
+```js
+app.use('/events', async (req, res) => {
+  const event = req.body
+  // DO STUFF WITH THE EVENT DATA
+  res.sendStatus(200)
+})
+```
+
+### Verify Webhook
+
+This webhook can be used to verify transactions.
+
+E.g. In a node express server return a `200` status code to approve the transaction:
+
+```js
+app.use('/verify', async (req, res) => {
+  const transaction = req.body
+  // CHECK THAT YOU WANT THIS TRANSACTION TO PROCEED
+  // e.g.
+  if (transaction.amount < 1000000) {
+    res.sendStatus(200)
+  }
+  res.sendStatus(400)
+})
+```
+
+## Demos and Starter Kits
+
+Created to help get you up and running as quickly as possible, these projects can be a great reference point when you get stuck or even a starter for your own project. Happy coding!
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Kinetic Dart SDK Starter App"
+    subtitle="A simple app that allows you to create keypairs, create an account, transfer Kin, and view your balance and account history."
+    icon="github"
+    link={{ url: 'https://github.com/kin-starters/kinetic-dart-starter', label: 'Have a look' }}
+  />
+</div>
+
+## Ready for Production?
+
+If your App is ready for production, this is the place for you!
+
+<Production />
+
+## Earn Kin via the KRE
+
+<KRE />
+
+## Contribute
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Kinetic Dart SDK"
+    subtitle="Want to contribute to the Kinetic Dart SDK?"
+    icon="github"
+    link={{ url: 'https://github.com/kin-labs/kinetic-dart-sdk', label: 'Contribute' }}
+  />
+</div>
+
+## What If I Get Stuck?
+
+<Help />
+
+## Developer Best Practices
+
+Once you're ready to code, have a quick look at our [Developer Best Practices](/essentials/best-practices/) where we cover some useful topics that you'll want to keep in mind as you build out your Kin application.
+
+<BestPractices />

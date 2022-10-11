@@ -9,6 +9,16 @@ import { defineStaticProps, toParams } from '../../utils/next'
 import { DocsNavigation } from 'src/components/docs/DocsNavigation'
 import { Callout } from '../../components/common/Callout'
 import { DocsCard as Card } from 'src/components/docs/DocsCard'
+import { DocsNavCard as NavCard } from '../../components/docs/DocsNavCard'
+import { DocsHelp as Help } from '../../components/docs/DocsHelp'
+import { DocsBestPractices as BestPractices } from '../../components/docs/DocsBestPractices'
+import { DocsKRE as KRE } from '../../components/docs/DocsKRE'
+import { DocsProduction as Production } from '../../components/docs/DocsProduction'
+import { DocsRegisterApp as RegisterApp } from '../../components/docs/DocsRegisterApp'
+import { DocsKineticManager as KineticManager } from '../../components/docs/DocsKineticManager'
+import { DocsAgora as Agora } from '../../components/docs/DocsAgora'
+import { DocsBubble as Bubble } from '../../components/docs/DocsBubble'
+import { DocsBrandImage as BrandImage } from '../../components/docs/DocsBrandImage'
 import { Card as ChildCard } from '../../components/common/Card'
 import { Link } from 'src/components/common/Link'
 import Image from 'next/image'
@@ -55,6 +65,7 @@ export const getStaticProps = defineStaticProps(async (context) => {
 const mdxComponents = {
   Callout,
   Card,
+  NavCard,
   Image,
   Link,
   ChevronLink,
@@ -66,6 +77,15 @@ const mdxComponents = {
   OptionsTable,
   OptionTitle,
   OptionDescription,
+  Help,
+  BestPractices,
+  KRE,
+  Production,
+  RegisterApp,
+  KineticManager,
+  Agora,
+  Bubble,
+  BrandImage,
 }
 
 const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ doc, tree, breadcrumbs, childrenTree }) => {
@@ -74,7 +94,7 @@ const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ doc, tree, b
   const MDXContent = useMDXComponent(doc.body.code || '')
 
   return (
-    <Container title={doc.title + ' – Contentlayer'} description={doc.excerpt}>
+    <Container title={doc.title + ' – Kin Developer Docs'} description={doc.excerpt}>
       <div className="relative mx-auto w-full max-w-screen-2xl lg:flex lg:items-start">
         <div
           style={{ height: 'calc(100vh - 64px)' }}
