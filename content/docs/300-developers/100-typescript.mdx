@@ -26,6 +26,7 @@ import { KineticSdk } from '@kin-kinetic/sdk'
 const clientOptions = {
   environment: 'devnet', // mainnet or devnet
   index: 999, // your App Index
+  endpoint: 'https://sandbox.kinetic.host/', // devnet endpoint
 }
 
 const kineticClient = await KineticSdk.setup(clientOptions)
