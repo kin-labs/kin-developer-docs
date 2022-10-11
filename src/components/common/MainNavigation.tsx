@@ -85,7 +85,7 @@ export const MainNavigation = () => {
                 width="80px"
                 alt={`Kin Foundation`}
                 className={`svgFile svgFile-kin_name`}
-                src={`/images/logos/kin_name.svg`}
+                src={`/images/logos/kin-name.svg`}
               />
               <span className="headerLogoLabel">
                 <Label text="Developer Docs" />
