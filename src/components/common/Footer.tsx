@@ -57,7 +57,7 @@ const content = {
         { label: 'Kin News', url: 'https://kin.org/news' },
         { label: 'Privacy Policy', url: 'https://kin.org/privacy-policy/' },
         { label: 'Cookie Policy', url: 'https://kin.org/cookie-policy/' },
-        { label: 'Terms & Conditions', url: 'https://kin.org/terms-and-conditions/' },
+        { label: 'Terms & Conditions', url: 'https://kin.org/terms-of-use-agreement/' },
         { label: 'Developer Terms', url: 'https://kin.org/kin-developer-terms/' },
       ],
     },
