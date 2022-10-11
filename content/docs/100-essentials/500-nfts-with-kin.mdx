@@ -57,15 +57,15 @@ For this tutorial, we'll use Phantom Wallet with Chrome. We suggest using both t
 
 Navigate to [https://phantom.app/download](https://phantom.app/download) and then select "Add to Chrome."
 
-![Add Phantom Wallet One](/images/nfts-with-kin/add_phantom_wallet_1.png)
+![Add Phantom Wallet One](/images/nfts-with-kin/add-phantom-wallet-1.png)
 
 Then, again, "Add to Chrome"
 
-![Add Phantom Wallet to Chrome](/images/nfts-with-kin/add_phantom_wallet_2.png)
+![Add Phantom Wallet to Chrome](/images/nfts-with-kin/add-phantom-wallet-2.png)
 
 After installing, open Phantom Wallet and click the "Create New Wallet" button.
 
-![Create New Wallet in Phantom Wallet](/images/nfts-with-kin/add_phantom_wallet_3.png)
+![Create New Wallet in Phantom Wallet](/images/nfts-with-kin/add-phantom-wallet-3.png)
 
 Now carefully write down your secret phrase, and store it somewhere safe. If you transfer in tokens and mint NFTs on the Mainnet and then lose your secret phrase, your NFTs, store access, and tokens will not be recoverable.
 
@@ -157,17 +157,17 @@ To spin up a new store we first need to clone down the Metaplex repo using the f
 
 `git clone https://github.com/metaplex-foundation/metaplex.git`
 
-![Setting Up Metaplex Store With Kin Step One](/images/nfts-with-kin/setting_up_the_store_1.gif)
+![Setting Up Metaplex Store With Kin Step One](/images/nfts-with-kin/setting-up-the-store-1.gif)
 
 From the terminal, navigate into `metaplex/js`. Once in the folder run `yarn install && yarn bootstrap`
 
-![Setting Up Metaplex Store With Kin Step Two](/images/nfts-with-kin/setting_up_the_store_2.gif)
+![Setting Up Metaplex Store With Kin Step Two](/images/nfts-with-kin/setting-up-the-store-2.gif)
 
 **The moment has finally arrived, it's time to fire up Metaplex!**
 
 Run `yarn start` from the same folder and then navigate to `http://localhost:3000`. Note that you may have to wait 20 - 60 seconds for the site to fully start.
 
-![Setting Up Metaplex Store With Kin Step Three](/images/nfts-with-kin/setting_up_the_store_3.gif)
+![Setting Up Metaplex Store With Kin Step Three](/images/nfts-with-kin/setting-up-the-store-3.gif)
 
 ## Initializing your Store
 
@@ -191,7 +191,7 @@ To initialize our site we need to do a few quick things:
 - Scroll down to, and click on, "Devnet"
 - Then, on the storefront, click on the gear icon in the upper right corner, click under "NETWORK" and select the "devnet" option
 
-![Initializing Your Metaplex Storefront](/images/nfts-with-kin/Initializing_Your_Site.gif)
+![Initializing Your Metaplex Storefront](/images/nfts-with-kin/Initializing-Your-Site.gif)
 
 ### Connecting the Wallet
 
@@ -203,7 +203,7 @@ Note that if you have multiple addresses in your Phantom Wallet, whichever addre
 - On the storefront, click "Connect" (x2 if needed)
 - In Phantom Wallet click "Connect"
 
-![Connect Phantom To Metaplex](/images/nfts-with-kin/connecting_phantom_to_metaplex.gif)
+![Connect Phantom To Metaplex](/images/nfts-with-kin/connecting-phantom-to-metaplex.gif)
 
 ### Troubleshooting
 
@@ -212,15 +212,15 @@ If your storefront fails to connect or initialize, double check the following:
 - Ensure you have fake SOL in your wallet. If not then [airdrop](https://solfaucet.com/) some into your account.
 - Ensure your wallet is using the same network as your store (mainnet, devenet, testnet etc...)
 
-![Ensure wallet is using the same network](/images/nfts-with-kin/troubleshooting_1.gif)
+![Ensure wallet is using the same network](/images/nfts-with-kin/troubleshooting-1.gif)
 
 If the initialization is successful then you will see your Store Configuration information. Note that some users (thanks to KriegJ and Polype01) stated they only see the `REACT_APP_STORE_OWNER_ADDRESS_ADDRESS` and NOT the `REACT_APP_STORE_ADDRESS`. If that is the case for your instance, that's okay, you can follow the on screen instructions and only use the `REACT_APP_STORE_OWNER_ADDRESS_ADDRESS`.
 
-![Metaplex Storefront Configuration](/images/nfts-with-kin/troubleshooting_2.png)
+![Metaplex Storefront Configuration](/images/nfts-with-kin/troubleshooting-2.png)
 
 If the page keeps loading or you're not seeing your _Store Configuration_ — in our testing it sometimes hangs up here — then try refreshing the browser or navigating to [http://localhost:3000/#/admin](http://localhost:3000/#/admin)
 
-![Refresh Broswer](/images/nfts-with-kin/troubleshooting_3.gif)
+![Refresh Broswer](/images/nfts-with-kin/troubleshooting-3.gif)
 
 ### Add the Store Address
 
@@ -237,7 +237,7 @@ SPL_TOKEN_MINTS = kinXdEcpDQeHPEuQnqmUgtYykqKGVFq6CeVX5iAHJq6
 CG_SPL_TOKEN_IDS = kin
 ```
 
-![Adding the store address](/images/nfts-with-kin/add_the_store_address.gif)
+![Adding the store address](/images/nfts-with-kin/add-the-store-address.gif)
 
 Now we can restart our store and mint our first NFT!!! ... almost.
 
@@ -256,7 +256,7 @@ To add a creator:
 - Click "Ok"
 - Rinse and repeat for additional creators
 
-![Adding creators to the Metaplex store](/images/nfts-with-kin/adding_creators.gif)
+![Adding creators to the Metaplex store](/images/nfts-with-kin/adding-creators.gif)
 
 ## Creating your first NFT
 
@@ -273,17 +273,17 @@ To get started, click on the creator icon in the upper right-hand corner (next t
 
 You can add a variety of assets to an NFT but we're going to mint with an image by uploading the "official" kiNFT Tutorial graphic. If you would like to use the same image, download it here.
 
-![KiNFT Tutorial Graphic](/images/nfts-with-kin/creating_the_nfts_1.png)
+![KiNFT Tutorial Graphic](/images/nfts-with-kin/creating-the-nfts-1.png)
 
 The graphic we select in this step will eventually be uploaded onto Arweave and its URL will be automatically added to the overall Matadata object.
 
-![Upload NFT image to Arweave](/images/nfts-with-kin/creating_the_nfts_2.gif)
+![Upload NFT image to Arweave](/images/nfts-with-kin/creating-the-nfts-2.gif)
 
 ### Add Details
 
 Now we'll add the NFT details.
 
-![Adding NFT Details](/images/nfts-with-kin/creating_the_nfts_3.gif)
+![Adding NFT Details](/images/nfts-with-kin/creating-the-nfts-3.gif)
 
 `Title`, `Description`, and `Maximum Supply` are self explanatory but if you've never minted an NFT before, `Attributes` may be harder to understand.
 
@@ -295,17 +295,17 @@ Attributes need three pieces of data
 
 [Click here](#viewing-the-nft-and-metadata-in-phantom) to see how these details show up in Phantom Wallet
 
-![Attribute Types](/images/nfts-with-kin/creating_the_nfts_4.png)
+![Attribute Types](/images/nfts-with-kin/creating-the-nfts-4.png)
 
 ### Set Royalties
 
 Royalties allow creators to enjoy a predetermined share of all future aftermarket sales. The amount you set here defines a 1-to-1 percentage to be withheld for all creators. e.g. adding 5 means you will automatically receive 5% of all future sales — split with all creators.
 
-![Adding Royalties to your nfts in Metaplex](/images/nfts-with-kin/creating_the_nfts_5.png)
+![Adding Royalties to your nfts in Metaplex](/images/nfts-with-kin/creating-the-nfts-5.png)
 
 ### Creator Splits
 
-![Creator Splits](/images/nfts-with-kin/creating_the_nfts_6.gif)
+![Creator Splits](/images/nfts-with-kin/creating-the-nfts-6.gif)
 
 In order to add Creator Splits, you must first add additional creators. As of the time we wrote this, you can not add creators in the middle of the minting process. If you want to add creators to this mint, stop, go up to "[Adding Creators](/essentials/nfts-with-kin/#adding-creators)", complete that process, and then repeat the creation steps above.
 
@@ -327,7 +327,7 @@ Each additional creator can validate their participation in a mint by doing the 
 - Click on the "You Have New Artwork That You Need To Approve" header
 - Approve the validation transaction by clicking "Approve"
 
-![An important aside](/images/nfts-with-kin/creating_the_nfts_7.gif)
+![An important aside](/images/nfts-with-kin/creating-the-nfts-7.gif)
 
 Note that after completing the steps above you may still see an "unverified" badge even though verification has occurred on chain. If that's the case, you may have to refresh your browser — or disconnect and reconnect to the storefront — in order to for the badge to disappear.
 
@@ -337,13 +337,13 @@ Now it's time to mint that beautiful NFT of yours.
 
 To complete, you'll need to approve two transactions. We've only shown one below because there's a little _end-of-mint_ surprise provided by the lovely people at Metaplex that we shouldn't spoil and you should earn. ;).
 
-![Select Menu Items](/images/nfts-with-kin/mint_your_nft_1.gif)
+![Select Menu Items](/images/nfts-with-kin/mint-your-nft-1.gif)
 
 #### Viewing the NFT and Metadata in Phantom
 
 Once the mint is complete, you can navigate to your wallet to see the "Master Edition" NFT. Note that it may take some time for the image to appear.
 
-![Main Edition NFTs](/images/nfts-with-kin/mint_your_nft_2.gif)
+![Main Edition NFTs](/images/nfts-with-kin/mint-your-nft-2.gif)
 
 ## Launching an Auction with Kin
 
@@ -361,7 +361,7 @@ Our `NFT 0` is the Master Edition. It's from this token that we can create _Limi
 - Click "Auction Mint" and then "Kin"
 - Then enter the number of copies to create ... we'll do 10
 
-![Enter NFT Details](/images/nfts-with-kin/launching_nft_1.gif)
+![Enter NFT Details](/images/nfts-with-kin/launching-nft-1.gif)
 
 - Set the Price Floor in Kin — we'll set ours at 100,000
 - Add the Tick Size — _defines the minimum amount each new bid must be in addition to the old bid. New Bid >= Old Bid + Tick Size. If the old bid is 200,000 and our Tick Size is 100,000 then the new bid must be at least 200,000 + 100,000_
@@ -371,13 +371,13 @@ Our `NFT 0` is the Master Edition. It's from this token that we can create _Limi
 - Select the **Gap Time** — _this sets the length of the final period of the Auction AND how much time will be added to the auction for each qualifying bid submitted during that span. For example, if your Gap Time is 5 minutes, the auction will be extended by 5 minutes for each bid received in the final 5 minute period. Oof ... that's a mouthful._
 - Determine the **Tick Size Ending Phase** — the percentage increase over the previous bid that one must place to continue the auction in the final phase. e.g. If the Tick Size is 10% and the previous bid was 5000 Kin then the new bid must be at least 5500 to continue in the auction.
 
-![Set Pricing Info](/images/nfts-with-kin/launching_nft_2.gif)
+![Set Pricing Info](/images/nfts-with-kin/launching-nft-2.gif)
 
 **Participation NFTs**
 
 We'll skip over the next screen which allows one to add NFTs that can be given away or sold for participating in an auction. If you want to charge a fee, add a price into the `Fixed Price` field.
 
-![Skip participation NFTs if you're not launching with one](/images/nfts-with-kin/launching_nft_3.png)
+![Skip participation NFTs if you're not launching with one](/images/nfts-with-kin/launching-nft-3.png)
 
 Just two more steps and our devnet Auction will be live ... we've sped up the .gif because this part can take a while:
 
@@ -385,7 +385,7 @@ Just two more steps and our devnet Auction will be live ... we've sped up the .g
 2. Then click "Publish Auctions"
 3. And then approve the transactions in Phantom Wallet
 
-![Skip Participation](/images/nfts-with-kin/launching_nft_4.gif)
+![Skip Participation](/images/nfts-with-kin/launching-nft-4.gif)
 
 **Note** that sometimes, Metaplex stalls in this step. If it does, don't worry. When you refresh or restart your storefront, there will be a notification waiting for you in the top right corner alerting you that an auction transaction didn't complete. Click on that notification to finish the transaction.
 
@@ -401,17 +401,17 @@ Let's do that quick but first it's important to note a few important things.
 2. Currently, you need to be on the Mainnet to test purchasing with Kin
 3. All of the NFTs you created on the Devnet won't be present on your store when you switch to Mainnet — you can always switch back to Devnet to gawk at them. Just be sure that your wallet AND the store are on the same network.
 
-![Completing one transaction on Metaplex](/images/nfts-with-kin/launching_nft_5.gif)
+![Completing one transaction on Metaplex](/images/nfts-with-kin/launching-nft-5.gif)
 
 The gif above only shows the first transaction. For the curious, here are what both transactions look like.
 
 Transaction One
 
-![Example Solana Transaction One](/images/nfts-with-kin/launching_nft_6.png)
+![Example Solana Transaction One](/images/nfts-with-kin/launching-nft-6.png)
 
 Transaction Two
 
-![Example Solana Transaction Two](/images/nfts-with-kin/launching_nft_7.png)
+![Example Solana Transaction Two](/images/nfts-with-kin/launching-nft-7.png)
 
 Now that our storefront is initialized we need to add the Mainnet Store Configuration details to `./js/packages/web/.env.production` .
 
