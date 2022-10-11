@@ -6,7 +6,7 @@ import { DocsNavCard as NavCard } from '../../components/docs/DocsNavCard'
 const content = {
   heading: 'Easy. Quick. Intuitive.',
   text: "Integrate cryptocurrency into your App's experience",
-  heroImage: '/images/kin_cube.png',
+  heroImage: '/images/kin-cube.png',
   features: ['Lightweight & easy to use', 'Great developer experience', 'Blazing fast build & page performance'],
   primaryAction: { label: 'Get started', url: '/docs/getting-started' },
   secondaryAction: { label: 'Why Contentlayer?', url: '/blog/working-with-content-is-hard-for-developers' },
