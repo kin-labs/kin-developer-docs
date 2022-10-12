@@ -110,7 +110,8 @@ await kineticClient.makeTransferBatch(transferBatchOptions);
 ### Get Transaction Details
 
 ```js
-// Coming Soon
+const signature = 'account or transaction id string'
+await kineticClient.getTransaction({ signature })
 ```
 
 ### Get Solana Explorer URL
