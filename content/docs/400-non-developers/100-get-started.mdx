@@ -126,7 +126,7 @@ Lets display the Public Key on the screen for the user.
 - Grab a 'Text' element and place it next to the 'Kinetc Local Storage'. Rename it to `Text Public Key`. Click on '...edit me...' then insert dynamic data.
   ![Show Public Key](/images/no-code/Bubble-public-key-text.png)
 - Set your Dynamic value to `KineticLocalStorage Public Key's Values:last item`.
-  ![Show Public Key](/images/no-code/Bubble-mnemonic-text-value.png)
+  ![Show Public Key](/images/no-code/Bubble-public-key-text-value.png)
 - Finally, go to your 'Set Up Keypair' workflow, and add an action via `Element Actions / Push a Kinetic Local Storage`. We are going to push the value of the publicKey in Local Storage into our Kinetic Local Storage element which will allow us to display the value. We'll be doing this with any information the Plugin returns from the Kinetic server that we want to display on the screen.
   ![Show Public Key](/images/no-code/Bubble-set-up-keypair-workflow-push-local.png)
 - Set the element to `KineticLocalStorage Public Key` and in keys put `publicKey`
