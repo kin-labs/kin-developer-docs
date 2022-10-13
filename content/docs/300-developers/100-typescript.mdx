@@ -110,7 +110,7 @@ await kineticClient.makeTransferBatch(transferBatchOptions);
 ### Get Transaction Details
 
 ```js
-const signature = 'account or transaction id string'
+const signature = 'transaction id string'
 await kineticClient.getTransaction({ signature })
 ```
 
@@ -297,7 +297,8 @@ await kinClient.submitEarnBatch({ sender, earns })
 
 ```js
 // Kinetic
-// Coming Soon
+const signature = 'transaction id string'
+await kineticClient.getTransaction({ signature })
 
 // Agora
 import bs58 from 'bs58'
