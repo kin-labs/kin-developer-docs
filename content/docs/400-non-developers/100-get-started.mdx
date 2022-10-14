@@ -61,7 +61,7 @@ We want to make sure stuff works on the Solana test environment before moving to
 
 - set your 'endpoint' to `https://sandbox.kinetic.host`
 - set your 'environment' to `devnet`
-- set your 'index' to your App Index
+- set your 'index' to your App Index (see below)
 
 Don't have an App Index? Register your App on our Developer Portal so you can get your App Index that allows you get credit for your transactions and earn via the KRE.
 
@@ -123,7 +123,7 @@ Lets display the Public Key on the screen for the user.
 
 - Go to 'Design'. Grab a 'Kinetic Local Storage' from the side menu and drag it next to the 'Set Up Keypair' button. Rename it to `KineticLocalStorage Public Key`
   ![Show Public Key](/images/no-code/Bubble-public-key-local-storage.png)
-- Grab a 'Text' element and place it next to the 'Kinetc Local Storage'. Rename it to `Text Public Key`. Click on '...edit me...' then insert dynamic data.
+- Grab a 'Text' element and place it next to the 'Kinetic Local Storage'. Rename it to `Text Public Key`. Click on '...edit me...' under the 'Appearance' tab, then 'insert dynamic data'.
   ![Show Public Key](/images/no-code/Bubble-public-key-text.png)
 - Set your Dynamic value to `KineticLocalStorage Public Key's Values:last item`.
   ![Show Public Key](/images/no-code/Bubble-public-key-text-value.png)
@@ -163,7 +163,7 @@ Now we want to make it so that a user of the App can view their own mnemonic so 
 
   Phew!
 
-- Reload your 'Preview'. Now you'll be able to view your mnemonic when you click on the 'Show Mnemonic' button.
+- Reload your 'Preview'. Now you'll be able to view your mnemonic when you click on the 'Show Mnemonic' button (as long as you've previously set up your Keypair, otherwise you'll get an error).
   ![View Mnemonic](/images/no-code/Bubble-mnemonic-preview-before.png)
   ![View Mnemonic](/images/no-code/Bubble-mnemonic-preview.png)
 
@@ -187,7 +187,7 @@ Let's see if that worked.
 
 ### Creating your Account
 
-- In 'Design' add a new Button called 'Create Account' with the text Create Account.
+- In 'Design' add a new Button called 'Button Create Account' with the text 'Create Account'.
 - Click 'Start/Edit workflow' and add an action via `Plugins / Kinetic Create Account`
   ![Create Account](/images/no-code/Bubble-create-account-action.png)
 
@@ -195,7 +195,7 @@ That's it!
 
 - Go to your 'Preview', reload, 'Set Up Keypair', then 'Create Account'. You'll see the loader at the top of the screen start to go and then once it completes you'll have some new data in your Local Storage.
   ![Create Account](/images/no-code/Bubble-create-account-preview.png)
-- The new data in Local Storage is `hasAccount = true` and `signature = 31CB6e5ufkFJG6T32wXS5TpKhiTCPWE95seproArPhjmdBGJKJBfiyoxHohGeEFPerVmi7yXxEA9ygEYrgWExK8i`
+- The new data in Local Storage is `hasAccount = true` and something like `signature = 31CB6e5ufkFJG6...A9ygEYrgWExK8i`
 - The `signature` is the transaction signature for the Create Account action on the blockchain. Go to [Solana Explorer](https://explorer.solana.com/?cluster=devnet) and paste in the signature to see your transaction on the blockchain!
 - We can use the `hasAccount = true` value to indicate to users when an account has been found on the blockchain.
 - E.g. In these status indicators from the Demo App linked above:
@@ -217,6 +217,7 @@ Now we have an Account, lets check our Balance!
 - Add another action via `Element Actions / Push a Kinetic Local Storage`.
 - Set your element to `KineticLocalStorage Balance` and keys to `lastBalance`.
   ![Get Balance](/images/no-code/Bubble-balance-workflow.png)
+- (P.S. ignore the Airdrop workflow you can see in the above image for now... We'll get to that in a second!)
 
 That's it!
 
@@ -250,8 +251,8 @@ We're done!
 Now for the real stuff! We're going to send some of our Kin to another Account.
 
 - In 'Design', add a new Button and rename it to `Button Send Kin` with the text `Send Kin`.
-- Add two inputs. `Input Send Kin Amount` with 'Placeholder' `Amount` and 'Content format' to `text (numbers only). And `Input Send Kin Destination`with 'Placeholder'`Destination`.
-- Add a Dropdown. Set the 'Placeholder' to `Transaction Type` and the 'Choices' to `None, Spend, Earn, P2P`. These must be exact. You can use these transaction types to mark your transaction depending on whether they are payments from an App to a User (Earn), a User to an App (Spend), or User to User (P2P).
+- Add two inputs. `Input Send Kin Amount` with 'Placeholder' `Amount` and 'Content format' to `text (numbers only)`. And `Input Send Kin Destination`with 'Placeholder'`Destination`.
+- Add a Dropdown named `Dropdown Send Kin Transaction Type`. Set the 'Placeholder' to `Transaction Type` and the 'Choices' to `None, Spend, Earn, P2P`. These must be exact. You can use these transaction types to mark your transaction depending on whether they are payments from an App to a User (Earn), a User to an App (Spend), or User to User (P2P).
   ![Send Kin](/images/no-code/Bubble-send-kin-design.png)
 - Click the 'Send Kin Button' and go to 'Start/Edit workflow'.
 - Add an action via `Plugins / Kinetic Make Transfer`.
