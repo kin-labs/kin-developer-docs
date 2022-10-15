@@ -81,7 +81,7 @@ const File: FC<{
         className="rounded bg-gray-800 px-3 py-1.5 text-sm text-slate-100 shadow-xl shadow-white dark:bg-violet-200 dark:text-violet-900 dark:shadow-black"
       >
         {tooltip}
-        <Tooltip.Arrow className="mx-1 text-gray-800 fill-current dark:text-violet-200" />
+        <Tooltip.Arrow className="mx-1 fill-current text-gray-800 dark:text-violet-200" />
       </Tooltip.Content>
     </Tooltip.Root>
   )
