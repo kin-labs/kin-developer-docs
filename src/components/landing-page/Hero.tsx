@@ -18,7 +18,7 @@ const content = {
 
 export const Hero: FC = () => {
   return (
-    <div className="mb-12 w-full space-y-12 pt-8 md:space-y-20 md:pt-16 lg:pt-20">
+    <div className="mb-12 w-full space-y-12 px-2 pt-8 md:space-y-20 md:pt-16 lg:px-0 lg:pt-20">
       <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-16 px-4 md:grid-cols-2 md:px-8 ">
         <div className="z-1 w-64 space-y-8 sm:max-w-md">
           <Heading level={0}>{content.heading}</Heading>
@@ -29,7 +29,7 @@ export const Hero: FC = () => {
           <img className="hidden md:block md:scale-125 lg:scale-150 " src={content.heroImage} />
         </div>
       </div>
-      <div className="HeroCards mx-auto mb-0 -mt-8 grid w-full max-w-5xl px-3">
+      <div className="my-10 mx-auto mb-0 max-w-5xl space-y-12 px-3">
         <NavCard
           hero
           title="Kin Essentials"
