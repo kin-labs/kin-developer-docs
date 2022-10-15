@@ -1,4 +1,4 @@
 module.exports = {
-  siteUrl: 'https://contentlayer.dev',
+  siteUrl: 'https://developer.kin.org',
   generateRobotsTxt: true,
 }
