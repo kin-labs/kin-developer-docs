@@ -1,12 +1,11 @@
 import Image from 'next/image'
+import { FC, PropsWithChildren } from 'react'
+import { ChevronLink } from '../common/ChevronLink'
 import { Icon, IconName } from '../common/Icon'
 import { Label } from '../common/Label'
-import { ChevronLink } from '../common/ChevronLink'
-import { children } from 'cheerio/lib/api/traversing'
-import link from 'next/link'
 
-export const DocsNavCard: React.FC<
-  React.PropsWithChildren<{
+export const DocsNavCard: FC<
+  PropsWithChildren<{
     hero?: boolean
     useCase?: boolean
     title: string

@@ -1,6 +1,7 @@
+import { FC } from 'react'
 import { DocsNavCard } from './DocsNavCard'
 
-export const DocsRegisterApp: React.FC = () => {
+export const DocsRegisterApp: FC = () => {
   return (
     <div className="mt-8 grid gap-6 md:grid-cols-2">
       <DocsNavCard

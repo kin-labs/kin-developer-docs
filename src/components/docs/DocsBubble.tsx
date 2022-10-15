@@ -1,6 +1,7 @@
+import { FC } from 'react'
 import { DocsNavCard } from './DocsNavCard'
 
-export const DocsBubble: React.FC = () => {
+export const DocsBubble: FC = () => {
   return (
     <div className="mt-8 grid gap-6 md:grid-cols-2">
       <DocsNavCard

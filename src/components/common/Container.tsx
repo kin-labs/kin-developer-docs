@@ -8,7 +8,7 @@ import { Footer } from './Footer'
 export const Container: FC<any> = ({ children, ...customMeta }) => {
   const router = useRouter()
 
-  const baseUrl = `https://https://developer.kin.org/`
+  const baseUrl = `https://developer.kin.org/`
 
   const meta = {
     title: "Kin - Integrate cryptocurrency into your App's experience",

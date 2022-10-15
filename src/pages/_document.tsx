@@ -44,7 +44,6 @@ class MyDocument extends Document {
           <meta name="msapplication-square150x150logo" content="/favicon/favicon.png" />
           <meta name="msapplication-wide310x150logo" content="/favicon/favicon.png" />
           <meta name="msapplication-square310x310logo" content="/favicon.png" />
-          <link rel="preload" href="/fonts/virgil.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
           <link
             rel="preload"
             href="/fonts/NeueHaasDisplayRoman.ttf"

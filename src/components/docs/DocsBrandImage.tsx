@@ -1,7 +1,8 @@
 import Image from 'next/image'
+import { FC, PropsWithChildren } from 'react'
 
-export const DocsBrandImage: React.FC<
-  React.PropsWithChildren<{ name: string; svg: boolean; png: boolean; light: boolean; dark: boolean }>
+export const DocsBrandImage: FC<
+  PropsWithChildren<{ name: string; svg: boolean; png: boolean; light: boolean; dark: boolean }>
 > = ({ name, svg = false, png = false, light = false, dark = false, children }) => {
   let fileName = `${name}.${svg ? 'svg' : 'png'}`
   let src = `/branding/${fileName}`

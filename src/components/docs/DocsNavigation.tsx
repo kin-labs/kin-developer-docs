@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { TreeNode } from 'types/TreeNode'
 import { Icon } from '../common/Icon'
 import { Label } from '../common/Label'

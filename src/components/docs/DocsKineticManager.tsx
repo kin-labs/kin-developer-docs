@@ -1,6 +1,7 @@
+import { FC } from 'react'
 import { DocsNavCard } from './DocsNavCard'
 
-export const DocsKineticManager: React.FC = () => {
+export const DocsKineticManager: FC = () => {
   return (
     <div className="mt-8 grid gap-6 md:grid-cols-2">
       <DocsNavCard

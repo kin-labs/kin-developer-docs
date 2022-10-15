@@ -1,9 +1,10 @@
+import { FC, PropsWithChildren } from 'react'
+import { ChevronLink } from '../common/ChevronLink'
 import { Icon, IconName } from '../common/Icon'
 import { Label } from '../common/Label'
-import { ChevronLink } from '../common/ChevronLink'
 
-export const DocsCard: React.FC<
-  React.PropsWithChildren<{
+export const DocsCard: FC<
+  PropsWithChildren<{
     title: string
     icon?: IconName | null
     label?: string | null

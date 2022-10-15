@@ -1,19 +1,12 @@
 import { FC } from 'react'
+import { DocsNavCard as NavCard } from '../../components/docs/DocsNavCard'
 import { Heading } from './Heading'
 import { Paragraph } from './Paragraph'
-import { DocsNavCard as NavCard } from '../../components/docs/DocsNavCard'
 
 const content = {
   heading: 'Easy. Quick. Intuitive.',
   text: "Integrate cryptocurrency into your App's experience",
   heroImage: '/images/kin-cube.png',
-  features: ['Lightweight & easy to use', 'Great developer experience', 'Blazing fast build & page performance'],
-  primaryAction: { label: 'Get started', url: '/docs/getting-started' },
-  secondaryAction: { label: 'Why Contentlayer?', url: '/blog/working-with-content-is-hard-for-developers' },
-  video: {
-    thumbnail: { url: 'https://i.imgur.com/5IKJALH.png', alt: 'Intro to Contentlayer Video Thumbnail' },
-    youtubeId: '58Pj4a4Us7A',
-  },
 }
 
 export const Hero: FC = () => {

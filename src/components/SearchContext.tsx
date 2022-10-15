@@ -1,28 +1,26 @@
-import { FC, ReactNode, useMemo } from 'react'
-import { useRouter } from 'next/router'
+import { allDocs } from 'contentlayer/generated'
 import {
-  KBarProvider,
+  Action,
+  KBarAnimator,
   KBarPortal,
   KBarPositioner,
-  KBarSearch,
-  KBarAnimator,
+  KBarProvider,
   KBarResults,
+  KBarSearch,
   useMatches,
-  Action,
 } from 'kbar'
+import { useRouter } from 'next/router'
+import { FC, ReactNode, useMemo } from 'react'
+import { buildDocsTree } from 'src/utils/build-docs-tree'
+
 import { TreeNode } from 'types/TreeNode'
 import { Card } from './common/Card'
 import { Icon } from './common/Icon'
 import { Label } from './common/Label'
-import { buildDocsTree } from 'src/utils/build-docs-tree'
-import { allDocs, allExamples, allPosts, Post } from 'contentlayer/generated'
-import { buildExamplesTree } from 'src/utils/build-examples-tree'
-import { format } from 'date-fns'
 
 export const SearchProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const router = useRouter()
   const docsTree = buildDocsTree(allDocs)
-  const examplesTree = buildExamplesTree(allExamples)
   const actions = useMemo(() => {
     let actions: Action[] = [
       {
@@ -65,7 +63,7 @@ export const SearchProvider: FC<{ children: ReactNode }> = ({ children }) => {
     }
     mapDocs(docsTree, 'Docs')
     return actions
-  }, [docsTree, examplesTree, router])
+  }, [docsTree, router])
 
   return (
     <KBarProvider actions={actions}>

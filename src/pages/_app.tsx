@@ -1,5 +1,4 @@
 import type { AppProps } from 'next/app'
-import React from 'react'
 import { ColorSchemeProvider } from '../components/ColorSchemeContext'
 
 import '../styles/globals.css'
