@@ -190,6 +190,9 @@
     filter: invert(55%) sepia(100%) hue-rotate(-155deg) saturate(10) contrast(1);
   }
 
+  .KREChecklist p {
+    display: inline;
+  }
   .KREChecklistCheckbox {
     margin-right: 0.5rem;
     margin-bottom: 1rem;
