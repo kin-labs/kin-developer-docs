@@ -18,6 +18,14 @@
 
   body {
     @apply h-full bg-white text-slate-500 antialiased dark:bg-gray-950 dark:text-slate-400;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Neue Haas Grotesk Display Pro', 'Open Sans', sans-serif;
   }
 
