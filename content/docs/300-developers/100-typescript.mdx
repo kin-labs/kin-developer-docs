@@ -75,11 +75,16 @@ const transferOptions = {
   amount: '5000',
   destination: `BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo`,
   owner: keypair,
-  type: TransactionType.P2P, // Can be Unknown, None, Earn, Spend or P2P
+  type: TransactionType.P2P, // Optional, can be Unknown, None, Earn, Spend or P2P,
+  referenceId: 'some id', // Optional, stored off-chain and returned via webhooks
+  referenceType: 'some reference'; // Optional, stored off-chain and returned via webhooks
+  senderCreate: false; // Optional, will make a Kin Token Account at that destination if true
 }
 
 await kineticClient.makeTransfer(transferOptions)
 ```
+
+Note - `referenceId` and `referenceType` are stored off chain and will be passed back to the App via webhooks if they are set up.
 
 ### Transfer Kin Batch
 
@@ -102,6 +107,9 @@ const destinations = [
 const transferBatchOptions = {
     owner: keypair,
     destinations,
+    referenceId: 'some id', // Optional, stored off-chain and returned via webhooks
+    referenceType: 'some reference'; // Optional, stored off-chain and returned via webhooks
+    senderCreate: false; // Optional, will make a Kin Token Account at that destination if true
 };
 
 await kineticClient.makeTransferBatch(transferBatchOptions);
@@ -275,10 +283,11 @@ await kinClient.requestAirdrop(tokenAccountPublicKey, quarks)
 
 ```js
 // Kinetic
-await kinClient.makeTransfer({ amount, destination, owner, type })
+await kinClient.makeTransfer({ amount, destination, owner, type, referenceId, referenceType, senderCreate })
 
 // Agora
 await kinClient.submitPayment({ quarks, destination, sender, type })
+// The Agora invoice option has been replaced by 'referenceId' and 'referenceType'
 ```
 
 **Transfer Kin Batch**
