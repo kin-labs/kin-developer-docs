@@ -1,14 +1,4 @@
-import {
-  FC,
-  useEffect,
-  Dispatch,
-  SetStateAction,
-  createContext,
-  useState,
-  useContext,
-  useMemo,
-  useCallback,
-} from 'react'
+import { createContext, FC, PropsWithChildren, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { ColorScheme } from '../utils/syntax-highlighting'
 
 const ColorSchemeContext = createContext<'light' | 'dark' | 'system'>('light')
@@ -17,7 +7,7 @@ const UpdateColorSchemeContext = createContext<(colorScheme: 'light' | 'dark' | 
 export const useColorScheme = () => useContext(ColorSchemeContext)
 export const useUpdateColorScheme = () => useContext(UpdateColorSchemeContext)
 
-export const ColorSchemeProvider: FC<React.PropsWithChildren<{}>> = ({ children }) => {
+export const ColorSchemeProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
   const initalColorScheme = useMemo(
     () =>
       typeof window !== 'undefined' ? (localStorage.getItem('theme') as ColorScheme | null) ?? 'system' : 'system',

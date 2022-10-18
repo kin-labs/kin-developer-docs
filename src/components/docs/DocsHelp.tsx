@@ -1,6 +1,7 @@
+import { FC } from 'react'
 import { DocsNavCard } from './DocsNavCard'
 
-export const DocsHelp: React.FC<{ discord?: boolean }> = ({ discord = false }) => {
+export const DocsHelp: FC<{ discord?: boolean }> = ({ discord = false }) => {
   return (
     <div className="mt-8 grid gap-6 md:grid-cols-2">
       {!discord ? (

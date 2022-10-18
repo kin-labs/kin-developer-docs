@@ -1,4 +1,3 @@
-import React from 'react'
 import { Container } from '../components/common/Container'
 import { Icon } from 'src/components/common/Icon'
 import { Heading } from 'src/components/landing-page/Heading'

@@ -1,6 +1,7 @@
+import { FC } from 'react'
 import { DocsNavCard } from './DocsNavCard'
 
-export const DocsKRE: React.FC<{ catalyst?: boolean }> = ({ catalyst = false }) => {
+export const DocsKRE: FC<{ catalyst?: boolean }> = ({ catalyst = false }) => {
   return (
     <div className="mt-8 grid gap-6 md:grid-cols-2">
       <DocsNavCard

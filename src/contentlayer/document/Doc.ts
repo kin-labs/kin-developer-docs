@@ -1,11 +1,10 @@
 import { defineDocumentType } from '@contentlayer/source-files'
-import type * as unified from 'unified'
-import { toMarkdown } from 'mdast-util-to-markdown'
 import { mdxToMarkdown } from 'mdast-util-mdx'
+import { toMarkdown } from 'mdast-util-to-markdown'
 
 import { bundleMDX } from 'mdx-bundler'
+import type * as unified from 'unified'
 
-// import { SEO } from '../nested/SEO'
 import { getLastEditedDate, urlFromFilePath } from '../utils'
 
 export type DocHeading = { level: 1 | 2 | 3; title: string }

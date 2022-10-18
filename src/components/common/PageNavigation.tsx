@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { type DocHeading } from '../../contentlayer/document/Doc'
 import { getNodeText, sluggifyTitle } from '../../utils/sluggify'
 import { Icon } from './Icon'

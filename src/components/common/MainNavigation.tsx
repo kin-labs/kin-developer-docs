@@ -1,13 +1,12 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { FC, useState } from 'react'
 import { useKBar } from 'kbar'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { FC, useState } from 'react'
+import { isExternalUrl } from '../../utils/helpers'
+import { ColorSchemeSwitcher } from './ColorSchemeSwitcher'
 import { Icon, IconName } from './Icon'
 import { Label } from './Label'
-import { Logo } from './Logo'
-import { useRouter } from 'next/router'
-import { ColorSchemeSwitcher } from './ColorSchemeSwitcher'
-import { isExternalUrl } from '../../utils/helpers'
 
 const navLinks: Array<{ label: string; url: string; hideLg?: boolean }> = [
   { label: 'Essentials', url: '/docs/essentials' },

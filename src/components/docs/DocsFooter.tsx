@@ -1,12 +1,7 @@
-import { FC } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { Icon } from '../common/Icon'
-import { format } from 'date-fns'
 import { Doc } from 'contentlayer/generated'
-
-const githubBranch = 'main'
-const githubBaseUrl = `https://github.com/contentlayerdev/website/blob/${githubBranch}/content/`
+import Link from 'next/link'
+import { FC } from 'react'
+import { Icon } from '../common/Icon'
 
 export const DocsFooter: FC<{ doc: Doc }> = ({ doc }) => {
   return (

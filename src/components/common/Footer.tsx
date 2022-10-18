@@ -1,9 +1,7 @@
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
 import { FC } from 'react'
-import { Logo } from './Logo'
 import { Icon } from './Icon'
-import { Heading } from '../landing-page/Heading'
 
 const isExternalUrl = (link: string): boolean => {
   return !link.startsWith('/')

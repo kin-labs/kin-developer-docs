@@ -1,4 +1,3 @@
-import { children } from 'cheerio/lib/api/traversing'
 import { Doc } from 'contentlayer/generated'
 import { TreeNode } from 'types/TreeNode'
 
