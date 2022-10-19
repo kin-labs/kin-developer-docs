@@ -5,7 +5,7 @@ import { Paragraph } from './Paragraph'
 
 const content = {
   heading: 'Easy. Quick. Intuitive.',
-  text: "Integrate cryptocurrency into your App's experience",
+  text: 'Integrate cryptocurrency into your app experience',
   heroImage: '/images/kin-cube.png',
 }
 

@@ -11,9 +11,9 @@ export const Container: FC<any> = ({ children, ...customMeta }) => {
   const baseUrl = `https://developer.kin.org/`
 
   const meta = {
-    title: "Kin - Integrate cryptocurrency into your App's experience",
+    title: 'Kin - Integrate cryptocurrency into your app experience',
     description:
-      'Simply put, Kin is money for the digital world and it provides a way for developers (like you) to monetize their apps and websites in a fundamentally new way.',
+      'Kin makes it easy for apps and brands to reward users and create exciting experiences with cryptocurrency, all while generating new revenue for themselves. Tear down the barriers to crypto development and join the global movement to transform the web.',
     url: customMeta.urlPath ? `${baseUrl}${customMeta.urlPath}` : baseUrl,
     name: 'Kin Developer Docs',
     image: customMeta.imagePath ? `${baseUrl}${customMeta.imagePath}` : `${baseUrl}/images/SEO.png`,

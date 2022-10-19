@@ -1,6 +1,6 @@
 ---
 title: Kinetic in Production
-excerpt: Run your Kin App on the Solana Mainnet
+excerpt: Run your Kin app on the Solana Mainnet
 nav_title: Kinetic in Production
 ---
 
@@ -46,7 +46,7 @@ You'll notice in the example above, you have to pass in an `endpoint` when you s
   <NavCard
     title="Kin Hosted"
     useCase
-    subtitle="For small scale Apps trying to get off the ground or existing Apps migrating to Kinetic, we offer a time-limited Kinetic instance upon request."
+    subtitle="For small scale apps trying to get off the ground or existing apps migrating to Kinetic, we offer a time-limited Kinetic instance upon request."
     svgFile="kin"
     link={{ url: '/docs/developers/kinetic-in-production/#kin-hosted', label: 'See how it works' }}
   >
@@ -57,7 +57,7 @@ You'll notice in the example above, you have to pass in an `endpoint` when you s
 
 ## Self Hosted
 
-For larger scale Apps or those looking for more control.
+For larger scale apps or those looking for more control.
 
 - Get insights into your transactions
 - Get insights into your hot-wallet usage
@@ -111,7 +111,7 @@ Stay tuned!
 
 ## Kin Hosted
 
-This is the easiest option and what we recommend for small-scale Apps that are just getting started with Kin.
+For small scale apps trying to get off the ground or existing apps migrating to Kinetic, we offer a time-limited Kinetic instance upon request.
 
 - Get insights into your transactions
 - Get insights into your hot-wallet usage
@@ -129,7 +129,7 @@ E.g. TypeScript SDK:
 const clientOptions = {
   environment: 'mainnet', // mainnet or devnet
   index: 999, // your App Index
-  endpoint: 'kin_kinetic_endpoint', // this will be provided upon request for qualifying Apps
+  endpoint: 'kin_kinetic_endpoint', // this will be provided upon request for qualifying apps
 }
 
 const kineticClient = await KineticSdk.setup(clientOptions)
