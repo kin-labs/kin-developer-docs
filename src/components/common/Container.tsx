@@ -16,7 +16,7 @@ export const Container: FC<any> = ({ children, ...customMeta }) => {
       'Simply put, Kin is money for the digital world and it provides a way for developers (like you) to monetize their apps and websites in a fundamentally new way.',
     url: customMeta.urlPath ? `${baseUrl}${customMeta.urlPath}` : baseUrl,
     name: 'Kin Developer Docs',
-    image: customMeta.imagePath ? `${baseUrl}${customMeta.imagePath}` : `${baseUrl}/images/beta-launch-post-meta.png`,
+    image: customMeta.imagePath ? `${baseUrl}${customMeta.imagePath}` : `${baseUrl}/images/SEO.png`,
     type: 'website',
     ...customMeta,
   }
