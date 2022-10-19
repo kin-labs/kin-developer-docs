@@ -29,23 +29,23 @@ const AnalyticsPopup = () => {
   )
 }
 
-const SEO = () => {
-  return (
-    <>
-      <title>Social Media Preview</title>
-      <meta property="og:url" content="developer.kin.org" />
-      <meta property="og:type" content="website" />
-      {/* <meta property="fb:app_id" content="your fb app id" /> */}
-      <meta property="og:title" content="Kin - Integrate Cryptocurrency Into Your App's Experience" />
-      <meta name="twitter:card" content="Kin - Integrate Cryptocurrency Into Your App's Experience" />
-      <meta
-        property="og:description"
-        content="Learn how to easily incorporate crytopcurrency into your App's experience with Kin. Work with best-in-class developer tools and add a powerful revenue stream with the Kin Rewards Engine."
-      />
-      <meta property="og:image" content={'/images/SEO.png'} />
-    </>
-  )
-}
+// const SEO = () => {
+//   return (
+//     <>
+//       <title>Social Media Preview</title>
+//       <meta property="og:url" content="developer.kin.org" />
+//       <meta property="og:type" content="website" />
+//       {/* <meta property="fb:app_id" content="your fb app id" /> */}
+//       <meta property="og:title" content="Kin - Integrate Cryptocurrency Into Your App's Experience" />
+//       <meta name="twitter:card" content="Kin - Integrate Cryptocurrency Into Your App's Experience" />
+//       <meta
+//         property="og:description"
+//         content="Learn how to easily incorporate crytopcurrency into your App's experience with Kin. Work with best-in-class developer tools and add a powerful revenue stream with the Kin Rewards Engine."
+//       />
+//       <meta property="og:image" content={'/images/SEO.png'} />
+//     </>
+//   )
+// }
 class MyDocument extends Document {
   render() {
     return (
@@ -91,7 +91,7 @@ class MyDocument extends Document {
           `,
             }}
           />
-          <SEO />
+          {/* <SEO /> */}
           <AnalyticsScripts />
         </Head>
         <body>
