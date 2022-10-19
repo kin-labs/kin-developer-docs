@@ -9,7 +9,7 @@ The Kinetic Plugin is a powerful tool that lets you work directly with Kin on th
 <div className="mt-8 grid gap-6 md:grid-cols-2">
   <NavCard
     title="Play With Kin"
-    subtitle="Check out a simple demo App built on Bubble that can interact with Kin on the Solana blockchain."
+    subtitle="Check out a simple demo app built on Bubble that can interact with Kin on the Solana blockchain."
     pngFile="bubble"
     link={{ url: 'https://kin-kinetic-demo.bubbleapps.io/version-test?debug_mode=true', label: 'Have a look' }}
   />
@@ -19,21 +19,21 @@ The Kinetic Plugin is a powerful tool that lets you work directly with Kin on th
 
 <br />
 
-Building your own App on Bubble with the Kin Kinetic Plugin is incredibly straightforward. Just follow the steps below to start transacting with Kin in your App.
+Building your own app on Bubble with the Kin Kinetic Plugin is incredibly straightforward. Just follow the steps below to start transacting with Kin in your app.
 
-## Create an App on Bubble.io
+## Create an app on Bubble.io
 
 First, register / log in on [bubble.io](https://bubble.io)
 
 <Bubble />
 
-Then create an App. Give it a name, description, etc. Bubble has a nice App creation wizard you can follow if you'd like.
+Then create an app. Give it a name, description, etc. Bubble has a nice app creation wizard you can follow if you'd like.
 
-If you get stuck at this point, you'll probably want to check out [Bubble Academy](https://bubble.io/academy) to get some pointers. There are some great tutorials for beginners that will help get you up to speed with what Bubble is and how you can build an App with it.
+If you get stuck at this point, you'll probably want to check out [Bubble Academy](https://bubble.io/academy) to get some pointers. There are some great tutorials for beginners that will help get you up to speed with what Bubble is and how you can build an app with it.
 
 ## Add the Kinetic Plugin
 
-Once you've created your App, you'll see a menu on the left hand side. Choose 'Plugins'. Then, 'Add plugins'.
+Once you've created your app, you'll see a menu on the left hand side. Choose 'Plugins'. Then, 'Add plugins'.
 ![Bubble Plugins](/images/no-code/Bubble-plugins.png)
 
 Search for 'kinetic', then 'Install' and 'Done'.
@@ -65,7 +65,7 @@ We want to make sure stuff works on the Solana test environment before moving to
 - set your 'environment' to `devnet`
 - set your 'index' to your App Index (Or just use '1' for now to get started, see below for details...)
 
-Don't have an App Index? Register your App on our Developer Portal so you can get your App Index that allows you get credit for your transactions and earn via the KRE.
+Don't have an App Index? Register your app on our Developer Portal so you can get your App Index that allows you get credit for your transactions and earn via the KRE.
 
 <RegisterApp />
 
@@ -75,7 +75,7 @@ Let the fun begin!
 
 ## Initialize the Kinetic Client
 
-When your App loads we want to 'Intialize the Kinetic Client'. Basically, this means we want to turn on the plugin and make sure it's connected to our Kinetic network correctly.
+When your app loads we want to 'Intialize the Kinetic Client'. Basically, this means we want to turn on the plugin and make sure it's connected to our Kinetic network correctly.
 
 To do this:
 
@@ -138,7 +138,7 @@ Lets display the Public Key on the screen for the user.
 
 ### View Mnemonic
 
-Now we want to make it so that a user of the App can view their own mnemonic so they can keep it somewhere safe. That way, we can re-use the mnemonic to make their Keypair instead of having to make a new one.
+Now we want to make it so that a user of the app can view their own mnemonic so they can keep it somewhere safe. That way, we can re-use the mnemonic to make their Keypair instead of having to make a new one.
 
 - Go to 'Design'. Add a new 'Button' called 'Show Mnemonic'.
 - Grab a 'Kinetic Local Storage' from the side menu and drag it next to the button. Rename it to `KineticLocalStorage Mnemonic`.
@@ -200,11 +200,11 @@ That's it!
 - The new data in Local Storage is `hasAccount = true` and something like `signature = 31CB6e5ufkFJG6...A9ygEYrgWExK8i`
 - The `signature` is the transaction signature for the Create Account action on the blockchain. Go to [Solana Explorer](https://explorer.solana.com/?cluster=devnet) and paste in the signature to see your transaction on the blockchain!
 - We can use the `hasAccount = true` value to indicate to users when an account has been found on the blockchain.
-- E.g. In these status indicators from the Demo App linked above:
+- E.g. In these status indicators from the Demo app linked above:
   ![Create Account](/images/no-code/Bubble-status-indicators-1.png)![Create Account](/images/no-code/Bubble-status-indicators-2.png)
 - We can use Kinetic Local Storage elements and push the values from the browser's Local Storage to display them on the screen, just like we did with the Public Key and the Mnemonic.
 - To see how it was done in the Demo App, have a look [here](https://bubble.io/page?name=index&id=kinetic-demo&tab=tabs-1)
-- Can you implement something similar in your own App?
+- Can you implement something similar in your own app?
 
 ## Check Balance
 
@@ -254,7 +254,7 @@ Now for the real stuff! We're going to send some of our Kin to another Account.
 
 - In 'Design', add a new Button and rename it to `Button Send Kin` with the text `Send Kin`.
 - Add two inputs. `Input Send Kin Amount` with 'Placeholder' `Amount` and 'Content format' to `text (numbers only)`. And `Input Send Kin Destination`with 'Placeholder'`Destination`.
-- Add a Dropdown named `Dropdown Send Kin Transaction Type`. Set the 'Placeholder' to `Transaction Type` and the 'Choices' to `None, Spend, Earn, P2P`. These must be exact. You can use these transaction types to mark your transaction depending on whether they are payments from an App to a User (Earn), a User to an App (Spend), or User to User (P2P).
+- Add a Dropdown named `Dropdown Send Kin Transaction Type`. Set the 'Placeholder' to `Transaction Type` and the 'Choices' to `None, Spend, Earn, P2P`. These must be exact. You can use these transaction types to mark your transaction depending on whether they are payments from an app to a User (Earn), a User to an app (Spend), or User to User (P2P).
   ![Send Kin](/images/no-code/Bubble-send-kin-design.png)
 - Click the 'Send Kin Button' and go to 'Start/Edit workflow'.
 - Add an action via `Plugins / Kinetic Make Transfer`.
@@ -324,7 +324,7 @@ Finished!
 
 Congratulations on making it this far! You can now carry out all of the actions of the Kinetic Plugin and display that data in the browser. Awesome!
 
-Now, we don't claim to be experts in how Bubble works, so I'm sure there are many more elegant ways to implement the UX for a bubble App than we've shown here. But this should be a solid starting point for anyone wanting to work with Kin via Bubble. Happy building!
+Now, we don't claim to be experts in how Bubble works, so I'm sure there are many more elegant ways to implement the UX for a Bubble app than we've shown here. But this should be a solid starting point for anyone wanting to work with Kin via Bubble. Happy building!
 
 ## Demos and Starter Kits
 
@@ -333,13 +333,13 @@ Created to help get you up and running as quickly as possible, these projects ca
 <div className="mt-8 grid gap-6 md:grid-cols-2">
   <NavCard
     title="Kinetic Bubble Demo"
-    subtitle="Check out a simple demo App built on Bubble that can interact with Kin on the Solana blockchain."
+    subtitle="Check out a simple demo app built on Bubble that can interact with Kin on the Solana blockchain."
     pngFile="bubble"
     link={{ url: 'https://kin-kinetic-demo.bubbleapps.io/version-test?debug_mode=true', label: 'Play here' }}
   />
   <NavCard
     title="Behind The Scenes"
-    subtitle="Check out the workflows, conditional logic etc used to build the Kinetic Bubble Demo App."
+    subtitle="Check out the workflows, conditional logic etc used to build the Kinetic Bubble Demo app."
     pngFile="bubble"
     link={{ url: 'https://bubble.io/page?name=index&id=kin-kinetic-demo&tab=tabs-1', label: 'Take a peek' }}
   />
