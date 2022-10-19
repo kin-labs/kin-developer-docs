@@ -91,8 +91,8 @@ class MyDocument extends Document {
           `,
             }}
           />
-          <AnalyticsScripts />
           <SEO />
+          <AnalyticsScripts />
         </Head>
         <body>
           <Main />
