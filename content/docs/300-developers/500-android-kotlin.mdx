@@ -4,4 +4,242 @@ excerpt: Build your Kin app with Android / Kotlin
 nav_title: Android / Kotlin
 ---
 
-## Coming Soon!
+## Get Started or Add to an Existing Project
+
+Getting started with Kin is incredibly straightforward. Just follow the steps below to start transacting with Kin in your app.
+
+### Installation
+
+In your root build.gradle or settings.gradle, make sure you've included jitpack:
+```
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
+}
+```
+And add the dependency, normally in the module-level build.gradle:
+```
+dependencies {
+	implementation 'com.github.kin-labs:kinetic-android-sdk:1.0.0-rc.5'
+}
+```
+
+### Instantiate the Kinetic Client
+
+The Kinetic Client will give you access to all the methods you need to work with Kin on the blockchain.
+
+We recommend starting with Devnet before moving on to Mainnet.
+
+The Kinetic SDK uses Kotlin suspend functions to perform asynchronous network calls. We recommend calling these from within a CoroutineScope as follows where necessary. As there are many ways to handle asynchronous code in Kotlin, we will not include the CoroutineScope in every piece of sample code, but it may be necessary in your implementation.
+
+```kotlin
+import org.kin.kinetic.KineticSdk
+
+CoroutineScope(Dispatchers.IO).launch {
+	val kinetic = KineticSdk.setup(  
+	    "https://sandbox.kinetic.host",
+	    "devnet",
+	    1
+	)
+}
+```
+
+Don't have an App Index? Register your app on our Developer Portal so you can get your App Index that allows you to transact with our SDKs and earn via the KRE.
+
+<RegisterApp />
+
+### Create Account
+
+You can create accounts from existing mnemonics or secret keys. In this case we'll generate a mnemonic and use that to create the keypair we use for creating the account on the blockchain.
+
+```kotlin
+val owner = Keypair.random()
+val transaction = kinetic.createAccount(owner)
+```
+
+### Check Balance
+
+```kotlin
+val balance = kinetic.getBalance(owner.publicKey).balance
+```
+
+### Airdrop Funds (devnet)
+
+```kotlin
+val airdropSignature = kinetic.requestAirdrop(owner.publicKey).signature
+```
+
+### Transfer Kin
+
+```kotlin
+val txSignature = kinetic.makeTransfer(
+	"5000",
+	"BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo",
+	owner
+).signature
+```
+
+### Get Transaction Details
+
+```kotlin
+val transactionDetails = kinetic.getTransaction(txSignature)
+```
+
+### Get Solana Explorer URL
+
+[Solana Explorer](https://explorer.solana.com/)
+
+```kotlin
+val explorerURL = kinetic.getExplorerUrl("account or transaction id string")
+```
+
+### Get Account History
+
+```kotlin
+val accountHistory = kinetic.getHistory(owner.publicKey)
+```
+
+
+## Demos and Starter Kits
+
+Created to help get you up and running as quickly as possible, these projects can be a great reference point when you get stuck or even a starter for your own project. Happy coding!
+
+```
+Coming soon!
+```
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard title="" subtitle="" icon="github" link={{ url: '', label: 'Have a look' }} />
+</div>
+
+## Ready for Production?
+
+If your app is ready for production, this is the place for you!
+
+<Production />
+
+## Earn Kin via the KRE
+
+<KRE />
+
+## Contribute
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Kinetic Android SDK"
+    subtitle="Want to contribute to the Kinetic Android SDK?"
+    icon="github"
+    link={{ url: 'https://github.com/kin-labs/kinetic-android-sdk', label: 'Contribute' }}
+  />
+</div>
+
+## What If I Get Stuck?
+
+<Help />
+
+## Developer Best Practices
+
+Once you're ready to code, have a quick look at our [Developer Best Practices](/essentials/best-practices/) where we cover some useful topics that you'll want to keep in mind as you build out your Kin application.
+
+<BestPractices />
+
+## Upgrading to Kinetic from Agora?
+
+<Agora />
+
+Here, we will outline the key API changes from the old version of our SDK to the new Kinetic version.
+
+**General notes**
+
+- For methods that request Kin be transferred, `amount` is the amount of Kin, not quarks.
+- Response objects from requests have updated / changed.
+
+**Instantiate the Kin Client**
+
+```kotlin
+// Kinetic
+import org.kin.kinetic.KineticSdk
+
+CoroutineScope(Dispatchers.IO).launch {
+	val kinetic = KineticSdk.setup(  
+	    "https://sandbox.kinetic.host",
+	    "devnet",
+	    1
+	)
+}
+
+// Agora
+import org.kin.sdk.base.*
+
+val environment: KinEnvironment = KinEnvironment.Agora.Builder(NetworkEnvironment.DevNet)
+        .setAppInfoProvider(object : AppInfoProvider {  
+            override val appInfo: AppInfo =  
+                AppInfo(  
+                    AppIdx(1),  
+                    KinAccount.Id("public key"),  
+                    "App Name",  
+                    R.mipmap.appIcon  
+                )  
+  
+            override fun getPassthroughAppUserCredentials(): AppUserCreds {  
+                return AppUserCreds("demo_app_uid", "demo_app_user_passkey")  
+            }  
+        })  
+        .build()
+
+```
+
+**Create Account**
+
+```kotlin
+// Kinetic
+val owner = Keypair.random()
+val transaction = kinetic.createAccount(owner)
+
+// Agora
+val accountContext = KinAccountContext.Builder(environment)  
+    .createNewAccount()  
+    .build()
+```
+
+**Check Balance**
+
+```kotlin
+// Kinetic
+val balance = kinetic.getBalance(owner.publicKey).balance
+
+// Agora
+val balanceObserver = accountContext.observeBalance(ObservationMode.Active)  
+balanceObserver.add { kinBalance: KinBalance ->  
+    val balance = kinBalance.amount.value.toInt()  
+}
+```
+
+**Transfer Kin**
+
+```kotlin
+// Kinetic
+val txSignature = kinetic.makeTransfer(
+	"5000",
+	"BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo",
+	owner,  
+	type = KinBinaryMemo.TransactionType.Spend
+).signature
+
+// Agora
+accountContext.sendKinPayment(
+	KinAmount(5000),
+	KinAccount.Id("BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo"),
+	memo
+)  
+    .then(  
+        onResolved = { kinPayment ->  
+            val txSignature = Base58.encode(kinPayment.id.transactionHash.rawValue) 
+        },  
+        onRejected = { t ->  
+            // Handle error 
+        }  
+    )
+```
