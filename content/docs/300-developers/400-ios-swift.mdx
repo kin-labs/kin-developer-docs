@@ -4,4 +4,210 @@ excerpt: Build your Kin app with iOS / Swift
 nav_title: iOS / Swift
 ---
 
-## Coming Soon!
+## Get Started or Add to an Existing Project
+
+Getting started with Kin is incredibly straightforward. Just follow the steps below to start transacting with Kin in your app.
+
+### Installation
+
+**Using Swift Package Manager**
+-   In Xcode: File > Add Packages...
+-   Search "[https://github.com/kin-labs/kinetic-ios-sdk](https://github.com/kin-labs/kinetic-ios-sdk)"
+-   Choose appropriate Dependency Rule for your needs
+-   Add Package
+
+### Instantiate the Kinetic Client
+
+The Kinetic Client will give you access to all the methods you need to work with Kin on the blockchain.
+
+We recommend starting with Devnet before moving on to Mainnet.
+
+```swift
+import Kinetic
+
+let kinetic = await KineticSdk.setup(
+	endpoint: "https://sandbox.kinetic.host",
+	environment: "devnet",
+	index: 1
+)
+```
+
+Don't have an App Index? Register your app on our Developer Portal so you can get your App Index that allows you to transact with our SDKs and earn via the KRE.
+
+<RegisterApp />
+
+### Create Account
+
+You can create accounts from existing mnemonics or secret keys. In this case we'll generate a mnemonic and use that to create the keypair we use for creating the account on the blockchain.
+
+```swift
+let owner = Keypair.random()
+let transaction = await kinetic.createAccount(owner: owner)
+```
+
+### Check Balance
+
+```swift
+let balance = await kinetic.getBalance(account: owner.publicKey).balance
+```
+
+### Airdrop Funds (devnet)
+
+```swift
+let airdropSignature = await kinetic.requestAirdrop(account: owner.publicKey).signature
+```
+
+### Transfer Kin
+
+```swift
+let txSignature = await kinetic.makeTransfer(
+	amount: "5000",
+	destination: "BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo",
+	owner: owner
+).signature
+```
+
+### Get Transaction Details
+
+```swift
+let transactionDetails = await kinetic.getTransaction(signature: txSignature)
+```
+
+### Get Solana Explorer URL
+
+[Solana Explorer](https://explorer.solana.com/)
+
+```swift
+let explorerURL = kinetic.getExplorerUrl(path: "account or transaction id string")
+```
+
+### Get Account History
+
+```swift
+let accountHistory = kinetic.getHistory(account: owner.publicKey)
+```
+
+
+## Demos and Starter Kits
+
+Created to help get you up and running as quickly as possible, these projects can be a great reference point when you get stuck or even a starter for your own project. Happy coding!
+
+```
+Coming soon!
+```
+
+## Ready for Production?
+
+If your app is ready for production, this is the place for you!
+
+<Production />
+
+## Earn Kin via the KRE
+
+<KRE />
+
+## Contribute
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Kinetic iOS SDK"
+    subtitle="Want to contribute to the Kinetic iOS SDK?"
+    icon="github"
+    link={{ url: 'https://github.com/kin-labs/kinetic-ios-sdk', label: 'Contribute' }}
+  />
+</div>
+
+## What If I Get Stuck?
+
+<Help />
+
+## Developer Best Practices
+
+Once you're ready to code, have a quick look at our [Developer Best Practices](/essentials/best-practices/) where we cover some useful topics that you'll want to keep in mind as you build out your Kin application.
+
+<BestPractices />
+
+## Upgrading to Kinetic from Agora?
+
+<Agora />
+
+Here, we will outline the key API changes from the old version of our SDK to the new Kinetic version.
+
+**General notes**
+
+- For methods that request Kin be transferred, `amount` is the amount of Kin, not quarks.
+- Response objects from requests have updated / changed.
+
+**Instantiate the Kin Client**
+
+```swift
+// Kinetic
+import Kinetic
+
+let kinetic = await KineticSdk.setup(
+	endpoint: "https://sandbox.kinetic.host",
+	environment: "devnet",
+	index: 1
+)
+
+// Agora
+import KinBase
+
+let appInfoProvider = BasicAppInfoProvider(...)
+let env = KinEnvironment.Agora.mainNet(appInfoProvider: appInfoProvider)
+let kinAccountContext = KinAccountContext.Builder(env: env).createNewAccount().build()
+
+```
+
+**Create Account**
+
+```swift
+// Kinetic
+let owner = Keypair.random()
+let transaction = await kinetic.createAccount(owner: owner)
+
+// Agora
+let kinAccountContext = KinAccountContext.Builder(env: env).createNewAccount().build()
+```
+
+**Check Balance**
+
+```swift
+// Kinetic
+let balance = await kinetic.getBalance(account: owner.publicKey).balance
+
+// Agora
+let balanceObserver = kinAccountContext.observeBalance(mode: .active)
+balanceObserver.subscribe({ (kinBalance) in
+	let balance = (kinBalance.amount as NSNumber).intValue
+})
+```
+
+**Transfer Kin**
+
+```swift
+// Kinetic
+let txSignature = await kinetic.makeTransfer(
+	amount: "5000",
+	destination: "BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo",
+	owner: owner,
+    type: KineticKinMemo.TransactionType.spend
+).signature
+
+// Agora
+kinAccountContext.sendKinPayment(
+	KinPaymentItem(
+		amount: Kin(5000),
+		destAccount: PublicKey(base58: "BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo")!
+	),
+	memo: KinBinaryMemo(
+		typeId: KinBinaryMemo.TransferType.spend.rawValue,
+		appIdx: 1
+	).kinMemo
+).then { payment in
+	let txSignature = payment.id.transactionHash.base58
+}
+.catch({ error in
+	// Handle error
+})
+```
