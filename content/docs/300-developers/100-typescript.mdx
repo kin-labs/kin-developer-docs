@@ -25,7 +25,7 @@ import { KineticSdk } from '@kin-kinetic/sdk'
 
 const clientOptions = {
   environment: 'devnet', // mainnet or devnet
-  index: 999, // your App Index
+  index: 1, // your App Index
   endpoint: 'https://sandbox.kinetic.host/', // devnet endpoint
 }
 
@@ -33,6 +33,8 @@ const kineticClient = await KineticSdk.setup(clientOptions)
 ```
 
 Don't have an App Index? Register your app on our Developer Portal so you can get your App Index that allows you to transact with our SDKs and earn via the KRE.
+
+While you're waiting for confirmation of your App Index, use `1` on devnet so you can get started.
 
 <RegisterApp />
 

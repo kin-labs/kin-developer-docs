@@ -11,10 +11,11 @@ Getting started with Kin is incredibly straightforward. Just follow the steps be
 ### Installation
 
 **Using Swift Package Manager**
--   In Xcode: File > Add Packages...
--   Search "[https://github.com/kin-labs/kinetic-ios-sdk](https://github.com/kin-labs/kinetic-ios-sdk)"
--   Choose appropriate Dependency Rule for your needs
--   Add Package
+
+- In Xcode: File > Add Packages...
+- Search "[https://github.com/kin-labs/kinetic-ios-sdk](https://github.com/kin-labs/kinetic-ios-sdk)"
+- Choose appropriate Dependency Rule for your needs
+- Add Package
 
 ### Instantiate the Kinetic Client
 
@@ -33,6 +34,8 @@ let kinetic = await KineticSdk.setup(
 ```
 
 Don't have an App Index? Register your app on our Developer Portal so you can get your App Index that allows you to transact with our SDKs and earn via the KRE.
+
+While you're waiting for confirmation of your App Index, use `1` on devnet so you can get started.
 
 <RegisterApp />
 
@@ -86,7 +89,6 @@ let explorerURL = kinetic.getExplorerUrl(path: "account or transaction id string
 ```swift
 let accountHistory = kinetic.getHistory(account: owner.publicKey)
 ```
-
 
 ## Demos and Starter Kits
 

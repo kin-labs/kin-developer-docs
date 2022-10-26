@@ -11,6 +11,7 @@ Getting started with Kin is incredibly straightforward. Just follow the steps be
 ### Installation
 
 In your root build.gradle or settings.gradle, make sure you've included jitpack:
+
 ```
 allprojects {
 	repositories {
@@ -19,7 +20,9 @@ allprojects {
 	}
 }
 ```
+
 And add the dependency, normally in the module-level build.gradle:
+
 ```
 dependencies {
 	implementation 'com.github.kin-labs:kinetic-android-sdk:1.0.0-rc.5'
@@ -38,7 +41,7 @@ The Kinetic SDK uses Kotlin suspend functions to perform asynchronous network ca
 import org.kin.kinetic.KineticSdk
 
 CoroutineScope(Dispatchers.IO).launch {
-	val kinetic = KineticSdk.setup(  
+	val kinetic = KineticSdk.setup(
 	    "https://sandbox.kinetic.host",
 	    "devnet",
 	    1
@@ -47,6 +50,8 @@ CoroutineScope(Dispatchers.IO).launch {
 ```
 
 Don't have an App Index? Register your app on our Developer Portal so you can get your App Index that allows you to transact with our SDKs and earn via the KRE.
+
+While you're waiting for confirmation of your App Index, use `1` on devnet so you can get started.
 
 <RegisterApp />
 
@@ -101,7 +106,6 @@ val explorerURL = kinetic.getExplorerUrl("account or transaction id string")
 val accountHistory = kinetic.getHistory(owner.publicKey)
 ```
 
-
 ## Demos and Starter Kits
 
 Created to help get you up and running as quickly as possible, these projects can be a great reference point when you get stuck or even a starter for your own project. Happy coding!
@@ -109,7 +113,6 @@ Created to help get you up and running as quickly as possible, these projects ca
 ```
 Coming soon!
 ```
-
 
 ## Ready for Production?
 
@@ -160,7 +163,7 @@ Here, we will outline the key API changes from the old version of our SDK to the
 import org.kin.kinetic.KineticSdk
 
 CoroutineScope(Dispatchers.IO).launch {
-	val kinetic = KineticSdk.setup(  
+	val kinetic = KineticSdk.setup(
 	    "https://sandbox.kinetic.host",
 	    "devnet",
 	    1
@@ -171,19 +174,19 @@ CoroutineScope(Dispatchers.IO).launch {
 import org.kin.sdk.base.*
 
 val environment: KinEnvironment = KinEnvironment.Agora.Builder(NetworkEnvironment.DevNet)
-        .setAppInfoProvider(object : AppInfoProvider {  
-            override val appInfo: AppInfo =  
-                AppInfo(  
-                    AppIdx(1),  
-                    KinAccount.Id("public key"),  
-                    "App Name",  
-                    R.mipmap.appIcon  
-                )  
-  
-            override fun getPassthroughAppUserCredentials(): AppUserCreds {  
-                return AppUserCreds("demo_app_uid", "demo_app_user_passkey")  
-            }  
-        })  
+        .setAppInfoProvider(object : AppInfoProvider {
+            override val appInfo: AppInfo =
+                AppInfo(
+                    AppIdx(1),
+                    KinAccount.Id("public key"),
+                    "App Name",
+                    R.mipmap.appIcon
+                )
+
+            override fun getPassthroughAppUserCredentials(): AppUserCreds {
+                return AppUserCreds("demo_app_uid", "demo_app_user_passkey")
+            }
+        })
         .build()
 
 ```
@@ -196,8 +199,8 @@ val owner = Keypair.random()
 val transaction = kinetic.createAccount(owner)
 
 // Agora
-val accountContext = KinAccountContext.Builder(environment)  
-    .createNewAccount()  
+val accountContext = KinAccountContext.Builder(environment)
+    .createNewAccount()
     .build()
 ```
 
@@ -208,9 +211,9 @@ val accountContext = KinAccountContext.Builder(environment)
 val balance = kinetic.getBalance(owner.publicKey).balance
 
 // Agora
-val balanceObserver = accountContext.observeBalance(ObservationMode.Active)  
-balanceObserver.add { kinBalance: KinBalance ->  
-    val balance = kinBalance.amount.value.toInt()  
+val balanceObserver = accountContext.observeBalance(ObservationMode.Active)
+balanceObserver.add { kinBalance: KinBalance ->
+    val balance = kinBalance.amount.value.toInt()
 }
 ```
 
@@ -221,7 +224,7 @@ balanceObserver.add { kinBalance: KinBalance ->
 val txSignature = kinetic.makeTransfer(
 	"5000",
 	"BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo",
-	owner,  
+	owner,
 	type = KinBinaryMemo.TransactionType.Spend
 ).signature
 
@@ -230,13 +233,13 @@ accountContext.sendKinPayment(
 	KinAmount(5000),
 	KinAccount.Id("BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo"),
 	memo
-)  
-    .then(  
-        onResolved = { kinPayment ->  
-            val txSignature = Base58.encode(kinPayment.id.transactionHash.rawValue) 
-        },  
-        onRejected = { t ->  
-            // Handle error 
-        }  
+)
+    .then(
+        onResolved = { kinPayment ->
+            val txSignature = Base58.encode(kinPayment.id.transactionHash.rawValue)
+        },
+        onRejected = { t ->
+            // Handle error
+        }
     )
 ```
