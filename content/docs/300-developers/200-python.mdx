@@ -4,4 +4,309 @@ excerpt: Build your Kin app with Python
 nav_title: Python
 ---
 
-## Coming Soon!
+## Get Started or Add to an Existing Project
+
+Getting started with Kin is incredibly straightforward. Just follow the steps below to start transacting with Kin in your app.
+
+### Installation
+
+```shell
+pip install kinetic-sdk
+```
+
+### Instantiate the Kinetic Client
+
+The Kinetic Client will give you access to all the methods you need to work with Kin on the blockchain.
+
+We recommend starting with Devnet before moving on to Mainnet.
+
+```python
+from kinetic_sdk import KineticSdk
+
+kinetic_client = KineticSdk.setup(
+    environment='devnet', # mainnet or devnet,
+    index=1, # your App Index
+    endpoint='https://sandbox.kinetic.host/', # devnet endpoint
+)
+```
+
+Don't have an App Index? Register your app on our Developer Portal so you can get your App Index that allows you to transact with our SDKs and earn via the KRE.
+
+While you're waiting for confirmation of your App Index, use `1` on devnet so you can get started.
+
+<RegisterApp />
+
+### Create Account
+
+You can create accounts from existing mnemonics or secret keys. In this case we'll generate a mnemonic and use that to creat the keypair we use for creating the account on the blockchain.
+
+```python
+from kinetic_sdk import Keypair, Commitment
+
+mnemonic = Keypair.generate_mnemonic()
+keypair = Keypair.from_mnemonic(mnemonic)
+
+kinetic_client.create_account(
+    owner=keypair,
+    commitment=Commitment.Finalized
+)
+```
+
+### Check Balance
+
+```python
+balance = kinetic_client.get_balance(account=keypair.public_key)
+```
+
+### Airdrop Funds (devnet)
+
+```python
+airdrop = kinetic_client.request_airdrop(
+    account=keypair.public_key,
+    amount='1000',
+    commitment=Commitment.Finalized
+)
+```
+
+### Transfer Kin
+
+```python
+from kinetic_sdk import TransactionType
+
+transfer = kinetic_client.make_transfer(
+    amount='5000',
+    destination='BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo',
+    owner=keypair,
+    type=TransactionType.P2P, # Optional, can be Unknown, None, Earn, Spend or P2P
+    reference_id='some id', # Optional, stored off-chain and returned via webhooks
+    reference_type='some reference', # Optional, stored off-chain and returned via webhooks
+    sender_create=false # Optional, will make a Kin Token Account at that destination if true
+)
+```
+
+Note - `referenceId` and `referenceType` are stored off chain and will be passed back to the app via webhooks if they are set up.
+
+### Transfer Kin Batch
+
+```python
+from kinetic_sdk import Destination
+
+destinations = []
+
+destinations.append(
+  Destination(
+    amount='500', destination='BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo'))
+
+destinations.append(
+  Destination(
+    amount='600', destination='BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo'))
+
+destinations.append(
+  Destination(
+    amount='800', destination='BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo'))
+
+batch_transfer = kinetic_client.make_transfer_batch(
+    owner=keypair,
+    destinations=destinations,
+    reference_id='some id', # Optional, stored off-chain and returned via webhooks
+    reference_type='some reference', # Optional, stored off-chain, returned via webhooks
+    sender_create=false # Optional, will make a Kin Token Account at that destination
+)
+```
+
+### Get Transaction Details
+
+```python
+transaction = kinetic_client.get_transaction(signature='transaction id string')
+```
+
+### Get Solana Explorer URL
+
+[Solana Explorer](https://explorer.solana.com/)
+
+```python
+explorer_url = kinetic_client.get_explorer_url('transaction id string')
+```
+
+### Get Account History
+
+```python
+history = kinetic_client.get_history(account=keypair.publicKey)
+```
+
+### Webhooks
+
+In [Kinetic Manager](/docs/developers/kinetic-manager/), you can configure your app to use the following webhooks:
+
+### Events Webhook
+
+This webhook can be used to receive information about completed transactions.
+
+E.g. In a Python server with `Flask` / `flask-cors`:
+
+```python
+@cross_origin()
+@app.route('/events', methods=['POST'])
+def events():
+    print('request_body: ', request.body)
+    # DO STUFF WITH EVENT DATA
+    response = '', 200
+    return response
+```
+
+### Verify Webhook
+
+This webhook can be used to verify transactions.
+
+E.g. In a In a Python server with `Flask` / `flask-cors` return a `200` status code to approve the transaction:
+
+```python
+@cross_origin()
+@app.route('/verify', methods=['POST'])
+def events():
+    print('request_body: ', request.body)
+    # CHECK THAT YOU WANT THIS TRANSACTION TO PROCEED
+    # Return 200 if you do
+    response = '', 200
+    return response
+```
+
+## Demos and Starter Kits
+
+Created to help get you up and running as quickly as possible, these projects can be a great reference point when you get stuck or even a starter for your own project. Happy coding!
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Python SDK Demo"
+    subtitle="A full-fat server based implementation of Kin Kinetic."
+    icon="github"
+    link={{ url: 'https://github.com/kin-starters/kin-demo-python-sdk', label: 'Have a look' }}
+  >
+    This server is compatible with the [Kin DApp Playground](https://github.com/kin-starters/kin-dapp-playground) Front
+    End.
+  </NavCard>
+</div>
+
+## Ready for Production?
+
+If your app is ready for production, this is the place for you!
+
+<Production />
+
+## Earn Kin via the KRE
+
+<KRE />
+
+## Contribute
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Kinetic Python SDK"
+    subtitle="Want to contribute to the Kinetic Python SDK?"
+    icon="github"
+    link={{ url: 'https://github.com/kin-labs/kinetic-python-sdk', label: 'Contribute' }}
+  />
+</div>
+
+## What If I Get Stuck?
+
+<Help />
+
+## Developer Best Practices
+
+Once you're ready to code, have a quick look at our [Developer Best Practices](/essentials/best-practices/) where we cover some useful topics that you'll want to keep in mind as you build out your Kin application.
+
+<BestPractices />
+
+## Upgrading to Kinetic from Agora?
+
+<Agora />
+
+Here, we will outline the key API changes from the old version of our SDK to the new Kinetic version.
+
+**General notes**
+
+- For methods that request Kin be transferred, `amount` is the amount of Kin, not quarks.
+- Response objects from requests have updated / changed.
+
+**Instantiate the Kin Client**
+
+```python
+// Kinetic
+import { KineticSdk } from '@kin-kinetic/sdk'
+const kinClient = await KineticSdk.setup({ environment, index })
+
+// Agora
+import { Client } from '@kinecosystem/kin-sdk-v2'
+const kinClient = new Client(env, { appIndex })
+```
+
+**Create Account**
+
+```python
+// Kinetic
+await kinClient.createAccount({ owner: keypair })
+
+// Agora
+await kinClient.createAccount(privateKey)
+```
+
+**Check Balance**
+
+```python
+// Kinetic
+const { balance } = await kinClient.getBalance({ account })
+
+// Agora
+const balance = await kinClient.getBalance(publicKey)
+```
+
+**Airdrop Funds (devnet)**
+
+```python
+// Kinetic
+await kinClient.requestAirdrop({ account, amount })
+
+// Agora
+await kinClient.requestAirdrop(tokenAccountPublicKey, quarks)
+```
+
+**Transfer Kin**
+
+```python
+// Kinetic
+await kinClient.makeTransfer({ amount, destination, owner, type, referenceId, referenceType, senderCreate })
+
+// Agora
+await kinClient.submitPayment({ quarks, destination, sender, type })
+// The Agora invoice option has been replaced by 'referenceId' and 'referenceType'
+```
+
+**Transfer Kin Batch**
+
+```python
+// Kinetic
+const destinations = [{ destination, amount }]
+await kinClient.makeTransferBatch({ owner, destinations })
+
+// Agora
+const earns = [{ destination, quarks }]
+await kinClient.submitEarnBatch({ sender, earns })
+```
+
+**Get Transaction Details**
+
+```python
+// Kinetic
+const signature = 'transaction id string'
+await kineticClient.getTransaction({ signature })
+
+// Agora
+import bs58 from 'bs58'
+const transactionBuffer = bs58.decode(transactionId)
+const data = await kineticClient.getTransaction(transactionBuffer)
+```
+
+**Webhooks**
+
+In Agora, we used the `sign_transaction` webhook. That's been deprecated and we now have the `verify` webhook that can simply return a 200 status code to confirm verification of a request.
