@@ -80,7 +80,7 @@ transfer = kinetic_client.make_transfer(
     type=TransactionType.P2P, # Optional, can be Unknown, None, Earn, Spend or P2P
     reference_id='some id', # Optional, stored off-chain and returned via webhooks
     reference_type='some reference', # Optional, stored off-chain and returned via webhooks
-    sender_create=false # Optional, will make a Kin Token Account at that destination if true
+    sender_create=False # Optional, will make a Kin Token Account at that destination if true
 )
 ```
 
@@ -110,7 +110,7 @@ batch_transfer = kinetic_client.make_transfer_batch(
     destinations=destinations,
     reference_id='some id', # Optional, stored off-chain and returned via webhooks
     reference_type='some reference', # Optional, stored off-chain, returned via webhooks
-    sender_create=false # Optional, will make a Kin Token Account at that destination
+    sender_create=False # Optional, will make a Kin Token Account at that destination
 )
 ```
 
