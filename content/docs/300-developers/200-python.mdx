@@ -48,7 +48,7 @@ keypair = Keypair.from_mnemonic(mnemonic)
 
 kinetic_client.create_account(
     owner=keypair,
-    commitment=Commitment.Finalized
+    commitment=Commitment('Finalized'),
 )
 ```
 
@@ -64,16 +64,17 @@ balance = kinetic_client.get_balance(account=keypair.public_key)
 airdrop = kinetic_client.request_airdrop(
     account=keypair.public_key,
     amount='1000',
-    commitment=Commitment.Finalized
+    commitment=Commitment('Finalized'),
 )
 ```
 
 ### Transfer Kin
 
 ```python
-from kinetic_sdk import TransactionType
+from kinetic_sdk import TransactionType, Commitment
 
 transfer = kinetic_client.make_transfer(
+    commitment=Commitment('Finalized'),
     amount='5000',
     destination='BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo',
     owner=keypair,
@@ -89,7 +90,7 @@ Note - `referenceId` and `referenceType` are stored off chain and will be passed
 ### Transfer Kin Batch
 
 ```python
-from kinetic_sdk import Destination
+from kinetic_sdk import Destination, Commitment
 
 destinations = []
 
@@ -106,6 +107,7 @@ destinations.append(
     amount='800', destination='BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo'))
 
 batch_transfer = kinetic_client.make_transfer_batch(
+    commitment=Commitment('Finalized'),
     owner=keypair,
     destinations=destinations,
     reference_id='some id', # Optional, stored off-chain and returned via webhooks
