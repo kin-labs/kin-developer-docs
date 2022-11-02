@@ -44,11 +44,11 @@ You can create accounts from existing mnemonics or secret keys. In this case we'
 from kinetic_sdk import Keypair, Commitment
 
 mnemonic = Keypair.generate_mnemonic()
-keypair = Keypair.from_mnemonic(mnemonic)
+keypair = Keypair.from_mnemonic(mnemonic) # or Keypair.random()
 
 kinetic_client.create_account(
     owner=keypair,
-    commitment=Commitment('Finalized'),
+    commitment=Commitment('Finalized'), # Optional: "Confirmed", "Finalized", "Processed"
 )
 ```
 
@@ -61,10 +61,12 @@ balance = kinetic_client.get_balance(account=keypair.public_key)
 ### Airdrop Funds (devnet)
 
 ```python
+from kinetic_sdk import Commitment
+
 airdrop = kinetic_client.request_airdrop(
     account=keypair.public_key,
     amount='1000',
-    commitment=Commitment('Finalized'),
+    commitment=Commitment('Finalized'), # Optional: "Confirmed", "Finalized", "Processed"
 )
 ```
 
@@ -74,10 +76,10 @@ airdrop = kinetic_client.request_airdrop(
 from kinetic_sdk import TransactionType, Commitment
 
 transfer = kinetic_client.make_transfer(
-    commitment=Commitment('Finalized'),
     amount='5000',
     destination='BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo',
     owner=keypair,
+    commitment=Commitment('Finalized'), # Optional: "Confirmed", "Finalized", "Processed"
     tx_type=TransactionType.P2P, # Optional, can be Unknown, None, Earn, Spend or P2P
     reference_id='some id', # Optional, stored off-chain and returned via webhooks
     reference_type='some reference', # Optional, stored off-chain and returned via webhooks
@@ -90,26 +92,30 @@ Note - `referenceId` and `referenceType` are stored off chain and will be passed
 ### Transfer Kin Batch
 
 ```python
-from kinetic_sdk import Destination, Commitment
+from kinetic_sdk import Commitment
 
 destinations = []
 
 destinations.append(
-  Destination(
-    amount='500', destination='BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo'))
-
+  {
+    'amount': '500',
+    'destiation': 'BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MA123'
+  })
 destinations.append(
-  Destination(
-    amount='600', destination='BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo'))
-
+  {
+    'amount': '600',
+    'destiation': 'BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MA456'
+  })
 destinations.append(
-  Destination(
-    amount='800', destination='BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo'))
+  {
+    'amount': '700',
+    'destiation': 'BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MA789'
+  })
 
 batch_transfer = kinetic_client.make_transfer_batch(
-    commitment=Commitment('Finalized'),
     owner=keypair,
     destinations=destinations,
+    commitment=Commitment('Finalized'), # Optional: "Confirmed", "Finalized", "Processed"
     reference_id='some id', # Optional, stored off-chain and returned via webhooks
     reference_type='some reference', # Optional, stored off-chain, returned via webhooks
     sender_create=False # Optional, will make a Kin Token Account at that destination
@@ -234,79 +240,174 @@ Here, we will outline the key API changes from the old version of our SDK to the
 **Instantiate the Kin Client**
 
 ```python
-// Kinetic
-import { KineticSdk } from '@kin-kinetic/sdk'
-const kinClient = await KineticSdk.setup({ environment, index })
+# Kinetic
+from kinetic_sdk import KineticSdk
 
-// Agora
-import { Client } from '@kinecosystem/kin-sdk-v2'
-const kinClient = new Client(env, { appIndex })
+kinetic_client = KineticSdk.setup(
+    environment='devnet', # mainnet or devnet,
+    index=1, # your App Index
+    endpoint='https://sandbox.kinetic.host/', # devnet endpoint
+)
+
+# Agora
+from agora.client import Client, Environment
+env = Environment.TEST
+app_index = 1
+kin_client = Client(env, app_index)
 ```
 
 **Create Account**
 
 ```python
-// Kinetic
-await kinClient.createAccount({ owner: keypair })
+from kinetic_sdk import Keypair, Commitment
 
-// Agora
-await kinClient.createAccount(privateKey)
+mnemonic = Keypair.generate_mnemonic()
+keypair = Keypair.from_mnemonic(mnemonic) # or Keypair.random()
+
+kinetic_client.create_account(
+    owner=keypair,
+    commitment=Commitment('Finalized'), # Optional: "Confirmed", "Finalized", "Processed"
+)
+
+# Agora
+from agora.keys import PrivateKey
+
+private_key = PrivateKey.random()
+kin_client.create_account(private_key)
 ```
 
 **Check Balance**
 
 ```python
-// Kinetic
-const { balance } = await kinClient.getBalance({ account })
+# Kinetic
+balance = kinetic_client.get_balance(account=keypair.public_key)
 
-// Agora
-const balance = await kinClient.getBalance(publicKey)
+# Agora
+balance = kin_client.get_balance(public_key)
 ```
 
 **Airdrop Funds (devnet)**
 
 ```python
-// Kinetic
-await kinClient.requestAirdrop({ account, amount })
+# Kinetic
+from kinetic_sdk import Commitment
 
-// Agora
-await kinClient.requestAirdrop(tokenAccountPublicKey, quarks)
+airdrop = kinetic_client.request_airdrop(
+    account=keypair.public_key,
+    amount='1000',
+    commitment=Commitment('Finalized'), # Optional: "Confirmed", "Finalized", "Processed"
+)
+
+# Agora
+from agora.utils import kin_to_quarks
+
+token_account='kin token account for that keypair'
+amount = '1000'
+quarks = kin_to_quarks(amount)
+kin_client.request_airdrop(token_account, quarks)
 ```
 
 **Transfer Kin**
 
 ```python
-// Kinetic
-await kinClient.makeTransfer({ amount, destination, owner, type, referenceId, referenceType, senderCreate })
+# Kinetic
+from kinetic_sdk import TransactionType, Commitment
 
-// Agora
-await kinClient.submitPayment({ quarks, destination, sender, type })
-// The Agora invoice option has been replaced by 'referenceId' and 'referenceType'
+transfer = kinetic_client.make_transfer(
+    amount='5000',
+    destination='BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo',
+    owner=keypair,
+    commitment=Commitment('Finalized'), # Optional: "Confirmed", "Finalized", "Processed"
+    tx_type=TransactionType.P2P, # Optional, can be Unknown, None, Earn, Spend or P2P
+    reference_id='some id', # Optional, stored off-chain and returned via webhooks
+    reference_type='some reference', # Optional, stored off-chain and returned via webhooks
+    sender_create=False # Optional, will make a Kin Token Account at that destination if true
+)
+
+# Agora
+from agora.model import Payment, TransactionType
+from agora.utils import kin_to_quarks
+
+
+sender = some_private_key
+destination = some_public_key
+transaction_type = TransactionType.P2P
+
+amount = '1000'
+quarks = kin_to_quarks(amount)
+
+payment = Payment(sender, destination, transaction_type, quarks)
+
+kin_client.submit_payment(payment)
+
+# The Agora invoice option has been replaced by 'referenceId' and 'referenceType'
 ```
 
 **Transfer Kin Batch**
 
 ```python
-// Kinetic
-const destinations = [{ destination, amount }]
-await kinClient.makeTransferBatch({ owner, destinations })
+# Kinetic
+from kinetic_sdk import Destination, Commitment
 
-// Agora
-const earns = [{ destination, quarks }]
-await kinClient.submitEarnBatch({ sender, earns })
+destinations = []
+
+destinations.append(
+  {
+    'amount': '500',
+    'destiation': 'BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MA123'
+  })
+destinations.append(
+  {
+    'amount': '600',
+    'destiation': 'BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MA456'
+  })
+destinations.append(
+  {
+    'amount': '700',
+    'destiation': 'BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MA789'
+  })
+
+batch_transfer = kinetic_client.make_transfer_batch(
+    owner=keypair,
+    destinations=destinations,
+    commitment=Commitment('Finalized'), # Optional: "Confirmed", "Finalized", "Processed"
+    reference_id='some id', # Optional, stored off-chain and returned via webhooks
+    reference_type='some reference', # Optional, stored off-chain, returned via webhooks
+    sender_create=False # Optional, will make a Kin Token Account at that destination
+)
+
+# Agora
+from agora.model import Payment, TransactionType, Earn, EarnBatch
+
+earns = []
+earns.append(
+  Earn('BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MA123', kin_to_quarks('500'))
+)
+earns.append(
+  Earn('BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MA456', kin_to_quarks('600'))
+)
+earns.append(
+  Earn('BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MA789', kin_to_quarks('700'))
+)
+
+sender = some_private_key
+batch = EarnBatch(sender, earns)
+
+kin_client.submit_earn_batch(earns)
+
 ```
 
 **Get Transaction Details**
 
 ```python
-// Kinetic
-const signature = 'transaction id string'
-await kineticClient.getTransaction({ signature })
+# Kinetic
+transaction = kinetic_client.get_transaction(signature='transaction id string')
 
-// Agora
-import bs58 from 'bs58'
-const transactionBuffer = bs58.decode(transactionId)
-const data = await kineticClient.getTransaction(transactionBuffer)
+# Agora
+import base58
+
+decoded = base58.b58decode('transaction_id')
+transaction = kin_client.get_transaction(decoded)
 ```
 
 **Webhooks**

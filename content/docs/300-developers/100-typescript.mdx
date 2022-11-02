@@ -43,10 +43,13 @@ While you're waiting for confirmation of your App Index, use `1` on devnet so yo
 You can create accounts from existing mnemonics or secret keys. In this case we'll generate a mnemonic and use that to creat the keypair we use for creating the account on the blockchain.
 
 ```js
+import { Commitment } from '@kin-kinetic/solana'
+
 const mnemonic = Keypair.generateMnemonic()
 const keypair = Keypair.fromMnemonic(mnemonic)
 const accountOptions = {
   owner: keypair,
+  commitment: Commitment.Finalized, // Optional, can be Finalized, Confirmed, Processed
 }
 await kineticClient.createAccount(accountOptions)
 ```
@@ -61,9 +64,12 @@ const { balance } = await kineticClient.getBalance(balanceOptions)
 ### Airdrop Funds (devnet)
 
 ```js
+import { Commitment } from '@kin-kinetic/solana'
+
 const airdropOptions = {
   account: keypair.publicKey,
   amount: '1000',
+  commitment: Commitment.Finalized, // Optional, can be Finalized, Confirmed, Processed
 }
 await kineticClient.requestAirdrop(airdropOptions)
 ```
@@ -71,12 +77,13 @@ await kineticClient.requestAirdrop(airdropOptions)
 ### Transfer Kin
 
 ```js
-import { TransactionType } from '@kin-tools/kin-memo'
+import { Commitment, TransactionType } from '@kin-kinetic/solana';
 
 const transferOptions = {
   amount: '5000',
   destination: `BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo`,
   owner: keypair,
+  commitment: Commitment.Finalized, // Optional, can be Finalized, Confirmed, Processed
   type: TransactionType.P2P, // Optional, can be Unknown, None, Earn, Spend or P2P,
   referenceId: 'some id', // Optional, stored off-chain and returned via webhooks
   referenceType: 'some reference'; // Optional, stored off-chain and returned via webhooks
@@ -91,6 +98,8 @@ Note - `referenceId` and `referenceType` are stored off chain and will be passed
 ### Transfer Kin Batch
 
 ```js
+import { Commitment } from '@kin-kinetic/solana'
+
 const destinations = [
   {
     amount: '500',
@@ -109,6 +118,7 @@ const destinations = [
 const transferBatchOptions = {
     owner: keypair,
     destinations,
+    commitment: Commitment.Finalized, // Optional, can be Finalized, Confirmed, Processed
     referenceId: 'some id', // Optional, stored off-chain and returned via webhooks
     referenceType: 'some reference'; // Optional, stored off-chain and returned via webhooks
     senderCreate: false; // Optional, will make a Kin Token Account at that destination if true
