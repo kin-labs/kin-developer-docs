@@ -254,7 +254,7 @@ Here, we will outline the key API changes from the old version of our SDK to the
 ```js
 // Kinetic
 import { KineticSdk } from '@kin-kinetic/sdk'
-const kinClient = await KineticSdk.setup({ environment, index })
+const kinClient = await KineticSdk.setup({ environment, index, endpoint })
 
 // Agora
 import { Client } from '@kinecosystem/kin-sdk-v2'
@@ -265,7 +265,7 @@ const kinClient = new Client(env, { appIndex })
 
 ```js
 // Kinetic
-await kinClient.createAccount({ owner: keypair })
+await kinClient.createAccount({ owner: keypair, commitment })
 
 // Agora
 await kinClient.createAccount(privateKey)
@@ -285,7 +285,7 @@ const balance = await kinClient.getBalance(publicKey)
 
 ```js
 // Kinetic
-await kinClient.requestAirdrop({ account, amount })
+await kinClient.requestAirdrop({ account, amount, commitment })
 
 // Agora
 await kinClient.requestAirdrop(tokenAccountPublicKey, quarks)
@@ -295,7 +295,7 @@ await kinClient.requestAirdrop(tokenAccountPublicKey, quarks)
 
 ```js
 // Kinetic
-await kinClient.makeTransfer({ amount, destination, owner, type, referenceId, referenceType, senderCreate })
+await kinClient.makeTransfer({ amount, destination, owner, commitment, type, referenceId, referenceType, senderCreate })
 
 // Agora
 await kinClient.submitPayment({ quarks, destination, sender, type })
@@ -307,7 +307,7 @@ await kinClient.submitPayment({ quarks, destination, sender, type })
 ```js
 // Kinetic
 const destinations = [{ destination, amount }]
-await kinClient.makeTransferBatch({ owner, destinations })
+await kinClient.makeTransferBatch({ owner, destinations, commitment, type })
 
 // Agora
 const earns = [{ destination, quarks }]
