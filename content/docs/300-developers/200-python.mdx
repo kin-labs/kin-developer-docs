@@ -267,7 +267,7 @@ from kinetic_sdk import Keypair, Commitment
 mnemonic = Keypair.generate_mnemonic()
 keypair = Keypair.from_mnemonic(mnemonic) # or Keypair.random()
 
-kinetic_client.create_account(
+account = kinetic_client.create_account(
     owner=keypair,
     commitment=Commitment('Finalized'), # Optional: "Confirmed", "Finalized", "Processed"
 )
@@ -276,7 +276,7 @@ kinetic_client.create_account(
 from agora.keys import PrivateKey
 
 private_key = PrivateKey.random()
-kin_client.create_account(private_key)
+account = kin_client.create_account(private_key)
 ```
 
 **Check Balance**
@@ -307,7 +307,7 @@ from agora.utils import kin_to_quarks
 token_account='kin token account for that keypair'
 amount = '1000'
 quarks = kin_to_quarks(amount)
-kin_client.request_airdrop(token_account, quarks)
+airdrop = kin_client.request_airdrop(token_account, quarks)
 ```
 
 **Transfer Kin**
@@ -341,7 +341,7 @@ quarks = kin_to_quarks(amount)
 
 payment = Payment(sender, destination, transaction_type, quarks)
 
-kin_client.submit_payment(payment)
+transfer = kin_client.submit_payment(payment)
 
 # The Agora invoice option has been replaced by 'referenceId' and 'referenceType'
 ```
@@ -396,7 +396,7 @@ earns.append(
 sender = some_private_key
 batch = EarnBatch(sender, earns)
 
-kin_client.submit_earn_batch(earns)
+batch_transfer = kin_client.submit_earn_batch(earns)
 
 ```
 
