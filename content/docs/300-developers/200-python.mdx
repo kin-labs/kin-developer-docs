@@ -46,7 +46,7 @@ from kinetic_sdk import Keypair, Commitment
 mnemonic = Keypair.generate_mnemonic()
 keypair = Keypair.from_mnemonic(mnemonic)
 
-# or keypair Keypair.random()
+# or keypair = Keypair.random()
 
 kinetic_client.create_account(
     owner=keypair,
