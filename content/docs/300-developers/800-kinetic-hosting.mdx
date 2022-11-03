@@ -12,12 +12,12 @@ Here we'll explain how you can deploy your own Kinetic instance to Heroku and ho
   <NavCard
     title="Deploy Kinetic"
     pngFile="heroku"
-    link={{ url: '/docs/developers/kinetic-deployment#deploying-kinetic-to-heroku', label: 'Time to Deploy!' }}
+    link={{ url: '/docs/developers/kinetic-hosting#deploying-kinetic-to-heroku', label: 'Time to Deploy!' }}
   />
   <NavCard
     title="Run Kinetic Locally"
     svgFile="docker-brands"
-    link={{ url: '/docs/developers/kinetic-deployment#running-kinetic-locally', label: 'Go Local' }}
+    link={{ url: '/docs/developers/kinetic-hosting#running-kinetic-locally', label: 'Go Local' }}
   />
 </div>
 
@@ -64,7 +64,7 @@ Go to Overview / Configure Add-ons, search and choose the Heroku Postrgres addon
 
 ### Set your Environment Variables
 
-Go to Settings / Config Vars and add your environment variables as you would have in your `.env` file when [running Kinetic locally](/docs/developers/kinetic-deployment#prepare-your-environment-variables).<br/>
+Go to Settings / Config Vars and add your environment variables as you would have in your `.env` file when [running Kinetic locally](/docs/developers/kinetic-hosting#prepare-your-environment-variables).<br/>
 Make sure not to include quote marks around your strings as Heroku won't filter them out.<br/>
 
 See the full list of environment variables <a href='https://github.com/kin-labs/kinetic/blob/dev/.env.example' target='_blank'>here</a>.
