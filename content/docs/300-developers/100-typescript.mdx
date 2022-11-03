@@ -26,7 +26,7 @@ import { KineticSdk } from '@kin-kinetic/sdk'
 const clientOptions = {
   environment: 'devnet', // mainnet or devnet
   index: 1, // your App Index
-  endpoint: 'https://sandbox.kinetic.host/', // devnet endpoint
+  endpoint: 'https://sandbox.kinetic.host', // devnet endpoint
 }
 
 const kineticClient = await KineticSdk.setup(clientOptions)
@@ -197,7 +197,13 @@ Created to help get you up and running as quickly as possible, these projects ca
     link={{ url: 'https://github.com/kin-starters/kin-dapp-kinetic', label: 'Have a look' }}
   />
   <NavCard
-    title="TypeScript Node SDK Demo"
+    title="Kinetic Typescript Node Starter"
+    subtitle="This starter shows how to implement a simple API that allows you to send KIN to a Solana account using Kinetic."
+    icon="github"
+    link={{ url: 'https://github.com/kin-starters/kinetic-node-starter', label: 'Have a look' }}
+  />
+  <NavCard
+    title="Kinetic TypeScript Node Demo"
     subtitle="A full-fat server based implementation of Kin Kinetic."
     icon="github"
     link={{ url: 'https://github.com/kin-starters/kin-demo-node-sdk', label: 'Have a look' }}
