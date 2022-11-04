@@ -159,6 +159,7 @@
   }
 
   /* Turn Black Icon Purple */
+  .pngFile.pngFile-render,
   .pngFile.pngFile-bubble,
   .pngFile.pngFile-giftery,
   .pngFile.pngFile-heroku,
