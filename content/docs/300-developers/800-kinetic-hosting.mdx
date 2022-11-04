@@ -19,13 +19,13 @@ Here we'll explain how you can deploy your own Kinetic instance to an online ser
   />
 </div>
 
-## Deploying Kinetic to Heroku
+## Deploying Kinetic
 
-Here we will show how you can deploy your own Kinetic Instance to Heroku.
+Follow these steps to get your own version of Kinetic up and running.
 
 ### Fork Kinetic
 
-Fork you own version of Kinetic that we'll use to deploy on Heroku
+Fork you own version of Kinetic that we'll use for the deployment.
 
 <div className="mt-8 grid gap-6 md:grid-cols-2">
   <NavCard
@@ -35,57 +35,70 @@ Fork you own version of Kinetic that we'll use to deploy on Heroku
   />
 </div>
 
-### Sign Up To Heroku
+### Sign Up To A Hosting Service
 
 <div className="mt-8 grid gap-6 md:grid-cols-2">
   <NavCard
-    title="Heroku Account"
+    title="Render"
+    subtitle="Render offers free and paid services you can use to run Kinetic."
+    pngFile="render"
+    link={{ url: 'https://dashboard.render.com/', label: 'Sign Up / Log In' }}
+  />
+  <NavCard
+    title="Heroku"
+    subtitle="Heroku offers paid services you can use to run Kinetic."
     pngFile="heroku"
     link={{ url: 'https://dashboard.heroku.com/apps/', label: 'Sign Up / Log In' }}
   />
 </div>
 
-### Create a new app
+### Create A New App
 
-![Heroku New App](/images/deployment/Heroku01.png)
+Create a new app using your preferred service and connect it to your forked Kinetic repo.
 
-### Choose the GitHub Deployment Method
+### Set Up A PostrgreSQL Server
 
-Select your forked Repo and Connect<br/>
-![Heroku Connect to GitHub](/images/deployment/Heroku02.png)
+You'll need a database to run Kinetic. See how to setup and connect to your DB here:
 
-### Install Postgres Addon
+- [Render](https://dashboard.render.com/new/database) allows you to set up a separate PostreSQL server.
+- [Heroku](https://www.heroku.com/postgres) allows you to install a PostrgeSQL db directly into a project as an addon.
 
-Go to Overview / Configure Add-ons, search and choose the Heroku Postrgres addon.<br/>
+### Prepare Your Environment Variables
 
-![Heroku Postrgres Addon](/images/deployment/Heroku04.png)
+Kinetic handles some of it's configuration via environment variables.
 
-### Set your Environment Variables
+See the full list of environment variables <a href='https://github.com/kin-labs/kinetic/blob/main/.env.example' target='_blank'>here</a>.
 
-Go to Settings / Config Vars and add your environment variables as you would have in your `.env` file when [running Kinetic locally](/docs/developers/kinetic-hosting#prepare-your-environment-variables).<br/>
-Make sure not to include quote marks around your strings as Heroku won't filter them out.<br/>
+Here are some gotchas to look out for:
 
-See the full list of environment variables <a href='https://github.com/kin-labs/kinetic/blob/dev/.env.example' target='_blank'>here</a>.
-
-![Heroku Config Vars](/images/deployment/Heroku03.png)
+- `COOKIE_DOMAINS` must contain your deployed url for your version of Kinetic, e.g. `my-kinetic-instance.onrender.com`.
+- `DATABASE_URL` must be the url of your deployed PostgreSQL instance.
+- Any url that contains `localhost` or `127.0.0.1` should be changed to `0.0.0.0` or whatever url you have deployed to.
+- On Heroku, make sure not to include quote marks around your strings as Heroku won't filter them out.<br/>
 
 ### Deploy Kinetic
 
-Go to Deploy / Manual Deploy and deploy Kinetic. You can also choose to set up automatic deployment.
+Once your environment is prepared, you're ready to deploy! Fingers crossed!
 
-![Heroku New App](/images/deployment/Heroku05.png)
+Make sure to check out the logs in case something goes wrong.
+
+If something goes wrong and you can't figure it out, never fear!
+
+<Help discord />
+
+Pop into the [`kinetic-hosting`](https://discord.com/channels/808859554997469244/1038005160439468082) channel on Discord and we'll give you a hand.
 
 ### Open your app
 
-That's it! You should be good to go. Click 'Open app' to open the Kinetic Manager. Heroku has great options for viewing logs etc through the online console and also has a brilliant CLI if you want to go down that route.
+That's it! You should be good to go. Open your app and log in via the method you specified in your environment variables.
 
-### Configure Your Kinetic Instance
+You're now using Kinetic Manager!
 
 <KineticManager />
 
 ## Running Kinetic Locally
 
-#### Requirements:
+### Requirements:
 
 ```shell
 Node.js 14+
@@ -93,7 +106,7 @@ Docker 20+
 Yarn v1.22+
 ```
 
-#### Get Started
+### Get Started
 
 To get started with Kinetic, pull down the [Kinetic](https://github.com/kin-labs/kinetic) repo and install dependencies.
 
@@ -103,19 +116,19 @@ cd kinetic
 yarn install
 ```
 
-#### Prepare your Environment Variables
+### Prepare Your Local Environment Variables
 
 Kinetic is highly configurable, but don't worry, we've provided an example file you can use to get started quickly.<br/>
 Just copy the contents of the `.env.example` file into your own `.env` file.<br/>
-See the full list of environment variables <a href='https://github.com/kin-labs/kinetic/blob/dev/.env.example' target='_blank'>here</a>.
+See the full list of environment variables <a href='https://github.com/kin-labs/kinetic/blob/main/.env.example' target='_blank'>here</a>.
 
-#### Make sure Docker is running
+### Make sure Docker Is Running
 
 <div className="mt-8 grid gap-6 md:grid-cols-2">
   <NavCard title="Docker" svgFile="docker-brands" link={{ url: 'https://www.docker.com/', label: 'Get it here' }} />
 </div>
 
-#### Run Kinetic Services
+### Run Kinetic Services
 
 Then, in separate terminals, do each of the following:
 
@@ -155,13 +168,15 @@ yarn dev:admin
 yarn dev:demo
 ```
 
-#### Open The Kinetic Manager
+### Open The Kinetic Manager
 
 - Kinetic Manager is a full-featured GUI for Kinetic
 - You can log in using the details set in your `.env` file.
 - [Click here](http://localhost:4400) to open localhost:4400
 
-#### Open The Kinetic Demo
+<KineticManager />
+
+### Open The Kinetic Demo
 
 - Use the built-in Kinetic Demo to test Kin transactions on your Kinetic instance
 - [Click here](http://localhost:4200) to open localhost:4200
