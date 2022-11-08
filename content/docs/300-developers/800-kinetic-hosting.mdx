@@ -96,9 +96,58 @@ You're now using Kinetic Manager!
 
 <KineticManager />
 
-## Running Kinetic Locally
+## Running Kinetic Locally - Docker Compose
 
-### Requirements:
+The simplest way to get started with Kinetic on your local machine.
+
+### Requirements
+
+```shell
+Node.js 14+
+Docker 20+
+```
+
+### Get The Kinetic Starter Kit
+
+You can use this Kinetic starter kit to get up and running as quickly as possible.
+
+```shell
+git clone https://github.com/kin-starters/kinetic-docker-compose
+```
+
+### Prepare Your Docker Compose File
+
+Prepare your environment variables in the `docker-compose.yml` file to configure your Kinetic instance.
+Check it out <a href='https://github.com/kin-starters/kinetic-docker-compose/blob/main/docker-compose.yml' target='_blank'>here</a>.
+
+### Make Sure Docker Is Running
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard title="Docker" svgFile="docker-brands" link={{ url: 'https://www.docker.com/', label: 'Get it here' }} />
+</div>
+
+### Docker-Compose-Up
+
+```shell
+cd kinetic-docker-compose
+docker-compose-up
+```
+
+### Open Kinetic Manager
+
+- Kinetic Manager is a full-featured GUI for Kinetic
+- You can log in using the details set in your `docker-compose.yml` file.
+- [Click here](http://localhost:3000) to open localhost:3000
+
+<KineticManager />
+
+That's it!
+
+## Running Kinetic Locally - Docker With Separate Services
+
+Slightly more involved, but will give you a great understanding of the services that work together to make Kinetic.
+
+### Requirements
 
 ```shell
 Node.js 14+
@@ -122,7 +171,7 @@ Kinetic is highly configurable, but don't worry, we've provided an example file 
 Just copy the contents of the `.env.example` file into your own `.env` file.<br/>
 See the full list of environment variables <a href='https://github.com/kin-labs/kinetic/blob/main/.env.example' target='_blank'>here</a>.
 
-### Make Sure Docker Is Running
+### Run Docker
 
 <div className="mt-8 grid gap-6 md:grid-cols-2">
   <NavCard title="Docker" svgFile="docker-brands" link={{ url: 'https://www.docker.com/', label: 'Get it here' }} />
