@@ -8,7 +8,7 @@ nav_title: Unity
 
 Getting started with Kin is incredibly straightforward. Just follow the steps below to start transacting with Kin in your app.
 
-#### Installation
+### Installation
 
 Open [Unity Package Manager](https://docs.unity3d.com/Manual/upm-ui.html) window.
 
@@ -18,7 +18,7 @@ Enter the `https://github.com/kin-labs/kinetic-unity-sdk.git` Git URL in the tex
 
 Once the package is installed, in the Package Manager inspector you will have Samples. Click on `Import`
 
-#### Instantiate the Kinetic Client
+### Instantiate the Kinetic Client
 
 The Kinetic Client will give you access to all the methods you need to work with Kin on the blockchain.
 
@@ -40,7 +40,7 @@ While you're waiting for confirmation of your App Index, use `1` on devnet so yo
 
 <RegisterApp />
 
-#### Create Account
+### Create Account
 
 You can create accounts randomly or from existing mnemonics or secret keys. Below, we'll make a keypair and use that for creating an account on the blockchain.
 
@@ -50,7 +50,7 @@ var keypair = Keypair.FromMnemonic(mnemonic);
 await sdk.CreateAccount(keypair);
 ```
 
-#### Check Balance
+### Check Balance
 
 Check a user balance by passing in the public key of the account you want to check.
 
@@ -60,7 +60,7 @@ The response object includes your total Kin balance as well as detailing all of 
 var balance = await sdk.GetBalance(keypair.PublicKey);
 ```
 
-#### Airdrop Funds (devnet)
+### Airdrop Funds (devnet)
 
 Send some test funds to a specific Public Key on Devnet.
 
@@ -68,7 +68,7 @@ Send some test funds to a specific Public Key on Devnet.
 await sdk.RequestAirdrop( account: keypair.PublicKey, amount: "1000" );
 ```
 
-#### Transfer Kin
+### Transfer Kin
 
 Transfer Kin from a Keypair to any Public Key.
 
@@ -81,7 +81,7 @@ await sdk.MakeTransfer(
 );
 ```
 
-#### Get Transaction Details
+### Get Transaction Details
 
 Get the details of any transaction by passing in the transaction signature.
 
@@ -89,7 +89,7 @@ Get the details of any transaction by passing in the transaction signature.
 await sdk.GetTransaction(signature: transactionSignature);
 ```
 
-#### Get Account History
+### Get Account History
 
 Get the full transaction history of any account by passing in the account's Public Key.
 
