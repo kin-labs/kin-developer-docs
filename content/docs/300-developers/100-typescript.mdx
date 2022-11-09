@@ -40,7 +40,7 @@ While you're waiting for confirmation of your App Index, use `1` on devnet so yo
 
 ### Create Account
 
-You can create accounts from existing mnemonics or secret keys. In this case we'll generate a mnemonic and use that to create the keypair we use for creating the account on the blockchain.
+You can create accounts randomly or from existing mnemonics or secret keys. Below, we'll make a keypair and use that for creating an account on the blockchain.
 
 ```js
 import { Commitment } from '@kin-kinetic/solana'
@@ -56,12 +56,18 @@ await kineticClient.createAccount(accountOptions)
 
 ### Check Balance
 
+Check a user balance by passing in the public key of the account you want to check.
+
+The response object includes your total Kin balance as well as detailing all of the Mints and Tokens held by that Public Key.
+
 ```js
 const balanceOptions = { account: keypair.publicKey }
 const { balance } = await kineticClient.getBalance(balanceOptions)
 ```
 
 ### Airdrop Funds (devnet)
+
+Send some test funds to a specific Public Key on Devnet.
 
 ```js
 import { Commitment } from '@kin-kinetic/solana'
@@ -75,6 +81,8 @@ await kineticClient.requestAirdrop(airdropOptions)
 ```
 
 ### Transfer Kin
+
+Transfer Kin from a Keypair to any Public Key.
 
 ```js
 import { Commitment, TransactionType } from '@kin-kinetic/solana';
@@ -96,6 +104,8 @@ await kineticClient.makeTransfer(transferOptions)
 Note - `referenceId` and `referenceType` are stored off chain and will be passed back to the app via webhooks if they are set up.
 
 ### Transfer Kin Batch
+
+Make a batch transfer of Kin.
 
 ```js
 import { Commitment } from '@kin-kinetic/solana'
@@ -129,6 +139,8 @@ await kineticClient.makeTransferBatch(transferBatchOptions);
 
 ### Get Transaction Details
 
+Get the details of any transaction by passing in the transaction signature.
+
 ```js
 const signature = 'transaction id string'
 await kineticClient.getTransaction({ signature })
@@ -143,6 +155,8 @@ await kineticClient.getExplorerUrl('account or transaction id string')
 ```
 
 ### Get Account History
+
+Get the full transaction history of any account by passing in the account's Public Key.
 
 ```js
 const historyOptions = { account: keypair.publicKey }

@@ -57,7 +57,7 @@ While you're waiting for confirmation of your App Index, use `1` on devnet so yo
 
 ### Create Account
 
-You can create accounts from existing mnemonics or secret keys. In this case we'll generate a mnemonic and use that to create the keypair we use for creating the account on the blockchain.
+You can create accounts randomly or from existing mnemonics or secret keys. Below, we'll make a keypair and use that for creating an account on the blockchain.
 
 ```kotlin
 val owner = Keypair.random()
@@ -66,17 +66,25 @@ val transaction = kinetic.createAccount(owner)
 
 ### Check Balance
 
+Check a user balance by passing in the public key of the account you want to check.
+
+The response object includes your total Kin balance as well as detailing all of the Mints and Tokens held by that Public Key.
+
 ```kotlin
 val balance = kinetic.getBalance(owner.publicKey).balance
 ```
 
 ### Airdrop Funds (devnet)
 
+Send some test funds to a specific Public Key on Devnet.
+
 ```kotlin
 val airdropSignature = kinetic.requestAirdrop(owner.publicKey).signature
 ```
 
 ### Transfer Kin
+
+Transfer Kin from a Keypair to any Public Key.
 
 ```kotlin
 val txSignature = kinetic.makeTransfer(
@@ -87,6 +95,8 @@ val txSignature = kinetic.makeTransfer(
 ```
 
 ### Get Transaction Details
+
+Get the details of any transaction by passing in the transaction signature.
 
 ```kotlin
 val transactionDetails = kinetic.getTransaction(txSignature)
@@ -101,6 +111,8 @@ val explorerURL = kinetic.getExplorerUrl("account or transaction id string")
 ```
 
 ### Get Account History
+
+Get the full transaction history of any account by passing in the account's Public Key.
 
 ```kotlin
 val accountHistory = kinetic.getHistory(owner.publicKey)
