@@ -15,8 +15,23 @@ Here we'll explain how you can deploy your own Kinetic instance to an online ser
   <NavCard
     title="Run Kinetic Locally"
     svgFile="docker-brands"
-    link={{ url: '/docs/developers/kinetic-hosting#running-kinetic-locally-docker-compose', label: 'Go Local' }}
+    link={{ url: '/docs/developers/kinetic-hosting#running-kinetic-locally', label: 'Go Local' }}
   />
+</div>
+
+## Quick Start
+
+<div className="w-full">
+  <NavCard
+    useCase
+    title="Kinetic Starter"
+    subtitle="A quick starter that'll get you up and running with minimal changes and only one command!"
+    svgFile="docker-brands"
+    link={{ url: 'https://github.com/kin-starters/kinetic-docker-compose', label: 'Ready, set...' }}
+  >
+    Just set your <a href="/docs/developers/kinetic-hosting#kinetic-environment-variables">Environment Variables</a>{' '}
+    directly in the `docker-compose.yml` file and run `docker-compose up` to get started.
+  </NavCard>
 </div>
 
 ## Deploying Kinetic
@@ -69,13 +84,6 @@ Kinetic handles some of it's configuration via environment variables.
 
 See the full list of environment variables <a href='https://github.com/kin-labs/kinetic/blob/main/.env.example' target='_blank'>here</a>.
 
-Here are some gotchas to look out for:
-
-- `COOKIE_DOMAINS` must contain your deployed domain for your version of Kinetic, e.g. `my-kinetic-instance.onrender.com`.
-- `DATABASE_URL` must be the url of your deployed PostgreSQL instance.
-- Any url that contains `localhost` or `127.0.0.1` should be changed to `0.0.0.0` or whatever url you have deployed to.
-- On Heroku, make sure not to include quote marks around your strings as Heroku won't filter them out.<br/>
-
 ### Deploy Kinetic
 
 Once your environment is prepared, you're ready to deploy! Fingers crossed!
@@ -84,9 +92,9 @@ Make sure to check out the logs in case something goes wrong.
 
 If something does go wrong and you can't figure it out, never fear!
 
-<Help discord />
-
 Pop into the [`kinetic-hosting`](https://discord.com/channels/808859554997469244/1038005160439468082) channel on Discord and we'll give you a hand.
+
+<Help discord />
 
 ### Get Started With Kinetic Manager
 
@@ -96,54 +104,7 @@ You're now using Kinetic Manager!
 
 <KineticManager />
 
-## Running Kinetic Locally - Docker Compose
-
-The simplest way to get started with Kinetic on your local machine.
-
-### Requirements
-
-```shell
-Node.js 14+
-Docker 20+
-```
-
-### Get The Kinetic Starter Kit
-
-You can use this Kinetic starter kit to get up and running as quickly as possible.
-
-```shell
-git clone https://github.com/kin-starters/kinetic-docker-compose
-```
-
-### Prepare Your Docker Compose File
-
-Prepare your environment variables in the `docker-compose.yml` file to configure your Kinetic instance.
-Check it out <a href='https://github.com/kin-starters/kinetic-docker-compose/blob/main/docker-compose.yml' target='_blank'>here</a>.
-
-### Make Sure Docker Is Running
-
-<div className="mt-8 grid gap-6 md:grid-cols-2">
-  <NavCard title="Docker" svgFile="docker-brands" link={{ url: 'https://www.docker.com/', label: 'Get it here' }} />
-</div>
-
-### Docker-Compose-Up
-
-```shell
-cd kinetic-docker-compose
-docker-compose-up
-```
-
-### Open Kinetic Manager
-
-- Kinetic Manager is a full-featured GUI for Kinetic
-- You can log in using the details set in your `docker-compose.yml` file.
-- [Click here](http://localhost:3000) to open localhost:3000
-
-<KineticManager />
-
-That's it!
-
-## Running Kinetic Locally - Docker With Separate Services
+## Running Kinetic Locally
 
 Slightly more involved, but will give you a great understanding of the services that work together to make Kinetic.
 
@@ -230,6 +191,36 @@ yarn dev:demo
 - Use the built-in Kinetic Demo to test Kin transactions on your Kinetic instance
 - [Click here](http://localhost:4200) to open localhost:4200
 
+## Configuring Kinetic
+
+Kinetic configuration is split between settings your can change in Kinetic itself, and also Environment Variables.
+
+### Kinetic Manager
+
+For more on configuring Kinetic, check out Kinetic Manager.
+
+<KineticManager />
+
+### Kinetic Environment Variables
+
+See the full list of environment variables for Kinetic <a href='https://github.com/kin-labs/kinetic/blob/main/.env.example' target='_blank'>here</a>.
+
+Here are some things to look out for:
+
+#### Some Gotchas
+
+- `COOKIE_DOMAINS` must contain your deployed domain for your version of Kinetic, e.g. `my-kinetic-instance.onrender.com`.
+- `DATABASE_URL` must be the url of your deployed PostgreSQL instance.
+- Any url that contains `localhost` or `127.0.0.1` should be changed to `0.0.0.0` or whatever domain you have deployed to.
+- On Heroku, make sure not to include quote marks around your strings as Heroku won't filter them out.<br/>
+
+#### Changing Your Auth Method
+
+- `AUTH_PASSWORD_ENABLED=true` will turn on password authentication.
+- You can also use GitHub, Discord or Google Logins. Follow the instructions in the `env.example` file linked above.
+
 ## What If I Get Stuck?
 
-<Help />
+Pop into the [`kinetic-hosting`](https://discord.com/channels/808859554997469244/1038005160439468082) channel on Discord and we'll give you a hand.
+
+<Help discord />
