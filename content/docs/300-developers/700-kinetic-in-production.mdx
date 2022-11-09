@@ -31,7 +31,6 @@ You'll notice in the example above, you have to pass in an `endpoint` when you s
 <div className="mt-8 grid gap-6 md:grid-cols-2">
   <NavCard
     title="Self Hosted"
-    useCase
     subtitle="Host and manage your own Kinetic instance for maximum power."
     svgFile="server-solid"
     link={{ url: '/docs/developers/kinetic-in-production/#self-hosted', label: 'Learn more' }}
@@ -39,20 +38,10 @@ You'll notice in the example above, you have to pass in an `endpoint` when you s
   <NavCard
     title="Kinetic As A Service"
     subtitle="Connect to a Kinetic Service hosted by a 3rd party."
-    useCase
     svgFile="globe-solid"
     link={{ url: '/docs/developers/kinetic-as-a-service', label: 'Coming Soon!' }}
   />
-  <NavCard
-    title="Kin Hosted"
-    useCase
-    subtitle="For small scale apps trying to get off the ground or existing apps migrating to Kinetic, we offer a time-limited Kinetic instance upon request."
-    svgFile="kin"
-    link={{ url: '/docs/developers/kinetic-in-production/#kin-hosted', label: 'See how it works' }}
-  >
-    Get in touch via our [Kin Developer Discord](/docs/essentials/getting-help) to request access to the Kin Kinetic
-    Instance.
-  </NavCard>
+
 </div>
 
 ## Self Hosted
@@ -88,7 +77,7 @@ Your `endpoint` can be your own deployed Kinetic instance or a locally running i
   <NavCard
     title="Host Kinetic"
     svgFile="server-solid"
-    link={{ url: '/docs/developers/kinetic-hosting#deploying-kinetic-to-heroku', label: 'Time to Deploy!' }}
+    link={{ url: '/docs/developers/kinetic-hosting', label: 'Time to Deploy!' }}
   />
   <NavCard
     title="Run Kinetic Locally"
@@ -99,7 +88,14 @@ Your `endpoint` can be your own deployed Kinetic instance or a locally running i
 
 ### Configuration
 
-<KineticManager />
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Configure Kinetic"
+    subtitle="Set your Environment Variables and use Kinetic Manager to configure and manage your Kinetic instance."
+    svgFile="screwdriver-wrench-solid"
+    link={{ url: '/docs/developers/kinetic-hosting#configuring-kinetic', label: 'Get fiddling...' }}
+  />
+</div>
 
 ## Kinetic As A Service
 
@@ -107,22 +103,10 @@ Your `endpoint` can be your own deployed Kinetic instance or a locally running i
   <NavCard
     title="Kinetic As A Service"
     subtitle="Connect to a Kinetic Service hosted by a 3rd party."
-    useCase
     svgFile="globe-solid"
     link={{ url: '/docs/developers/kinetic-as-a-service', label: 'Coming Soon!' }}
   />
 </div>
-
-## Kin Hosted
-
-For small scale apps trying to get off the ground or existing apps migrating to Kinetic, we offer a time-limited Kinetic instance upon request.
-
-- Get insights into your transactions
-- Get insights into your hot-wallet usage
-- Restrictions apply
-- Only Kin is available, no other mints
-- Kinetic version can be updated by the Kin team <br/>(meaning you might have to handle API updates to stay connected)
-- Limited logs availability (1 week)
 
 ### How To Connect
 
@@ -133,7 +117,7 @@ E.g. TypeScript SDK:
 const clientOptions = {
   environment: 'mainnet', // mainnet or devnet
   index: 1, // your App Index
-  endpoint: 'kin_kinetic_endpoint', // this will be provided upon request for qualifying apps
+  endpoint: 'kin_kinetic_endpoint', // get this from your KAAS provider
 }
 
 const kineticClient = await KineticSdk.setup(clientOptions)
@@ -142,5 +126,7 @@ const kineticClient = await KineticSdk.setup(clientOptions)
 That's it!
 
 ## What If I Get Stuck?
+
+Pop into the [`kinetic-hosting`](https://discord.com/channels/808859554997469244/1038005160439468082) channel on Discord and we'll give you a hand.
 
 <Help />
