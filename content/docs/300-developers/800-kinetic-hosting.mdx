@@ -207,17 +207,22 @@ See the full list of environment variables for Kinetic <a href='https://github.c
 
 Here are some things to look out for:
 
-#### Some Gotchas
+#### Provisioning Apps
 
-- `COOKIE_DOMAINS` must contain your deployed domain for your version of Kinetic, e.g. `my-kinetic-instance.onrender.com`.
-- `DATABASE_URL` must be the url of your deployed PostgreSQL instance.
-- Any url that contains `localhost` or `127.0.0.1` should be changed to `0.0.0.0` or whatever domain you have deployed to.
-- On Heroku, make sure not to include quote marks around your strings as Heroku won't filter them out.<br/>
+- Provision an app via Environment Variables with your registered App Index. E.g. if your App Index is `360`: `APP_360_NAME`, `APP_360_FEE_PAYER_BYTE_ARRAY` and the optional `APP_360_LOGO_URL` can be set to ensure your app shows up correctly in Kinetic Manager
+- You can also provision apps using Kinetic Manager, in that case, the app data is stored in your database. Using Environment Variables for app provision may make it easier to provision apps quickly from scratch.
 
 #### Changing Your Auth Method
 
 - `AUTH_PASSWORD_ENABLED=true` will turn on password authentication.
 - You can also use GitHub, Discord or Google Logins. Follow the instructions in the `env.example` file linked above.
+
+#### Some Things To Watch Out For
+
+- `COOKIE_DOMAINS` must contain your deployed domain for your version of Kinetic, e.g. `my-kinetic-instance.onrender.com`.
+- `DATABASE_URL` must be the url of your deployed PostgreSQL instance.
+- Any url that contains `localhost` or `127.0.0.1` should be changed to `0.0.0.0` or whatever domain you have deployed to.
+- On Heroku, make sure not to include quote marks around your strings as Heroku won't filter them out.<br/>
 
 ## What If I Get Stuck?
 
