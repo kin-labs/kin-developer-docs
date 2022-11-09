@@ -8,24 +8,27 @@ Here we'll explain how you can deploy your own Kinetic instance to an online ser
 
 <div className="mt-8 grid gap-6 md:grid-cols-2">
   <NavCard
-    title="Host Kinetic"
+    title="Deploy Kinetic"
+    subtitle="Learn how to deploy your own Kinetic instance to the cloud."
     svgFile="server-solid"
     link={{ url: '/docs/developers/kinetic-hosting#deploying-kinetic-to-heroku', label: 'Time to Deploy!' }}
   />
   <NavCard
     title="Run Kinetic Locally"
+    subtitle="Test Kinetic locally before deploying your changes."
     svgFile="docker-brands"
     link={{ url: '/docs/developers/kinetic-hosting#running-kinetic-locally', label: 'Go Local' }}
   />
-</div>
-
-## Quick Start
-
-<div className="w-full">
   <NavCard
-    title="Kinetic Starter"
+    title="Configure Kinetic"
+    subtitle="Set your Environment Variables and use Kinetic Manager to configure and manage your Kinetic instance."
+    svgFile="screwdriver-wrench-solid"
+    link={{ url: '/docs/developers/kinetic-hosting#configuring-kinetic', label: 'Get fiddling...' }}
+  />
+  <NavCard
+    title="Quick Start"
     subtitle="A quick starter that'll get you up and running with minimal changes and only one command!"
-    svgFile="docker-brands"
+    icon="github"
     link={{ url: 'https://github.com/kin-starters/kinetic-docker-compose', label: 'Ready, set...' }}
   >
     Install Docker, set your{' '}
@@ -223,6 +226,23 @@ Here are some things to be aware of:
 - `DATABASE_URL` must be the url of your deployed PostgreSQL instance.
 - Any url that contains `localhost` or `127.0.0.1` should be changed to `0.0.0.0` or whatever domain you have deployed to.
 - On Heroku, make sure not to include quote marks around your strings as Heroku won't filter them out.<br/>
+
+## Demos and Starter Kits
+
+Created to help get you up and running as quickly as possible, these projects can be a great reference point when you get stuck or even a starter for your own project. Happy coding!
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Quick Start"
+    subtitle="A quick starter that'll get you up and running with minimal changes and only one command!"
+    icon="github"
+    link={{ url: 'https://github.com/kin-starters/kinetic-docker-compose', label: 'Ready, set...' }}
+  >
+    Install Docker, set your{' '}
+    <a href="/docs/developers/kinetic-hosting#kinetic-environment-variables">Environment Variables</a> directly in the
+    `docker-compose.yml` file and run `docker-compose up` to get started.
+  </NavCard>
+</div>
 
 ## What If I Get Stuck?
 
