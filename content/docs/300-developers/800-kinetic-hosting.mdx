@@ -107,6 +107,27 @@ You're now using Kinetic Manager!
 
 <KineticManager />
 
+### Using Docker Compose
+
+Docker Compose can be used to run multiple containers in a single Docker application. An example of this is our Kinetic starter:
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Quick Start"
+    subtitle="A quick starter using Docker Compose that'll get you up and running with minimal changes and only one command!"
+    icon="github"
+    link={{ url: 'https://github.com/kin-starters/kinetic-docker-compose', label: 'Ready, set...' }}
+  >
+    Install Docker, set your{' '}
+    <a href="/docs/developers/kinetic-hosting#kinetic-environment-variables">Environment Variables</a> directly in the
+    `docker-compose.yml` file and run `docker-compose up` to get started.
+  </NavCard>
+</div>
+
+If you are using Docker Compose with your deployed server, you may need to install an additional `Compose` Plugin.
+
+See [here](https://docs.docker.com/compose/install/) for details.
+
 ## Running Kinetic Locally
 
 Get a great understanding of the services that work together to make Kinetic. Or jump straight into the [starter kit](/docs/developers/kinetic-hosting#demos-and-starter-kits) if you want to get up and running as quickly as possible.
