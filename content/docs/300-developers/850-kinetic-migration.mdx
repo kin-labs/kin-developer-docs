@@ -43,9 +43,23 @@ When you transact with Kinetic on Mainnet, you'll need a Kinetic instance to con
 
 See [here](/docs/developers/kinetic-in-production) for more details.
 
+## Transaction Fees
+
+On Agora, transaction fees were paid directly by the Kin Foundation who were / are hosting the Agora service.
+
+In Kinetic, developers will be responsible for paying for transaction fees for their own apps, unless they are using a 3rd party Kinetic As A Service provider that chooses to cover those costs as part of the service.
+
+Support for these payments can come from the Kin Foundation in terms of KRE payments and grant requests.
+
+<KRE catalyst />
+
 ## Upgrading Wallets
 
-// TODO Explanation
+As apps upgrade to Kinetic, we recommend that developers migrate their users to the new Kinetic Keypairs.
+
+These Keypairs are standard Solana Keypairs and give users greater control of their funds through mnemonics that allow them to access their funds with any Solana wallet. E.g. Phantom, Solflare, etc.
+
+Below, we'll be outlining some steps you can consider when upgrading your users Keypairs.
 
 ### TypeScript
 
@@ -62,7 +76,3 @@ See [here](/docs/developers/kinetic-in-production) for more details.
 ### Android
 
 // TODO Method
-
-## Transaction Fees
-
-// TODO Explanation
