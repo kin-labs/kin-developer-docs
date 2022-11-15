@@ -240,7 +240,7 @@ Here are some things to be aware of:
 
 - For Kinetic instances in production, we strongly recommend turning off password based authentication and using one of the supported SSO methods:
 
-##### GitHub
+#### GitHub Login
 
 - Get a GitHub oAuth client ID and secret from `https://github.com/settings/developers` or `https://github.com/organizations/<your-org>/settings/applications`
 - Set the callback URL to `<your API_URL>/auth/github/callback`
@@ -254,7 +254,7 @@ Here are some things to be aware of:
   GITHUB_ENABLED: "true"
 ```
 
-##### Discord
+#### Discord Login
 
 - Get a Discord oAuth client ID and secret from `https://discord.com/developers/applications`
 - Set the callback URL to `<your API_URL>/auth/discord/callback`
@@ -268,7 +268,7 @@ Here are some things to be aware of:
   DISCORD_ENABLED: "true"
 ```
 
-##### Google
+#### Google Login
 
 - Get a Google oAuth client ID and secret from `https://developers.google.com/identity/sign-in/web/sign-in`
 - Set the callback URL to `<your API_URL>/auth/google/callback`
@@ -310,4 +310,3 @@ Created to help get you up and running as quickly as possible, these projects ca
 Pop into the [`kinetic-hosting`](https://discord.com/channels/808859554997469244/1038005160439468082) channel on Discord and we'll give you a hand.
 
 <Help discord />
-```
