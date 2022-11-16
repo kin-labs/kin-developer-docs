@@ -1,0 +1,134 @@
+---
+title: Developing with Kinetic
+excerpt: Run Kinetic Locally to explore its features or develop your own.
+nav_title: Kinetic Development
+---
+
+Get a great understanding of the services that work together to make Kinetic.
+
+Have a tinker or contribute to the project.
+
+Kinetic is open source so all are welcome!
+
+## Requirements
+
+This is what you'll need to run Kinetic on your own machine.
+
+```shell
+Node.js 14+
+Docker 20+
+Yarn v1.22+
+```
+
+## Get Started
+
+To get started with Kinetic, pull down the Kinetic repo and install dependencies.
+
+```shell
+git clone git@github.com:kin-labs/kinetic.git
+cd kinetic
+yarn install
+```
+
+## Prepare Your Local Environment Variables
+
+Kinetic is highly configurable, but don't worry, we've provided an example file you can use to get started quickly.<br/>
+Just copy the contents of the `.env.example` file into your own `.env` file.<br/>
+
+See here for more details on Kinetic Environment Variables:
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Kinetic Environment Variables"
+    subtitle="Configure Kinetic with Environment Variables"
+    svgFile="screwdriver-wrench-solid"
+    link={{ url: '/docs/developers/kinetic-configuration#kinetic-environment-variables', label: 'Set your tings...' }}
+  />
+</div>
+
+## Run Docker
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Docker"
+    subtitle="Docker uses containers to make running, deploying, updating and managing apps a breeze."
+    svgFile="docker-brands"
+    link={{ url: 'https://www.docker.com/', label: 'Get it here' }}
+  />
+</div>
+
+## Run Kinetic Services
+
+Then, in separate terminals, do each of the following:
+
+- run the database
+
+```shell
+yarn dev:services:postgres
+```
+
+- prepare the database
+
+```shell
+yarn prisma migrate reset && yarn prisma db push
+```
+
+- run Solana locally (`localhost:8899`) or set `SOLANA_DEVNET_RPC_ENDPOINT=devnet` and skip this step
+
+```shell
+yarn dev:services:solana
+```
+
+- run the Kinetic API (`localhost:3000`)
+
+```shell
+yarn dev:api
+```
+
+- run the Kinetic Demo App (`localhost:4200`) : Optional
+
+```shell
+yarn dev:demo
+```
+
+- run the Kinetic Manager (`localhost:4400`)
+
+```shell
+yarn dev:admin
+```
+
+## Open The Kinetic Demo
+
+- Use the built-in Kinetic Demo to test Kin transactions on your Kinetic instance
+- [Click here](http://localhost:4200) to open localhost:4200
+
+## Open The Kinetic Manager
+
+- Kinetic Manager is a full-featured GUI for Kinetic
+- You can log in using the details set in your `.env` file.
+- [Click here](http://localhost:4400) to open localhost:4400
+
+<KineticManager />
+
+## Contribute
+
+Have a chat with us in the [`kinetic-development`](https://discord.com/channels/808859554997469244/1042318328498229248) channel on Discord so we can chat about your ideas, etc. All are welcome!
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Kinetic Repo"
+    subtitle="Want to contribute to Kinetic?"
+    icon="github"
+    link={{ url: 'https://github.com/kin-labs/kinetic', label: 'Make a PR' }}
+  />
+  <NavCard
+    title="Developer Discord"
+    subtitle="Join our fantastic developer community."
+    icon="discord"
+    link={{ url: 'https://discord.com/invite/kdRyUNmHDn', label: 'Join now' }}
+  />
+</div>
+
+## What If I Get Stuck?
+
+Pop into the [`kinetic-development`](https://discord.com/channels/808859554997469244/1042318328498229248) channel on Discord and we'll give you a hand.

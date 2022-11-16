@@ -1,0 +1,124 @@
+---
+title: Configure Kinetic
+excerpt: Set up and manage your own Kinetic instance with Environment Variables and the Kinetic Manager UI.
+nav_title: Kinetic Configuration
+---
+
+Kinetic is highly configurable, giving you a huge amount of power in how you manage your Kinetic instance.
+
+Kinetic configuration is split between settings you control via Environment Variables, as well as those you can change in Kinetic itself with the Kinetic Manager.
+
+## Kinetic Environment Variables
+
+See the full list of environment variables for Kinetic <a href='https://github.com/kin-labs/kinetic/blob/main/.env.example' target='_blank'>here</a>.
+
+Here are some things to be aware of:
+
+### Provisioning Apps
+
+- Provision an app via Environment Variables with your registered App Index. E.g. if your App Index is `360`: `APP_360_NAME`, `APP_360_FEE_PAYER_BYTE_ARRAY` and the optional `APP_360_LOGO_URL` can be set to ensure your app shows up correctly in Kinetic Manager
+- You can also provision apps using Kinetic Manager, in that case, the app data is stored in your database. Using Environment Variables for app provision may make it easier to provision apps quickly from scratch.
+
+### Setting Your Auth Method
+
+- For Kinetic instances in production, we strongly recommend turning off password based authentication and using one of the supported SSO methods:
+
+#### GitHub Login
+
+- Get a GitHub oAuth client ID and secret from `https://github.com/settings/developers` or `https://github.com/organizations/<your-org>/settings/applications`
+- Set the callback URL to `<your API_URL>/auth/github/callback`
+- Set your environment variables:
+
+```
+  AUTH_PASSWORD_ENABLED: "false"
+  AUTH_USERS: "githubusername||Admin|githubemail@address"
+  GITHUB_CLIENT_ID: "d9fa784f2c711zzzzz"
+  GITHUB_CLIENT_SECRET: "a2e42904c81280c1466d95de040c516zzzzzzzz"
+  GITHUB_ENABLED: "true"
+```
+
+#### Discord Login
+
+- Get a Discord oAuth client ID and secret from `https://discord.com/developers/applications`
+- Set the callback URL to `<your API_URL>/auth/discord/callback`
+- Set your environment variables:
+
+```
+  AUTH_PASSWORD_ENABLED: "false"
+  AUTH_USERS: "discordusername||Admin|discordemail@address"
+  DISCORD_CLIENT_ID: "d9fa784f2c711zzzzz"
+  DISCORD_CLIENT_SECRET: "a2e42904c81280c1466d95de040c516zzzzzzzz"
+  DISCORD_ENABLED: "true"
+```
+
+#### Google Login
+
+- Get a Google oAuth client ID and secret from `https://developers.google.com/identity/sign-in/web/sign-in`
+- Set the callback URL to `<your API_URL>/auth/google/callback`
+- Set your environment variables:
+
+```
+  AUTH_PASSWORD_ENABLED: "false"
+  AUTH_USERS: "googleusername||Admin|googleemail@address"
+  GOOGLE_CLIENT_ID: "d9fa784f2c711zzzzz"
+  GOOGLE_CLIENT_SECRET: "a2e42904c81280c1466d95de040c516zzzzzzzz"
+  GOOGLE_ENABLED: "true"
+```
+
+### Some Things To Watch Out For
+
+- `COOKIE_DOMAINS` must contain your deployed domain for your version of Kinetic, e.g. `my-kinetic-instance.onrender.com`.
+- Any url that contains `localhost` or `127.0.0.1` should be changed to `0.0.0.0` or whatever domain you have deployed to.
+- On Heroku, make sure not to include quote marks around your strings as Heroku won't filter them out.<br/>
+
+## Kinetic Manager
+
+Kinetic Manager is a powerful tool for managing, maintaining and observing the performance of your Kinetic instance.
+
+Check out some of the key features below:
+
+### Provision, View And Manage Your Apps
+
+![Kinetic Manager](/images/kinetic-manager/kinetic-manager-apps.png)
+Note - You can add apps via your [Environment Variables](/docs/developers/kinetic-hosting#prepare-your-environment-variables) as well.
+
+### View Your Transactions
+
+See a filterable list of all your transactions in one place or drill down into an individual transaction to see how long each step in the process has taken.
+![Kinetic Manager](/images/kinetic-manager/kinetic-manager-transactions.png)
+![Kinetic Manager](/images/kinetic-manager/kinetic-manager-transaction.png)
+
+### View Your App Hot-Wallet Status
+
+Check your app hot-wallet balances, mints and more.
+![Kinetic Manager](/images/kinetic-manager/kinetic-manager-wallets.png)
+
+### Configure Your App Settings
+
+#### Mints
+
+Add multiple mints to your Kinetic instance.
+![Kinetic Manager](/images/kinetic-manager/kinetic-manager-settings-mints.png)
+
+#### Access Control
+
+Define who / how your Kinetic instance is accessed.
+![Kinetic Manager](/images/kinetic-manager/kinetic-manager-settings-access.png)
+
+#### Webhooks
+
+Configure your app webhooks so you can view events, verify transactions, get an automated warning if your hot-wallet balance falls below a threshold, etc.
+![Kinetic Manager](/images/kinetic-manager/kinetic-manager-settings-webhooks.png)
+
+### Configure Your Global Kinetic Settings
+
+Use the admin dashboard to view your apps, see your Solana clusters, see and configure your Kinetic users and more.
+![Kinetic Manager](/images/kinetic-manager/kinetic-manager-admin.png)
+
+## What If I Get Stuck?
+
+Pop into the [`kinetic-hosting`](https://discord.com/channels/808859554997469244/1038005160439468082) channel on Discord if you have issues setting up your Kinetic instance.
+
+Pop into the [`kinetic-manager`](https://discord.com/channels/808859554997469244/1038020289021358110) channel on Discord if you have issues with Kinetic Manager.
+
+<Help discord />
