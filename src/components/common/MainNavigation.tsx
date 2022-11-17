@@ -13,6 +13,7 @@ const navLinks: Array<{ label: string; url: string; hideLg?: boolean }> = [
   { label: 'Use Cases', url: '/docs/use-cases', hideLg: true },
   { label: 'Developers', url: '/docs/developers' },
   { label: 'Non-Developers', url: '/docs/non-developers' },
+  { label: 'Kinetic', url: '/docs/kinetic', hideLg: true },
   { label: 'Integrations', url: '/docs/integrations', hideLg: true },
 ]
 
