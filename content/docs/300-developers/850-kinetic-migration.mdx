@@ -1,0 +1,66 @@
+---
+title: Kinetic Migration
+excerpt: Upgrade to Kinetic from Agora
+nav_title: Agora to Kinetic
+---
+
+## Code Changes
+
+If you're upgrading to Kinetic from Agora, there'll be some code changes for you to deal with.
+
+Follow the links below to see how the Kinetic API differs from previous Kin SDK versions.
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="TypeScript"
+    subtitle="See the TypeScript API changes"
+    svgFile="typescript"
+    link={{ url: '/docs/developers/typescript#upgrading-to-kinetic-from-agora', label: 'See more' }}
+  />
+  <NavCard
+    title="Python"
+    subtitle="See the Python API changes"
+    pngFile="python"
+    link={{ url: '/docs/developers/python#upgrading-to-kinetic-from-agora', label: 'See more' }}
+  />
+  <NavCard
+    title="iOS"
+    subtitle="See the iOS API changes"
+    pngFile="swift"
+    link={{ url: '/docs/developers/ios-swift#upgrading-to-kinetic-from-agora', label: 'See more' }}
+  />
+  <NavCard
+    title="Android"
+    subtitle="See the Android API changes"
+    pngFile="kotlin"
+    link={{ url: '/docs/developers/android-kotlin#upgrading-to-kinetic-from-agora', label: 'See more' }}
+  />
+</div>
+
+## Hosting Kinetic
+
+When you transact with Kinetic on Mainnet, you'll need a Kinetic instance to connect to. This can be your own self-hosted instance or a 3rd party Kinetic As A Service option.
+
+See [here](/docs/kinetic/kinetic-in-production) for more details.
+
+## Transaction Fees
+
+On Agora, transaction fees were paid directly by the Kin Foundation who were / are hosting the Agora service.
+
+In Kinetic, developers will be responsible for paying for transaction fees for their own apps, unless they are using a 3rd party Kinetic As A Service provider that chooses to cover those costs as part of the service.
+
+Support towards these payments can come from the Kin Foundation in terms of KRE payments and grant requests.
+
+<KRE catalyst />
+
+## Upgrading Wallets
+
+As apps upgrade to Kinetic, we recommend that developers migrate their users to the new Kinetic Keypairs.
+
+These Keypairs are standard Solana Keypairs and give users greater control of their funds through mnemonics that allow them to access their funds with any Solana wallet. E.g. Phantom, Solflare, etc.
+
+## What If I Get Stuck?
+
+Pop into the [`kinetic-general`](https://discord.com/channels/808859554997469244/973322547854733362) channel on Discord or one of the SDK specific channels and we'll give you a hand.
+
+<Help />
