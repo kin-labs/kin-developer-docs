@@ -8,7 +8,7 @@ export const DocsKineticManager: FC = () => {
         title="Kinetic Manager"
         subtitle="Use Kinetic Manager to configure your Kinetic instance, view logs and transactions, etc"
         svgFile="screwdriver-wrench-solid"
-        link={{ url: '/docs/developers/kinetic-manager', label: 'Time to tinker...' }}
+        link={{ url: '/docs/kinetic/kinetic-configuration#kinetic-manager', label: 'Time to tinker...' }}
       />
     </div>
   )

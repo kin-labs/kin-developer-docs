@@ -1,0 +1,109 @@
+---
+title: Hosting Kinetic
+excerpt: Run Kinetic Locally or Deploy it to the Web
+nav_title: Kinetic Hosting
+---
+
+Here we'll explain how you can deploy your own Kinetic instance to an online service such as [Render](https://www.render.com) or [Heroku](https://www.heroku.com).
+
+You can also deploy directly onto a server using [Azure](https://azure.microsoft.com/en-us/), [Digital Ocean](https://www.digitalocean.com/), etc. Check out our [starter apps](/docs/kinetic/kinetic-hosting#demos-and-starter-kits) below if you want to get going quickly and know your way around a server.
+
+## Sign Up To A Hosting Service
+
+You'll need somewhere to run your Kinetic instance on the cloud.
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Render"
+    subtitle="Render offers free and paid services you can use to run Kinetic."
+    pngFile="render"
+    link={{ url: 'https://dashboard.render.com/', label: 'Sign Up / Log In' }}
+  />
+  <NavCard
+    title="Heroku"
+    subtitle="Heroku offers paid services you can use to run Kinetic."
+    pngFile="heroku"
+    link={{ url: 'https://dashboard.heroku.com/apps/', label: 'Sign Up / Log In' }}
+  />
+</div>
+
+## Create A New App
+
+Create a new app using your preferred service and connect it to the Kinetic repo.
+
+```
+https://github.com/kin-labs/kinetic
+```
+
+![Link To Kinetic](/images/link-to-kinetic.png)
+
+## Set Up A PostrgreSQL Server
+
+You'll need a database to run Kinetic. See how to setup and connect to your DB here:
+
+- [Render](https://dashboard.render.com/new/database) allows you to set up a separate PostreSQL server.
+- [Heroku](https://elements.heroku.com/addons/heroku-postgresql) allows you to install a PostrgeSQL db directly into a project as an addon.
+
+## Prepare Your Environment Variables
+
+Kinetic handles some of it's configuration via environment variables.
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Kinetic Environment Variables"
+    subtitle="Configure Kinetic with Environment Variables"
+    svgFile="screwdriver-wrench-solid"
+    link={{ url: '/docs/kinetic/kinetic-configuration#kinetic-environment-variables', label: 'Set your tings...' }}
+  />
+</div>
+
+## Deploy Kinetic
+
+Once your environment is prepared, you're ready to deploy! Fingers crossed!
+
+Make sure to check out the logs in case something goes wrong.
+
+If something does go wrong and you can't figure it out, never fear!
+
+Pop into the [`kinetic-hosting`](https://discord.com/channels/808859554997469244/1038005160439468082) channel on Discord and we'll give you a hand.
+
+<Help discord />
+
+## Get Started With Kinetic Manager
+
+That's it! You should be good to go. Open your app and log in via the method you specified in your environment variables.
+
+You're now using Kinetic Manager!
+
+<KineticManager />
+
+## Using Docker Compose
+
+Docker Compose can be used to run multiple containers in a single Docker application. An example of this is our Kinetic Docker Compose starter below.
+
+If you are using Docker Compose with your deployed server, you may need to install an additional `Compose` Plugin.
+
+See [here](https://docs.docker.com/compose/install/) for details.
+
+## Demos and Starter Kits
+
+Created to help get you up and running as quickly as possible, these projects can be a great reference point when you get stuck or even a starter for your own project. Happy coding!
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Kinetic Docker Compose"
+    subtitle="A quick starter using Docker Compose that'll get you up and running with minimal changes and only one command!"
+    icon="github"
+    link={{ url: 'https://github.com/kin-starters/kinetic-docker-compose', label: 'Ready, set...' }}
+  >
+    Install Docker, set your{' '}
+    <a href="/docs/kinetic/kinetic-hosting#kinetic-environment-variables">Environment Variables</a> directly in the
+    `docker-compose.yml` file and run `docker-compose up` to get started.
+  </NavCard>
+</div>
+
+## What If I Get Stuck?
+
+Pop into the [`kinetic-hosting`](https://discord.com/channels/808859554997469244/1038005160439468082) channel on Discord and we'll give you a hand.
+
+<Help discord />

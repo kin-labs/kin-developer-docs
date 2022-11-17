@@ -8,7 +8,7 @@ export const DocsProduction: FC = () => {
         title="Production"
         subtitle="Get your app ready and running on the Solana Mainnet so you can earn Kin via the KRE"
         svgFile="coins-solid"
-        link={{ url: '/docs/developers/kinetic-in-production', label: 'See more' }}
+        link={{ url: '/docs/kinetic/kinetic-in-production', label: 'See more' }}
       />
     </div>
   )
