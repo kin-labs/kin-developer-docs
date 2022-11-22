@@ -46,7 +46,7 @@ You can create accounts randomly or from existing mnemonics or secret keys. Belo
 import { Commitment } from '@kin-kinetic/solana'
 
 const mnemonic = Keypair.generateMnemonic()
-const keypair = Keypair.fromMnemonic(mnemonic)
+const keypair = Keypair.fromSecret(mnemonic)
 const accountOptions = {
   owner: keypair,
   commitment: Commitment.Finalized, // Optional, can be Finalized, Confirmed, Processed
