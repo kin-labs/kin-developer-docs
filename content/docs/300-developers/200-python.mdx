@@ -44,7 +44,7 @@ You can create accounts randomly or from existing mnemonics or secret keys. Belo
 from kinetic_sdk import Keypair, Commitment
 
 mnemonic = Keypair.generate_mnemonic()
-keypair = Keypair.from_mnemonic(mnemonic)
+keypair = Keypair.from_secret(mnemonic)
 
 # or keypair = Keypair.random()
 
@@ -279,7 +279,7 @@ kin_client = Client(env, app_index)
 from kinetic_sdk import Keypair, Commitment
 
 mnemonic = Keypair.generate_mnemonic()
-keypair = Keypair.from_mnemonic(mnemonic) # or Keypair.random()
+keypair = Keypair.from_secret(mnemonic) # or Keypair.random()
 
 account = kinetic_client.create_account(
     owner=keypair,
