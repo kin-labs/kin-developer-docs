@@ -326,6 +326,21 @@ Congratulations on making it this far! You can now carry out all of the actions 
 
 Now, we don't claim to be experts in how Bubble works, so I'm sure there are many more elegant ways to implement the UX for a Bubble app than we've shown here. But this should be a solid starting point for anyone wanting to work with Kin via Bubble. Happy building!
 
+## Commitment
+
+When creating accounts or transferring Kin, you can set the 'Commitment' level.
+![Send Kin](/images/no-code/Bubble-commitment.png)
+
+The default is 'Finalized', meaning that you'll have total certainty that a transaction has completed.
+
+E.g. in a workflow where you want to transfer Kin then check the balance, using 'Finalized' would make sure the balance was updated on-chain before the balance check.
+
+But, this means the transaction takes longer to return. If you want to to have a more dynamic user experience, you could use 'Processed', but would have to take into account that the transaction could possibly not complete on-chain.
+
+Something for app developers to consider!
+
+Learn more about commitment [here](/docs/essentials/terms-and-concepts#commitment).
+
 ## Error Handling
 
 If an error occurs with a Kinetic transaction, you'll see a value in local storage called `error` with the value being the method that failed. You can use this to drive your UI and let users know if an error has occurred.
