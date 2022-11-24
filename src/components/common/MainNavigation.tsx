@@ -15,6 +15,7 @@ const navLinks: Array<{ label: string; url: string; hideLg?: boolean }> = [
   { label: 'Non-Developers', url: '/docs/non-developers' },
   { label: 'Kinetic', url: '/docs/kinetic', hideLg: true },
   { label: 'Integrations', url: '/docs/integrations', hideLg: true },
+  { label: 'Examples', url: '/examples', hideLg: true },
 ]
 
 const iconLinks: Array<{ label: string; icon: IconName; url: string }> = [

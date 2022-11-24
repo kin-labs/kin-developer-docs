@@ -1,9 +1,26 @@
-import { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
+import type { InferGetStaticPropsType } from 'next'
+
+import { buildDocsTree } from 'src/utils/build-docs-tree'
+import { buildExamplesTree } from '../utils/build-examples-tree'
+
 import { useColorScheme } from '../components/ColorSchemeContext'
 import { Container } from '../components/common/Container'
 import { Hero } from '../components/landing-page/Hero'
+import { allDocs, allExamples } from 'contentlayer/generated'
+import { defineStaticProps } from 'src/utils/next'
 
-const Page: FC = () => {
+export const getStaticProps = defineStaticProps(async (_context) => {
+  console.time('getStaticProps /')
+  const docs = buildDocsTree(allDocs)
+  const examples = buildExamplesTree(allExamples)
+
+  console.timeEnd('getStaticProps /')
+
+  return { props: { docs, examples } }
+})
+
+const Page: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = () => {
   const preferredColorScheme = useColorScheme()
   const [colorScheme, setColorScheme] = useState<'light' | 'dark'>('light')
 
