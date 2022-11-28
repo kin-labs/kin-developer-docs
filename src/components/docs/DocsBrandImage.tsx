@@ -16,9 +16,9 @@ export function DocsBrandImage({ name, width }: DocsBrandImageProps) {
       title={name}
     >
       <div className="py-4 text-lg font-semibold">{name}</div>
-      <div className="flex justify-around p-4">
-        <DocsBrandImageImage label={'Download PNG'} src={srcSvg} width={width} />
-        <DocsBrandImageImage label={'Download SVG'} src={srcPng} width={width} />
+      <div className="flex flex-col space-y-4 p-4 sm:flex-row sm:justify-around sm:space-y-0">
+        <DocsBrandImageImage label={'Download PNG'} src={srcPng} width={width} />
+        <DocsBrandImageImage label={'Download SVG'} src={srcSvg} width={width} />
       </div>
     </div>
   )
