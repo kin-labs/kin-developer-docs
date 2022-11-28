@@ -30,7 +30,7 @@ const content = {
       </p>
       <br />
       <p>
-        Built with{' '}
+        Website built with{' '}
         <Link href={contentlayerLink}>
           <a
             className="inline-flex items-center space-x-1 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"
@@ -105,14 +105,7 @@ export const Footer: FC = () => {
         <div>
           <Link href="/">
             <a className="flex items-center space-x-2.5 font-bold text-slate-800 no-underline dark:text-white">
-              {/* <Logo /> */}
-              <Image
-                height="40px"
-                width="80px"
-                alt={`Kin Foundation`}
-                className={`svgFile svgFile-kin_name`}
-                src={`/images/logos/kin-name.svg`}
-              />
+              <Image height="40px" width="100px" alt={`Kin Foundation`} src={`/images/logos/kin-logo-violet.svg`} />{' '}
             </a>
           </Link>
           <div className="mt-4 text-sm text-slate-500 dark:text-slate-400">{content.note}</div>

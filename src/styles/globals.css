@@ -132,20 +132,6 @@
     overflow: visible !important;
   }
 
-  .svgFile.svgFile-kin {
-    transform: scale(2.2);
-    filter: invert(45%) sepia(100%) hue-rotate(-155deg) saturate(10) contrast(1);
-  }
-
-  .svgFile.svgFile-kin_name {
-    filter: invert(45%) sepia(100%) hue-rotate(-155deg) saturate(10) contrast(1);
-    margin-left: -10px !important;
-  }
-
-  html.dark .svgFile.svgFile-kin_name {
-    filter: invert(50%) sepia(100%) hue-rotate(-150deg) saturate(3) contrast(1);
-  }
-
   .svgFile.svgFile-unity {
     transform: scale(2);
   }
@@ -198,10 +184,6 @@
   .KREChecklistCheckbox {
     margin-right: 0.5rem;
     margin-bottom: 1rem;
-  }
-
-  .headerLogoLabel {
-    transform: translate(-25px, 2px);
   }
 
   header h1 {
