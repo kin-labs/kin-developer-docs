@@ -9,7 +9,7 @@ export const DocsAgora: FC<{ migrate?: boolean }> = ({ migrate = false }) => {
           title="Upgrading to Kinetic"
           subtitle="Here's some extra info that will help you complete your upgrade."
           svgFile="kin"
-          link={{ url: '/docs/essentials/getting-help', label: 'Get help!' }}
+          link={{ url: '/docs/developers/kinetic-migration', label: 'Check it out' }}
         />
       ) : null}
       <DocsNavCard
