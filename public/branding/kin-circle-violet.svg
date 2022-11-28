@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1536px" height="1536px" viewBox="0 0 1536 1536" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>circle-violet</title>
+    <defs>
+        <linearGradient x1="66.0716031%" y1="106.43771%" x2="4.02625087%" y2="-14.9259259%" id="linearGradient-1">
+            <stop stop-color="#7D43FF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="60.0702185%" y1="4.42746035%" x2="9.45136282%" y2="107.844854%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#7D43FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Kin-Logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="circle-violet" transform="translate(-0.000000, 0.000000)">
+            <circle id="Circle" fill="#FFFFFF" cx="768" cy="768" r="768"></circle>
+            <g id="Icon" transform="translate(274.816406, 198.000000)" fill-rule="nonzero">
+                <polygon id="Path" fill="#7546F6" points="986.367188 284.977734 493.183594 569.998463 986.348014 855"></polygon>
+                <polygon id="Path" fill="url(#linearGradient-1)" points="986.367188 855 493.183594 570 493.183594 1140"></polygon>
+                <polygon id="Path" fill="url(#linearGradient-2)" points="493.183594 0 493.183594 570 986.367188 284.990404"></polygon>
+                <polygon id="Path" fill="#7546F6" points="0 284.995202 0 855.004798 493.40625 1140 493.40625 0"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
