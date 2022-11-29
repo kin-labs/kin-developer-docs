@@ -148,6 +148,11 @@
     transform: scale(1.5);
   }
 
+  .jpgFile.jpgFile-kinny {
+    transform: scale(1.8);
+    border-radius: 50%;
+  }
+
   /* Turn Black Icon Purple */
   .pngFile.pngFile-render,
   .pngFile.pngFile-bubble,

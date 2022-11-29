@@ -4,4 +4,50 @@ excerpt: Connect to a 3rd Party Hosted Kinetic Instance
 nav_title: Kinetic As A Service
 ---
 
-# Coming Soon!
+If you want to connect to Kinetic on mainnet without running your own Kinetic server, then Kinetic As A Service is the way forward.
+
+## How To Connect
+
+Instantiate your Kinetic Client via your SDK of choice with the `endpoint` set to the endpoint provided by your Kinetic As A Service provider.
+E.g. TypeScript SDK:
+
+```js
+const clientOptions = {
+  environment: 'mainnet', // mainnet or devnet
+  index: 1, // your App Index
+  endpoint: 'kinetic_as_a_service_endpoint', // get this from your KAAS provider
+}
+
+const kineticClient = await KineticSdk.setup(clientOptions)
+```
+
+Don't have an App Index? Register your app on our Developer Portal so you can get your App Index that allows you to transact with our SDKs and earn via the KRE.
+
+<RegisterApp />
+
+## Kinetic As A Service Providers
+
+When you connect to a Kinetic As A Service provider, you'll need to give them information about your app, including your App Index, so make sure you've registered your app.
+
+<div className="w-full">
+  <NavCard
+    title="Kinny"
+    jpgFile="kinny"
+    useCase
+    link={{ url: 'https://discord.gg/sH9tSzxD', label: 'Visit the Kinny Discord' }}
+  >
+    <p>Connect to Kinetic with Kinny!</p>
+    <p>Join their fantastic and friendly Discord server to get started, receive support, ask questions etc.</p>
+  </NavCard>
+</div>
+<br />
+
+## Coming Soon!
+
+We'll let you know here as more Kinetic As A Service providers become available.
+
+## What If I Get Stuck?
+
+Pop into the [`kinetic-as-a-service`](https://discord.com/channels/808859554997469244/1047013961092055182) channel on Discord and we'll give you a hand.
+
+<Help />

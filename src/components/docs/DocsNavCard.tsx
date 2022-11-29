@@ -12,22 +12,40 @@ export const DocsNavCard: FC<
     icon?: IconName | null
     svgFile?: string | null
     pngFile?: string | null
+    jpgFile?: string | null
     label?: string | null
     subtitle?: string | null
     link?: { url: string; label: string }
   }>
-> = ({ hero, useCase, title, icon, svgFile, pngFile, label, subtitle, children, link }) => {
+> = ({ hero, useCase, title, icon, svgFile, pngFile, jpgFile, label, subtitle, children, link }) => {
+  let imageClass = ''
+  let imageSrc = ''
+  if (svgFile) {
+    imageClass = `svgFile svgFile-${svgFile}`
+    imageSrc = `/images/logos/${svgFile}.svg`
+  }
+  if (pngFile) {
+    imageClass = `pngFile pngFile-${pngFile}`
+    imageSrc = `/images/logos/${pngFile}.png`
+  }
+  if (jpgFile) {
+    imageClass = `jpgFile jpgFile-${jpgFile}`
+    imageSrc = `/images/logos/${jpgFile}.jpg`
+  }
+
   return (
     <div className={`flex flex-col ${hero ? 'mb-4' : ''}`}>
       <div
         className={`grow border border-gray-100 bg-gray-50 p-6 py-4 dark:border-gray-800 dark:bg-gray-900 
-        ${link ? 'rounded-t-2xl border-b-0' : 'rounded-2xl'} ${icon || svgFile || pngFile ? 'mt-6' : 'mt-0'}`}
+        ${link ? 'rounded-t-2xl border-b-0' : 'rounded-2xl'} ${
+          icon || svgFile || pngFile || jpgFile ? 'mt-6' : 'mt-0'
+        }`}
       >
-        {(svgFile || pngFile) && (
+        {imageSrc && (
           <div
             className={`${
               useCase ? 'relative w-full' : '-mt-10 mb-4 block w-12'
-            } rounded-full bg-white dark:bg-gray-950 ${svgFile || pngFile ? 'NavCard-AllowOverflow' : ''}`}
+            } rounded-full bg-white dark:bg-gray-950 ${svgFile || pngFile || jpgFile ? 'NavCard-AllowOverflow' : ''}`}
           >
             <div
               className={`${useCase ? 'absolute -top-8 right-2 scale-150' : ''} mb-4
@@ -36,9 +54,9 @@ export const DocsNavCard: FC<
               <Image
                 height="300px"
                 width="300px"
-                alt={`${svgFile || pngFile}`}
-                className={svgFile ? `svgFile svgFile-${svgFile}` : `pngFile pngFile-${pngFile}`}
-                src={svgFile ? `/images/logos/${svgFile}.svg` : `/images/logos/${pngFile}.png`}
+                alt={`${svgFile || pngFile || jpgFile}`}
+                className={imageClass}
+                src={imageSrc}
               />
             </div>
           </div>
