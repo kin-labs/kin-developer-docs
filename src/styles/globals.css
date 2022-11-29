@@ -144,6 +144,12 @@
     transform: scale(1.6);
   }
 
+  .pngFile.pngFile-npm {
+    transform: scale(1.7);
+    border-radius: 50%;
+    filter: invert(100%) sepia(20%) hue-rotate(-281deg) saturate(5) contrast(1);
+  }
+
   .svgFile.svgFile-kin-circle-white {
     transform: scale(1.5);
   }
