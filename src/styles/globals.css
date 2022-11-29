@@ -132,20 +132,6 @@
     overflow: visible !important;
   }
 
-  .svgFile.svgFile-kin {
-    transform: scale(2.2);
-    filter: invert(45%) sepia(100%) hue-rotate(-155deg) saturate(10) contrast(1);
-  }
-
-  .svgFile.svgFile-kin_name {
-    filter: invert(45%) sepia(100%) hue-rotate(-155deg) saturate(10) contrast(1);
-    margin-left: -10px !important;
-  }
-
-  html.dark .svgFile.svgFile-kin_name {
-    filter: invert(50%) sepia(100%) hue-rotate(-150deg) saturate(3) contrast(1);
-  }
-
   .svgFile.svgFile-unity {
     transform: scale(2);
   }
@@ -156,6 +142,10 @@
 
   .pngFile.pngFile-heroku {
     transform: scale(1.6);
+  }
+
+  .svgFile.svgFile-kin-circle-white {
+    transform: scale(1.5);
   }
 
   /* Turn Black Icon Purple */
@@ -200,25 +190,10 @@
     margin-bottom: 1rem;
   }
 
-  .headerLogoLabel {
-    transform: translate(-25px, 2px);
-  }
-
   header h1 {
     margin-top: 20px !important;
     font-size: 5em !important;
     line-height: 1em !important;
-  }
-
-  .BrandImage p {
-    margin: 0;
-  }
-
-  .BrandImage p img {
-    margin: auto;
-    padding: 0;
-    height: 100px;
-    width: 100px;
   }
 
   /* Avoid Bullet Points having weird spacing with links */
