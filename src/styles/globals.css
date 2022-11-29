@@ -150,6 +150,11 @@
     transform: scale(2);
   }
 
+  .jpgFile.jpgFile-kinny {
+    transform: scale(1.8);
+    border-radius: 50%;
+  }
+
   .pngFile.pngFile-giftery {
     transform: scale(1.55);
   }
