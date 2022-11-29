@@ -105,7 +105,7 @@ export const Footer: FC = () => {
         <div>
           <Link href="/">
             <a className="flex items-center space-x-2.5 font-bold text-slate-800 no-underline dark:text-white">
-              <Image height="40px" width="100px" alt={`Kin Foundation`} src={`/images/logos/kin-logo-violet.svg`} />{' '}
+              <Image height="40px" width="70px" alt={`Kin Foundation`} src={`/images/logos/kin-logo-violet.svg`} />{' '}
             </a>
           </Link>
           <div className="mt-4 text-sm text-slate-500 dark:text-slate-400">{content.note}</div>

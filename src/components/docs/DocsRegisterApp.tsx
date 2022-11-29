@@ -13,7 +13,7 @@ export const DocsRegisterApp: FC = () => {
       <DocsNavCard
         title="Kin Dev Portal"
         subtitle="Go straight to the Kin Developer Portal and get started"
-        svgFile="kin"
+        svgFile="kin-circle-white"
         link={{ url: 'https://portal.kin.org', label: 'Go now!' }}
       />
     </div>

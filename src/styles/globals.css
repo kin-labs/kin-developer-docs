@@ -144,6 +144,10 @@
     transform: scale(1.6);
   }
 
+  .svgFile.svgFile-kin-circle-white {
+    transform: scale(1.5);
+  }
+
   /* Turn Black Icon Purple */
   .pngFile.pngFile-render,
   .pngFile.pngFile-bubble,

@@ -80,7 +80,7 @@ export const MainNavigation = () => {
         <div className="flex items-center space-x-2.5">
           <Link href="/">
             <a className="flex items-center space-x-2.5 font-bold text-slate-800 no-underline dark:text-white">
-              <Image height="40px" width="100px" alt={`Kin Foundation`} src={`/images/logos/kin-logo-violet.svg`} />
+              <Image height="30px" width="50px" alt={`Kin Foundation`} src={`/images/logos/kin-logo-violet.svg`} />
               <span>
                 <Label text="Developer Docs" />
               </span>
