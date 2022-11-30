@@ -30,7 +30,6 @@ Don't have an App Index? Register your app on our Developer Portal so you can ge
 
 While you're waiting for confirmation of your App Index, use `1` on devnet so you can get started.
 
-
 ### Create Account
 
 You can create accounts randomly or from existing mnemonics or secret keys. Below, we'll make a keypair and use that for creating an account on the blockchain.
@@ -99,11 +98,31 @@ Get the full transaction history of any account by passing in the account's Publ
 
 ### Webhooks
 
-In [Kinetic Manager](/docs/kinetic/kinetic-configuration#kinetic-manager/), you can configure your app to use the following webhooks:
+Whether you are using [Kinetic As A Service](/docs/kinetic/kinetic-as-a-service) or [Self-Hosting](/docs/kinetic/kinetic-hosting) to connect to Kinetic, once you're up and running, you'll be able to access [Kinetic Manager](/docs/kinetic/kinetic-configuration#kinetic-manager) to manage your app's settings.
 
-### Events Webhook
+This includes allowing you to configure your app to use a number of webhooks.
 
-This webhook can be used to receive information about completed transactions.
+#### Balance Webhook
+
+The balance webhook allows you to receive an alert when your app's hotwallet is running low on Sol so you can top it up and ensure your app can continue to keep transacting.
+
+![Balance Webhook](/images/kinetic-manager/webhook-balance.png)
+
+E.g. In a node express server:
+
+```js
+app.use('/balance', async (req, res) => {
+  const data = req.body
+  // DO STUFF WITH THE BALANCE ALERT
+  res.sendStatus(200)
+})
+```
+
+#### Event Webhook
+
+The event webhook allows you to receive alerts when actions have been confirmed on the Solana blockchain.
+
+![Balance Webhook](/images/kinetic-manager/webhook-event.png)
 
 E.g. In a node express server:
 
@@ -115,11 +134,13 @@ app.use('/events', async (req, res) => {
 })
 ```
 
-### Verify Webhook
+#### Verify Webhook
 
-This webhook can be used to verify transactions.
+The verify webhook allows you to have fine-grained control over transactions, making sure they meet your own criteria before allowing them to proceed.
 
-E.g. In a node express server return a `200` status code to approve the transaction:
+![Balance Webhook](/images/kinetic-manager/webhook-event.png)
+
+E.g. In a node express server return a `200` status code to approve the transaction or a `400` to reject it:
 
 ```js
 app.use('/verify', async (req, res) => {
