@@ -6,34 +6,15 @@ nav_title: Kinetic As A Service
 
 If you want to connect to Kinetic on mainnet without running your own Kinetic server, then Kinetic As A Service is the way forward.
 
-## How To Connect
+To use Kinetic As A Service, you'll want to sign up with a Kinetic As A Service Provider.
 
-Connecting to Kinetic via your Kinetic As A Service provider is incredibly simple.
+When you sign-up to a Kinetic As A Service provider, you'll need to go through their setup process.
 
-Just, instantiate your Kinetic Client via your SDK of choice with the `endpoint` set to the endpoint provided by your Kinetic As A Service provider.
-E.g. TypeScript SDK:
-
-```js
-const clientOptions = {
-  environment: 'mainnet', // mainnet or devnet
-  index: 1, // your App Index
-  endpoint: 'kinetic_as_a_service_endpoint', // get this from your KAAS provider
-}
-
-const kineticClient = await KineticSdk.setup(clientOptions)
-```
-
-Don't have an App Index? Register your app on our Developer Portal so you can get your App Index that allows you to transact with our SDKs and earn via the KRE.
+If your app is going to transact with Kin and you want to earn via the [KRE](/docs/essentials/kin-rewards-engine), you'll need to give them your App Index, so make sure you've registered.
 
 <RegisterApp />
 
 ## Kinetic As A Service Providers
-
-When you sign-up to a Kinetic As A Service provider, you'll need to give them information about your app, including your App Index, so make sure you've registered (see above).
-
-In return, you'll get your endpoint url you can use to access Kinetic on Solana mainnet.
-
-**Here are some of the providers offering Kinetic As A Service:**
 
 ### Kinetic Fee Payer by Kinny
 
@@ -73,6 +54,23 @@ In return, you'll get your endpoint url you can use to access Kinetic on Solana 
 ### More to come!
 
 We'll let you know here as more Kinetic As A Service providers become available.
+
+## How To Connect
+
+Connecting to Kinetic via your Kinetic As A Service provider is incredibly simple.
+
+Just, instantiate your Kinetic Client via your SDK of choice with the `endpoint` set to the endpoint provided by your Kinetic As A Service provider.
+E.g. TypeScript SDK:
+
+```js
+const clientOptions = {
+  environment: 'mainnet', // mainnet or devnet
+  index: 1, // your App Index
+  endpoint: 'kinetic_as_a_service_endpoint', // get this from your KAAS provider
+}
+
+const kineticClient = await KineticSdk.setup(clientOptions)
+```
 
 ## Kinetic Manager
 
