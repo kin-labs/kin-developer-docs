@@ -8,7 +8,9 @@ If you want to connect to Kinetic on mainnet without running your own Kinetic se
 
 ## How To Connect
 
-Instantiate your Kinetic Client via your SDK of choice with the `endpoint` set to the endpoint provided by your Kinetic As A Service provider.
+Connecting to Kinetic via your Kinetic As A Service provider is incredibly simple.
+
+Just, instantiate your Kinetic Client via your SDK of choice with the `endpoint` set to the endpoint provided by your Kinetic As A Service provider.
 E.g. TypeScript SDK:
 
 ```js
@@ -27,17 +29,43 @@ Don't have an App Index? Register your app on our Developer Portal so you can ge
 
 ## Kinetic As A Service Providers
 
-When you connect to a Kinetic As A Service provider, you'll need to give them information about your app, including your App Index, so make sure you've registered your app.
+When you sign-up to a Kinetic As A Service provider, you'll need to give them information about your app, including your App Index, so make sure you've registered (see above).
 
-<div className="w-full">
+In return, you'll get your endpoint url you can use to access Kinetic on Solana mainnet.
+
+**Here are some of the providers offering Kinetic As A Service:**
+
+### Kinetic Fee Payer by Kinny
+
+<div className="w-full kineticAsAService">
   <NavCard
-    title="Kinny"
+    title="Kinetic Fee Payer by Kinny"
     jpgFile="kinny"
     useCase
     link={{ url: 'https://discord.gg/sH9tSzxD', label: 'Visit the Kinny Discord' }}
   >
-    <p>Connect to Kinetic with Kinny!</p>
-    <p>Join their fantastic and friendly Discord server to get started, receive support, ask questions etc.</p>
+    Kinetic Fee Payer by Kinny is a fully hosted and managed fee payer solution that allows application developers to
+    easily and quickly provide a feeless user experience for their end users. 
+    
+    Applications utilizing this service can
+    benefit by allowing their users to quickly and easily get started using their apps without having to hold Sol in
+    their wallet or having to teach them about blockchain concepts such as rent or transaction fees.
+
+    ### The service includes the following benefits:
+
+    #### 1) Onboarding and on-going support
+    - Get started easily and receive one-on-one support via Discord.
+    - Kinny support will assist apps to get up and running at all stages of development.
+
+    #### 2) Fully hosted and managed infrastructure
+    - Kinny hosts and manages all of the infrastructure that’s required so developers can focus on what matters most - their apps.
+    - Stay up to date with the latest and greatest features of the fee payer while also benefiting from our strict testing and version management.
+
+    #### 3) Robust Solana Node Service
+    - Take advantage of the included node access so that your app can talk to the Solana blockchain directly.
+
+    [Follow](https://twitter.com/KinnyTech) Kinny on twitter to stay updated.
+
   </NavCard>
 </div>
 <br />
@@ -67,21 +95,9 @@ See a filterable list of all your transactions in one place or drill down into a
 Check your app hot-wallet balances, mints and more.
 ![Kinetic Manager](/images/kinetic-manager/kinetic-manager-wallets.png)
 
-### Configure Your App Settings
+### Configure Your App Settings, e.g. Webhooks
 
-#### Mints
-
-Add multiple mints to your Kinetic instance.
-![Kinetic Manager](/images/kinetic-manager/kinetic-manager-settings-mints.png)
-
-#### Access Control
-
-Define who / how your Kinetic instance is accessed.
-![Kinetic Manager](/images/kinetic-manager/kinetic-manager-settings-access.png)
-
-#### Webhooks
-
-Configure your app webhooks so you can view events, verify transactions, get an automated warning if your hot-wallet balance falls below a threshold, etc.
+Configure your app webhooks so you can get notified of events, verify transactions, get an automated warning if your hot-wallet balance falls below a threshold, etc.
 ![Kinetic Manager](/images/kinetic-manager/kinetic-manager-settings-webhooks.png)
 
 ## What If I Get Stuck?
