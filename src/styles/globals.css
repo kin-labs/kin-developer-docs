@@ -154,6 +154,11 @@
     transform: scale(1.5);
   }
 
+  .jpgFile.jpgFile-kinny {
+    transform: scale(1.8);
+    border-radius: 50%;
+  }
+
   /* Turn Black Icon Purple */
   .pngFile.pngFile-render,
   .pngFile.pngFile-bubble,
@@ -206,5 +211,11 @@
   ul li a.inline-flex.items-center.space-x-1 {
     margin-top: 0;
     margin-bottom: 0;
+  }
+
+  .kineticAsAService p,
+  .kineticAsAService h4,
+  .kineticAsAService li {
+    font-size: 16px !important;
   }
 }
