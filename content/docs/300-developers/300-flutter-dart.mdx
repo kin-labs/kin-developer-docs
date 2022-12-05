@@ -132,6 +132,17 @@ GetHistoryOptions options = GetHistoryOptions(account: alice.publicKey, mint: mi
 List<HistoryResponse>? res = await sdk.getHistory(options);
 ```
 
+### Get Token Accounts
+
+Get the full list of [Token Accounts](/docs/essentials/terms-and-concepts#token-account) held by a Keypair on Solana.
+
+```js
+GetTokenAccountsOptions options = GetTokenAccountsOptions(account: alice.publicKey, mint: mint);
+List<TokenAccountsResponse>? res = await sdk.getTokenAccounts(options);
+```
+
+Note on Token Accounts with Kinetic. You should never need to send Kin directly to a particular token account. All transfers should go to the Keypair's publicKey.
+
 ### Webhooks
 
 Whether you are using [Kinetic As A Service](/docs/kinetic/kinetic-as-a-service) or [Self-Hosting](/docs/kinetic/kinetic-hosting) to connect to Kinetic, once you're up and running, you'll be able to access [Kinetic Manager](/docs/kinetic/kinetic-configuration#kinetic-manager) to manage your app's settings.

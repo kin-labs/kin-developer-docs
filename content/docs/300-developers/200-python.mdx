@@ -158,6 +158,16 @@ Get the full transaction history of any account by passing in the account's Publ
 history = kinetic_client.get_history(account=keypair.publicKey)
 ```
 
+### Get Token Accounts
+
+Get the full list of [Token Accounts](/docs/essentials/terms-and-concepts#token-account) held by a Keypair on Solana.
+
+```python
+token_accounts = kinetic_client.get_token_accounts(account=keypair.publicKey)
+```
+
+Note on Token Accounts with Kinetic. You should never need to send Kin directly to a particular token account. All transfers should go to the Keypair's publicKey.
+
 ### Webhooks
 
 Whether you are using [Kinetic As A Service](/docs/kinetic/kinetic-as-a-service) or [Self-Hosting](/docs/kinetic/kinetic-hosting) to connect to Kinetic, once you're up and running, you'll be able to access [Kinetic Manager](/docs/kinetic/kinetic-configuration#kinetic-manager) to manage your app's settings.
