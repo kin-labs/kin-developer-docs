@@ -169,10 +169,8 @@ Get the full list of [Token Accounts](/docs/essentials/terms-and-concepts#token-
 
 ```js
 const tokenAccountOptions = { account: keypair.publicKey }
-await kineticClient.getHistory(tokenAccountOptions)
+await kineticClient.getTokenAccounts(tokenAccountOptions)
 ```
-
-Note on Token Accounts with Kinetic. You should never need to send Kin directly to a particular token account. All transfers should go to the Keypair's publicKey.
 
 ### Webhooks
 
