@@ -55,7 +55,6 @@ Don't have an App Index? Register your app on our Developer Portal so you can ge
 
 While you're waiting for confirmation of your App Index, use `1` on devnet so you can get started.
 
-
 ### Create Account
 
 You can create accounts randomly or from existing mnemonics or secret keys. Below, we'll make a keypair and use that for creating an account on the blockchain.
@@ -117,6 +116,14 @@ Get the full transaction history of any account by passing in the account's Publ
 
 ```kotlin
 val accountHistory = kinetic.getHistory(owner.publicKey)
+```
+
+### Get Token Accounts
+
+Get the full list of [Token Accounts](/docs/essentials/terms-and-concepts#token-account) held by a Keypair on Solana.
+
+```kotlin
+val tokenAccounts = kinetic.getTokenAccounts(owner.publicKey)
 ```
 
 ## Demos and Starter Kits
