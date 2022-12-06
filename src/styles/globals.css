@@ -152,6 +152,7 @@
 
   .svgFile.svgFile-kin-circle-white {
     transform: scale(1.5);
+    filter: brightness(75%);
   }
 
   .jpgFile.jpgFile-kinny {
