@@ -30,6 +30,7 @@ import { DocsKRE as KRE } from '../../components/docs/DocsKRE'
 import { DocsNavCard as NavCard } from '../../components/docs/DocsNavCard'
 import { DocsProduction as Production } from '../../components/docs/DocsProduction'
 import { DocsRegisterApp as RegisterApp } from '../../components/docs/DocsRegisterApp'
+import { KinDemo } from '../../components/demo'
 import { defineStaticProps, toParams } from '../../utils/next'
 
 export const getStaticPaths = async () => {
@@ -85,6 +86,7 @@ const mdxComponents = {
   Agora,
   Bubble,
   BrandImage,
+  KinDemo,
 }
 
 const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ doc, tree, breadcrumbs, childrenTree }) => {
