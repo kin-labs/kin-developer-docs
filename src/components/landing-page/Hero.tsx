@@ -27,14 +27,14 @@ export const Hero: FC = () => {
           hero
           title="Kin Essentials"
           subtitle="Earn via the Kin Rewards Engine. Build with best in class No-Code and SDK tools."
-          svgFile="kin"
+          svgFile="kin-circle-white"
           link={{ url: '/docs/essentials', label: 'See more' }}
         />
         <NavCard
           hero
           title="Use Cases"
           subtitle="See how our top earning apps use Kin to their advantage."
-          svgFile="kin"
+          svgFile="kin-circle-white"
           link={{ url: '/docs/use-cases', label: 'See more' }}
         />
         <div className=" mx-auto my-0 grid w-full max-w-5xl gap-6 md:grid-cols-2">
@@ -42,14 +42,14 @@ export const Hero: FC = () => {
             hero
             title="Love Coding? Use our SDKs"
             subtitle="Harness the power of Kin with our range of SDKs."
-            svgFile="kin"
+            svgFile="kin-circle-white"
             link={{ url: '/docs/developers', label: 'See more' }}
           />
           <NavCard
             hero
             title="Not a Dev? No Problem."
             subtitle="Build powerful Apps with no coding experience."
-            svgFile="kin"
+            svgFile="kin-circle-white"
             link={{ url: '/docs/non-developers', label: 'See more' }}
           />
         </div>
@@ -57,7 +57,7 @@ export const Hero: FC = () => {
           hero
           title="Integrations"
           subtitle="Easily power-up your App with these amazing integrations."
-          svgFile="kin"
+          svgFile="kin-circle-white"
           link={{ url: '/docs/integrations', label: 'See more' }}
         />
       </div>

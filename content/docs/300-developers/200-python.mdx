@@ -32,9 +32,9 @@ kinetic_client = KineticSdk.setup(
 
 Don't have an App Index? Register your app on our Developer Portal so you can get your App Index that allows you to transact with our SDKs and earn via the KRE.
 
-While you're waiting for confirmation of your App Index, use `1` on devnet so you can get started.
-
 <RegisterApp />
+
+While you're waiting for confirmation of your App Index, use `1` on devnet so you can get started.
 
 ### Create Account
 
@@ -160,13 +160,35 @@ history = kinetic_client.get_history(account=keypair.publicKey)
 
 ### Webhooks
 
-In [Kinetic Manager](/docs/kinetic/kinetic-configuration#kinetic-manager/), you can configure your app to use the following webhooks:
+Whether you are using [Kinetic As A Service](/docs/kinetic/kinetic-as-a-service) or [Self-Hosting](/docs/kinetic/kinetic-hosting) to connect to Kinetic, once you're up and running, you'll be able to access [Kinetic Manager](/docs/kinetic/kinetic-configuration#kinetic-manager) to manage your app's settings.
 
-### Events Webhook
+This includes allowing you to configure your app to use a number of webhooks.
 
-This webhook can be used to receive information about completed transactions.
+#### Balance Webhook
 
-E.g. In a Python server with `Flask` / `flask-cors`:
+The balance webhook allows you to receive an alert when your app's hotwallet is running low on Sol so you can top it up and ensure your app can continue to keep transacting.
+
+![Balance Webhook](/images/kinetic-manager/webhook-balance.png)
+
+E.g. In a node express server:
+
+```python
+@cross_origin()
+@app.route('/balance', methods=['POST'])
+def events():
+    print('request_body: ', request.body)
+    # DO STUFF WITH BALANCE ALERT
+    response = '', 200
+    return response
+```
+
+#### Event Webhook
+
+The event webhook allows you to receive alerts when actions have been confirmed on the Solana blockchain.
+
+![Balance Webhook](/images/kinetic-manager/webhook-event.png)
+
+E.g. In a node express server:
 
 ```python
 @cross_origin()
@@ -178,11 +200,13 @@ def events():
     return response
 ```
 
-### Verify Webhook
+#### Verify Webhook
 
-This webhook can be used to verify transactions.
+The verify webhook allows you to have fine-grained control over transactions, making sure they meet your own criteria before allowing them to proceed.
 
-E.g. In a In a Python server with `Flask` / `flask-cors` return a `200` status code to approve the transaction:
+![Balance Webhook](/images/kinetic-manager/webhook-event.png)
+
+E.g. In a node express server return a `200` status code to approve the transaction or a `400` to reject it:
 
 ```python
 @cross_origin()
@@ -200,6 +224,12 @@ def events():
 Created to help get you up and running as quickly as possible, these projects can be a great reference point when you get stuck or even a starter for your own project. Happy coding!
 
 <div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Kinetic Python Starter"
+    subtitle="This starter shows how to implement a simple API that allows you to send KIN to a Solana account using Kinetic."
+    icon="github"
+    link={{ url: 'https://github.com/kin-starters/kinetic-python-starter', label: 'Get started' }}
+  />
   <NavCard
     title="Kinetic Python Demo Server"
     subtitle="A full-fat server based implementation of Kin Kinetic."

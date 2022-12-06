@@ -4,4 +4,106 @@ excerpt: Connect to a 3rd Party Hosted Kinetic Instance
 nav_title: Kinetic As A Service
 ---
 
-# Coming Soon!
+If you want to connect to Kinetic on mainnet without running your own Kinetic server, then Kinetic As A Service is the way forward.
+
+To use Kinetic As A Service, you'll want to sign up with a Kinetic As A Service Provider.
+
+When you sign-up to a Kinetic As A Service provider, you'll need to go through their setup process.
+
+If your app is going to transact with Kin and you want to earn via the [KRE](/docs/essentials/kin-rewards-engine), you'll need to give them your App Index, so make sure you've registered.
+
+<RegisterApp />
+
+## Kinetic As A Service Providers
+
+At Kin, we are working closely with a number of Kinetic As A Service providers to support them in delivering first-class offerings to Kin developers.
+
+### Kinetic Fee Payer by Kinny
+
+<div className="w-full kineticAsAService">
+  <NavCard
+    jpgFile="kinny"
+    largeIcon
+    link={{ url: 'https://discord.gg/sH9tSzxD', label: 'Sign Up Now' }}
+  >
+    **Kinetic Fee Payer by Kinny** is a fully hosted and managed fee payer solution that allows application developers to
+    easily and quickly provide a feeless user experience for their end users. 
+    
+    Applications utilizing this service can
+    benefit by allowing their users to quickly and easily get started using their apps without having to hold Sol in
+    their wallet or having to teach them about blockchain concepts such as rent or transaction fees.
+
+    **The service includes the following benefits:**
+
+    #### 1) Onboarding and on-going support
+    - Get started easily and receive one-on-one support via Discord.
+    - Kinny support will assist apps to get up and running at all stages of development.
+
+    #### 2) Fully hosted and managed infrastructure
+    - Kinny hosts and manages all of the infrastructure that’s required so developers can focus on what matters most - their apps.
+    - Stay up to date with the latest and greatest features of the fee payer while also benefiting from our strict testing and version management.
+
+    #### 3) Robust Solana Node Service
+    - Take advantage of the included node access so that your app can talk to the Solana blockchain directly.
+
+    Follow Kinny on [Twitter](https://twitter.com/KinnyTech) to stay updated.
+
+  </NavCard>
+</div>
+<br />
+
+### More to come!
+
+We'll let you know here as more Kinetic As A Service providers become available.
+
+## How To Connect
+
+Once you've chosen a KAAS provider, connecting to Kinetic is incredibly simple.
+
+Just, instantiate your Kinetic Client via your SDK of choice with the `endpoint` set to the endpoint provided by your Kinetic As A Service provider.
+
+E.g. using the [TypeScript SDK](/docs/developers/typescript)
+
+```js
+const clientOptions = {
+  environment: 'mainnet', // mainnet or devnet
+  index: 1, // your App Index
+  endpoint: 'kinetic_as_a_service_endpoint', // get this from your KAAS provider
+}
+
+const kineticClient = await KineticSdk.setup(clientOptions)
+```
+
+## Kinetic Manager
+
+Your KAAS provider should also be able to give you access to Kinetic Manager, a fantastic GUI you can use to configure your application, view transactions and more.
+
+Check out some of the key features below:
+
+**Note:** Access to Kinetic Manager and the exact settings available will depend on what's being offered by your KAAS Provider.
+
+### View And Manage Your Apps
+
+![Kinetic Manager](/images/kinetic-manager/kinetic-manager-apps.png)
+
+### View Your Transactions
+
+See a filterable list of all your transactions in one place or drill down into an individual transaction to see how long each step in the process has taken.
+![Kinetic Manager](/images/kinetic-manager/kinetic-manager-transactions.png)
+![Kinetic Manager](/images/kinetic-manager/kinetic-manager-transaction.png)
+
+### View Your App Hot-Wallet Status
+
+Check your app hot-wallet balances, mints and more.
+![Kinetic Manager](/images/kinetic-manager/kinetic-manager-wallets.png)
+
+### Configure Your App Settings, e.g. Webhooks
+
+Configure your app webhooks so you can get notified of events, verify transactions, get an automated warning if your hot-wallet balance falls below a threshold, etc.
+![Kinetic Manager](/images/kinetic-manager/kinetic-manager-settings-webhooks.png)
+
+## What If I Get Stuck?
+
+Pop into the [`kinetic-as-a-service`](https://discord.com/channels/808859554997469244/1047013961092055182) channel on Discord and we'll give you a hand.
+
+<Help />

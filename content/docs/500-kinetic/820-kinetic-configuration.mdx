@@ -108,7 +108,58 @@ Define who / how your Kinetic instance is accessed.
 #### Webhooks
 
 Configure your app webhooks so you can view events, verify transactions, get an automated warning if your hot-wallet balance falls below a threshold, etc.
-![Kinetic Manager](/images/kinetic-manager/kinetic-manager-settings-webhooks.png)
+
+##### Balance Webhook
+
+The balance webhook allows you to receive an alert when your app's hotwallet is running low on Sol so you can top it up and ensure your app can continue to keep transacting.
+
+![Balance Webhook](/images/kinetic-manager/webhook-balance.png)
+
+E.g. In a node express server:
+
+```js
+app.use('/balance', async (req, res) => {
+  const data = req.body
+  // DO STUFF WITH THE BALANCE ALERT
+  res.sendStatus(200)
+})
+```
+
+##### Event Webhook
+
+The event webhook allows you to receive alerts when actions have been confirmed on the Solana blockchain.
+
+![Balance Webhook](/images/kinetic-manager/webhook-event.png)
+
+E.g. In a node express server:
+
+```js
+app.use('/events', async (req, res) => {
+  const event = req.body
+  // DO STUFF WITH THE EVENT DATA
+  res.sendStatus(200)
+})
+```
+
+##### Verify Webhook
+
+The verify webhook allows you to have fine-grained control over transactions, making sure they meet your own criteria before allowing them to proceed.
+
+![Balance Webhook](/images/kinetic-manager/webhook-event.png)
+
+E.g. In a node express server return a `200` status code to approve the transaction or a `400` to reject it:
+
+```js
+app.use('/verify', async (req, res) => {
+  const transaction = req.body
+  // CHECK THAT YOU WANT THIS TRANSACTION TO PROCEED
+  // e.g.
+  if (transaction.amount < 1000000) {
+    res.sendStatus(200)
+  }
+  res.sendStatus(400)
+})
+```
 
 ### Configure Your Global Kinetic Settings
 

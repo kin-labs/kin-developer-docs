@@ -6,9 +6,15 @@ export const DocsRegisterApp: FC = () => {
     <div className="mt-8 grid gap-6 md:grid-cols-2">
       <DocsNavCard
         title="Register Your App"
-        subtitle="Register your App on the Kin Developer Portal"
+        subtitle="Learn how to register your app on the Kin Developer Portal"
         svgFile="address-card-solid"
         link={{ url: '/docs/essentials/kre-app-registration', label: 'See how' }}
+      />
+      <DocsNavCard
+        title="Kin Dev Portal"
+        subtitle="Go straight to the Kin Developer Portal and get started"
+        svgFile="kin-circle-white"
+        link={{ url: 'https://portal.kin.org', label: 'Go now!' }}
       />
     </div>
   )

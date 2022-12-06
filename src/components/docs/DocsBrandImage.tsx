@@ -1,54 +1,41 @@
-import Image from 'next/image'
-import { FC, PropsWithChildren } from 'react'
+export interface DocsBrandImageProps {
+  name: string
+  width?: number
+}
 
-export const DocsBrandImage: FC<
-  PropsWithChildren<{ name: string; svg: boolean; png: boolean; light: boolean; dark: boolean }>
-> = ({ name, svg = false, png = false, light = false, dark = false, children }) => {
-  let fileName = `${name}.${svg ? 'svg' : 'png'}`
-  let src = `/branding/${fileName}`
+export function DocsBrandImage({ name, width }: DocsBrandImageProps) {
+  const slug = name.toLowerCase().replace(/ /g, '-')
+  let fileNamePng = `${slug}.png`
+  let fileNameSvg = `${slug}.svg`
+  let srcPng = `/branding/${fileNamePng}`
+  let srcSvg = `/branding/${fileNameSvg}`
 
   return (
-    <div className={`BrandImage flex flex-col`}>
-      <div
-        className={`flex grow flex-col justify-between rounded-md border border-gray-100 bg-gray-50 ${
-          light ? 'bg-gray-600' : ''
-        } p-2 dark:border-gray-800 dark:bg-gray-900 ${dark ? 'dark:bg-gray-200' : ''}`}
-        title={name}
-      >
-        {children ? children : <Image height="169" width="169" alt={`${fileName}`} src={src} />}
-
-        <span
-          className={`mx-auto mb-1 pt-3 text-slate-600 dark:text-slate-900 ${light ? 'text-slate-50' : ''} ${
-            dark ? 'dark:text-slate-100' : ''
-          }`}
-        >
-          {svg ? (
-            <a
-              className={`text-slate-600 dark:text-slate-900 ${light ? 'text-slate-50' : ''} ${
-                dark ? 'dark:text-slate-900' : ''
-              }`}
-              download={`${name}.svg`}
-              href={`/branding/${name}.svg`}
-              title={name}
-            >
-              SVG
-            </a>
-          ) : null}
-          {svg && png ? <span className="mx-2"> </span> : null}
-          {png ? (
-            <a
-              className={`text-slate-600 dark:text-slate-900 ${light ? 'text-slate-50' : ''} ${
-                dark ? 'dark:text-slate-900' : ''
-              }`}
-              download={`${name}.png`}
-              href={`/branding/${name}.png`}
-              title={name}
-            >
-              PNG
-            </a>
-          ) : null}
-        </span>
+    <div
+      className="rounded-md border border-gray-100 bg-gray-50 px-5 py-2 dark:border-gray-800 dark:bg-gray-900 "
+      title={name}
+    >
+      <div className="py-4 text-lg font-semibold">{name}</div>
+      <div className="flex flex-col space-y-4 p-4 sm:flex-row sm:justify-around sm:space-y-0">
+        <DocsBrandImageImage label={'Download PNG'} src={srcPng} width={width} />
+        <DocsBrandImageImage label={'Download SVG'} src={srcSvg} width={width} />
       </div>
     </div>
+  )
+}
+
+function DocsBrandImageImage({ src, label, width }: { src: string; label: string; width?: number }) {
+  return (
+    <div className={'flex flex-col items-center space-y-2'}>
+      <img alt={label} src={src} className={`h-[100px]`} width={width} />
+      <DocsBrandImageLink href={src} label={label} />
+    </div>
+  )
+}
+function DocsBrandImageLink({ href, label }: { href: string; label: string }) {
+  return (
+    <a rel="noreferrer" target="_blank" href={href} title={label} className="text-violet-600 dark:text-violet-400">
+      {label}
+    </a>
   )
 }
