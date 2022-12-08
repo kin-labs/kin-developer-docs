@@ -34,24 +34,31 @@ import { defineStaticProps, toParams } from '../../utils/next'
 import { KinDemo } from '../../components/tools/demo'
 
 export const getStaticPaths = async () => {
-  const paths = allTools.map((_) => _.pathSegments.map((_: PathSegment) => _.pathName).join('/')).map(toParams)
+  const paths = allTools
+    .map((_) =>
+      _.pathSegments
+        .map((_: PathSegment) => _.pathName)
+        .slice(1)
+        .join('/'),
+    )
+    .map(toParams)
   return { paths, fallback: false }
 }
 
 export const getStaticProps = defineStaticProps(async (context) => {
   const params = context.params as any
-  const pagePath = params.slug?.join('/') ?? ''
+  const pagePath = params.slug ? ['tools', ...params.slug].join('/') : 'tools'
   const tool = allTools.find((_) => _.pathSegments.map((_: PathSegment) => _.pathName).join('/') === pagePath)!
   let slugs = params.slug ? ['', ...params.slug] : []
   let path = ''
   let breadcrumbs: any = []
   for (const slug of slugs) {
-    path += path == '' ? slug : '/' + slug
+    path += slug ? '/' + slug : 'tools'
     const navTitle = allTools.find(
       (_) => _.pathSegments.map((_: PathSegment) => _.pathName).join('/') === path,
     )?.nav_title
     const title = allTools.find((_) => _.pathSegments.map((_: PathSegment) => _.pathName).join('/') === path)?.title
-    breadcrumbs.push({ path: '/tools/' + path, slug, title: navTitle || title })
+    breadcrumbs.push({ path: '/' + path, slug, title: navTitle || title })
   }
   const tree = buildToolsTree(allTools)
   const childrenTree = buildToolsTree(
@@ -90,8 +97,6 @@ const mdxComponents = {
 }
 
 const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ tool, tree, breadcrumbs, childrenTree }) => {
-  // console.log('🚀 ~ tool', tool)
-  // console.log('🚀 ~ tree', tree, tree[0].children)
   const router = useRouter()
   useLiveReload()
   const MDXContent = useMDXComponent(tool.body.code || '')

@@ -19,7 +19,7 @@ export const buildToolsTree = (tools: Tool[], parentPathNames: string[] = []): T
       title: tool.title,
       label: tool.label ?? null,
       excerpt: tool.excerpt ?? null,
-      urlPath: '/tools/' + tool.pathSegments.map((_: PathSegment) => _.pathName).join('/'),
+      urlPath: '/' + tool.pathSegments.map((_: PathSegment) => _.pathName).join('/'),
       collapsible: tool.collapsible ?? null,
       collapsed: tool.collapsed ?? null,
       children: buildToolsTree(

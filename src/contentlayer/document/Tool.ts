@@ -59,7 +59,7 @@ export const Tool = defineDocumentType(() => ({
         doc._raw.flattenedPath
           .split('/')
           // skip `/docs` prefix
-          .slice(1)
+          // .slice(1)
           .map((dirName) => {
             const re = /^((\d+)-)?(.*)$/
             const [, , orderStr, pathName] = dirName.match(re) ?? []
