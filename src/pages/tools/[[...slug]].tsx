@@ -20,6 +20,7 @@ import { H2, H3, H4 } from 'src/components/common/Headings'
 import { OptionsTable, OptionTitle, OptionDescription } from 'src/components/docs/OptionsTable'
 // import { ExamplesFooter } from 'src/components/examples/ExamplesFooter'
 import { Button } from 'src/components/common/Button'
+import { KinDemo } from '../../components/tools/demo'
 
 export const getStaticPaths = async () => {
   const paths = allTools
@@ -66,6 +67,7 @@ const mdxComponents = {
   OptionsTable,
   OptionTitle,
   OptionDescription,
+  KinDemo,
 }
 
 const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ tool, tree, breadcrumbs }) => {
