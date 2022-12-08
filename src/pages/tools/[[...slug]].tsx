@@ -90,8 +90,8 @@ const mdxComponents = {
 }
 
 const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ tool, tree, breadcrumbs, childrenTree }) => {
-  console.log('🚀 ~ tool', tool)
-  console.log('🚀 ~ tree', tree, tree[0].children)
+  // console.log('🚀 ~ tool', tool)
+  // console.log('🚀 ~ tree', tree, tree[0].children)
   const router = useRouter()
   useLiveReload()
   const MDXContent = useMDXComponent(tool.body.code || '')
