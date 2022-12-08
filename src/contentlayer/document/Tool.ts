@@ -75,10 +75,7 @@ export const Tool = defineDocumentType(() => ({
         await bundleMDX({
           source: doc.body.raw,
           mdxOptions: (opts) => {
-            opts.remarkPlugins = [
-              ...(opts.remarkPlugins ?? []),
-              //  tocPlugin(headings)
-            ]
+            opts.remarkPlugins = [...(opts.remarkPlugins ?? []), tocPlugin(headings)]
             return opts
           },
         })

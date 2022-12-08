@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 import type { FC } from 'react'
 import { H2, H3, H4 } from 'src/components/common/Headings'
 import { Link } from 'src/components/common/Link'
-import { PageNavigation } from 'src/components/common/PageNavigation'
+// import { PageNavigation } from 'src/components/common/PageNavigation'
 import { DocsCard as Card } from 'src/components/docs/DocsCard'
 import { DocsNavigation } from 'src/components/docs/DocsNavigation'
 import { OptionDescription, OptionsTable, OptionTitle } from 'src/components/docs/OptionsTable'
@@ -90,6 +90,8 @@ const mdxComponents = {
 }
 
 const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ tool, tree, breadcrumbs, childrenTree }) => {
+  console.log('🚀 ~ tool', tool)
+  console.log('🚀 ~ tree', tree, tree[0].children)
   const router = useRouter()
   useLiveReload()
   const MDXContent = useMDXComponent(tool.body.code || '')

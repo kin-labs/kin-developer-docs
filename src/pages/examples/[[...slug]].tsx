@@ -69,6 +69,8 @@ const mdxComponents = {
 }
 
 const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ example, tree, breadcrumbs }) => {
+  console.log('🚀 ~ example', example)
+  console.log('🚀 ~ tree', tree, tree[0].children)
   useLiveReload()
   const MDXContent = useMDXComponent(example.body.code || '')
   const ref = useRef<HTMLDivElement>(null)
