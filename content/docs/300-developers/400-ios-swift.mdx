@@ -102,6 +102,14 @@ Get the full transaction history of any account by passing in the account's Publ
 let accountHistory = kinetic.getHistory(account: owner.publicKey)
 ```
 
+### Get Token Accounts
+
+Get the full list of [Token Accounts](/docs/essentials/terms-and-concepts#token-account) held by a Keypair on Solana.
+
+```swift
+let tokenAccounts = kinetic.getTokenAccounts(account: owner.publicKey)
+```
+
 ## Demos and Starter Kits
 
 Created to help get you up and running as quickly as possible, these projects can be a great reference point when you get stuck or even a starter for your own project. Happy coding!
