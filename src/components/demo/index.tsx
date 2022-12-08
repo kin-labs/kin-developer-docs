@@ -2,9 +2,9 @@ import src from '@tailwindcss/typography'
 import link from 'next/link'
 import { FC, useState } from 'react'
 import style from 'styled-jsx/style'
-import { DocsNavCard as NavCard } from '../../docs/DocsNavCard'
-import { Heading } from '../../landing-page/Heading'
-import { Paragraph } from '../../landing-page/Paragraph'
+import { DocsNavCard as NavCard } from '../docs/DocsNavCard'
+import { Heading } from '../landing-page/Heading'
+import { Paragraph } from '../landing-page/Paragraph'
 
 const content = {
   // heading: 'Kinetic Demo',
@@ -15,14 +15,6 @@ export const KinDemo: FC = () => {
   const [start, setStart] = useState(false)
   return (
     <div className="mb-12 w-full space-y-12 px-2 pt-8 md:space-y-20 md:pt-16 lg:px-0 lg:pt-20">
-      <div className="my-10 mx-auto mb-0 flex max-w-5xl flex-col space-y-12 px-3">
-        <div className="mx-auto flex w-auto">
-          <img style={{ height: 'auto', width: '20%' }} className="mx-auto" src={content.image} />
-        </div>
-        {/* <div className="mx-auto w-auto">
-          <Heading level={1}>{content.heading}</Heading>
-        </div> */}
-      </div>
       <div className="my-10 mx-auto mb-0 max-w-5xl space-y-12 px-3">
         <NavCard
           hero
