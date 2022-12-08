@@ -1,61 +1,71 @@
+import { allTools } from 'contentlayer/generated'
 import type { InferGetStaticPropsType } from 'next'
 // TODO remove eslint-disable when fixed https://github.com/import-js/eslint-plugin-import/issues/1810
 // eslint-disable-next-line import/no-unresolved
 import { useLiveReload, useMDXComponent } from 'next-contentlayer/hooks'
-import { FC, useEffect, useRef, useState } from 'react'
-import stackblitz, { type VM } from '@stackblitz/sdk'
-import { allTools } from 'contentlayer/generated'
-import { Container } from '../../components/common/Container'
-import { defineStaticProps, toParams } from '../../utils/next'
-import { DocsNavigation } from 'src/components/docs/DocsNavigation'
-import { Callout } from '../../components/common/Callout'
-import { DocsCard as Card } from '../../components/docs/DocsCard'
-import { Link } from 'src/components/common/Link'
 import Image from 'next/image'
-import { DocsHeader } from '../../components/docs/DocsHeader'
-import { ChevronLink } from '../../components/common/ChevronLink'
-import { Label } from '../../components/common/Label'
-import { buildExamplesTree } from 'src/utils/build-examples-tree'
+import { useRouter } from 'next/router'
+import type { FC } from 'react'
 import { H2, H3, H4 } from 'src/components/common/Headings'
-import { OptionsTable, OptionTitle, OptionDescription } from 'src/components/docs/OptionsTable'
-// import { ExamplesFooter } from 'src/components/examples/ExamplesFooter'
-import { Button } from 'src/components/common/Button'
+import { Link } from 'src/components/common/Link'
+import { PageNavigation } from 'src/components/common/PageNavigation'
+import { DocsCard as Card } from 'src/components/docs/DocsCard'
+import { DocsNavigation } from 'src/components/docs/DocsNavigation'
+import { OptionDescription, OptionsTable, OptionTitle } from 'src/components/docs/OptionsTable'
+import { buildToolsTree } from 'src/utils/build-tools-tree'
+import { Callout } from '../../components/common/Callout'
+import { Card as ChildCard } from '../../components/common/Card'
+import { ChevronLink } from '../../components/common/ChevronLink'
+import { Container } from '../../components/common/Container'
+import { Label } from '../../components/common/Label'
+import { DocsAgora as Agora } from '../../components/docs/DocsAgora'
+import { DocsBestPractices as BestPractices } from '../../components/docs/DocsBestPractices'
+import { DocsBrandImage as BrandImage } from '../../components/docs/DocsBrandImage'
+import { DocsBubble as Bubble } from '../../components/docs/DocsBubble'
+import { DocsFooter } from '../../components/docs/DocsFooter'
+import { DocsHeader } from '../../components/docs/DocsHeader'
+import { DocsHelp as Help } from '../../components/docs/DocsHelp'
+import { DocsKineticManager as KineticManager } from '../../components/docs/DocsKineticManager'
+import { DocsKRE as KRE } from '../../components/docs/DocsKRE'
+import { DocsNavCard as NavCard } from '../../components/docs/DocsNavCard'
+import { DocsProduction as Production } from '../../components/docs/DocsProduction'
+import { DocsRegisterApp as RegisterApp } from '../../components/docs/DocsRegisterApp'
+import { defineStaticProps, toParams } from '../../utils/next'
 import { KinDemo } from '../../components/tools/demo'
 
 export const getStaticPaths = async () => {
-  const paths = allTools
-    .map((_) =>
-      _.pathSegments
-        .map((_: PathSegment) => _.pathName)
-        .slice(1)
-        .join('/'),
-    )
-    .map(toParams)
+  const paths = allTools.map((_) => _.pathSegments.map((_: PathSegment) => _.pathName).join('/')).map(toParams)
   return { paths, fallback: false }
 }
 
 export const getStaticProps = defineStaticProps(async (context) => {
   const params = context.params as any
-  const pagePath = params.slug ? ['tools', params.slug].join('/') : 'tools'
+  const pagePath = params.slug?.join('/') ?? ''
   const tool = allTools.find((_) => _.pathSegments.map((_: PathSegment) => _.pathName).join('/') === pagePath)!
   let slugs = params.slug ? ['', ...params.slug] : []
-  let path = 'tools'
+  let path = ''
   let breadcrumbs: any = []
   for (const slug of slugs) {
-    path += slug ? '/' + slug : ''
+    path += path == '' ? slug : '/' + slug
     const navTitle = allTools.find(
       (_) => _.pathSegments.map((_: PathSegment) => _.pathName).join('/') === path,
     )?.nav_title
     const title = allTools.find((_) => _.pathSegments.map((_: PathSegment) => _.pathName).join('/') === path)?.title
-    breadcrumbs.push({ path: '/' + path, slug, title: navTitle || title })
+    breadcrumbs.push({ path: '/tools/' + path, slug, title: navTitle || title })
   }
-  const tree = buildExamplesTree(allTools)
-  return { props: { tool, tree, breadcrumbs } }
+  const tree = buildToolsTree(allTools)
+  const childrenTree = buildToolsTree(
+    allTools,
+    tool.pathSegments.map((_: PathSegment) => _.pathName),
+  )
+
+  return { props: { tool, tree, breadcrumbs, childrenTree } }
 })
 
 const mdxComponents = {
   Callout,
   Card,
+  NavCard,
   Image,
   Link,
   ChevronLink,
@@ -67,35 +77,25 @@ const mdxComponents = {
   OptionsTable,
   OptionTitle,
   OptionDescription,
+  Help,
+  BestPractices,
+  KRE,
+  Production,
+  RegisterApp,
+  KineticManager,
+  Agora,
+  Bubble,
+  BrandImage,
   KinDemo,
 }
 
-const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ tool, tree, breadcrumbs }) => {
+const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ tool, tree, breadcrumbs, childrenTree }) => {
+  const router = useRouter()
   useLiveReload()
   const MDXContent = useMDXComponent(tool.body.code || '')
-  const ref = useRef<HTMLDivElement>(null)
-  const [vm, setVm] = useState<VM | undefined>(undefined)
-  const [fullScreen, setFullScreen] = useState<boolean>(false)
-
-  useEffect(() => {
-    if (tool.github_repo && ref.current) {
-      stackblitz
-        .embedGithubProject(ref.current, 'contentlayerdev/next-contentlayer-example', {
-          openFile: tool.open_file,
-          showSidebar: true,
-        })
-        .then((_) => setVm(_))
-    }
-  }, [ref, tool.open_file, tool.github_repo])
-
-  useEffect(() => {
-    if (vm && fullScreen) {
-      vm.editor.showSidebar()
-    }
-  }, [vm, fullScreen])
 
   return (
-    <Container title={tool.title + ' – Contentlayer'} description={tool.excerpt}>
+    <Container title={tool.title + ' – Kin Developer Docs'} description={tool.excerpt}>
       <div className="relative mx-auto w-full max-w-screen-2xl lg:flex lg:items-start">
         <div
           style={{ height: 'calc(100vh - 64px)' }}
@@ -107,37 +107,41 @@ const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ tool, tree, 
           <div className="absolute inset-x-0 top-0 h-8 bg-gradient-to-t from-white/0 to-white/100 dark:from-gray-950/0 dark:to-gray-950/100" />
           <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-b from-white/0 to-white/100 dark:from-gray-950/0 dark:to-gray-950/100" />
         </div>
+
         <div className="relative w-full grow">
           <DocsHeader tree={tree} breadcrumbs={breadcrumbs} title={tool.title} />
           <div className="docs prose prose-slate prose-violet mx-auto mb-4 w-full max-w-3xl shrink p-4 pb-8 prose-headings:font-semibold prose-a:font-normal prose-code:font-normal prose-code:before:content-none prose-code:after:content-none prose-hr:border-gray-200 dark:prose-invert dark:prose-a:text-violet-400 dark:prose-hr:border-gray-800 md:mb-8 md:px-8 lg:mx-0 lg:max-w-full lg:px-16">
             {MDXContent && <MDXContent components={mdxComponents} />}
-            {tool.github_repo && (
-              <div
-                className={
-                  fullScreen
-                    ? 'fixed inset-0 top-16 z-20 bg-gray-950/10 p-8 backdrop-blur-lg backdrop-filter dark:bg-gray-950/50'
-                    : 'relative mt-8 lg:mt-16'
-                }
-              >
-                <div className="mb-8 hidden justify-end md:flex">
-                  <Button
-                    theme="primary"
-                    label={fullScreen ? 'Collapse Playground' : 'Expand Playground'}
-                    icon={fullScreen ? 'collapse' : 'expand'}
-                    action={() => setFullScreen(!fullScreen)}
-                  />
+            {tool.show_child_cards && (
+              <>
+                <hr />
+                <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+                  {childrenTree.map((card, index) => (
+                    <div key={index} onClick={() => router.push(card.urlPath)} className="cursor-pointer">
+                      <ChildCard className="h-full p-6 py-4 hover:border-violet-100 hover:bg-violet-50 dark:hover:border-violet-900/50 dark:hover:bg-violet-900/20">
+                        <h3 className="mt-0 no-underline">{card.title}</h3>
+                        {card.label && <Label text={card.label} />}
+                        <div className="text-sm text-slate-500 dark:text-slate-400">
+                          <p>{card.excerpt}</p>
+                        </div>
+                      </ChildCard>
+                    </div>
+                  ))}
                 </div>
-                <div
-                  className="overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-900"
-                  style={{ height: fullScreen ? 'calc(100vh - 190px)' : 700 }}
-                >
-                  <div className="h-full w-full " ref={ref} />
-                </div>
-              </div>
+              </>
             )}
-            {/* <ExamplesFooter tool={tool} /> */}
+            <DocsFooter doc={tool} />
           </div>
         </div>
+        {/* right side navbar */}
+        {/* <div
+          style={{ maxHeight: 'calc(100vh - 128px)' }}
+          className="sticky top-32 hidden w-80 shrink-0 overflow-y-scroll p-8 pr-16 1.5xl:block"
+        >
+          <PageNavigation headings={tool.headings} />
+          <div className="absolute inset-x-0 top-0 h-8 bg-gradient-to-t from-white/0 to-white/100 dark:from-gray-950/0 dark:to-gray-950/100" />
+          <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-b from-white/0 to-white/100 dark:from-gray-950/0 dark:to-gray-950/100" />
+        </div> */}
       </div>
     </Container>
   )
