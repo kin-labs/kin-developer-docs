@@ -1,11 +1,10 @@
-import { children } from 'cheerio/lib/api/traversing'
 import { Tool } from 'contentlayer/generated'
 import { TreeNode } from 'types/TreeNode'
 
-export const buildToolsTree = (examples: Tool[], parentPathNames: string[] = []): TreeNode[] => {
+export const buildToolsTree = (tools: Tool[], parentPathNames: string[] = []): TreeNode[] => {
   const level = parentPathNames.length
 
-  return examples
+  return tools
     .filter(
       (_) =>
         _.pathSegments.length === level + 1 &&
@@ -15,17 +14,17 @@ export const buildToolsTree = (examples: Tool[], parentPathNames: string[] = [])
           .startsWith(parentPathNames.join('/')),
     )
     .sort((a, b) => a.pathSegments[level].order - b.pathSegments[level].order)
-    .map<TreeNode>((example) => ({
-      nav_title: example.nav_title ?? null,
-      title: example.title,
-      label: example.label ?? null,
-      excerpt: example.excerpt ?? null,
-      collapsible: false,
-      collapsed: false,
-      urlPath: '/' + example.pathSegments.map((_: PathSegment) => _.pathName).join('/'),
+    .map<TreeNode>((tool) => ({
+      nav_title: tool.nav_title ?? null,
+      title: tool.title,
+      label: tool.label ?? null,
+      excerpt: tool.excerpt ?? null,
+      urlPath: '/tools/' + tool.pathSegments.map((_: PathSegment) => _.pathName).join('/'),
+      collapsible: tool.collapsible ?? null,
+      collapsed: tool.collapsed ?? null,
       children: buildToolsTree(
-        examples,
-        example.pathSegments.map((_: PathSegment) => _.pathName),
+        tools,
+        tool.pathSegments.map((_: PathSegment) => _.pathName),
       ),
     }))
 }
