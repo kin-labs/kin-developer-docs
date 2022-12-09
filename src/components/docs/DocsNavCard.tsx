@@ -1,3 +1,5 @@
+import { text } from 'cheerio'
+import { bg } from 'date-fns/locale'
 import Image from 'next/image'
 import { FC, PropsWithChildren } from 'react'
 import { ChevronLink } from '../common/ChevronLink'
@@ -9,6 +11,7 @@ export const DocsNavCard: FC<
     hero?: boolean
     useCase?: boolean
     largeIcon?: boolean
+    fullWidth?: boolean
     title: string
     icon?: IconName | null
     svgFile?: string | null
@@ -18,7 +21,21 @@ export const DocsNavCard: FC<
     subtitle?: string | null
     link?: { url: string; label: string }
   }>
-> = ({ hero, useCase, largeIcon, title, icon, svgFile, pngFile, jpgFile, label, subtitle, children, link }) => {
+> = ({
+  hero,
+  useCase,
+  largeIcon,
+  fullWidth,
+  title,
+  icon,
+  svgFile,
+  pngFile,
+  jpgFile,
+  label,
+  subtitle,
+  children,
+  link,
+}) => {
   let imageClass = ''
   let imageSrc = ''
   if (svgFile) {
@@ -35,7 +52,7 @@ export const DocsNavCard: FC<
   }
 
   return (
-    <div className={`flex flex-col ${hero ? 'mb-4' : ''} ${largeIcon ? 'mt-5' : ''}`}>
+    <div className={`flex flex-col ${hero ? 'mb-4' : ''} ${largeIcon ? 'mt-5' : ''} `}>
       <div
         className={`grow border border-gray-100 bg-gray-50 p-6 py-4 dark:border-gray-800 dark:bg-gray-900 
         ${link ? 'rounded-t-2xl border-b-0' : 'rounded-2xl'} ${
@@ -79,7 +96,7 @@ export const DocsNavCard: FC<
             <p>{subtitle}</p>
           </div>
         )}
-        {children ? <div className="text-sm">{children}</div> : null}
+        {children ? <div className={`text-sm`}>{children}</div> : null}
       </div>
       {link && (
         <div className="rounded-b-2xl border border-violet-100 bg-violet-50 p-6 py-4 dark:border-violet-900/50 dark:bg-violet-900/20">

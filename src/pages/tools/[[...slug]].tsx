@@ -32,7 +32,9 @@ import { DocsProduction as Production } from '../../components/docs/DocsProducti
 import { DocsRegisterApp as RegisterApp } from '../../components/docs/DocsRegisterApp'
 import { defineStaticProps, toParams } from '../../utils/next'
 import { KinDemo } from '../../components/demo'
-import { DemoLogo } from '../../components/demo/logo'
+import { DemoLogo } from '../../components/demo/DemoLogo'
+import { DemoTitle } from '../../components/demo/DemoTitle'
+import { DemoContainer } from '../../components/demo/DemoContainer'
 
 export const getStaticPaths = async () => {
   const paths = allTools
@@ -96,6 +98,8 @@ const mdxComponents = {
   BrandImage,
   KinDemo,
   DemoLogo,
+  DemoTitle,
+  DemoContainer,
 }
 
 const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ tool, tree, breadcrumbs, childrenTree }) => {

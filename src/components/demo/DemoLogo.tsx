@@ -1,10 +1,4 @@
-import src from '@tailwindcss/typography'
-import link from 'next/link'
-import { FC, useState } from 'react'
-import style from 'styled-jsx/style'
-import { DocsNavCard as NavCard } from '../docs/DocsNavCard'
-import { Heading } from '../landing-page/Heading'
-import { Paragraph } from '../landing-page/Paragraph'
+import { FC } from 'react'
 
 const content = {
   image: '/images/logos/kin-circle-white.svg',
