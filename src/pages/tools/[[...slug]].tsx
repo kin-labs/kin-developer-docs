@@ -153,7 +153,7 @@ const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ tool, tree, 
                 </div>
               </>
             )}
-            <DocsFooter doc={tool} />
+            <DocsFooter />
           </div>
         </div>
         {/* right side navbar */}

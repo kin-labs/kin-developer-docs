@@ -128,7 +128,7 @@ const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ doc, tree, b
                 </div>
               </>
             )}
-            <DocsFooter doc={doc} />
+            <DocsFooter />
           </div>
         </div>
         <div
