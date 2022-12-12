@@ -40,7 +40,7 @@ export const DemoKineticGetBalance: FC<{
         {kineticClient && keypair && current ? <Button label="Check" action={onClick} /> : null}
       </div>
       {loading ? (
-        <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Loading...`}</p>
+        <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Transacting on the blockchain...`}</p>
       ) : null}
       {error ? (
         <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Something went wrong. Please try again.`}</p>

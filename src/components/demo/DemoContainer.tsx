@@ -56,13 +56,7 @@ export const DemoContainer: FC<{ stages: Stage[] }> = ({ stages }) => {
                 link={stage.link}
                 current={isSelected}
                 moveOn={() => {
-                  setTimeout(() => {
-                    setSelected(i + 1)
-                    const nextElement = document.getElementById(stages[i]?.title)?.offsetTop
-                    if (nextElement) {
-                      window.scrollTo({ top: nextElement - 55, behavior: 'smooth' })
-                    }
-                  }, 1200)
+                  setSelected(i + 1)
                 }}
                 kineticClient={kineticClient}
                 setKineticClient={setKineticClient}

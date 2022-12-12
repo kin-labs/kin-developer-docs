@@ -1,6 +1,7 @@
 import { FC, useState } from 'react'
 import { BalanceResponse, KineticSdk } from '@kin-kinetic/sdk'
 import { Keypair } from '@kin-kinetic/keypair'
+import { ThreeDots } from 'react-loader-spinner'
 
 import { Button } from '../common/Button'
 import { makeTransfer, openExplorer } from './kinetic'
@@ -44,7 +45,20 @@ export const DemoKineticMakeTransfer: FC<{
         ) : null}
       </div>
       {loading ? (
-        <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Loading...`}</p>
+        <>
+          <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">
+            <ThreeDots
+              height="80"
+              width="80"
+              radius="9"
+              color="rgba(76, 29, 149, 1)"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              visible={true}
+            />
+            {`Transacting on the blockchain...`}
+          </p>
+        </>
       ) : null}
       {error ? (
         <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Something went wrong. Please try again.`}</p>
