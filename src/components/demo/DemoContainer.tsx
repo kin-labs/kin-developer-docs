@@ -1,3 +1,5 @@
+import { KineticSdk } from '@kin-kinetic/sdk'
+import { Keypair } from '@kin-kinetic/keypair'
 import Image from 'next/image'
 import { FC, useState } from 'react'
 import { DemoItem } from './DemoItem'
@@ -10,6 +12,9 @@ interface Stage {
 
 export const DemoContainer: FC<{ stages: Stage[] }> = ({ stages }) => {
   const [selected, setSelected] = useState(0)
+  const [kineticClient, setKineticClient] = useState<KineticSdk | undefined>(undefined)
+  const [keypair, setKeypair] = useState<Keypair | undefined>(undefined)
+
   console.log('🚀 ~ selected', selected)
 
   return (
@@ -52,11 +57,16 @@ export const DemoContainer: FC<{ stages: Stage[] }> = ({ stages }) => {
               <DemoItem
                 title={stage.title}
                 subtitle={stage.subtitle}
+                current={isSelected}
                 moveOn={() => {
-                  console.log('MOVE ON!')
-                  console.log(i, i + 1)
-                  setSelected(i + 1)
+                  setTimeout(() => {
+                    setSelected(i + 1)
+                  }, 1000)
                 }}
+                kineticClient={kineticClient}
+                setKineticClient={setKineticClient}
+                keypair={keypair}
+                setKeypair={setKeypair}
                 Component={stage.component}
               />
             </div>

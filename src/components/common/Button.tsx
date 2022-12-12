@@ -17,9 +17,11 @@ export const Button: FC<{
   theme?: 'primary' | 'secondary'
   href?: string
   icon?: IconName
-}> = ({ label, action, href, theme = 'primary', icon }) => {
-  const sharedClasses =
-    'px-6 py-2 flex justify-center items-center space-x-3 rounded-md border font-medium focus:outline-none focus:ring-2 focus:ring-violet-300 dark:focus:ring-violet-900'
+  disabled?: boolean
+}> = ({ label, action, href, theme = 'primary', icon, disabled }) => {
+  const sharedClasses = `px-6 py-2 flex justify-center items-center space-x-3 rounded-md border font-medium focus:outline-none focus:ring-2 focus:ring-violet-300 dark:focus:ring-violet-900 ${
+    disabled ? 'disabled:opacity-75 disabled:pointer-events-none' : ''
+  }`
 
   if (href) {
     return (
@@ -42,7 +44,12 @@ export const Button: FC<{
     )
   } else {
     return (
-      <button className={classnames(sharedClasses, themeClasses[theme])} onClick={action} aria-label={label}>
+      <button
+        className={classnames(sharedClasses, themeClasses[theme])}
+        disabled={disabled}
+        onClick={action}
+        aria-label={label}
+      >
         <span>{label}</span>
         {icon && (
           <span className="w-5">

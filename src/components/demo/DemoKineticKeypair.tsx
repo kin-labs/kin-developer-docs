@@ -1,35 +1,44 @@
-import { FC, useState, useEffect } from 'react'
+import { FC, useState } from 'react'
 import { KineticSdk } from '@kin-kinetic/sdk'
+import { Keypair } from '@kin-kinetic/keypair'
 
 import { Button } from '../common/Button'
-import { setupKineticClient } from './kinetic'
+import { createKeypair } from './kinetic'
 
-export const DemoKineticKeypair: FC<{ moveOn: () => void; current: boolean }> = ({ moveOn, current }) => {
+export const DemoKineticKeypair: FC<{
+  moveOn: () => void
+  current: boolean
+  kineticClient: KineticSdk
+  keypair: Keypair
+  setKeypair: (keypair: Keypair) => void
+}> = ({ moveOn, current, kineticClient, keypair, setKeypair }) => {
   const [error, setError] = useState(false)
-  const [kineticClient, setKineticClient] = useState<KineticSdk | null>(null)
-  console.log('🚀 ~ kineticClient', kineticClient)
 
-  useEffect(() => {
-    if (current) {
-      setupKineticClient(setKineticClient, setError)
-    }
-  }, [current])
-
-  const onSuccess = (kineticClient: KineticSdk) => {
+  const onSuccess = (keypair: Keypair) => {
+    setError(false)
+    setKeypair(keypair)
     if (moveOn) {
       moveOn()
     }
-    setKineticClient(kineticClient)
   }
 
   return (
     <>
       <div className="m-0 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0 ">
-        <Button label="Connect" action={() => setupKineticClient(onSuccess, setError)} />
-        {error ? <div>Something went wrong. Please try again.</div> : null}
+        {kineticClient ? <Button label="Create" action={() => createKeypair(onSuccess, setError)} /> : null}
       </div>
-      {kineticClient?.config ? (
-        <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Great! You are connected to Kinetic on ${kineticClient.sdkConfig.environment}.`}</p>
+      {error ? (
+        <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Something went wrong. Please try again.`}</p>
+      ) : null}
+      {!kineticClient && current ? (
+        <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`You aren't connected to Kinetic`}</p>
+      ) : null}
+      {keypair ? (
+        <>
+          <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Great! You've created your Keypair:`}</p>
+          <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Public Key: ${keypair.publicKey}`}</p>
+          <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Mnemonic: ${keypair.mnemonic}`}</p>
+        </>
       ) : null}
     </>
   )

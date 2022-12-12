@@ -4,20 +4,18 @@ import { KineticSdk } from '@kin-kinetic/sdk'
 import { Button } from '../common/Button'
 import { setupKineticClient } from './kinetic'
 
-export const DemoKineticConnect: FC<{ moveOn: () => void; bojack: boolean }> = ({ moveOn, bojack }) => {
-  console.log('🚀 ~ bojack', bojack)
-  console.log('🚀 ~ moveOn', moveOn)
+export const DemoKineticConnect: FC<{
+  moveOn: () => void
+  kineticClient: KineticSdk
+  setKineticClient: (kineticClient: KineticSdk) => void
+}> = ({ moveOn, kineticClient, setKineticClient }) => {
   const [error, setError] = useState(false)
-  const [kineticClient, setKineticClient] = useState<KineticSdk | null>(null)
-  console.log('🚀 ~ kineticClient', kineticClient)
 
   const onSuccess = (kineticClient: KineticSdk) => {
-    console.log('🚀 ~ onSuccess')
-    console.log('🚀 ~ moveOn', moveOn)
+    setKineticClient(kineticClient)
     if (moveOn) {
       moveOn()
     }
-    setKineticClient(kineticClient)
   }
 
   return (

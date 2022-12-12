@@ -8,7 +8,7 @@ const clientOptions = {
   endpoint: 'https://sandbox.kinetic.host', // devnet endpoint
 }
 
-let kineticClient: KineticSdk | null
+let kineticClient: KineticSdk | undefined
 
 export const setupKineticClient = async (
   onSuccess: (kinetic: KineticSdk) => void,
@@ -16,32 +16,55 @@ export const setupKineticClient = async (
 ) => {
   console.log('🚀 ~ setupKineticClient')
   if (kineticClient) {
+    console.log('🚀 ~ kineticClient', kineticClient)
     onFailure(false)
     return kineticClient
   }
   try {
     kineticClient = await KineticSdk.setup(clientOptions)
+    console.log('🚀 ~ kineticClient', kineticClient)
     onFailure(false)
     onSuccess(kineticClient)
   } catch (error) {
     console.log('🚀 ~ error', error)
-    kineticClient = null
+    kineticClient = undefined
     onFailure(true)
   }
 }
-export const createKeypair = async (onSuccess: (keypair: KineticSdk) => void, onFailure: (error: boolean) => void) => {
-  console.log('🚀 ~ setupKineticClient')
-  if (kineticClient) {
-    onFailure(false)
-    return kineticClient
-  }
+export const createKeypair = async (onSuccess: (keypair: Keypair) => void, onFailure: (error: boolean) => void) => {
+  console.log('🚀 ~ createKeypair')
+
   try {
-    kineticClient = await KineticSdk.setup(clientOptions)
     onFailure(false)
-    onSuccess(kineticClient)
+    const mnemonic = Keypair.generateMnemonic()
+    const keypair = Keypair.fromSecret(mnemonic)
+    onSuccess(keypair)
   } catch (error) {
     console.log('🚀 ~ error', error)
-    kineticClient = null
     onFailure(true)
+  }
+}
+export const createAccount = async (onSuccess: () => void, onFailure: (error: boolean) => void, keypair: Keypair) => {
+  console.log('🚀 ~ createAccount')
+
+  try {
+    onFailure(false)
+    const accountOptions = {
+      owner: keypair,
+      commitment: Commitment.Finalized, // Optional, can be Finalized, Confirmed, Processed
+    }
+    kineticClient && (await kineticClient.createAccount(accountOptions))
+    onSuccess()
+  } catch (error) {
+    console.log('🚀 ~ error', error)
+    onFailure(true)
+  }
+}
+
+export const openExplorer = ({ account, transaction }: { account?: string; transaction?: string }) => {
+  if (transaction) {
+    window.open(`https://explorer.solana.com/tx/${transaction}?cluster=devnet`)
+  } else if (account) {
+    window.open(`https://explorer.solana.com/address/${account}?cluster=devnet`)
   }
 }

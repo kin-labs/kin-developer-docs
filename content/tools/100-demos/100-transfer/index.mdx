@@ -14,9 +14,14 @@ See all the steps required to transfer Kin from a user created wallet to an exte
       component: (props) => <DemoKineticConnect {...props}/>,
     },
     {
-      title: 'Create an Account',
+      title: 'Create a Keypair',
       subtitle: 'Use Kinetic to create a keypair. This will act as your wallet on the blockchain.',
-      component: (props) => <DemoKineticConnect {...props}/>,
+      component: (props) => <DemoKineticKeypair {...props}/>,
+    },
+    {
+      title: 'Create your Account',
+      subtitle: 'Use Kinetic to create your account on the Solana blockchain with the keypair we made in the previous step.',
+      component: (props) => <DemoKineticCreateAccount {...props}/>,
     },
 
 ]}
