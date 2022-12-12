@@ -54,6 +54,7 @@ export const createKeypair = async (onSuccess: (keypair: Keypair) => void, onFai
     onFailure && onFailure()
   }
 }
+
 export const createAccount = async (
   onSuccess: (signature?: string, alreadyExists?: boolean) => void,
   onFailure: () => void,
@@ -67,15 +68,10 @@ export const createAccount = async (
       commitment: Commitment.Finalized, // Optional, can be Finalized, Confirmed, Processed
     }
     const transaction = kineticClient && (await kineticClient.createAccount(accountOptions))
-    onSuccess && onSuccess(transaction.signature)
-  } catch (error) {
-    console.log('🚀 ~ error', error, error.message)
-    if (error?.message?.includes('already has an account for mint')) {
-      console.log('🚀 ~ error.message', error.message)
-      onSuccess && onSuccess(undefined, true)
-    } else {
-      onFailure && onFailure()
-    }
+    onSuccess && transaction?.signature && onSuccess(transaction.signature)
+  } catch (error: unknown) {
+    console.log('🚀 ~ error', error)
+    onFailure && onFailure()
   }
 }
 
