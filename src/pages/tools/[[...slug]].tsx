@@ -31,10 +31,10 @@ import { DocsNavCard as NavCard } from '../../components/docs/DocsNavCard'
 import { DocsProduction as Production } from '../../components/docs/DocsProduction'
 import { DocsRegisterApp as RegisterApp } from '../../components/docs/DocsRegisterApp'
 import { defineStaticProps, toParams } from '../../utils/next'
-import { KinDemo } from '../../components/demo'
 import { DemoLogo } from '../../components/demo/DemoLogo'
-import { DemoTitle } from '../../components/demo/DemoTitle'
+import { DemoItem } from '../../components/demo/DemoItem'
 import { DemoContainer } from '../../components/demo/DemoContainer'
+import { DemoKineticConnect } from '../../components/demo/DemoKineticConnect'
 
 export const getStaticPaths = async () => {
   const paths = allTools
@@ -96,10 +96,10 @@ const mdxComponents = {
   Agora,
   Bubble,
   BrandImage,
-  KinDemo,
   DemoLogo,
-  DemoTitle,
+  DemoItem,
   DemoContainer,
+  DemoKineticConnect,
 }
 
 const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ tool, tree, breadcrumbs, childrenTree }) => {

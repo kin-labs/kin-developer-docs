@@ -1,0 +1,23 @@
+---
+title: Transfer Kin
+nav_title: Transfer Kin
+excerpt: Kin Kinetic Demo - Transfer Kin
+---
+
+See all the steps required to transfer Kin from a user created wallet to an external address.
+
+<DemoContainer
+  stages={[
+    {
+      title: 'Connect to Kinetic',
+      subtitle: 'Connect your app or server to an active Kinetic instance',
+      component: (props) => <DemoKineticConnect {...props}/>,
+    },
+    {
+      title: 'Create an Account',
+      subtitle: 'Use Kinetic to create a keypair. This will act as your wallet on the blockchain.',
+      component: (props) => <DemoKineticConnect {...props}/>,
+    },
+
+]}
+/>

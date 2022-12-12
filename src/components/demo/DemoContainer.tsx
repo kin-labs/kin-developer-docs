@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { FC, useState } from 'react'
-import { DemoTitle } from './DemoTitle'
+import { DemoItem } from './DemoItem'
 
 interface Stage {
   title: string
@@ -16,6 +16,8 @@ export const DemoContainer: FC<{ stages: Stage[] }> = ({ stages }) => {
     <div className="solid m-0 w-full px-2 pt-0">
       <div className="my-0 mx-auto flex max-w-5xl flex-col px-3">
         {stages.map((stage, i) => {
+          console.log('🚀 ~ stage', stage)
+          console.log('🚀 ~ i', i)
           const reached = i <= selected
           const isSelected = i === selected
           let imageSrc = ``
@@ -29,9 +31,9 @@ export const DemoContainer: FC<{ stages: Stage[] }> = ({ stages }) => {
           }
           console.log('🚀 ~ reached', reached)
           return (
-            <div className=" flex flex-row" key={i}>
+            <div className=" flex flex-row" key={stage.title}>
               <div
-                className={`${reached ? 'fade-in-top bg-[#4c1d95]' : ''} ${
+                className={`${reached ? 'fade-in-top bg-[#4c1d95]' : 'fade-out'} ${
                   i === 0 ? 'demoItem' : ''
                 }  h-100% mr-8 ml-0 w-1`}
               >
@@ -47,10 +49,14 @@ export const DemoContainer: FC<{ stages: Stage[] }> = ({ stages }) => {
                   </div>
                 )}
               </div>
-              <DemoTitle
+              <DemoItem
                 title={stage.title}
                 subtitle={stage.subtitle}
-                setSelected={() => setSelected(i)}
+                moveOn={() => {
+                  console.log('MOVE ON!')
+                  console.log(i, i + 1)
+                  setSelected(i + 1)
+                }}
                 Component={stage.component}
               />
             </div>
