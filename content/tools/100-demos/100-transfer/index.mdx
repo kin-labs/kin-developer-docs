@@ -23,6 +23,26 @@ See all the steps required to transfer Kin from a user created wallet to an exte
       subtitle: 'Use Kinetic to create your account on the Solana blockchain with the keypair we made in the previous step.',
       component: (props) => <DemoKineticCreateAccount {...props}/>,
     },
+    {
+      title: 'Check your Balance',
+      subtitle: 'Use Kinetic to check the balance of your account.',
+      component: (props) => <DemoKineticGetBalance {...props}/>,
+    },
+    {
+      title: 'Airdrop some Kin',
+      subtitle: 'Use Kinetic to send some test Kin to your account.',
+      component: (props) => <DemoKineticAirdrop {...props}/>,
+    },
+    {
+      title: 'Transfer some Kin',
+      subtitle: 'Use Kinetic to send some Kin to another account.',
+      component: (props) => <DemoKineticMakeTransfer {...props}/>,
+    },
+    {
+      title: 'Close your Account',
+      subtitle: 'Use Kinetic to close your Kin account.',
+      component: (props) => <DemoKineticCloseAccount {...props}/>,
+    },
 
 ]}
 />

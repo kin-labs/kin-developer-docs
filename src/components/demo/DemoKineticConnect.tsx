@@ -11,6 +11,10 @@ export const DemoKineticConnect: FC<{
 }> = ({ moveOn, kineticClient, setKineticClient }) => {
   const [error, setError] = useState(false)
 
+  const onFailure = () => {
+    setError(true)
+  }
+
   const onSuccess = (kineticClient: KineticSdk) => {
     setKineticClient(kineticClient)
     if (moveOn) {
@@ -20,12 +24,12 @@ export const DemoKineticConnect: FC<{
 
   return (
     <>
-      <div className="m-0 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0 ">
-        <Button label="Connect" action={() => setupKineticClient(onSuccess, setError)} />
+      <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
+        {!kineticClient ? <Button label="Connect" action={() => setupKineticClient(onSuccess, onFailure)} /> : null}
         {error ? <div>Something went wrong. Please try again.</div> : null}
       </div>
       {kineticClient?.config ? (
-        <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Great! You are connected to Kinetic on ${kineticClient.sdkConfig.environment}.`}</p>
+        <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">{`Great! You are connected to Kinetic on ${kineticClient.sdkConfig.environment}.`}</div>
       ) : null}
     </>
   )

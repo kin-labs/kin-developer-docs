@@ -14,6 +14,10 @@ export const DemoKineticKeypair: FC<{
 }> = ({ moveOn, current, kineticClient, keypair, setKeypair }) => {
   const [error, setError] = useState(false)
 
+  const onFailure = () => {
+    setError(true)
+  }
+
   const onSuccess = (keypair: Keypair) => {
     setError(false)
     setKeypair(keypair)
@@ -24,8 +28,10 @@ export const DemoKineticKeypair: FC<{
 
   return (
     <>
-      <div className="m-0 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0 ">
-        {kineticClient ? <Button label="Create" action={() => createKeypair(onSuccess, setError)} /> : null}
+      <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
+        {kineticClient && !keypair ? (
+          <Button label="Create" action={() => createKeypair(onSuccess, onFailure)} />
+        ) : null}
       </div>
       {error ? (
         <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Something went wrong. Please try again.`}</p>

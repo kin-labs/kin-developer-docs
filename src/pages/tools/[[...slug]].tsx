@@ -37,6 +37,10 @@ import { DemoContainer } from '../../components/demo/DemoContainer'
 import { DemoKineticConnect } from '../../components/demo/DemoKineticConnect'
 import { DemoKineticKeypair } from '../../components/demo/DemoKineticKeypair'
 import { DemoKineticCreateAccount } from '../../components/demo/DemoKineticCreateAccount'
+import { DemoKineticGetBalance } from '../../components/demo/DemoKineticGetBalance'
+import { DemoKineticAirdrop } from '../../components/demo/DemoKineticAirdrop'
+import { DemoKineticMakeTransfer } from '../../components/demo/DemoKineticMakeTransfer'
+import { DemoKineticCloseAccount } from '../../components/demo/DemoKineticCloseAccount'
 
 export const getStaticPaths = async () => {
   const paths = allTools
@@ -104,6 +108,10 @@ const mdxComponents = {
   DemoKineticConnect,
   DemoKineticKeypair,
   DemoKineticCreateAccount,
+  DemoKineticGetBalance,
+  DemoKineticAirdrop,
+  DemoKineticMakeTransfer,
+  DemoKineticCloseAccount,
 }
 
 const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ tool, tree, breadcrumbs, childrenTree }) => {

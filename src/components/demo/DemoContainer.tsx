@@ -15,14 +15,10 @@ export const DemoContainer: FC<{ stages: Stage[] }> = ({ stages }) => {
   const [kineticClient, setKineticClient] = useState<KineticSdk | undefined>(undefined)
   const [keypair, setKeypair] = useState<Keypair | undefined>(undefined)
 
-  console.log('🚀 ~ selected', selected)
-
   return (
     <div className="solid m-0 w-full px-2 pt-0">
       <div className="my-0 mx-auto flex max-w-5xl flex-col px-3">
         {stages.map((stage, i) => {
-          console.log('🚀 ~ stage', stage)
-          console.log('🚀 ~ i', i)
           const reached = i <= selected
           const isSelected = i === selected
           let imageSrc = ``
@@ -34,7 +30,6 @@ export const DemoContainer: FC<{ stages: Stage[] }> = ({ stages }) => {
           if (isSelected) {
             imageClass = `svgFile svgFile-circle-arrow-right-solid`
           }
-          console.log('🚀 ~ reached', reached)
           return (
             <div className=" flex flex-row" key={stage.title}>
               <div
@@ -47,7 +42,7 @@ export const DemoContainer: FC<{ stages: Stage[] }> = ({ stages }) => {
                     className={`fade-in NavCard-AllowOverflow relative w-full rounded-full bg-white dark:bg-gray-950`}
                   >
                     <div
-                      className={`scale-120 absolute top-20 -right-6 h-12 w-12 rounded-full border-violet-200 bg-violet-100 p-2.5 text-violet-600 dark:border-violet-900 dark:bg-violet-900/50 dark:text-violet-500`}
+                      className={`absolute top-[97px] -right-6 h-12 w-12 scale-110 rounded-full border-violet-200 bg-violet-100 p-2.5 text-violet-600 dark:border-violet-900 dark:bg-violet-900/50 dark:text-violet-500`}
                     >
                       <Image height="300px" width="300px" className={imageClass} src={imageSrc} />
                     </div>
@@ -59,6 +54,12 @@ export const DemoContainer: FC<{ stages: Stage[] }> = ({ stages }) => {
                 subtitle={stage.subtitle}
                 current={isSelected}
                 moveOn={() => {
+                  setTimeout(() => {
+                    const nextElement = document.getElementById(stages[i]?.title)?.offsetTop
+                    if (nextElement) {
+                      window.scrollTo({ top: nextElement - 55, behavior: 'smooth' })
+                    }
+                  }, 500)
                   setTimeout(() => {
                     setSelected(i + 1)
                   }, 1000)

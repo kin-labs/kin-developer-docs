@@ -1,11 +1,11 @@
 import { FC, useState, useEffect } from 'react'
-import { KineticSdk } from '@kin-kinetic/sdk'
+import { BalanceResponse, KineticSdk } from '@kin-kinetic/sdk'
 import { Keypair } from '@kin-kinetic/keypair'
 
 import { Button } from '../common/Button'
-import { createAccount, openExplorer } from './kinetic'
+import { closeAccount, openExplorer } from './kinetic'
 
-export const DemoKineticCreateAccount: FC<{
+export const DemoKineticCloseAccount: FC<{
   moveOn: () => void
   current: boolean
   kineticClient: KineticSdk
@@ -13,44 +13,31 @@ export const DemoKineticCreateAccount: FC<{
 }> = ({ moveOn, current, kineticClient, keypair }) => {
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [signature, setSignature] = useState('')
-  const [exists, setExists] = useState(false)
+  const [success, setSuccess] = useState(false)
 
-  const onSuccess = (signature?: string, alreadyExists?: boolean) => {
+  const onFailure = () => {
+    setError(true)
+    setLoading(false)
+  }
+
+  const onSuccess = () => {
     setError(false)
     setLoading(false)
-
-    if (signature) {
-      setSignature(signature)
-    }
-
-    if (alreadyExists) {
-      setExists(true)
-    }
-
+    setSuccess(true)
     if (moveOn) {
       moveOn()
     }
   }
 
-  const onFailure = () => {
-    setSignature('')
-    setError(true)
-    setLoading(false)
-  }
-
   const onClick = () => {
-    setError(false)
     setLoading(true)
-    createAccount(onSuccess, onFailure, keypair)
+    closeAccount(onSuccess, onFailure, keypair.publicKey)
   }
 
   return (
     <>
       <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
-        {kineticClient && keypair && !signature && !exists ? (
-          <Button disabled={!!signature} label="Create" action={onClick} />
-        ) : null}
+        {kineticClient && keypair && !success ? <Button label="Close Account" action={onClick} /> : null}
       </div>
       {loading ? (
         <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Loading...`}</p>
@@ -59,17 +46,10 @@ export const DemoKineticCreateAccount: FC<{
         <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Something went wrong. Please try again.`}</p>
       ) : null}
 
-      {keypair && (signature || exists) ? (
+      {keypair && success ? (
         <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
-          <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`It worked! Your account has been created on the Solana blockchain.${
-            signature ? ` The transaction signature is ${signature}.` : ''
-          }`}</p>
-          <Button label="See your account" action={() => openExplorer({ account: keypair.publicKey })} />
-          {signature ? (
-            <div className="mx-0 mt-3 w-full px-2 pt-0 pb-0  lg:px-0 ">
-              <Button label="See your transaction" action={() => openExplorer({ transaction: signature })} />
-            </div>
-          ) : null}
+          <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`That's it! Your account has been closed.`}</p>
+          <Button label="Check your account" action={() => openExplorer({ accountBalance: keypair.publicKey })} />
         </div>
       ) : null}
 
