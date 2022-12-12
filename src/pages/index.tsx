@@ -3,23 +3,21 @@ import type { InferGetStaticPropsType } from 'next'
 
 import { buildDocsTree } from 'src/utils/build-docs-tree'
 import { buildToolsTree } from 'src/utils/build-tools-tree'
-import { buildExamplesTree } from '../utils/build-examples-tree'
 
 import { useColorScheme } from '../components/ColorSchemeContext'
 import { Container } from '../components/common/Container'
 import { Hero } from '../components/landing-page/Hero'
-import { allDocs, allExamples, allTools } from 'contentlayer/generated'
+import { allDocs, allTools } from 'contentlayer/generated'
 import { defineStaticProps } from 'src/utils/next'
 
 export const getStaticProps = defineStaticProps(async (_context) => {
   console.time('getStaticProps /')
   const docs = buildDocsTree(allDocs)
   const tools = buildToolsTree(allTools)
-  const examples = buildExamplesTree(allExamples)
 
   console.timeEnd('getStaticProps /')
 
-  return { props: { docs, examples, tools } }
+  return { props: { docs, tools } }
 })
 
 const Page: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = () => {
