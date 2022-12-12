@@ -72,15 +72,12 @@ export const DemoKineticMakeTransfer: FC<{
               <Button label="See your transaction" action={() => openExplorer({ transaction: signature })} />
             </span>
             <span className="mr-2">
-              <Button
-                label="See your balance"
-                action={() => openExplorer({ accountBalance: '3AQwygEJCSpNZc9fomYx7U2XZhE9QSKwa3B1CKzagJLb' })}
-              />
+              <Button label="See your balance" action={() => openExplorer({ accountBalance: keypair.publicKey })} />
             </span>
             <span className="mr-2">
               <Button
                 label="See the recipient's activity"
-                action={() => openExplorer({ account: keypair.publicKey })}
+                action={() => openExplorer({ account: '3AQwygEJCSpNZc9fomYx7U2XZhE9QSKwa3B1CKzagJLb' })}
               />
             </span>
           </div>
