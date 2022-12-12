@@ -31,7 +31,6 @@ import { DocsNavCard as NavCard } from '../../components/docs/DocsNavCard'
 import { DocsProduction as Production } from '../../components/docs/DocsProduction'
 import { DocsRegisterApp as RegisterApp } from '../../components/docs/DocsRegisterApp'
 import { defineStaticProps, toParams } from '../../utils/next'
-import { DemoLogo } from '../../components/demo/DemoLogo'
 import { DemoItem } from '../../components/demo/DemoItem'
 import { DemoContainer } from '../../components/demo/DemoContainer'
 import { DemoKineticConnect } from '../../components/demo/DemoKineticConnect'
@@ -102,7 +101,6 @@ const mdxComponents = {
   Agora,
   Bubble,
   BrandImage,
-  DemoLogo,
   DemoItem,
   DemoContainer,
   DemoKineticConnect,

@@ -39,7 +39,9 @@ export const DemoKineticMakeTransfer: FC<{
   return (
     <>
       <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
-        {kineticClient && keypair && balance !== '0' ? <Button label="Make Transfer" action={onClick} /> : null}
+        {kineticClient && keypair && balance !== '0' && current ? (
+          <Button label="Make Transfer" action={onClick} />
+        ) : null}
       </div>
       {loading ? (
         <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Loading...`}</p>

@@ -34,9 +34,9 @@ export const DemoContainer: FC<{ stages: Stage[] }> = ({ stages }) => {
           return (
             <div className=" flex flex-row" key={stage.title}>
               <div
-                className={`${reached ? 'fade-in-top bg-[#4c1d95]' : 'fade-out'} ${
-                  i === 0 ? 'demoItem' : ''
-                }  h-100% mr-8 ml-0 w-1`}
+                className={`${reached ? 'fade-in-top bg-[#4c1d95]' : 'fade-out'} ${i === 0 ? 'firstDemoItem' : ''} ${
+                  i === stages.length - 1 ? 'lastDemoItem' : ''
+                } h-100% mr-8 ml-0 w-1`}
               >
                 {reached && (
                   <div
@@ -57,14 +57,12 @@ export const DemoContainer: FC<{ stages: Stage[] }> = ({ stages }) => {
                 current={isSelected}
                 moveOn={() => {
                   setTimeout(() => {
+                    setSelected(i + 1)
                     const nextElement = document.getElementById(stages[i]?.title)?.offsetTop
                     if (nextElement) {
                       window.scrollTo({ top: nextElement - 55, behavior: 'smooth' })
                     }
-                  }, 500)
-                  setTimeout(() => {
-                    setSelected(i + 1)
-                  }, 1000)
+                  }, 1200)
                 }}
                 kineticClient={kineticClient}
                 setKineticClient={setKineticClient}

@@ -29,7 +29,7 @@ export const DemoKineticKeypair: FC<{
   return (
     <>
       <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
-        {kineticClient && !keypair ? (
+        {kineticClient && !keypair && current ? (
           <Button label="Create" action={() => createKeypair(onSuccess, onFailure)} />
         ) : null}
       </div>

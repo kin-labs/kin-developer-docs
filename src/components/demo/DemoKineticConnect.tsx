@@ -6,9 +6,10 @@ import { setupKineticClient } from './kinetic'
 
 export const DemoKineticConnect: FC<{
   moveOn: () => void
+  current: boolean
   kineticClient: KineticSdk
   setKineticClient: (kineticClient: KineticSdk) => void
-}> = ({ moveOn, kineticClient, setKineticClient }) => {
+}> = ({ moveOn, current, kineticClient, setKineticClient }) => {
   const [error, setError] = useState(false)
 
   const onFailure = () => {
@@ -25,7 +26,9 @@ export const DemoKineticConnect: FC<{
   return (
     <>
       <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
-        {!kineticClient ? <Button label="Connect" action={() => setupKineticClient(onSuccess, onFailure)} /> : null}
+        {!kineticClient && current ? (
+          <Button label="Connect" action={() => setupKineticClient(onSuccess, onFailure)} />
+        ) : null}
         {error ? <div>Something went wrong. Please try again.</div> : null}
       </div>
       {kineticClient?.config ? (

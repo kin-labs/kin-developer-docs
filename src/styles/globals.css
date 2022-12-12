@@ -221,19 +221,29 @@
     font-size: 16px !important;
   }
 
-  .demoItem {
+  .firstDemoItem {
     background: linear-gradient(
       180deg,
       rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0) 10%,
-      rgba(76, 29, 149, 1) 20%,
+      rgba(0, 0, 0, 0) 20%,
+      rgba(76, 29, 149, 1) 30%,
       rgba(76, 29, 149, 1) 100%
     ) !important;
   }
 
+  .lastDemoItem {
+    background: linear-gradient(
+      180deg,
+      rgba(76, 29, 149, 1) 0%,
+      rgba(76, 29, 149, 1) 80%,
+      rgba(0, 0, 0, 0) 90%,
+      rgba(0, 0, 0, 0) 100%
+    ) !important;
+  }
+
   .fade-in {
-    -webkit-animation: fade-in 0.6s 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-    animation: fade-in 0.6s 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    -webkit-animation: fade-in 0.6s 1.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    animation: fade-in 0.6s 1.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   }
 
   /* ----------------------------------------------
@@ -266,8 +276,8 @@
   }
 
   .fade-in-top {
-    -webkit-animation: fade-in-top 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-    animation: fade-in-top 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    -webkit-animation: fade-in-top 0.6s 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    animation: fade-in-top 0.6s 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   }
 
   /* ----------------------------------------------

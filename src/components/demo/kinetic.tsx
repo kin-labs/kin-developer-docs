@@ -172,6 +172,7 @@ export const closeAccount = async (onSuccess: () => void, onFailure: (error: boo
   try {
     const closeAccountOptions = {
       account: keypair,
+      commitment: Commitment.Finalized,
     }
     const transaction = kineticClient && (await kineticClient.closeAccount(closeAccountOptions))
     console.log('🚀 ~ transaction', transaction)
