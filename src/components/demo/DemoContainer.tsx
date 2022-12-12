@@ -7,6 +7,7 @@ import { DemoItem } from './DemoItem'
 interface Stage {
   title: string
   subtitle: string
+  link: { url: string; label: string }
   component: FC
 }
 
@@ -52,6 +53,7 @@ export const DemoContainer: FC<{ stages: Stage[] }> = ({ stages }) => {
               <DemoItem
                 title={stage.title}
                 subtitle={stage.subtitle}
+                link={stage.link}
                 current={isSelected}
                 moveOn={() => {
                   setTimeout(() => {

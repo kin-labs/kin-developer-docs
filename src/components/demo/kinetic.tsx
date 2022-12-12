@@ -47,10 +47,7 @@ export const createKeypair = async (onSuccess: (keypair: Keypair) => void, onFai
 
   try {
     const mnemonic = Keypair.generateMnemonic()
-    // const keypair = Keypair.fromSecret(mnemonic)
-    const keypair = Keypair.fromSecret(
-      'priority eternal board anxiety jeans public pear remind select regret mean mountain',
-    )
+    const keypair = Keypair.fromSecret(mnemonic)
     onSuccess && onSuccess(keypair)
   } catch (error) {
     console.log('🚀 ~ error', error)

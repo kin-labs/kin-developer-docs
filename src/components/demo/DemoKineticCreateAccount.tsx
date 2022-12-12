@@ -64,12 +64,16 @@ export const DemoKineticCreateAccount: FC<{
           <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`It worked! Your account has been created on the Solana blockchain.${
             signature ? ` The transaction signature is ${signature}.` : ''
           }`}</p>
-          <Button label="See your account" action={() => openExplorer({ account: keypair.publicKey })} />
-          {signature ? (
-            <div className="mx-0 mt-3 w-full px-2 pt-0 pb-0  lg:px-0 ">
-              <Button label="See your transaction" action={() => openExplorer({ transaction: signature })} />
-            </div>
-          ) : null}
+          <div className="flex w-full">
+            <span className="mr-2">
+              <Button label="See your account" action={() => openExplorer({ account: keypair.publicKey })} />
+            </span>
+            {signature ? (
+              <span className="mr-2">
+                <Button label="See your transaction" action={() => openExplorer({ transaction: signature })} />
+              </span>
+            ) : null}
+          </div>
         </div>
       ) : null}
 

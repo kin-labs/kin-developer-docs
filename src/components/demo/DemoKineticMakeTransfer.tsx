@@ -39,8 +39,7 @@ export const DemoKineticMakeTransfer: FC<{
   return (
     <>
       <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
-        <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`We are going to send your Kin to the Solana account '3AQwygEJCSpNZc9fomYx7U2XZhE9QSKwa3B1CKzagJLb'`}</p>
-        {kineticClient && keypair ? <Button label="Make Transfer" action={onClick} /> : null}
+        {kineticClient && keypair && balance !== '0' ? <Button label="Make Transfer" action={onClick} /> : null}
       </div>
       {loading ? (
         <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Loading...`}</p>
@@ -52,15 +51,22 @@ export const DemoKineticMakeTransfer: FC<{
       {keypair && balance && signature ? (
         <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
           <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`We did it! Your balance is now ${balance} KIN. The signature of your transaction is ${signature}.`}</p>
-          <Button label="See your transaction" action={() => openExplorer({ transaction: signature })} />
-          <div className="mx-0 mt-5 w-full px-2 pt-0 pb-0 lg:px-0 ">
-            <Button
-              label="See your balance"
-              action={() => openExplorer({ accountBalance: '3AQwygEJCSpNZc9fomYx7U2XZhE9QSKwa3B1CKzagJLb' })}
-            />
-          </div>
-          <div className="mx-0 mt-5 w-full px-2 pt-0 pb-0 lg:px-0 ">
-            <Button label="See the recipient's activity" action={() => openExplorer({ account: keypair.publicKey })} />
+          <div className="flex w-full">
+            <span className="mr-2">
+              <Button label="See your transaction" action={() => openExplorer({ transaction: signature })} />
+            </span>
+            <span className="mr-2">
+              <Button
+                label="See your balance"
+                action={() => openExplorer({ accountBalance: '3AQwygEJCSpNZc9fomYx7U2XZhE9QSKwa3B1CKzagJLb' })}
+              />
+            </span>
+            <span className="mr-2">
+              <Button
+                label="See the recipient's activity"
+                action={() => openExplorer({ account: keypair.publicKey })}
+              />
+            </span>
           </div>
         </div>
       ) : null}

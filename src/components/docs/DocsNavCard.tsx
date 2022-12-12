@@ -11,7 +11,6 @@ export const DocsNavCard: FC<
     hero?: boolean
     useCase?: boolean
     largeIcon?: boolean
-    fullWidth?: boolean
     title: string
     icon?: IconName | null
     svgFile?: string | null
@@ -21,21 +20,7 @@ export const DocsNavCard: FC<
     subtitle?: string | null
     link?: { url: string; label: string }
   }>
-> = ({
-  hero,
-  useCase,
-  largeIcon,
-  fullWidth,
-  title,
-  icon,
-  svgFile,
-  pngFile,
-  jpgFile,
-  label,
-  subtitle,
-  children,
-  link,
-}) => {
+> = ({ hero, useCase, largeIcon, title, icon, svgFile, pngFile, jpgFile, label, subtitle, children, link }) => {
   let imageClass = ''
   let imageSrc = ''
   if (svgFile) {
