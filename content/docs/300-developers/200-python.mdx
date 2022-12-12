@@ -178,7 +178,7 @@ The balance webhook allows you to receive an alert when your app's hotwallet is 
 
 ![Balance Webhook](/images/kinetic-manager/webhook-balance.png)
 
-E.g. In a node express server:
+E.g. In a python server:
 
 ```python
 @cross_origin()
@@ -196,7 +196,7 @@ The event webhook allows you to receive alerts when actions have been confirmed 
 
 ![Balance Webhook](/images/kinetic-manager/webhook-event.png)
 
-E.g. In a node express server:
+E.g. In a python server:
 
 ```python
 @cross_origin()
@@ -214,7 +214,7 @@ The verify webhook allows you to have fine-grained control over transactions, ma
 
 ![Balance Webhook](/images/kinetic-manager/webhook-event.png)
 
-E.g. In a node express server return a `200` status code to approve the transaction or a `400` to reject it:
+E.g. In a python server return a `200` status code to approve the transaction or a `400` to reject it:
 
 ```python
 @cross_origin()
