@@ -77,7 +77,7 @@ export const DocsNavCard: FC<
         <h3 className={`${largeIcon ? 'mt-12' : 'mt-0'} ${hero ? 'text-3xl' : ''}`}>{title}</h3>
         {label && <Label text={label} />}
         {subtitle && (
-          <div className={`text-sm text-slate-500 dark:text-slate-400 ${hero ? 'text-lg' : ''}`}>
+          <div className={`break-words text-sm text-slate-500 dark:text-slate-400 ${hero ? 'text-lg' : ''}`}>
             <p>{subtitle}</p>
           </div>
         )}

@@ -37,7 +37,7 @@ export const DemoKineticCloseAccount: FC<{
 
   return (
     <>
-      <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
+      <div className="m-0 w-full px-2 pt-0 pb-3 lg:px-0 ">
         {kineticClient && keypair && !success && current ? <Button label="Close Account" action={onClick} /> : null}
       </div>
       {loading ? (
