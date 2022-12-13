@@ -42,12 +42,16 @@ export const setupKineticClient = async (onSuccess: (kinetic: KineticSdk) => voi
     onFailure && onFailure()
   }
 }
-export const createKeypair = async (onSuccess: (keypair: Keypair) => void, onFailure: () => void) => {
+export const createKeypair = async (
+  onSuccess: (keypair: Keypair) => void,
+  onFailure: () => void,
+  mnemonic?: string,
+) => {
   console.log('🚀 ~ createKeypair')
 
   try {
-    const mnemonic = Keypair.generateMnemonic()
-    const keypair = Keypair.fromSecret(mnemonic)
+    const secret = mnemonic || Keypair.generateMnemonic()
+    const keypair = Keypair.fromSecret(secret)
     onSuccess && onSuccess(keypair)
   } catch (error) {
     console.log('🚀 ~ error', error)
@@ -156,6 +160,46 @@ export const makeTransfer = async (
     } else {
       throw new Error('No Amount Specified')
     }
+  } catch (error) {
+    console.log('🚀 ~ error', error)
+    onFailure && onFailure(true)
+  }
+}
+
+export interface BatchItem {
+  destination: string
+  amount: string
+}
+
+export const defaultBatch = [
+  { destination: '8CD58hLhjADzGehXLeTMBqV8iiggWmwBsswQD8tEW717', amount: '500' },
+  { destination: '5ytvdo6vmzpUL53RQAxqidJR5pqnje3WhCfByWBHFEfC', amount: '300' },
+  { destination: '7tY78UqzqbSRRAPRsv2t5kcJnU2NEpWwJ5C4hTHPiBJj', amount: '200' },
+]
+
+export const makeBatchTransfer = async (
+  onSuccess: (balance: BalanceResponse, signature: string) => void,
+  onFailure: (error: boolean) => void,
+  keypair: Keypair,
+  destinations: BatchItem[],
+) => {
+  console.log('🚀 ~ makeBatchTransfer')
+  try {
+    const transferBatchOptions = {
+      owner: keypair,
+      destinations,
+      commitment: Commitment.Finalized, // Optional, can be Finalized, Confirmed, Processed
+    }
+
+    const transaction = kineticClient && (await kineticClient.makeTransferBatch(transferBatchOptions))
+    console.log('🚀 ~ transaction', transaction)
+
+    const balanceOptions = {
+      account: keypair.publicKey,
+    }
+
+    const balance = kineticClient && (await kineticClient.getBalance(balanceOptions))
+    onSuccess && transaction?.signature && balance && onSuccess(balance, transaction?.signature)
   } catch (error) {
     console.log('🚀 ~ error', error)
     onFailure && onFailure(true)

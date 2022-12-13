@@ -1,0 +1,69 @@
+---
+title: Earning Kin
+nav_title: Earning Kin
+excerpt: Kin Kinetic Demo - Transfer Kin in Batch to App Users
+---
+
+Using the batch transfer method on the Kinetic SDK is a great way to deliver 'Earn' rewards to app users. Remember, the more Kin you transact with, the greater your rewards from the KRE.
+
+<div className="mt-9 grid gap-6 md:grid-cols-3">
+  <NavCard
+    title="Use Cases"
+    subtitle="Check out some of the ways you can use 'Earns' in your apps"
+    svgFile="diagram-project-solid"
+    link={{ url: '/docs/use-cases', label: 'Learn more about Earns' }}
+  />
+  <NavCard
+    title="Kin Rewards Engine"
+    subtitle="Earn Kin by using it in your App"
+    svgFile="money-bill-trend-up-solid"
+    link={{ url: '/docs/essentials/kin-rewards-engine', label: 'See more' }}
+  />
+</div>
+<br />
+
+Go through the steps required to transfer Kin from an app wallet in a batch to multiple user addresses:
+
+<DemoContainer
+  stages={[
+    {
+      title: 'Connect To Kinetic',
+      subtitle:
+        "Connect your app or server to an active Kinetic instance. Once you're connected, you'll be able to carry out all of the various actions the Kinetic SDK is capable of.",
+      link: { url: '/docs/developers/typescript#instantiate-the-kinetic-client', label: 'See the code...' },
+      component: (props) => <DemoKineticConnect {...props} />,
+    },
+    {
+      title: 'Setup Your Keypair',
+      subtitle:
+        'Use Kinetic to create a keypair. In this case we are going to use a mnemonic to connect to an existing account on Solana. The mnemonic for the keypair we want to connect to is "tube weapon very sudden moon version budget control arrest gift gallery toast". Of course, in real life you would never share your secrets!',
+      link: { url: '/docs/developers/typescript#create-account', label: 'See the code...' },
+      component: (props) => (
+        <DemoKineticKeypair
+          mnemonic="tube weapon very sudden moon version budget control arrest gift gallery toast"
+          {...props}
+        />
+      ),
+    },
+    {
+      title: 'Airdrop Kin',
+      subtitle:
+        "Let's make sure we've got some extra Kin in the account so we can make the payment we want to complete",
+      link: { url: '/docs/developers/typescript#airdrop-funds-devnet', label: 'See the code...' },
+      component: (props) => <DemoKineticAirdrop {...props} />,
+    },
+    {
+      title: "Prepare Your 'Earns'",
+      subtitle: 'We are going to simulate getting a list of reward payments for your app users',
+      link: { url: '/docs/use-cases', label: 'Learn more about Earns' },
+      component: (props) => <DemoGetEarns {...props} />,
+    },
+    {
+      title: 'Transfer Kin In A Batch',
+      subtitle:
+        'Use Kinetic to send some Kin a number of users at the same time. This is a great way to deliver rewards to app users. We are going to send to the accounts we got from our database in the last step.',
+      link: { url: '/docs/developers/typescript#transfer-kin-batch', label: 'See the code...' },
+      component: (props) => <DemoKineticMakeBatchTransfer {...props} />,
+    },
+  ]}
+/>

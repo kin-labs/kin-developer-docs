@@ -27,6 +27,7 @@ import { DocsHeader } from '../../components/docs/DocsHeader'
 import { DocsHelp as Help } from '../../components/docs/DocsHelp'
 import { DocsKineticManager as KineticManager } from '../../components/docs/DocsKineticManager'
 import { DocsKRE as KRE } from '../../components/docs/DocsKRE'
+import { DocsUseCases as UseCases } from '../../components/docs/DocsUseCases'
 import { DocsNavCard as NavCard } from '../../components/docs/DocsNavCard'
 import { DocsProduction as Production } from '../../components/docs/DocsProduction'
 import { DocsRegisterApp as RegisterApp } from '../../components/docs/DocsRegisterApp'
@@ -40,6 +41,8 @@ import { DemoKineticGetBalance } from '../../components/demo/DemoKineticGetBalan
 import { DemoKineticAirdrop } from '../../components/demo/DemoKineticAirdrop'
 import { DemoKineticMakeTransfer } from '../../components/demo/DemoKineticMakeTransfer'
 import { DemoKineticCloseAccount } from '../../components/demo/DemoKineticCloseAccount'
+import { DemoGetEarns } from '../../components/demo/DemoGetEarns'
+import { DemoKineticMakeBatchTransfer } from '../../components/demo/DemoKineticMakeBatchTransfer'
 
 export const getStaticPaths = async () => {
   const paths = allTools
@@ -99,6 +102,7 @@ const mdxComponents = {
   RegisterApp,
   KineticManager,
   Agora,
+  UseCases,
   Bubble,
   BrandImage,
   DemoItem,
@@ -110,6 +114,8 @@ const mdxComponents = {
   DemoKineticAirdrop,
   DemoKineticMakeTransfer,
   DemoKineticCloseAccount,
+  DemoGetEarns,
+  DemoKineticMakeBatchTransfer,
 }
 
 const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ tool, tree, breadcrumbs, childrenTree }) => {

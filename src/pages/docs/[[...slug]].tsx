@@ -19,6 +19,7 @@ import { ChevronLink } from '../../components/common/ChevronLink'
 import { Container } from '../../components/common/Container'
 import { Label } from '../../components/common/Label'
 import { DocsAgora as Agora } from '../../components/docs/DocsAgora'
+import { DocsUseCases as UseCases } from '../../components/docs/DocsUseCases'
 import { DocsBestPractices as BestPractices } from '../../components/docs/DocsBestPractices'
 import { DocsBrandImage as BrandImage } from '../../components/docs/DocsBrandImage'
 import { DocsBubble as Bubble } from '../../components/docs/DocsBubble'
@@ -85,6 +86,7 @@ const mdxComponents = {
   Agora,
   Bubble,
   BrandImage,
+  UseCases,
 }
 
 const Page: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ doc, tree, breadcrumbs, childrenTree }) => {

@@ -3,7 +3,7 @@ import { KineticSdk } from '@kin-kinetic/sdk'
 import { Keypair } from '@kin-kinetic/keypair'
 
 import { Button } from '../common/Button'
-import { createKeypair } from './kinetic'
+import { createKeypair, openExplorer } from './kinetic'
 
 export const DemoKineticKeypair: FC<{
   moveOn: () => void
@@ -11,7 +11,8 @@ export const DemoKineticKeypair: FC<{
   kineticClient: KineticSdk
   keypair: Keypair
   setKeypair: (keypair: Keypair) => void
-}> = ({ moveOn, current, kineticClient, keypair, setKeypair }) => {
+  mnemonic?: string
+}> = ({ moveOn, current, kineticClient, keypair, setKeypair, mnemonic }) => {
   const [error, setError] = useState(false)
 
   const onFailure = () => {
@@ -30,7 +31,7 @@ export const DemoKineticKeypair: FC<{
     <>
       <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
         {kineticClient && !keypair && current ? (
-          <Button label="Create" action={() => createKeypair(onSuccess, onFailure)} />
+          <Button label="Set Up" action={() => createKeypair(onSuccess, onFailure, mnemonic)} />
         ) : null}
       </div>
       {error ? (
@@ -45,6 +46,14 @@ export const DemoKineticKeypair: FC<{
           <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Public Key: ${keypair.publicKey}`}</p>
           <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Mnemonic: ${keypair.mnemonic}`}</p>
         </>
+      ) : null}
+
+      {keypair && mnemonic ? (
+        <div className="flex w-full">
+          <span className="mr-2">
+            <Button label="See the account" action={() => openExplorer({ accountBalance: keypair.publicKey })} />
+          </span>
+        </div>
       ) : null}
     </>
   )

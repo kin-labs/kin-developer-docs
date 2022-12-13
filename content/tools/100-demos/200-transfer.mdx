@@ -1,55 +1,76 @@
 ---
-title: Transfer Kin
-nav_title: Transfer Kin
-excerpt: Kin Kinetic Demo - Transfer Kin
+title: Spending Kin
+nav_title: Spending Kin
+excerpt: Kin Kinetic Demo - Spending Kin
 ---
 
-See all the steps required to transfer Kin from a user created wallet to an external address.
+This is what it's all about! You want your users doing 'Spends' of Kin in your app as that's what'll help to drive up your KRE payments.
+
+<div className="mt-9 grid gap-6 md:grid-cols-3">
+  <NavCard
+    title="Use Cases"
+    subtitle="Check out some of the ways you can use incorporate 'Spends' in your app"
+    svgFile="diagram-project-solid"
+    link={{ url: '/docs/use-cases', label: 'Learn more about Spends' }}
+  />
+  <NavCard
+    title="Kin Rewards Engine"
+    subtitle="Earn Kin by using it in your App"
+    svgFile="money-bill-trend-up-solid"
+    link={{ url: '/docs/essentials/kin-rewards-engine', label: 'See more' }}
+  />
+</div>
+<br />
+
+Go through the steps required to transfer Kin from a user created wallet to an external account (e.g. your app wallet):
 
 <DemoContainer
   stages={[
     {
       title: 'Connect To Kinetic',
-      subtitle: "Connect your app or server to an active Kinetic instance. Once you're connected, you'll be able to carry out all of the various actions the Kinetic SDK is capable of.",
-      link: {url: '/docs/developers/typescript#instantiate-the-kinetic-client', label: 'See the code...'},
-      component: (props) => <DemoKineticConnect {...props}/>,
+      subtitle:
+        "Connect your app or server to an active Kinetic instance. Once you're connected, you'll be able to carry out all of the various actions the Kinetic SDK is capable of.",
+      link: { url: '/docs/developers/typescript#instantiate-the-kinetic-client', label: 'See the code...' },
+      component: (props) => <DemoKineticConnect {...props} />,
     },
     {
       title: 'Create A Keypair',
-      subtitle: 'Use Kinetic to create a keypair. This will act as your wallet on the blockchain. The mnemonic code for the keypair can be imported into any Solana wallet such as Phantom or Solflare.',
-      link: {url: '/docs/developers/typescript#create-account', label: 'See the code...'},
-      component: (props) => <DemoKineticKeypair {...props}/>,
+      subtitle:
+        'Use Kinetic to create a keypair. This will act as a users wallet on the blockchain and be used to sign transactions. The mnemonic code for the keypair can be imported into any Solana wallet such as Phantom or Solflare. Remember to keep your mnemonics safe!',
+      link: { url: '/docs/developers/typescript#create-account', label: 'See the code...' },
+      component: (props) => <DemoKineticKeypair {...props} />,
     },
     {
       title: 'Create An Account',
-      subtitle: "Use Kinetic to create your account on the Solana blockchain with the keypair we made in the previous step. Once this is done, you'll be able to transact with Kin on Solana via the Kinetic SDK.",
-      link: {url: '/docs/developers/typescript#create-account', label: 'See the code...'},
-      component: (props) => <DemoKineticCreateAccount {...props}/>,
+      subtitle:
+        "Use Kinetic to create an account on the Solana blockchain with the keypair we made in the previous step. Once this is done, you'll be able to transact with Kin on Solana via the Kinetic SDK.",
+      link: { url: '/docs/developers/typescript#create-account', label: 'See the code...' },
+      component: (props) => <DemoKineticCreateAccount {...props} />,
     },
     {
       title: 'Check Your Balance',
-      subtitle: 'Use Kinetic to check the balance of your account.',
-      link: {url: '/docs/developers/typescript#check-balance', label: 'See the code...'},
-      component: (props) => <DemoKineticGetBalance {...props}/>,
+      subtitle: 'Use Kinetic to check the balance of the account.',
+      link: { url: '/docs/developers/typescript#check-balance', label: 'See the code...' },
+      component: (props) => <DemoKineticGetBalance {...props} />,
     },
     {
       title: 'Airdrop Kin',
-      subtitle: 'Use Kinetic to send some test Kin to your account.',
-      link: {url: '/docs/developers/typescript#airdrop-funds-devnet', label: 'See the code...'},
-      component: (props) => <DemoKineticAirdrop {...props}/>,
+      subtitle: 'Use Kinetic to send some test Kin to the account.',
+      link: { url: '/docs/developers/typescript#airdrop-funds-devnet', label: 'See the code...' },
+      component: (props) => <DemoKineticAirdrop {...props} />,
     },
     {
       title: 'Transfer Kin',
-      subtitle: "Use Kinetic to send some Kin to another account. In this case, we are going to send your Kin to the Solana account '3AQwygEJCSpNZc9fomYx7U2XZhE9QSKwa3B1CKzagJLb'",
-      link: {url: '/docs/developers/typescript#transfer-kin', label: 'See the code...'},
-      component: (props) => <DemoKineticMakeTransfer {...props}/>,
+      subtitle:
+        "Use Kinetic to allow a user to 'Spend' Kin in your app. In this case, we are going to send all of the Kin from the user's wallet to our 'app wallet' - 3AQwygEJCSpNZc9fomYx7U2XZhE9QSKwa3B1CKzagJLb",
+      link: { url: '/docs/developers/typescript#transfer-kin', label: 'See the code...' },
+      component: (props) => <DemoKineticMakeTransfer {...props} />,
     },
     {
-      title: 'Close Your Account',
-      subtitle: "Use Kinetic to close your Kin account. It's good practice to tidy up any unneeded accounts.",
-      link: {url: '/docs/developers/typescript#close-account', label: 'See the code...'},
-      component: (props) => <DemoKineticCloseAccount {...props}/>,
+      title: 'Close The Account',
+      subtitle: "Use Kinetic to close the empty Kin account. It's good practice to tidy up any unneeded accounts.",
+      link: { url: '/docs/developers/typescript#close-account', label: 'See the code...' },
+      component: (props) => <DemoKineticCloseAccount {...props} />,
     },
-
-]}
+  ]}
 />
