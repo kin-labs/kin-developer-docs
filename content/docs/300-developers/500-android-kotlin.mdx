@@ -29,6 +29,17 @@ dependencies {
 }
 ```
 
+**If you're using proguard to minify your release app, add these lines to your proguard-rules.pro**
+```
+-keep class org.kin.kinetic.**{*;}
+-keep class org.kin.kinetic.**$* {*;}
+-keep class com.solana.**{*;}
+
+-keep class org.bitcoinj.**{*;}
+-keep class org.bitcoin.**{*;}
+```
+
+
 ### Instantiate the Kinetic Client
 
 The Kinetic Client will give you access to all the methods you need to work with Kin on the blockchain.
