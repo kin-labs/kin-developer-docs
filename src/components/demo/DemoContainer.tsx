@@ -17,8 +17,8 @@ export const DemoContainer: FC<{ stages: Stage[] }> = ({ stages }) => {
   const [keypair, setKeypair] = useState<Keypair | undefined>(undefined)
 
   return (
-    <div className="solid m-0 w-full px-2 pt-0">
-      <div className="my-0 mx-auto flex max-w-5xl flex-col px-3">
+    <div className="solid m-0 w-full pl-2 pt-0">
+      <div className="my-0 mx-auto flex max-w-5xl flex-col pl-3">
         {stages.map((stage, i) => {
           const reached = i <= selected
           const isSelected = i === selected
@@ -32,7 +32,7 @@ export const DemoContainer: FC<{ stages: Stage[] }> = ({ stages }) => {
             imageClass = `svgFile svgFile-circle-arrow-right-solid`
           }
           return (
-            <div className=" flex flex-row" key={stage.title}>
+            <div className="flex flex-row" key={stage.title}>
               <div
                 className={`${reached ? 'fade-in-top bg-[#4c1d95]' : 'fade-out'} ${i === 0 ? 'firstDemoItem' : ''} ${
                   i === stages.length - 1 ? 'lastDemoItem' : ''
