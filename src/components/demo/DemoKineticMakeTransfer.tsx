@@ -66,7 +66,7 @@ export const DemoKineticMakeTransfer: FC<{
 
       {keypair && balance && signature ? (
         <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
-          <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`We did it! Your balance is now ${balance} KIN. The signature of your transaction is ${signature}.`}</p>
+          <p className="m-0 mt-1 w-full space-y-12 break-words px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`We did it! Your balance is now ${balance} KIN. The signature of your transaction is ${signature}.`}</p>
           <div className="flex w-full">
             <span className="mr-2">
               <Button label="See your transaction" action={() => openExplorer({ transaction: signature })} />

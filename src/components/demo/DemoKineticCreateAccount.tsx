@@ -75,7 +75,7 @@ export const DemoKineticCreateAccount: FC<{
 
       {keypair && (signature || exists) ? (
         <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
-          <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`It worked! Your account has been created on the Solana blockchain.${
+          <p className="m-0 mt-1 w-full space-y-12 break-words px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`It worked! Your account has been created on the Solana blockchain.${
             signature ? ` The transaction signature is ${signature}.` : ''
           }`}</p>
           <div className="flex w-full">

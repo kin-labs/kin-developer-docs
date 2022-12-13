@@ -43,8 +43,8 @@ export const DemoKineticKeypair: FC<{
       {keypair ? (
         <>
           <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Great! You've created your Keypair:`}</p>
-          <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Public Key: ${keypair.publicKey}`}</p>
-          <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Mnemonic: ${keypair.mnemonic}`}</p>
+          <p className="m-0 mt-1 w-full space-y-12 break-words px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Public Key: ${keypair.publicKey}`}</p>
+          <p className="m-0 mt-1 w-full space-y-12  px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Mnemonic: ${keypair.mnemonic}`}</p>
         </>
       ) : null}
 
