@@ -54,6 +54,19 @@ kinetic_client.create_account(
 )
 ```
 
+### Close Account
+
+It's good practice to close unneeded accounts. You can only close accounts that you have created and are currently empty.
+
+```python
+from kinetic_sdk import Commitment
+
+kinetic_client.close_account(
+    account=keypair.public_key,
+    commitment=Commitment('Finalized'), # Optional: "Confirmed", "Finalized", "Processed"
+)
+```
+
 ### Check Balance
 
 Check a user balance by passing in the public key of the account you want to check.
@@ -156,6 +169,14 @@ Get the full transaction history of any account by passing in the account's Publ
 
 ```python
 history = kinetic_client.get_history(account=keypair.publicKey)
+```
+
+### Get Account Info
+
+Easily get the main info of any account by passing in the account's Public Key.
+
+```python
+account_info = kinetic_client.get_account_info(account=keypair.publicKey)
 ```
 
 ### Get Token Accounts

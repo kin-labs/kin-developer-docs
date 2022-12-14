@@ -58,6 +58,18 @@ CreateAccountOptions options = CreateAccountOptions(
 Transaction? transaction = await sdk.createAccount(options);
 ```
 
+### Close Account
+
+It's good practice to close unneeded accounts. You can only close accounts that you have created and are currently empty.
+
+```js
+CloseAccountOptions options = CloseAccountOptions(
+  account: owner.publicKey,
+  commitment: CreateAccountRequestCommitmentEnum.finalized,
+);
+CloseAccountResponse? res = await sdk.closeAccount(options: options);
+```
+
 ### Check Balance
 
 Check a user balance by passing in the public key of the account you want to check.
@@ -130,6 +142,15 @@ Get the full transaction history of any account by passing in the account's Publ
 ```js
 GetHistoryOptions options = GetHistoryOptions(account: alice.publicKey, mint: mint);
 List<HistoryResponse>? res = await sdk.getHistory(options);
+```
+
+### Get Account Info
+
+Easily get the main info of any account by passing in the account's Public Key.
+
+```js
+GetAccountInfoOptions options = GetAccountInfoOptions(account: alice.publicKey, mint: mint);
+List<AccountInfoResponse>? res = await sdk.getAccountInfo(options);
 ```
 
 ### Get Token Accounts
