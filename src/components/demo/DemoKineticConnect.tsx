@@ -25,14 +25,14 @@ export const DemoKineticConnect: FC<{
 
   return (
     <>
-      <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
+      <div className="m-0 w-full px-2 pt-0 pb-3">
         {!kineticClient && current ? (
           <Button label="Connect" action={() => setupKineticClient(onSuccess, onFailure)} />
         ) : null}
         {error ? <div>Something went wrong. Please try again.</div> : null}
       </div>
       {kineticClient?.config ? (
-        <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">{`Great! You are connected to Kinetic on ${kineticClient.sdkConfig.environment}.`}</div>
+        <div className="m-0 w-full px-2 pt-0 pb-3">{`Great! You are connected to Kinetic on ${kineticClient.sdkConfig.environment}.`}</div>
       ) : null}
     </>
   )

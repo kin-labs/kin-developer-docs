@@ -48,7 +48,7 @@ export const DemoKineticCreateAccount: FC<{
 
   return (
     <>
-      <div className="m-0 w-full pt-0 pb-3 ">
+      <div className="m-0 w-full pt-0 pb-3">
         {kineticClient && keypair && !signature && !exists && current ? (
           <Button disabled={!!signature} label="Create" action={onClick} />
         ) : null}

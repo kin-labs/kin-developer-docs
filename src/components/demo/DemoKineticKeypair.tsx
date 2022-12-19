@@ -29,22 +29,22 @@ export const DemoKineticKeypair: FC<{
 
   return (
     <>
-      <div className="m-0 w-full pt-0 pb-3  lg:px-0 ">
+      <div className="m-0 w-full pt-0 pb-3">
         {kineticClient && !keypair && current ? (
           <Button label="Set Up" action={() => createKeypair(onSuccess, onFailure, mnemonic)} />
         ) : null}
       </div>
       {error ? (
-        <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-20 lg:px-0">{`Something went wrong. Please try again.`}</p>
+        <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-20">{`Something went wrong. Please try again.`}</p>
       ) : null}
       {!kineticClient && current ? (
-        <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-20 lg:px-0">{`You aren't connected to Kinetic`}</p>
+        <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-20">{`You aren't connected to Kinetic`}</p>
       ) : null}
       {keypair ? (
         <>
-          <p className="m-0 mt-1 w-full space-y-12  pt-0 pb-3 md:space-y-20 lg:px-0">{`Great! You've created your Keypair:`}</p>
-          <p className="m-0 mt-1 w-full space-y-12 break-all pt-0 pb-3 md:space-y-20 lg:px-0">{`Public Key: ${keypair.publicKey}`}</p>
-          <p className="m-0 mt-1 w-full space-y-12  pt-0 pb-3 md:space-y-20 lg:px-0">{`Mnemonic: ${keypair.mnemonic}`}</p>
+          <p className="m-0 mt-1 w-full space-y-12  pt-0 pb-3 md:space-y-20">{`Great! You've created your Keypair:`}</p>
+          <p className="m-0 mt-1 w-full space-y-12 break-all pt-0 pb-3 md:space-y-20">{`Public Key: ${keypair.publicKey}`}</p>
+          <p className="m-0 mt-1 w-full space-y-12  pt-0 pb-3 md:space-y-20">{`Mnemonic: ${keypair.mnemonic}`}</p>
         </>
       ) : null}
 
