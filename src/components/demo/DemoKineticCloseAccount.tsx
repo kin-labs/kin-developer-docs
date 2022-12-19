@@ -37,12 +37,12 @@ export const DemoKineticCloseAccount: FC<{
 
   return (
     <>
-      <div className="m-0 w-full px-2 pt-0 pb-3 lg:px-0 ">
+      <div className="m-0 w-full pt-0 pb-3">
         {kineticClient && keypair && !success && current ? <Button label="Close Account" action={onClick} /> : null}
       </div>
       {loading ? (
         <>
-          <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">
+          <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-20">
             <ThreeDots
               height="80"
               width="80"
@@ -57,12 +57,12 @@ export const DemoKineticCloseAccount: FC<{
         </>
       ) : null}
       {error ? (
-        <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Something went wrong. Please try again.`}</p>
+        <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-20 ">{`Something went wrong. Please try again.`}</p>
       ) : null}
 
       {keypair && success ? (
-        <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
-          <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`That's it! Your account has been closed.`}</p>
+        <div className="m-0 w-full pt-0 pb-3   ">
+          <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-20 ">{`That's it! Your account has been closed.`}</p>
           <Button label="Check your account" action={() => openExplorer({ accountBalance: keypair.publicKey })} />
         </div>
       ) : null}
@@ -70,13 +70,11 @@ export const DemoKineticCloseAccount: FC<{
       {(() => {
         if (!kineticClient && current) {
           return (
-            <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`You aren't connected to Kinetic`}</p>
+            <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-20 ">{`You aren't connected to Kinetic`}</p>
           )
         }
         if (!keypair && current) {
-          return (
-            <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`You don't have a keypair`}</p>
-          )
+          return <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-20 ">{`You don't have a keypair`}</p>
         }
 
         return null

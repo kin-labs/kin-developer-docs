@@ -37,12 +37,12 @@ export const DemoKineticGetBalance: FC<{
 
   return (
     <>
-      <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
+      <div className="m-0 w-full pt-0 pb-3">
         {kineticClient && keypair && current ? <Button label="Check" action={onClick} /> : null}
       </div>
       {loading ? (
         <>
-          <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">
+          <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-20">
             <ThreeDots
               height="80"
               width="80"
@@ -57,12 +57,12 @@ export const DemoKineticGetBalance: FC<{
         </>
       ) : null}
       {error ? (
-        <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Something went wrong. Please try again.`}</p>
+        <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-20">{`Something went wrong. Please try again.`}</p>
       ) : null}
 
       {keypair && balance ? (
-        <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
-          <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Great! We got it, your balance is ${balance} KIN.`}</p>
+        <div className="m-0 w-full pt-0 pb-3  ">
+          <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-20">{`Great! We got it, your balance is ${balance} KIN.`}</p>
           <Button label="See your balance" action={() => openExplorer({ accountBalance: keypair.publicKey })} />
         </div>
       ) : null}
@@ -70,13 +70,11 @@ export const DemoKineticGetBalance: FC<{
       {(() => {
         if (!kineticClient && current) {
           return (
-            <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`You aren't connected to Kinetic`}</p>
+            <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-20">{`You aren't connected to Kinetic`}</p>
           )
         }
         if (!keypair && current) {
-          return (
-            <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`You don't have a keypair`}</p>
-          )
+          return <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-20">{`You don't have a keypair`}</p>
         }
 
         return null

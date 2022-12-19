@@ -48,14 +48,14 @@ export const DemoKineticCreateAccount: FC<{
 
   return (
     <>
-      <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
+      <div className="m-0 w-full pt-0 pb-3 ">
         {kineticClient && keypair && !signature && !exists && current ? (
           <Button disabled={!!signature} label="Create" action={onClick} />
         ) : null}
       </div>
       {loading ? (
         <>
-          <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">
+          <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-2">
             <ThreeDots
               height="80"
               width="80"
@@ -70,20 +70,30 @@ export const DemoKineticCreateAccount: FC<{
         </>
       ) : null}
       {error ? (
-        <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Something went wrong. Please try again.`}</p>
+        <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-2">{`Something went wrong. Please try again.`}</p>
       ) : null}
 
       {keypair && (signature || exists) ? (
-        <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
-          <p className="m-0 mt-1 w-full space-y-12 break-words px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`It worked! Your account has been created on the Solana blockchain.${
-            signature ? ` The transaction signature is ${signature}.` : ''
-          }`}</p>
-          <div className="flex w-full">
-            <span className="mr-2">
+        <div className="m-0 w-full pt-0 pb-3 ">
+          <p className="m-0 mt-1 w-full space-y-12 break-words pt-0 pb-3 md:space-y-2">
+            It worked! Your account has been created on the Solana blockchain.
+            {signature ? (
+              <span>
+                <span>
+                  {` `}The transaction signagure is {` `}
+                </span>
+                <span className="break-all">{signature}</span>
+              </span>
+            ) : (
+              ''
+            )}
+          </p>
+          <div className="flex w-full flex-col lg:flex-row">
+            <span className="mb-2 lg:mr-2 lg:mb-0">
               <Button label="See your account" action={() => openExplorer({ account: keypair.publicKey })} />
             </span>
             {signature ? (
-              <span className="mr-2">
+              <span className="mb-2 lg:mr-2 lg:mb-0">
                 <Button label="See your transaction" action={() => openExplorer({ transaction: signature })} />
               </span>
             ) : null}
@@ -94,13 +104,11 @@ export const DemoKineticCreateAccount: FC<{
       {(() => {
         if (!kineticClient && current) {
           return (
-            <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`You aren't connected to Kinetic`}</p>
+            <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-2">{`You aren't connected to Kinetic`}</p>
           )
         }
         if (!keypair && current) {
-          return (
-            <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`You don't have a keypair`}</p>
-          )
+          return <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-2">{`You don't have a keypair`}</p>
         }
 
         return null

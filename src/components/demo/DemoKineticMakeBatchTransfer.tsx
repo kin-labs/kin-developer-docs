@@ -39,14 +39,14 @@ export const DemoKineticMakeBatchTransfer: FC<{
 
   return (
     <>
-      <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
+      <div className="m-0 w-full pt-0 pb-3  lg:px-0 ">
         {kineticClient && keypair && balance !== '0' && current ? (
           <Button label="Make Transfer" action={onClick} />
         ) : null}
       </div>
       {loading ? (
         <>
-          <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">
+          <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-20 lg:px-0">
             <ThreeDots
               height="80"
               width="80"
@@ -61,13 +61,13 @@ export const DemoKineticMakeBatchTransfer: FC<{
         </>
       ) : null}
       {error ? (
-        <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`Something went wrong. Please try again.`}</p>
+        <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-20 lg:px-0">{`Something went wrong. Please try again.`}</p>
       ) : null}
 
       {keypair && balance && signature ? (
         <>
-          <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
-            <p className="m-0 mt-1 w-full space-y-12 break-words px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`We did it! Your balance is now ${balance} KIN. The signature of your transaction is ${signature}.`}</p>
+          <div className="m-0 w-full pt-0 pb-3  lg:px-0 ">
+            <p className="m-0 mt-1 w-full space-y-12 break-words pt-0 pb-3 md:space-y-20 lg:px-0">{`We did it! Your balance is now ${balance} KIN. The signature of your transaction is ${signature}.`}</p>
             <div className="flex w-full">
               <span className="mr-2">
                 <Button label="See your transaction" action={() => openExplorer({ transaction: signature })} />
@@ -78,11 +78,11 @@ export const DemoKineticMakeBatchTransfer: FC<{
             </div>
           </div>
 
-          <div className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
-            <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`See the updated balances of the batch recipients below:`}</p>
+          <div className="m-0 w-full pt-0 pb-3  lg:px-0 ">
+            <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-20 lg:px-0">{`See the updated balances of the batch recipients below:`}</p>
             {defaultBatch.map((earn) => {
               return (
-                <div key={earn.destination} className="m-0 w-full px-2 pt-0 pb-3  lg:px-0 ">
+                <div key={earn.destination} className="m-0 w-full pt-0 pb-3  lg:px-0 ">
                   <Button label={earn.destination} action={() => openExplorer({ accountBalance: earn.destination })} />
                 </div>
               )
@@ -94,12 +94,12 @@ export const DemoKineticMakeBatchTransfer: FC<{
       {(() => {
         if (!kineticClient && current) {
           return (
-            <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`You aren't connected to Kinetic`}</p>
+            <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-20 lg:px-0">{`You aren't connected to Kinetic`}</p>
           )
         }
         if (!keypair && current) {
           return (
-            <p className="m-0 mt-1 w-full space-y-12 px-2 pt-0 pb-3 md:space-y-20 lg:px-0">{`You don't have a keypair`}</p>
+            <p className="m-0 mt-1 w-full space-y-12 pt-0 pb-3 md:space-y-20 lg:px-0">{`You don't have a keypair`}</p>
           )
         }
 
