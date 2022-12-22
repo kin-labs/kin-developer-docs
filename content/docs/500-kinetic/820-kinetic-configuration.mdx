@@ -10,7 +10,8 @@ Kinetic configuration is split between settings you control via Environment Vari
 
 ## Kinetic Environment Variables
 
-See the full list of environment variables for Kinetic <a href='https://github.com/kin-labs/kinetic/blob/main/.env.example' target='_blank'>here</a>.
+See the full list of environment variables for Kinetic <a href='https://github.com/kin-labs/kinetic/blob/main/.env.example' target='_blank'>here</a>.<br/>
+To see the options required for a minmal setup, have a look at <a href='https://github.com/kin-starters/kinetic-docker-compose/blob/main/docker-compose.yml' target='_blank'>this</a>.
 
 Here are some things to be aware of:
 
@@ -64,12 +65,6 @@ Here are some things to be aware of:
   GOOGLE_CLIENT_SECRET: "a2e42904c81280c1466d95de040c516zzzzzzzz"
   GOOGLE_ENABLED: "true"
 ```
-
-### Some Things To Watch Out For
-
-- `COOKIE_DOMAINS` must contain your deployed domain for your version of Kinetic, e.g. `my-kinetic-instance.onrender.com`.
-- Any url that contains `localhost` or `127.0.0.1` should be changed to `0.0.0.0` or whatever domain you have deployed to.
-- On Heroku, make sure not to include quote marks around your strings as Heroku won't filter them out.<br/>
 
 ## Kinetic Manager
 

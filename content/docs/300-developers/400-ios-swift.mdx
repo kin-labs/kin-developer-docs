@@ -48,6 +48,14 @@ let owner = Keypair.random()
 let transaction = await kinetic.createAccount(owner: owner)
 ```
 
+### Close Account
+
+It's good practice to close unneeded accounts. You can only close accounts that you have created and are currently empty.
+
+```swift
+let transaction = await kinetic.createAccount(account: owner.publicKey)
+```
+
 ### Check Balance
 
 Check a user balance by passing in the public key of the account you want to check.
@@ -100,6 +108,14 @@ Get the full transaction history of any account by passing in the account's Publ
 
 ```swift
 let accountHistory = kinetic.getHistory(account: owner.publicKey)
+```
+
+### Get Account Info
+
+Easily get the main info of any account by passing in the account's Public Key.
+
+```swift
+let accountInfo = kinetic.getAccountInfo(account: owner.publicKey)
 ```
 
 ### Get Token Accounts

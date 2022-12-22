@@ -50,6 +50,14 @@ var keypair = Keypair.FromMnemonic(mnemonic);
 await sdk.CreateAccount(keypair);
 ```
 
+### Close Account
+
+It's good practice to close unneeded accounts. You can only close accounts that you have created and are currently empty.
+
+```c#
+await sdk.CloseAccount(keypair.PublicKey);
+```
+
 ### Check Balance
 
 Check a user balance by passing in the public key of the account you want to check.
@@ -95,6 +103,14 @@ Get the full transaction history of any account by passing in the account's Publ
 
 ```c#
 await sdk.GetHistory(account: keypair.PublicKey);
+```
+
+### Get Account Info
+
+Easily get the main info of any account by passing in the account's Public Key.
+
+```c#
+await sdk.GetAccountInfo(account: keypair.PublicKey);
 ```
 
 ### Get Token Accounts

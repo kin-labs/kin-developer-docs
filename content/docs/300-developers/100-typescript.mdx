@@ -55,6 +55,20 @@ const accountOptions = {
 await kineticClient.createAccount(accountOptions)
 ```
 
+### Close Account
+
+It's good practice to close unneeded accounts. You can only close accounts that you have created and are currently empty.
+
+```js
+import { Commitment } from '@kin-kinetic/solana'
+
+const closeAccountOptions = {
+  account: keypair.publicKey,
+  commitment: Commitment.Finalized, // Optional, can be Finalized, Confirmed, Processed
+}
+await kineticClient.closeAccount(closeAccountOptions)
+```
+
 ### Check Balance
 
 Check a user balance by passing in the public key of the account you want to check.
@@ -162,6 +176,15 @@ Get the full transaction history of any account by passing in the account's Publ
 ```js
 const historyOptions = { account: keypair.publicKey }
 await kineticClient.getHistory(historyOptions)
+```
+
+### Get Account Info
+
+Easily get the main info of any account by passing in the account's Public Key.
+
+```js
+const getAccountInfoOptions = { account: keypair.publicKey }
+await kineticClient.getAccountInfo(getAccountInfoOptions)
 ```
 
 ### Get Token Accounts
