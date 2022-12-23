@@ -44,6 +44,8 @@ While you're waiting for confirmation of your App Index, use `1` on devnet so yo
 
 You can create accounts randomly or from existing mnemonics or secret keys. Below, we'll make a keypair and use that for creating an account on the blockchain.
 
+You can also generate keypairs and create accounts on the [Kin Laboratory](https://laboratory.kin.org/keypairs).
+
 ```js
 Keypair owner = await Keypair.random();
 
@@ -85,6 +87,8 @@ dynamic res = await kinetic.getBalance(kinetic.keypair.solanaPublicKey.toBase58(
 ### Airdrop Funds (devnet)
 
 Send some test funds to a specific Public Key on Devnet.
+
+Or visit the [Kin Laboratory](https://laboratory.kin.org/airdrop) to do it with a click!
 
 ```js
 RequestAirdropOptions options = RequestAirdropOptions(
