@@ -43,7 +43,8 @@ You can create accounts randomly or from existing mnemonics or secret keys. Belo
 You can also generate keypairs and create accounts on devnet via the [Kin Laboratory](https://laboratory.kin.org/keypairs).
 
 ```python
-from kinetic_sdk import Keypair, Commitment
+from kinetic_sdk import Commitment
+from kinetic_sdk.keypair import Keypair
 
 mnemonic = Keypair.generate_mnemonic()
 keypair = Keypair.from_secret(mnemonic)
@@ -100,7 +101,8 @@ airdrop = kinetic_client.request_airdrop(
 Transfer Kin from a Keypair to any Public Key.
 
 ```python
-from kinetic_sdk import TransactionType, Commitment
+from kinetic_sdk import Commitment
+from kinetic_sdk.models.transaction_type import TransactionType
 
 transfer = kinetic_client.make_transfer(
     amount='5000',
@@ -339,7 +341,8 @@ kin_client = Client(env, app_index)
 
 ```python
 # Kinetic
-from kinetic_sdk import Keypair, Commitment
+from kinetic_sdk import Commitment
+from kinetic_sdk.keypair import Keypair
 
 mnemonic = Keypair.generate_mnemonic()
 keypair = Keypair.from_secret(mnemonic) # or Keypair.random()
@@ -391,7 +394,8 @@ airdrop = kin_client.request_airdrop(token_account, quarks)
 
 ```python
 # Kinetic
-from kinetic_sdk import TransactionType, Commitment
+from kinetic_sdk import Commitment
+from kinetic_sdk.models.transaction_type import TransactionType
 
 transfer = kinetic_client.make_transfer(
     amount='5000',
