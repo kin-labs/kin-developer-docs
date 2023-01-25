@@ -82,6 +82,8 @@ let airdropSignature = await kinetic.requestAirdrop(account: owner.publicKey).si
 
 Transfer Kin from a Keypair to any Public Key.
 
+Make sure to include your Transaction Type if you want it to count towards the KRE.
+
 ```swift
 let txSignature = await kinetic.makeTransfer(
 	amount: "5000",
