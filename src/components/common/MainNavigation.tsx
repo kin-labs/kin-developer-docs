@@ -18,7 +18,7 @@ const navLinks: Array<{ label: string; url: string; hideLg?: boolean }> = [
 ]
 
 const iconLinks: Array<{ label: string; icon: IconName; url: string }> = [
-  { label: 'Discord', icon: 'discord', url: 'https://discord.com/invite/kdRyUNmHDn' },
+  { label: 'Discord', icon: 'discord', url: 'https://www.kin.org/developerdiscord' },
 ]
 
 const NavLink: FC<{ label?: string; hideLabel?: boolean; hideLg?: boolean; icon?: IconName; url: string }> = ({
