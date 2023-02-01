@@ -1,0 +1,57 @@
+---
+title: Creating A Kin Account
+nav_title: Creating A Kin Account
+excerpt: Kin Kinetic Demo - Creating A Kin Account
+---
+
+Whatever kind of app you're making, your users will need a keypair and an account created on the Solana blockchain as this will allow them to spend and receive Kin and allow you to increase your earnings via the KRE.
+
+<div className="mt-9 grid gap-6 md:grid-cols-3">
+  <NavCard
+    title="Use Cases"
+    subtitle="Check out some of the many ways you can use Kin in your apps"
+    svgFile="diagram-project-solid"
+    link={{ url: '/docs/use-cases', label: 'Learn more' }}
+  />
+  <NavCard
+    title="Kin Rewards Engine"
+    subtitle="Earn Kin by using it in your App"
+    svgFile="money-bill-trend-up-solid"
+    link={{ url: '/docs/essentials/kin-rewards-engine', label: 'See more' }}
+  />
+</div>
+<br />
+
+Go through the steps required to create an account on the blockchain capable of receiving Kin via the Kinetic SDKs:
+
+<DemoContainer
+  stages={[
+    {
+      title: 'Connect To Kinetic',
+      subtitle:
+        "Connect your app or server to an active Kinetic instance. Once you're connected, you'll be able to carry out all of the various actions the Kinetic SDK is capable of.",
+      link: { url: '/docs/developers/typescript#instantiate-the-kinetic-client', label: 'See the code...' },
+      component: (props) => <DemoKineticConnect {...props} />,
+    },
+    {
+      title: 'Create A Keypair',
+      subtitle:
+        'Use Kinetic to create a keypair. This will act as your wallet on the blockchain and be used to sign transactions. The mnemonic code for the keypair can be imported into any Solana wallet such as Phantom or Solflare. Remember to keep your mnemonics safe!',
+      link: { url: '/docs/developers/typescript#create-account', label: 'See the code...' },
+      component: (props) => <DemoKineticKeypair {...props} />,
+    },
+    {
+      title: 'Create An Account',
+      subtitle:
+        "Use Kinetic to create your account on the Solana blockchain with the keypair we made in the previous step. Once this is done, you'll be able to transact with Kin on Solana via the Kinetic SDK.",
+      link: { url: '/docs/developers/typescript#create-account', label: 'See the code...' },
+      component: (props) => <DemoKineticCreateAccount {...props} />,
+    },
+    {
+      title: 'Close Your Account',
+      subtitle: "Use Kinetic to close your Kin account. It's good practice to tidy up any unneeded accounts.",
+      link: { url: '/docs/developers/typescript#close-account', label: 'See the code...' },
+      component: (props) => <DemoKineticCloseAccount {...props} />,
+    },
+  ]}
+/>

@@ -1,9 +1,9 @@
-import { Doc } from 'contentlayer/generated'
+import { Doc, Tool } from 'contentlayer/generated'
 import Link from 'next/link'
 import { FC } from 'react'
 import { Icon } from '../common/Icon'
 
-export const DocsFooter: FC<{ doc: Doc }> = ({ doc }) => {
+export const DocsFooter: FC = () => {
   return (
     <>
       <hr />

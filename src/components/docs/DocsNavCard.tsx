@@ -1,3 +1,5 @@
+import { text } from 'cheerio'
+import { bg } from 'date-fns/locale'
 import Image from 'next/image'
 import { FC, PropsWithChildren } from 'react'
 import { ChevronLink } from '../common/ChevronLink'
@@ -35,7 +37,7 @@ export const DocsNavCard: FC<
   }
 
   return (
-    <div className={`flex flex-col ${hero ? 'mb-4' : ''} ${largeIcon ? 'mt-5' : ''}`}>
+    <div className={`flex flex-col ${hero ? 'mb-4' : ''} ${largeIcon ? 'mt-5' : ''} `}>
       <div
         className={`grow border border-gray-100 bg-gray-50 p-6 py-4 dark:border-gray-800 dark:bg-gray-900 
         ${link ? 'rounded-t-2xl border-b-0' : 'rounded-2xl'} ${
@@ -75,11 +77,11 @@ export const DocsNavCard: FC<
         <h3 className={`${largeIcon ? 'mt-12' : 'mt-0'} ${hero ? 'text-3xl' : ''}`}>{title}</h3>
         {label && <Label text={label} />}
         {subtitle && (
-          <div className={`text-sm text-slate-500 dark:text-slate-400 ${hero ? 'text-lg' : ''}`}>
+          <div className={`break-words text-sm text-slate-500 dark:text-slate-400 ${hero ? 'text-lg' : ''}`}>
             <p>{subtitle}</p>
           </div>
         )}
-        {children ? <div className="text-sm">{children}</div> : null}
+        {children ? <div className={`text-sm`}>{children}</div> : null}
       </div>
       {link && (
         <div className="rounded-b-2xl border border-violet-100 bg-violet-50 p-6 py-4 dark:border-violet-900/50 dark:bg-violet-900/20">
