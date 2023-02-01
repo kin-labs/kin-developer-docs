@@ -68,7 +68,7 @@ export const DemoKineticMakeBatchTransfer: FC<{
         <>
           <div className="m-0 w-full pt-0 pb-3">
             <p className="m-0 mt-1 w-full space-y-12 break-words pt-0 pb-3 md:space-y-20">
-              We did it! Your balance is now ${balance} KIN.
+              {`We did it! Your balance is now ${balance} KIN.`}
               {signature ? (
                 <span>
                   <span>

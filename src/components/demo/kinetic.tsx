@@ -69,7 +69,7 @@ export const createAccount = async (
   try {
     const accountOptions = {
       owner: keypair,
-      commitment: Commitment.Finalized, // Optional, can be Finalized, Confirmed, Processed
+      commitment: Commitment.Confirmed, // Optional, can be Finalized, Confirmed, Processed
     }
     const transaction = kineticClient && (await kineticClient.createAccount(accountOptions))
     onSuccess && transaction?.signature && onSuccess(transaction.signature)
@@ -109,7 +109,7 @@ export const airdrop = async (
     const airdropOptions = {
       account: keypair,
       amount: '1000',
-      commitment: Commitment.Finalized,
+      commitment: Commitment.Confirmed,
     }
     kineticClient && (await kineticClient.requestAirdrop(airdropOptions))
     const balanceOptions = {
@@ -146,7 +146,7 @@ export const makeTransfer = async (
         destination: '3AQwygEJCSpNZc9fomYx7U2XZhE9QSKwa3B1CKzagJLb',
         owner: keypair,
         amount: sendAmount,
-        commitment: Commitment.Finalized,
+        commitment: Commitment.Confirmed,
       }
       const transaction = kineticClient && (await kineticClient.makeTransfer(makeTransferOptions))
       console.log('🚀 ~ transaction', transaction)
@@ -188,7 +188,7 @@ export const makeBatchTransfer = async (
     const transferBatchOptions = {
       owner: keypair,
       destinations,
-      commitment: Commitment.Finalized, // Optional, can be Finalized, Confirmed, Processed
+      commitment: Commitment.Confirmed, // Optional, can be Finalized, Confirmed, Processed
     }
 
     const transaction = kineticClient && (await kineticClient.makeTransferBatch(transferBatchOptions))
@@ -212,7 +212,7 @@ export const closeAccount = async (onSuccess: () => void, onFailure: (error: boo
   try {
     const closeAccountOptions = {
       account: keypair,
-      commitment: Commitment.Finalized,
+      commitment: Commitment.Confirmed,
     }
     const transaction = kineticClient && (await kineticClient.closeAccount(closeAccountOptions))
     console.log('🚀 ~ transaction', transaction)
