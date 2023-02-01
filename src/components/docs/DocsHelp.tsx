@@ -16,7 +16,7 @@ export const DocsHelp: FC<{ discord?: boolean }> = ({ discord = false }) => {
         title="Developer Discord"
         subtitle="Join our fantastic developer community."
         icon="discord"
-        link={{ url: 'https://discord.com/invite/kdRyUNmHDn', label: 'Join now' }}
+        link={{ url: 'https://www.kin.org/developerdiscord', label: 'Join now' }}
       />
     </div>
   )

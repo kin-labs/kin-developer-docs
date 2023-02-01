@@ -15,9 +15,9 @@ If you want to include references to Kin in your app, please make use of our [Br
 
 ## Creating Accounts Efficiently
 
-Account creation on the Solana blockchain comes with a SOL cost that is currently paid for by the Kin Foundation when using SDK-based solutions, which will change in the future. Accounts with zero balances or activity are still charged a [rent fee](https://docs.solana.com/implemented-proposals/rent) by Solana. That means it is in your best interest to make sure that account creation is done efficiently, so as to avoid unnecessary fees.
+Account creation on the Solana blockchain comes with a SOL cost. Accounts with zero balances or activity are still charged a [rent fee](https://docs.solana.com/implemented-proposals/rent) by Solana. That means it is in your best interest to make sure that account creation is done efficiently, so as to avoid unnecessary fees.
 
-Due to this rent exemption fee, apps must follow best practices for account creations, or risk having performance throttled. Account creation is almost instantaneous and can be done on a per need basis when the user interacts with Kin for the first time.
+Account creation is almost instantaneous and can be done on a per need basis when the user interacts with Kin for the first time.
 
 The following steps will create accounts efficiently and effectively – in short, you will want to avoid initializing accounts until they are actually needed to transact meaningfully by the user.
 
@@ -42,7 +42,7 @@ Note: The above is general information only and is not a full explanation of the
 
 Several apps in the Kin community have given users the option to withdraw their funds to an external wallet. This is strongly supported by the Kin Foundation as we believe it helps Kin come closer to the vision of an interconnected ecosystem.
 
-However, due to changes in the Solana infrastructure that have occurred since the publishing of the latest Kin SDKs, we have found that some exchanges have deposit addresses which are incompatible with the current version of Agora.
+However, due to changes in the Solana infrastructure that have occurred since the publishing of the latest Kin SDKs, we have found that some exchanges have deposit addresses which are incompatible.
 
 In practice, what this means is that some end users may attempt to withdraw to one of these incompatible exchanges, and find that their funds get held up. We have engaged with these exchanges and they have assured us that users can simply file a support ticket to retrieve their funds. However, this is not an ideal user experience and one that can cause frustration for users and app developers alike.
 

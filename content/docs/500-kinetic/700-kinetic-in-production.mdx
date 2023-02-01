@@ -18,7 +18,7 @@ For example, here's how it works with the TypeScript SDK:
 
 ```js
 const clientOptions = {
-  environment: 'mainnet', // mainnet or devnet
+  environment: 'mainnet', // the name of your mainnet environment as defined in your Kinetic instance
   index: 1, // your App Index
   endpoint: 'https://your_kinetic_instance', // kinetic instance endpoint
 }
@@ -62,7 +62,7 @@ E.g. TypeScript SDK:
 
 ```js
 const clientOptions = {
-  environment: 'devnet', // mainnet or devnet
+  environment: 'devnet', // the name of your environment, e.g. devnet, mainnet
   index: 1, // your App Index
   endpoint: 'https://your_kinetic_instance', // your kinetic server address
 }
@@ -109,7 +109,7 @@ E.g. TypeScript SDK:
 
 ```js
 const clientOptions = {
-  environment: 'mainnet', // mainnet or devnet
+  environment: 'mainnet', // the name of your environment, get this from your KAAS provider
   index: 1, // your App Index
   endpoint: 'kinetic_as_a_service_endpoint', // get this from your KAAS provider
 }

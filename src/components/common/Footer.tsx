@@ -92,7 +92,7 @@ const content = {
       title: 'Connect',
       elements: [
         { label: 'Kin Developer Portal', url: 'https://portal.kin.org/' },
-        { label: 'Discord', url: 'https://discord.gg/kdRyUNmHDn' },
+        { label: 'Discord', url: 'https://www.kin.org/developerdiscord' },
       ],
     },
   ],

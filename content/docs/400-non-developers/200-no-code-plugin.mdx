@@ -1,0 +1,235 @@
+---
+title: Kinetic SDK Plugin
+excerpt: Build with the Kin Kinetic Plugin
+nav_title: No-Code Plugin
+---
+
+The Kinetic Plugin for Bubble is a powerful tool that lets you work directly with Kin on the Solana blockchain.
+
+## Get Started or Add to an Existing Project
+
+Getting started with Kin is incredibly straightforward. Just follow the steps below to start transacting with Kin in your app.
+
+### Installation
+
+Install the [Kinetic SDK Plugin](https://bubble.io/plugin/kinetic-sdk-1664414264063x804938262006464500) into your new or existing Bubble App.
+
+### Global Settings
+
+When you install the plugin, you can set your global settings for the plugin.
+
+![Bubble Plugin Settings](/images/no-code/Bubble-init-settings.png)
+
+We recommend starting with Devnet before moving on to Mainnet.
+
+Devnet settings:
+
+```js
+endpoint: 'https://sandbox.kinetic.host'
+environment: 'devnet'
+index: '1'
+commitment: 'Confirmed'
+```
+
+Don't have an App Index? Register your app on our Developer Portal so you can get your App Index that allows you to transact with our SDKs and earn via the KRE.
+
+<RegisterApp />
+While you're waiting for confirmation of your App Index, use `1` on devnet so you can get started.
+
+### Instantiate the Kinetic Client
+
+The Kinetic Client will give you access to all the methods you need to work with Kin on the blockchain.
+
+```js
+Add Action >> Kinetic Init SDK
+```
+
+### Create Account
+
+You can create accounts randomly or from existing mnemonics or secret keys. Below, we'll make a keypair and use that for creating an account on the blockchain.
+
+You can also generate keypairs and create accounts on devnet via the [Kin Laboratory](https://laboratory.kin.org/keypairs).
+
+```js
+Create Keypair
+Add Action >> Kinetic Setup Keypair
+options:
+  mnemonic // add your mnemonic to create a keypair from an existing account
+
+Create Account
+Add Action >> Kinetic Create Account
+options:
+  commitment // override the default commitment you set when setting up the plugin
+```
+
+### Close Account
+
+It's good practice to close unneeded accounts. You can only close accounts that you have created and are currently empty.
+
+```js
+Add Action >> Kinetic Close Account
+options:
+  commitment // override the default commitment you set when setting up the plugin
+```
+
+### Check Balance
+
+Check a user balance by passing in the public key of the account you want to check.
+
+```js
+Add Action >> Kinetic Get Balance
+```
+
+### Airdrop Funds (devnet)
+
+Send some test funds to a specific Public Key on Devnet.
+
+Or visit the [Kin Laboratory](https://laboratory.kin.org/airdrop) to do it with a click!
+
+```js
+Add Action >> Kinetic Request Airdrop
+options:
+  amount // amount of Kin to airdrop
+  commitment // override the default commitment you set when setting up the plugin
+```
+
+### Transfer Kin
+
+Transfer Kin from a Keypair to any Public Key.
+
+Make sure to include your Transaction Type if you want it to count towards the KRE.
+
+```js
+Add Action >> Kinetic Make Transfer
+options:
+  destination //public key to send Kin to
+  amount // amount of Kin to airdrop
+  type // transaction type
+  commitment // override the default commitment you set when setting up the plugin
+```
+
+Learn more about [transaction types](/docs/use-cases#transaction-types) and [commitment](/docs/essentials/terms-and-concepts#commitment).
+
+Note - `referenceId` and `referenceType` are stored off chain and will be passed back to the app via webhooks if they are set up.
+
+### Get Transaction Details
+
+Get the details of any transaction by passing in the transaction signature.
+
+```js
+Add Action >> Kinetic Get Transaction
+options:
+  signature // signature of the transaction
+```
+
+### Get Account History
+
+Get the full transaction history of any account by passing in the account's Public Key.
+
+```js
+Add Action >> Kinetic Get History
+```
+
+### Get Account Info
+
+Easily get the main info of any account by passing in the account's Public Key.
+
+```js
+Add Action >> Kinetic Get Account Info
+```
+
+### Get Token Accounts
+
+Get the full list of [Token Accounts](/docs/essentials/terms-and-concepts#token-account) held by a Keypair on Solana.
+
+```js
+Add Action >> Kinetic Token Accounts
+```
+
+## Commitment
+
+You can set a global commitment level in the plugin settings page or specify commitment when creating accounts or transferring Kin.
+![Send Kin](/images/no-code/Bubble-commitment.png)
+
+The available options are:
+
+- Processed : Transaction has started the process of completion. Quicker but less certain. Has possible edge cases, e.g. you can't send Kin to an account that hasn't been 'Finalized'.
+- Confirmed : Transaction is not complete but is almost certain to do so
+- Finalized : Transaction is finalized on the blockchain. Certain but slower.
+
+The default is 'Confirmed'.
+
+Something for app developers to consider!
+
+Learn more about commitment [here](/docs/essentials/terms-and-concepts#commitment).
+
+## Error Handling
+
+If an error occurs with a Kinetic transaction, you'll see a value in local storage called `error` with the value being the method that failed. You can use this to drive your UI and let users know if an error has occurred.
+![Error Handling](/images/no-code/Bubble-error-handling.png)
+
+## Demos and Starter Kits
+
+Created to help get you up and running as quickly as possible, these projects can be a great reference point when you get stuck or even a starter for your own project. Happy coding!
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Kinetic Bubble Demo"
+    subtitle="Check out a simple demo app built on Bubble that can interact with Kin on the Solana blockchain."
+    pngFile="bubble"
+    link={{ url: 'https://kin-kinetic-demo.bubbleapps.io/version-test?debug_mode=true', label: 'Have a look' }}
+  />
+  <NavCard
+    title="Behind The Scenes"
+    subtitle="Check out the workflows, conditional logic etc used to build the Kinetic Bubble Demo app."
+    pngFile="bubble"
+    link={{ url: 'https://bubble.io/page?name=index&id=kin-kinetic-demo&tab=tabs-1', label: 'Take a peek' }}
+  />
+</div>
+
+## Ready for Production?
+
+To transact for real on Solana, you'll need to connect to a Kinetic instance that support mainnet.
+
+You can do this in two ways:
+
+<div className="mt-8 grid gap-6 md:grid-cols-2">
+  <NavCard
+    title="Kinetic As A Service"
+    subtitle="Connect to a Kinetic Service hosted by a 3rd party."
+    svgFile="globe-solid"
+    link={{ url: '/docs/kinetic/kinetic-as-a-service', label: 'Find out more' }}
+  />
+  <NavCard
+    title="Self Hosted"
+    subtitle="Host and manage your own Kinetic instance."
+    svgFile="server-solid"
+    link={{ url: '/docs/kinetic/kinetic-in-production/#self-hosted', label: 'Learn more' }}
+  />
+</div>
+
+Once you've got access to mainnet via Kinetic, you can change your plugin settings.
+
+### Kinetic Plugin Mainnet Settings
+
+```js
+endpoint - 'https://your_kinetic_endpoint.com'
+environment - 'mainnet' // the name of your mainnet environment
+index - 'your app index'
+```
+
+## Earn Kin via the KRE
+
+<KRE />
+
+## What If I Get Stuck?
+
+Pop into the [`kinetic-bubble`](https://discord.com/channels/808859554997469244/1029511952478773308) channel on Discord and we'll give you a hand.
+
+<Help />
+
+## Developer Best Practices
+
+Once you're ready to code, have a quick look at our [Developer Best Practices](/essentials/best-practices/) where we cover some useful topics that you'll want to keep in mind as you build out your Kin application.
+
+<BestPractices />

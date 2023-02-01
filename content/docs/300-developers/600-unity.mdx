@@ -29,7 +29,7 @@ sdk = await KineticSdk.Setup(
     new KineticSdkConfig(
     index: 1, // Add your own App Index here
     endpoint: "https://sandbox.kinetic.host",
-    environment: KineticSdkEndpoint.Devnet,
+    environment: "devnet",
     )
 );
 ```
@@ -43,6 +43,8 @@ While you're waiting for confirmation of your App Index, use `1` on devnet so yo
 ### Create Account
 
 You can create accounts randomly or from existing mnemonics or secret keys. Below, we'll make a keypair and use that for creating an account on the blockchain.
+
+You can also generate keypairs and create accounts on devnet via the [Kin Laboratory](https://laboratory.kin.org/keypairs).
 
 ```c#
 var mnemonic = Keypair.GenerateMnemonic();
@@ -72,6 +74,8 @@ var balance = await sdk.GetBalance(keypair.PublicKey);
 
 Send some test funds to a specific Public Key on Devnet.
 
+Or visit the [Kin Laboratory](https://laboratory.kin.org/airdrop) to do it with a click!
+
 ```c#
 await sdk.RequestAirdrop( account: keypair.PublicKey, amount: "1000" );
 ```
@@ -79,6 +83,8 @@ await sdk.RequestAirdrop( account: keypair.PublicKey, amount: "1000" );
 ### Transfer Kin
 
 Transfer Kin from a Keypair to any Public Key.
+
+Make sure to include your Transaction Type if you want it to count towards the KRE.
 
 ```c#
 await sdk.MakeTransfer(

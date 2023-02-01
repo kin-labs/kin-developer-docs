@@ -68,6 +68,7 @@ We want to make sure stuff works on the Solana test environment before moving to
 - set your 'endpoint' to `https://sandbox.kinetic.host`
 - set your 'environment' to `devnet`
 - set your 'index' to your App Index (Or just use '1' for now to get started, see below for details...)
+- set your 'commitment' to 'Confirmed' or leave it blank. Learn more about commitment [here](/docs/non-developers/get-started#commitment).
 
 Don't have an App Index? Register your app on our Developer Portal so you can get your App Index that allows you get credit for your transactions and earn via the KRE.
 
@@ -332,14 +333,16 @@ Now, we don't claim to be experts in how Bubble works, so I'm sure there are man
 
 ## Commitment
 
-When creating accounts or transferring Kin, you can set the 'Commitment' level.
+You can set a global commitment level in the plugin settings page or specify commitment when creating accounts or transferring Kin.
 ![Send Kin](/images/no-code/Bubble-commitment.png)
 
-The default is 'Finalized', meaning that you'll have total certainty that a transaction has completed.
+The available options are:
 
-E.g. in a workflow where you want to transfer Kin then check the balance, using 'Finalized' would make sure the balance was updated on-chain before the balance check.
+- Processed : Transaction has started the process of completion. Quicker but less certain. Has possible edge cases, e.g. you can't send Kin to an account that hasn't been 'Finalized'.
+- Confirmed : Transaction is not complete but is almost certain to do so
+- Finalized : Transaction is finalized on the blockchain. Certain but slower.
 
-But, this means the transaction takes longer to return. If you want to to have a more dynamic user experience, you could use 'Processed', but would have to take into account that the transaction could possibly not complete on-chain.
+The default is 'Confirmed'.
 
 Something for app developers to consider!
 
@@ -394,10 +397,10 @@ Once you've got access to mainnet via Kinetic, you can change your plugin settin
 
 ### Kinetic Plugin Mainnet Settings
 
-```shell
-endpoint - https://your_kinetic_endpoint.com
-environment - mainnet
-index - your app index
+```js
+endpoint - 'https://your_kinetic_endpoint.com'
+environment - 'mainnet' // the name of your mainnet environment
+index - 'your app index'
 ```
 
 ## Earn Kin via the KRE

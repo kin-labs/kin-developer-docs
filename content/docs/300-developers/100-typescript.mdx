@@ -24,7 +24,7 @@ We recommend starting with Devnet before moving on to Mainnet.
 import { KineticSdk } from '@kin-kinetic/sdk'
 
 const clientOptions = {
-  environment: 'devnet', // mainnet or devnet
+  environment: 'devnet', // the name of your environment, e.g. devnet, mainnet
   index: 1, // your App Index
   endpoint: 'https://sandbox.kinetic.host', // devnet endpoint
 }
@@ -41,6 +41,8 @@ While you're waiting for confirmation of your App Index, use `1` on devnet so yo
 ### Create Account
 
 You can create accounts randomly or from existing mnemonics or secret keys. Below, we'll make a keypair and use that for creating an account on the blockchain.
+
+You can also generate keypairs and create accounts on devnet via the [Kin Laboratory](https://laboratory.kin.org/keypairs).
 
 ```js
 import { Keypair } from '@kin-kinetic/keypair'
@@ -84,6 +86,8 @@ const { balance } = await kineticClient.getBalance(balanceOptions)
 
 Send some test funds to a specific Public Key on Devnet.
 
+Or visit the [Kin Laboratory](https://laboratory.kin.org/airdrop) to do it with a click!
+
 ```js
 import { Commitment } from '@kin-kinetic/solana'
 
@@ -98,6 +102,8 @@ await kineticClient.requestAirdrop(airdropOptions)
 ### Transfer Kin
 
 Transfer Kin from a Keypair to any Public Key.
+
+Make sure to include your Transaction Type if you want it to count towards the KRE.
 
 ```js
 import { Commitment, TransactionType } from '@kin-kinetic/solana';
