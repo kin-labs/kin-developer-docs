@@ -546,46 +546,51 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@kin-kinetic/keypair@npm:1.0.0-rc.10":
-  version: 1.0.0-rc.10
-  resolution: "@kin-kinetic/keypair@npm:1.0.0-rc.10"
+"@kin-kinetic/keypair@npm:1.0.0-rc.16":
+  version: 1.0.0-rc.16
+  resolution: "@kin-kinetic/keypair@npm:1.0.0-rc.16"
   dependencies:
     "@scure/bip39": 1.1.0
-    "@solana/web3.js": 1.66.2
+    "@solana/web3.js": 1.73.0
     bs58: 4.0.1
-    buffer: 6.0.1
+    buffer: 5.7.1
     micro-ed25519-hdkey: 0.1.2
-    tslib: 2.4.0
+    tslib: 2.4.1
     util: 0.12.5
-  checksum: 38de54ac27c50d9f1526b47bf39eb331b7828a4d6e85e365eecfbc917871d299b6e8347199d7ea009b44c6e0ad124daedf2517a41787be125327b56a1df0bc7f
+  checksum: 2ea8b211fbb9dbfb7502e93c1a030c58d5f43b620ab1a504f3d95bbde02d740d48294ea77d9c64331d787fffa82fa6cb6eed9026c0acef838790574adfd55394
   languageName: node
   linkType: hard
 
-"@kin-kinetic/sdk@npm:^1.0.0-rc.10":
-  version: 1.0.0-rc.10
-  resolution: "@kin-kinetic/sdk@npm:1.0.0-rc.10"
+"@kin-kinetic/sdk@npm:^1.0.0-rc.16":
+  version: 1.0.0-rc.16
+  resolution: "@kin-kinetic/sdk@npm:1.0.0-rc.16"
   dependencies:
-    "@kin-kinetic/keypair": 1.0.0-rc.10
-    "@kin-kinetic/solana": 1.0.0-rc.10
-    "@solana/web3.js": 1.66.2
-    axios: 0.26.1
+    "@kin-kinetic/keypair": 1.0.0-rc.16
+    "@kin-kinetic/solana": 1.0.0-rc.16
+    "@scure/bip39": 1.1.0
+    "@solana/spl-token": 0.3.7
+    "@solana/web3.js": 1.73.0
+    axios: 0.27.2
     bignumber.js: 9.0.2
-    buffer: 6.0.1
-    tslib: 2.4.0
-  checksum: 8367d8125d5e936d60c7322ce2717f1adbb5e084f5371768eb9e6ce30b54201005c8c10e4506bf5874cedc63e400258b6a85f810d212b7a02773acf356051105
+    bs58: 4.0.1
+    buffer: 5.7.1
+    micro-ed25519-hdkey: 0.1.2
+    tslib: 2.4.1
+    util: 0.12.5
+  checksum: 97a42e6c6e14ea7a1ce45ce67cfe7fff5f9d13a8012a9db5f52e213a9c319f6189e7fe8fb9b66633b2956b7394ee2858fb47ca3eac41caaf7ae1401971bbff77
   languageName: node
   linkType: hard
 
-"@kin-kinetic/solana@npm:1.0.0-rc.10":
-  version: 1.0.0-rc.10
-  resolution: "@kin-kinetic/solana@npm:1.0.0-rc.10"
+"@kin-kinetic/solana@npm:1.0.0-rc.16":
+  version: 1.0.0-rc.16
+  resolution: "@kin-kinetic/solana@npm:1.0.0-rc.16"
   dependencies:
-    "@solana/spl-token": 0.3.6
-    "@solana/web3.js": 1.66.2
-    axios: 0.26.1
+    "@solana/spl-token": 0.3.7
+    "@solana/web3.js": 1.73.0
+    axios: 0.27.2
     bignumber.js: 9.0.2
-    tslib: 2.4.0
-  checksum: 7bf814fbb24333246a0d3bcf3cb2d509a306660d718a72446df3d99a35a2a44baff60b94ce87038dcaed8a5bbfb82c44428c182da9208f259f919e44165cf534
+    tslib: 2.4.1
+  checksum: 9df7e2a5a9f7099c5fe56344aada7c72b5781e8912da5d9906521dbc6ab6423bbfe6d706268988f9b6fdb38fa8597d2d431a24ad8a7439e7a6da2ddd87c1ea2a
   languageName: node
   linkType: hard
 
@@ -1858,28 +1863,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@solana/spl-token@npm:0.3.6":
-  version: 0.3.6
-  resolution: "@solana/spl-token@npm:0.3.6"
+"@solana/spl-token@npm:0.3.7":
+  version: 0.3.7
+  resolution: "@solana/spl-token@npm:0.3.7"
   dependencies:
     "@solana/buffer-layout": ^4.0.0
     "@solana/buffer-layout-utils": ^0.2.0
     buffer: ^6.0.3
   peerDependencies:
     "@solana/web3.js": ^1.47.4
-  checksum: e213db12ff6e443d07033898457854c5659189a00fc58f7cfd1b27229fdafd26edb7f1dcdcd21f76e703a8932b465cd6f418268c04f1b00996802f9894c280e7
+  checksum: 4452c5cb6473d0452383eb1da22ed463e5d896bf04ae91d43385b286edcb682908d6476db9f44d46fd602e335daf9c3a74f20ddfe34d6d3ac9caeddb09316d87
   languageName: node
   linkType: hard
 
-"@solana/web3.js@npm:1.66.2":
-  version: 1.66.2
-  resolution: "@solana/web3.js@npm:1.66.2"
+"@solana/web3.js@npm:1.73.0":
+  version: 1.73.0
+  resolution: "@solana/web3.js@npm:1.73.0"
   dependencies:
     "@babel/runtime": ^7.12.5
     "@noble/ed25519": ^1.7.0
     "@noble/hashes": ^1.1.2
     "@noble/secp256k1": ^1.6.3
     "@solana/buffer-layout": ^4.0.0
+    agentkeepalive: ^4.2.1
     bigint-buffer: ^1.1.5
     bn.js: ^5.0.0
     borsh: ^0.7.0
@@ -1890,7 +1896,7 @@ __metadata:
     node-fetch: 2
     rpc-websockets: ^7.5.0
     superstruct: ^0.14.2
-  checksum: e2f293bfa43bb5703c1489f005a2d5843249ccf62001dbce143ffc8b0a662c56630f601a4249bbc40b029e3bc0ab7b4011fabda902322cb3545b02bf2626150a
+  checksum: 8bd212d3fce35ad4ad4bc2490181c3d18b6abda10b253fde5a7c6b1620cdb27f37f96d5739d3058abeded76e736b35439cae2deddb3dfd4aae8ffcdf7233223c
   languageName: node
   linkType: hard
 
@@ -2652,12 +2658,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:0.26.1":
-  version: 0.26.1
-  resolution: "axios@npm:0.26.1"
+"axios@npm:0.27.2":
+  version: 0.27.2
+  resolution: "axios@npm:0.27.2"
   dependencies:
-    follow-redirects: ^1.14.8
-  checksum: d9eb58ff4bc0b36a04783fc9ff760e9245c829a5a1052ee7ca6013410d427036b1d10d04e7380c02f3508c5eaf3485b1ae67bd2adbfec3683704745c8d7a6e1a
+    follow-redirects: ^1.14.9
+    form-data: ^4.0.0
+  checksum: 38cb7540465fe8c4102850c4368053c21683af85c5fdf0ea619f9628abbcb59415d1e22ebc8a6390d2bbc9b58a9806c874f139767389c862ec9b772235f06854
   languageName: node
   linkType: hard
 
@@ -2925,6 +2932,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"buffer@npm:5.7.1, buffer@npm:^5.5.0":
+  version: 5.7.1
+  resolution: "buffer@npm:5.7.1"
+  dependencies:
+    base64-js: ^1.3.1
+    ieee754: ^1.1.13
+  checksum: e2cf8429e1c4c7b8cbd30834ac09bd61da46ce35f5c22a78e6c2f04497d6d25541b16881e30a019c6fd3154150650ccee27a308eff3e26229d788bbdeb08ab84
+  languageName: node
+  linkType: hard
+
 "buffer@npm:6.0.1":
   version: 6.0.1
   resolution: "buffer@npm:6.0.1"
@@ -2932,16 +2949,6 @@ __metadata:
     base64-js: ^1.3.1
     ieee754: ^1.2.1
   checksum: 0274c2c6c5c5d9e9e1fd48116c26a3e3f824fe262ff379f630771f590c2e4e7d1fa2604a58684bfc4471a3f9cc40c6317be26b50f15c4cca126249bfc84c4f8b
-  languageName: node
-  linkType: hard
-
-"buffer@npm:^5.5.0":
-  version: 5.7.1
-  resolution: "buffer@npm:5.7.1"
-  dependencies:
-    base64-js: ^1.3.1
-    ieee754: ^1.1.13
-  checksum: e2cf8429e1c4c7b8cbd30834ac09bd61da46ce35f5c22a78e6c2f04497d6d25541b16881e30a019c6fd3154150650ccee27a308eff3e26229d788bbdeb08ab84
   languageName: node
   linkType: hard
 
@@ -3416,7 +3423,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"combined-stream@npm:^1.0.6, combined-stream@npm:~1.0.6":
+"combined-stream@npm:^1.0.6, combined-stream@npm:^1.0.8, combined-stream@npm:~1.0.6":
   version: 1.0.8
   resolution: "combined-stream@npm:1.0.8"
   dependencies:
@@ -3510,7 +3517,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "contentlayer-docs@workspace:."
   dependencies:
-    "@kin-kinetic/sdk": ^1.0.0-rc.10
+    "@kin-kinetic/sdk": ^1.0.0-rc.16
     "@netlify/plugin-nextjs": ^4.2.7
     "@radix-ui/react-dropdown-menu": ^0.1.6
     "@radix-ui/react-scroll-area": ^0.1.4
@@ -4975,7 +4982,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.14.8":
+"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.14.9":
   version: 1.15.2
   resolution: "follow-redirects@npm:1.15.2"
   peerDependenciesMeta:
@@ -5011,6 +5018,17 @@ __metadata:
     mime: ^1.3.4
     uuid: ^2.0.1
   checksum: 95a22d2e00e991b51a5804e4c84b99c75f6d8f4825950063d6c2def70be3dd67e1767c9f9c694c84539a15d4690912a7a4137580f0f27a96d13caac8ce04b8b3
+  languageName: node
+  linkType: hard
+
+"form-data@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "form-data@npm:4.0.0"
+  dependencies:
+    asynckit: ^0.4.0
+    combined-stream: ^1.0.8
+    mime-types: ^2.1.12
+  checksum: 01135bf8675f9d5c61ff18e2e2932f719ca4de964e3be90ef4c36aacfc7b9cb2fceb5eca0b7e0190e3383fe51c5b37f4cb80b62ca06a99aaabfcfd6ac7c9328c
   languageName: node
   linkType: hard
 
@@ -10058,10 +10076,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:2.4.0, tslib@npm:^2.0.0, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.0, tslib@npm:^2.3.1, tslib@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "tslib@npm:2.4.0"
-  checksum: 8c4aa6a3c5a754bf76aefc38026134180c053b7bd2f81338cb5e5ebf96fefa0f417bff221592bf801077f5bf990562f6264fecbc42cd3309b33872cb6fc3b113
+"tslib@npm:2.4.1":
+  version: 2.4.1
+  resolution: "tslib@npm:2.4.1"
+  checksum: 19480d6e0313292bd6505d4efe096a6b31c70e21cf08b5febf4da62e95c265c8f571f7b36fcc3d1a17e068032f59c269fab3459d6cd3ed6949eafecf64315fca
   languageName: node
   linkType: hard
 
@@ -10069,6 +10087,13 @@ __metadata:
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
   checksum: dbe628ef87f66691d5d2959b3e41b9ca0045c3ee3c7c7b906cc1e328b39f199bb1ad9e671c39025bd56122ac57dfbf7385a94843b1cc07c60a4db74795829acd
+  languageName: node
+  linkType: hard
+
+"tslib@npm:^2.0.0, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.0, tslib@npm:^2.3.1, tslib@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "tslib@npm:2.4.0"
+  checksum: 8c4aa6a3c5a754bf76aefc38026134180c053b7bd2f81338cb5e5ebf96fefa0f417bff221592bf801077f5bf990562f6264fecbc42cd3309b33872cb6fc3b113
   languageName: node
   linkType: hard
 
