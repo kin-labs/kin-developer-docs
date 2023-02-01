@@ -53,8 +53,7 @@ CreateAccountOptions options = CreateAccountOptions(
   owner: owner,
   mint: mint,
   commitment: CreateAccountRequestCommitmentEnum.finalized,
-  referenceId: 'dart',
-  referenceType: 'test',
+  reference: 'test',
 );
 
 Transaction? transaction = await sdk.createAccount(options);
@@ -115,8 +114,7 @@ MakeTransferOptions options = MakeTransferOptions(
   commitment: MakeTransferRequestCommitmentEnum.finalized,
   mint: mint,
   owner: owner,
-  referenceId: "our-ref-id",
-  referenceType: "some-tx",
+  reference: "some-ref",
   type: TransactionType.p2p,
   senderCreate: false,
 );

@@ -112,13 +112,12 @@ transfer = kinetic_client.make_transfer(
     owner=keypair,
     commitment=Commitment('Finalized'), # Optional: "Confirmed", "Finalized", "Processed"
     tx_type=TransactionType.P2P, # Optional, can be Unknown, None, Earn, Spend or P2P
-    reference_id='some id', # Optional, stored off-chain and returned via webhooks
-    reference_type='some reference', # Optional, stored off-chain and returned via webhooks
+    reference='some reference', # Optional, stored off-chain and returned via webhooks
     sender_create=False # Optional, will make a Kin Token Account at that destination if true
 )
 ```
 
-Note - `referenceId` and `referenceType` are stored off chain and will be passed back to the app via webhooks if they are set up.
+Note - `reference` is stored off chain and will be passed back to the app via webhooks if they are set up.
 
 ### Transfer Kin Batch
 
@@ -426,7 +425,7 @@ payment = Payment(sender, destination, transaction_type, quarks)
 
 transfer = kin_client.submit_payment(payment)
 
-# The Agora invoice option has been replaced by 'referenceId' and 'referenceType'
+# The Agora invoice option has been replaced by 'reference'
 ```
 
 **Transfer Kin Batch**

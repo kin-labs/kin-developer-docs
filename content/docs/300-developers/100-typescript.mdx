@@ -114,15 +114,14 @@ const transferOptions = {
   owner: keypair,
   commitment: Commitment.Finalized, // Optional, can be Finalized, Confirmed, Processed
   type: TransactionType.P2P, // Optional, can be Unknown, None, Earn, Spend or P2P,
-  referenceId: 'some id', // Optional, stored off-chain and returned via webhooks
-  referenceType: 'some reference'; // Optional, stored off-chain and returned via webhooks
+  reference: 'some reference'; // Optional, stored off-chain and returned via webhooks
   senderCreate: false; // Optional, will make a Kin Token Account at that destination if true
 }
 
 await kineticClient.makeTransfer(transferOptions)
 ```
 
-Note - `referenceId` and `referenceType` are stored off chain and will be passed back to the app via webhooks if they are set up.
+Note - `reference` is stored off chain and will be passed back to the app via webhooks if they are set up.
 
 ### Transfer Kin Batch
 
@@ -150,8 +149,7 @@ const transferBatchOptions = {
     owner: keypair,
     destinations,
     commitment: Commitment.Finalized, // Optional, can be Finalized, Confirmed, Processed
-    referenceId: 'some id', // Optional, stored off-chain and returned via webhooks
-    referenceType: 'some reference'; // Optional, stored off-chain and returned via webhooks
+    reference: 'some reference'; // Optional, stored off-chain and returned via webhooks
     senderCreate: false; // Optional, will make a Kin Token Account at that destination if true
 };
 
@@ -382,11 +380,11 @@ await kinClient.requestAirdrop(tokenAccountPublicKey, quarks)
 
 ```js
 // Kinetic
-await kinClient.makeTransfer({ amount, destination, owner, commitment, type, referenceId, referenceType, senderCreate })
+await kinClient.makeTransfer({ amount, destination, owner, commitment, type, reference, referenceType, senderCreate })
 
 // Agora
 await kinClient.submitPayment({ quarks, destination, sender, type })
-// The Agora invoice option has been replaced by 'referenceId' and 'referenceType'
+// The Agora invoice option has been replaced by 'reference'
 ```
 
 **Transfer Kin Batch**
