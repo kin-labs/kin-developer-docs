@@ -29,7 +29,7 @@ If you already know what Solana, Metaplex, and Phantom Wallet are, you can skip 
 
 ## Solana, Metaplex, and Phantom Wallet
 
-It's unlikely you would've found your way here if you didn't know what Solana is, but just in case , here's a quick overview of Solana and Metaplex.
+It's unlikely you would've found your way here if you didn't know what Solana is, but just in case, here's a quick overview of Solana and Metaplex.
 
 ### Solana
 
@@ -145,7 +145,7 @@ Rather than repeating the many tutorials on how to install Node and yarn, we'll 
 
 There are a range of different code editors. Ask five different developers which is best and you'll likely hear five different answers. For the purposes of this tutorial it doesn't matter which one you choose. Sublime, VsCode, Atom, Brackets, intellij, Note++, Note Pad etc ... choose a name, go to youtube, and then search "2021 How to install [code editor name of your choice] on [your machine type (mac, windows, linux)]", and have fun.
 
-- **video** [Opionon piece on the "Best 3 Text Editors for Coding" ](https://www.youtube.com/watch?v=kCZQPL8u_YI)
+- **video** [Opinion piece on the "Best 3 Text Editors for Coding" ](https://www.youtube.com/watch?v=kCZQPL8u_YI)
 
 Note that after you choose a code editor, the easiest next step is to search Youtube for "2021 How to Install [Your Choice of Editor Here]"
 
@@ -180,7 +180,7 @@ To initialize our site we need to do a few quick things:
 3. Connect to the storefront to our Phantom Wallet
 4. Approve a transaction that will create an address for our store
 5. Add the store address to our project
-6. Add our wallet address, Kin Token Program address, and Kin token id to our our project
+6. Add our wallet address, Kin Token Program address, and Kin token id to our project
 
 ### Ensuring the storefront and wallet are on Devnet
 
@@ -226,7 +226,7 @@ If the page keeps loading or you're not seeing your _Store Configuration_ — in
 
 To add the _Store Configuration_:
 
-- In VS Code, or your your preferred code editor, navigate to `./js/packages/web/.env` and open the .env file
+- In VS Code, or your preferred code editor, navigate to `./js/packages/web/.env` and open the .env file
 - Paste in your copied configuration from the previous step — _your's and your store's public key_
 - copy the snippet below and paste it under your _Store Configuration_. This snippet will allow you to sell NFTs using the Kin token
 
@@ -262,7 +262,7 @@ To add a creator:
 
 To understand the next steps, it's important to understand that our NFT information — for the purposes of this tutorial — will live in two places:
 
-1. **On Solana** — where the associated token will be minted and as well as a bit of data (a Decorator Struct) that describes the NFT and, importantly, where it's metadata lives
+1. **On Solana** — where the associated token will be minted and as well as a bit of data (a Decorator Struct) that describes the NFT and, importantly, where its metadata lives
 2. **On Arweave** — The metadata, the on-chain image link, description, traits etc..., will permanently live on Arweave
 
 It's relatively expensive to store data on Solana, so Metaplex stores just enough data via the NFT (Token Program) on Solana to make a permanent record of where the more detailed metadata lives, on Arweave.
@@ -275,7 +275,7 @@ You can add a variety of assets to an NFT but we're going to mint with an image 
 
 ![KiNFT Tutorial Graphic](/images/nfts-with-kin/creating-the-nfts-1.png)
 
-The graphic we select in this step will eventually be uploaded onto Arweave and its URL will be automatically added to the overall Matadata object.
+The graphic we select in this step will eventually be uploaded onto Arweave and its URL will be automatically added to the overall Metadata object.
 
 ![Upload NFT image to Arweave](/images/nfts-with-kin/creating-the-nfts-2.gif)
 
@@ -290,7 +290,7 @@ Now we'll add the NFT details.
 Attributes need three pieces of data
 
 - **trait_type** — describes the trait itself e.g. a type of background, a particular hairstyle, a special power, or maybe you want to make it part of a set and label its place within a larger project
-- **value** — describes an important detail about the trait_type e.g. it's name, a numerical value, whether or not a condition is true or false, an SKU etc...
+- **value** — describes an important detail about the trait_type e.g. its name, a numerical value, whether or not a condition is true or false, an SKU etc...
 - **display_type** — is optionally used by wallets and apps to display the data type e.g. a string, number, boolean, Date etc... the default value will be `string` if you leave it blank.
 
 [Click here](#viewing-the-nft-and-metadata-in-phantom) to see how these details show up in Phantom Wallet
@@ -415,7 +415,7 @@ Transaction Two
 
 Now that our storefront is initialized we need to add the Mainnet Store Configuration details to `./js/packages/web/.env.production` .
 
-If you need a refresher on how do that, [click here](#add-the-store-address).
+If you need a refresher on how to do that, [click here](#add-the-store-address).
 
 ### Welp! We did it!
 
@@ -423,7 +423,7 @@ That was 30 minutes well spent you pro-level NFT'er you.
 
 If you would like to learn to deploy your site or brush up on your Metaplex knowledge, you can do that here [https://docs.metaplex.com/create-store/deploy](https://docs.metaplex.com/create-store/deploy)
 
-For those interesting in building their NFT projects using Kin, if your project is going places, you can apply for a [Kin Foundation Catalyst Fund grant here](https://rebrand.ly/kin-funding).
+For those interested in building their NFT projects using Kin, if your project is going places, you can apply for a [Kin Foundation Catalyst Fund grant here](https://rebrand.ly/kin-funding).
 
 ## What If I Get Stuck?
 
