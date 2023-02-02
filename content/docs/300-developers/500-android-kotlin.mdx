@@ -104,7 +104,8 @@ Make sure to include your Transaction Type if you want it to count towards the K
 val txSignature = kinetic.makeTransfer(
 	"5000",
 	"BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo",
-	owner
+	owner,
+	type = KinBinaryMemo.TransactionType.Spend
 ).signature
 ```
 
